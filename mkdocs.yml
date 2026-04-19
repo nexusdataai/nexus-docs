@@ -1,0 +1,233 @@
+site_name: Totogi CallSense Platform
+site_description: Comprehensive documentation for the Totogi CallSense Platform - Call Processing Capability and AI-powered call analytics platform
+site_author: Starhub Trilogy Team
+repo_url: https://github.com/yourusername/starhub-docs
+repo_name: starhub-docs
+
+theme:
+  name: material
+  custom_dir: overrides
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  logo: assets/totogi-logo-white.svg
+  favicon: assets/totogi-logo-white.svg
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.follow
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mermaid-config.js
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home:
+    - Overview: index.md
+    - Platform Architecture: platform-architecture.md
+  - Business Documentation:
+    - Overview: business/index.md
+    - Totogi CallSense Executive Summary: business/source/executive-summary.md
+    - Totogi Toolkit Executive Summary: business/source/toolkit-executive-summary.md
+    - Business Requirements: business/source/business-requirements.md
+    - Business Overview: business/source/business-overview.md
+    - KPI Definitions: KPI/callsense-kpi-definitions.md
+  - Functional Specifications:
+    - Overview: functional/index.md
+    - Design Specifications: functional/source/design.md
+    - Requirements: functional/source/requirement.md
+    - Tasks: functional/source/task.md
+  - Features & Capabilities:
+    - Overview: features/index.md
+    - Capability Architecture: features/source/capability-arcitecture.md
+    - Telco AI FAQ: features/source/telco-ai-capability-faq.md
+    - AWS WAFR Compliance: features/source/AWS-WAFR-COMPLIANCE.md
+  - Project Scope:
+    - Overview: project-scope/index.md
+    - Release Notes:
+      - Version 0.0.1: project-scope/releases/v0.0.1.md
+      - Version 0.0.1 Test Plan: project-scope/releases/v0.0.1-test-plan.md
+  - Simulators:
+    - Overview: simulators/index.md
+    - WXCC Simulator:
+      - Guide: simulators/wxcc/index.md
+    - SFDC Simulator:
+      - Guide: simulators/sfdc/index.md
+  - Technical Documentation:
+    - Overview: technical/index.md
+    - Solution Architecture: technical/solution-architecture.md
+    - Infrastructure Requirements: technical/INFRASTRUCTURE_REQUIREMENTS.md
+    - DynamoDB Operations Analysis: technical/dynamodb-operations-analysis.md
+    - CloudWatch Logs Analysis: technical/cloudwatch-logs-analysis.md
+    - Integration:
+      - Webex Integration: technical/integration/webex-integration.md
+      - Implementation Questions: technical/integration/webex-implementation-questions.md
+      - Call Recording: technical/integration/call-recording-pseudocode.md
+    - Architecture:
+      - Job Execution Flow: technical/architecture/job-execution-flow.md
+    - Call Processing:
+      - Algorithm: technical/call-processing/call-processing-algorithm.md
+      - Developer Guide: technical/call-processing/developer-guide.md
+      - SFDC Action: technical/call-processing/sfdcaction.md
+    - Gateway:
+      - Unified Gateway Guide: technical/gateway/UNIFIED_GATEWAY_GUIDE.md
+    - Database Design:
+      - Journey Data: technical/dbdesign/journey-data.md
+      - Capability Data: technical/dbdesign/capability-data.md
+  - Operational Documentation:
+    - Overview: operational/index.md
+    - Totogi Toolkit User Guide:
+      - Overview: operational/user-guide/README.md
+      - Getting Started: operational/user-guide/01-getting-started.md
+      - Installation: operational/user-guide/02-installation.md
+      - Deployment Wizard: operational/user-guide/03-deployment-wizard.md
+      - AWS Configuration: operational/user-guide/04-aws-configuration.md
+      - Managing Deployments: operational/user-guide/05-managing-deployments.md
+      - Troubleshooting: operational/user-guide/06-troubleshooting.md
+      - FAQ: operational/user-guide/07-faq.md
+      - Kubernetes Deployment: operational/user-guide/08-kubernetes-deployment.md
+      - Build Guide: operational/user-guide/BUILD_GUIDE.md
+      - Quick Reference: operational/user-guide/QUICK_REFERENCE.md
+    - Totogi Capability K8s Operator:
+      - Overview: operational/kubernetes-operator/index.md
+      - Quick Start: operational/kubernetes-operator/quick-start.md
+      - AWS Prerequisites: operational/kubernetes-operator/aws-prerequisites.md
+      - Architecture: operational/kubernetes-operator/architecture.md
+      - Custom Resource Reference: operational/kubernetes-operator/custom-resource.md
+      - Deployment Guide: operational/kubernetes-operator/deployment.md
+      - Operations: operational/kubernetes-operator/operations.md
+      - Troubleshooting: operational/kubernetes-operator/troubleshooting.md
+  - Application Catalogue:
+    - Supply Chain:
+      - Overview: app-catalogue/supply-chain/index.md
+      - Demand Forecasting & Planning: app-catalogue/supply-chain/demand-forecasting.md
+      - Inventory Optimization: app-catalogue/supply-chain/inventory-optimization.md
+      - Order-to-Cash Monitor: app-catalogue/supply-chain/order-to-cash.md
+      - Supply Chain Risk Radar: app-catalogue/supply-chain/supply-chain-risk.md
+      - Customer 360: app-catalogue/supply-chain/customer-360.md
+      - Procurement Analytics: app-catalogue/supply-chain/procurement-analytics.md
+      - Production & Quality: app-catalogue/supply-chain/production-quality.md
+      - ESG & Sustainability: app-catalogue/supply-chain/esg-sustainability.md
+      - Ontology Layer:
+        - Overview: app-catalogue/supply-chain/ontology/index.md
+        - Schema Reference: app-catalogue/supply-chain/ontology/schema-reference.md
+        - Workflows: app-catalogue/supply-chain/ontology/workflows.md
+        - Policies: app-catalogue/supply-chain/ontology/policies.md
+        - Integrations: app-catalogue/supply-chain/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/supply-chain/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/supply-chain/ontology/mapping-architecture.md
+    - Finance & Banking:
+      - Overview: app-catalogue/finance-banking/index.md
+      - Customer 360: app-catalogue/finance-banking/customer-360.md
+      - Credit Risk & Early Warning: app-catalogue/finance-banking/credit-risk.md
+      - Fraud Detection & AML: app-catalogue/finance-banking/fraud-detection.md
+      - Regulatory Compliance: app-catalogue/finance-banking/regulatory-compliance.md
+      - Treasury & Liquidity: app-catalogue/finance-banking/treasury-liquidity.md
+      - Loan Lifecycle: app-catalogue/finance-banking/loan-lifecycle.md
+      - Revenue & Product Reco: app-catalogue/finance-banking/revenue-optimization.md
+      - Operational Risk: app-catalogue/finance-banking/operational-risk.md
+    - Telecommunications:
+      - Overview: app-catalogue/telco/index.md
+      - Customer 360 & Churn: app-catalogue/telco/customer-360.md
+      - Network Performance: app-catalogue/telco/network-performance.md
+      - Revenue Assurance & Fraud: app-catalogue/telco/revenue-assurance.md
+      - Customer Experience: app-catalogue/telco/customer-experience.md
+      - Network Capacity Planning: app-catalogue/telco/network-capacity.md
+      - Dynamic Pricing: app-catalogue/telco/dynamic-pricing.md
+      - Field Operations: app-catalogue/telco/field-operations.md
+      - Regulatory Compliance: app-catalogue/telco/regulatory-compliance.md
+    - Retail:
+      - Overview: app-catalogue/retail/index.md
+      - Customer 360 & Loyalty: app-catalogue/retail/customer-360.md
+      - Demand Forecasting: app-catalogue/retail/demand-forecasting.md
+      - Personalization: app-catalogue/retail/personalization.md
+      - Price & Promotion: app-catalogue/retail/price-optimization.md
+      - Inventory & Fulfillment: app-catalogue/retail/inventory-fulfillment.md
+      - Store Operations: app-catalogue/retail/store-operations.md
+      - Supplier & Merchandising: app-catalogue/retail/supplier-merchandising.md
+      - Sustainability: app-catalogue/retail/sustainability-compliance.md
+    - Healthcare:
+      - Overview: app-catalogue/healthcare/index.md
+      - Patient 360: app-catalogue/healthcare/patient-360.md
+      - Clinical Decision Support: app-catalogue/healthcare/clinical-decision-support.md
+      - Revenue Cycle: app-catalogue/healthcare/revenue-cycle.md
+      - Operational Efficiency: app-catalogue/healthcare/operational-efficiency.md
+      - Population Health: app-catalogue/healthcare/population-health.md
+      - Supply Chain & Pharmacy: app-catalogue/healthcare/supply-chain-pharmacy.md
+      - Clinical Quality & Safety: app-catalogue/healthcare/clinical-quality.md
+      - Regulatory Compliance: app-catalogue/healthcare/regulatory-compliance.md
+  - Test Documentation:
+    - Overview: tests/index.md
+  - Developer Guide:
+    - Overview: developer/index.md
+    - Backend:
+      - Overview: developer/backend/README.md
+      - LocalStack Setup: developer/backend/env-local-example.md
+    - Requirements:
+      - Business Requirements: developer/requirements/bussiness-req.md
+    - MCP Tools:
+      - Journeys Tool: developer/mcp-tools/journeys-tool.md
+      - Logs and Reports Tool: developer/mcp-tools/logs-and-reports-tool.md
+      - Run Job Tools: developer/mcp-tools/run-job-tools.md
+      - MCP Streaming Architecture: developer/mcp-tools/MCP_STREAMING_ARCHITECTURE.md
+    - LocalStack:
+      - Quick Start: developer/localstack/QUICKSTART_LOCALSTACK.md
+      - Local Setup: developer/localstack/LOCAL_SETUP_LOCALSTACK.md
+      - Reference: developer/localstack/LOCALSTACK_REFERENCE.md
+    - Claude:
+      - User Guide: developer/claude/user-guide.md
+      - Quick Reference: developer/claude/quick-ref.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/starhub-docs
+  version:
+    provider: mike

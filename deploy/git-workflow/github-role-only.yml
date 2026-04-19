@@ -1,0 +1,81 @@
+# CloudFormation template - IAM role for GitHub Actions (docs deploy to S3/CloudFront)
+# Requires existing GitHub OIDC provider in the account
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'GitHub Actions IAM Role for StarHub Docs (S3 + CloudFront)'
+
+Parameters:
+  GitHubOrganization:
+    Type: String
+    Description: GitHub organization or username
+    Default: "trilogy-group"
+
+  GitHubRepository:
+    Type: String
+    Description: GitHub repository name
+    Default: "starhub-docs"
+
+  BranchName:
+    Type: String
+    Description: Branch that can deploy (e.g. main)
+    Default: "main"
+
+  DocsS3Bucket:
+    Type: String
+    Description: S3 bucket name for docs site
+    Default: "totogi-callsense-doc"
+
+Resources:
+  GitHubActionsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "GitHubActions-${GitHubRepository}-${BranchName}"
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Sub "arn:aws:iam::${AWS::AccountId}:oidc-provider/token.actions.githubusercontent.com"
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                'token.actions.githubusercontent.com:aud': sts.amazonaws.com
+              StringLike:
+                'token.actions.githubusercontent.com:sub':
+                  - !Sub 'repo:${GitHubOrganization}/${GitHubRepository}:ref:refs/heads/${BranchName}'
+                  - !Sub 'repo:${GitHubOrganization}/${GitHubRepository}:pull/*'
+      Policies:
+        - PolicyName: StarHubDocsDeploymentPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:GetObject
+                  - s3:DeleteObject
+                  - s3:ListBucket
+                Resource:
+                  - !Sub 'arn:aws:s3:::${DocsS3Bucket}'
+                  - !Sub 'arn:aws:s3:::${DocsS3Bucket}/*'
+              - Effect: Allow
+                Action:
+                  - cloudfront:CreateInvalidation
+                  - cloudfront:GetInvalidation
+                  - cloudfront:ListInvalidations
+                Resource: "*"
+
+Outputs:
+  GitHubActionsRoleArn:
+    Description: ARN of the GitHub Actions role to use in workflows
+    Value: !GetAtt GitHubActionsRole.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-GitHubActionsRoleArn"
+
+  SetupInstructions:
+    Description: Instructions for completing the setup
+    Value: !Sub |
+      1. Add GitHub secrets: https://github.com/${GitHubOrganization}/${GitHubRepository}/settings/secrets/actions
+      2. AWS_ROLE_TO_ASSUME = ${GitHubActionsRole.Arn}
+      3. DOCS_S3_BUCKET = ${DocsS3Bucket}
+      4. DOCS_CLOUDFRONT_ID = (distribution ID from setup-website.sh or AWS Console)
