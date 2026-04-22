@@ -17,7 +17,7 @@ from playwright.async_api import async_playwright
 parser = argparse.ArgumentParser()
 parser.add_argument("--email",    default="admin@totogi.com")
 parser.add_argument("--password", default="Password@12")
-parser.add_argument("--url",      default="https://call-processing-dev-1242253893.ap-southeast-1.elb.amazonaws.com")
+parser.add_argument("--url",      default="https://call-processing-dev-1242253893.us-east-1.elb.amazonaws.com")
 args = parser.parse_args()
 
 URL = args.url
