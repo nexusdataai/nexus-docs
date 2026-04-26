@@ -12,8 +12,6 @@
         <meta name="author" content="NexusAI">
       
       
-        <link rel="canonical" href="https://nexus.ptrtechnology.com/docs/developer/claude/user-guide/">
-      
       
         <link rel="prev" href="../../localstack/LOCALSTACK_REFERENCE/">
       
@@ -8411,7 +8409,7 @@
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s2">&quot;@agent security-reviewer analyze the terraform configs&quot;</span>
 </code></pre></div></p>
 <p><strong>3. Programmatic Activation</strong> (via SDK)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">claude</span> <span class="kn">import</span> <span class="n">agents</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude</span><span class="w"> </span><span class="kn">import</span> <span class="n">agents</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Load and use specific agent</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">security_agent</span> <span class="o">=</span> <span class="n">agents</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;security-reviewer&#39;</span><span class="p">)</span>
@@ -8503,7 +8501,7 @@
 <h2 id="agent-sdk-usage">Agent SDK Usage<a class="headerlink" href="#agent-sdk-usage" title="Permanent link">&para;</a></h2>
 <h3 id="basic-sdk-integration">Basic SDK Integration<a class="headerlink" href="#basic-sdk-integration" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Python example</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">from</span> <span class="nn">claude</span> <span class="kn">import</span> <span class="n">Claude</span><span class="p">,</span> <span class="n">plugins</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude</span><span class="w"> </span><span class="kn">import</span> <span class="n">Claude</span><span class="p">,</span> <span class="n">plugins</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># Initialize Claude with plugin</span>
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">claude</span> <span class="o">=</span> <span class="n">Claude</span><span class="p">()</span>
@@ -8555,16 +8553,16 @@
 </code></pre></div>
 <h3 id="advanced-sdk-features">Advanced SDK Features<a class="headerlink" href="#advanced-sdk-features" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># Webhook integration</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">from</span> <span class="nn">claude.plugins</span> <span class="kn">import</span> <span class="n">devops</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">devops</span>
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
 <a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># Set up webhook handler</span>
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nd">@devops</span><span class="o">.</span><span class="n">hook</span><span class="p">(</span><span class="s1">&#39;deployment.started&#39;</span><span class="p">)</span>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="k">def</span> <span class="nf">on_deployment_start</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_deployment_start</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="c1"># Custom logic when deployment starts</span>
 <a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="n">devops</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">service</span><span class="p">})</span>
 <a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
 <a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="c1"># Skill composition</span>
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">complex_workflow</span><span class="p">():</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">complex_workflow</span><span class="p">():</span>
 <a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>    <span class="c1"># Chain multiple skills</span>
 <a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>    <span class="n">review</span> <span class="o">=</span> <span class="k">await</span> <span class="n">devops</span><span class="o">.</span><span class="n">skill</span><span class="p">(</span><span class="s1">&#39;code-reviewer&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="s1">&#39;./src&#39;</span><span class="p">)</span>
 <a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
@@ -8590,11 +8588,11 @@
 </code></pre></div>
 <h3 id="example-2-automated-code-review">Example 2: Automated Code Review<a class="headerlink" href="#example-2-automated-code-review" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># review-pr.py</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kn">from</span> <span class="nn">claude</span> <span class="kn">import</span> <span class="n">Claude</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude</span><span class="w"> </span><span class="kn">import</span> <span class="n">Claude</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="n">claude</span> <span class="o">=</span> <span class="n">Claude</span><span class="p">()</span>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="k">def</span> <span class="nf">review_pull_request</span><span class="p">(</span><span class="n">pr_number</span><span class="p">):</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">review_pull_request</span><span class="p">(</span><span class="n">pr_number</span><span class="p">):</span>
 <a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>    <span class="c1"># Get PR changes</span>
 <a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    <span class="n">changes</span> <span class="o">=</span> <span class="n">get_pr_changes</span><span class="p">(</span><span class="n">pr_number</span><span class="p">)</span>
 <a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
@@ -8646,13 +8644,13 @@
 </code></pre></div>
 <h3 id="example-4-chatops-integration">Example 4: ChatOps Integration<a class="headerlink" href="#example-4-chatops-integration" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># slack-bot.py</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="kn">from</span> <span class="nn">slack_sdk</span> <span class="kn">import</span> <span class="n">WebClient</span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="kn">from</span> <span class="nn">claude</span> <span class="kn">import</span> <span class="n">Claude</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">slack_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebClient</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude</span><span class="w"> </span><span class="kn">import</span> <span class="n">Claude</span>
 <a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="n">claude</span> <span class="o">=</span> <span class="n">Claude</span><span class="p">()</span>
 <a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="n">slack</span> <span class="o">=</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">SLACK_TOKEN</span><span class="p">)</span>
 <a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="k">def</span> <span class="nf">handle_slack_command</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">handle_slack_command</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
 <a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="c1"># Route DevOps commands to Claude</span>
 <a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="k">if</span> <span class="n">command</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;/devops&#39;</span><span class="p">):</span>
 <a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">claude</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;@devops </span><span class="si">{</span><span class="n">command</span><span class="p">[</span><span class="mi">8</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -8667,11 +8665,11 @@
 </code></pre></div>
 <h3 id="example-5-repository-initialization">Example 5: Repository Initialization<a class="headerlink" href="#example-5-repository-initialization" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># init-repo.py</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kn">from</span> <span class="nn">claude</span> <span class="kn">import</span> <span class="n">Claude</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude</span><span class="w"> </span><span class="kn">import</span> <span class="n">Claude</span>
 <a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>
 <a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="n">claude</span> <span class="o">=</span> <span class="n">Claude</span><span class="p">()</span>
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="k">def</span> <span class="nf">initialize_new_service</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span> <span class="n">team_name</span><span class="p">):</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">initialize_new_service</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span> <span class="n">team_name</span><span class="p">):</span>
 <a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>    <span class="c1"># Trigger repository initialization</span>
 <a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">claude</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
 <a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>        <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Initialize a new repository:</span>
@@ -8750,11 +8748,11 @@
 <h3 id="extending-the-plugin">Extending the Plugin<a class="headerlink" href="#extending-the-plugin" title="Permanent link">&para;</a></h3>
 <p>Add custom commands or skills:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># custom_skill.py</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="kn">from</span> <span class="nn">claude.plugins.devops</span> <span class="kn">import</span> <span class="n">register_skill</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">claude.plugins.devops</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_skill</span>
 <a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>
 <a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="nd">@register_skill</span><span class="p">(</span><span class="s1">&#39;custom-analyzer&#39;</span><span class="p">)</span>
-<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="k">class</span> <span class="nc">CustomAnalyzer</span><span class="p">:</span>
-<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomAnalyzer</span><span class="p">:</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 <a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>        <span class="c1"># Custom analysis logic</span>
 <a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>        <span class="k">return</span> <span class="n">results</span>
 <a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>

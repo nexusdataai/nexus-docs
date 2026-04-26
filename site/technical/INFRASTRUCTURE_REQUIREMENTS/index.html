@@ -12,8 +12,6 @@
         <meta name="author" content="NexusAI">
       
       
-        <link rel="canonical" href="https://nexus.ptrtechnology.com/docs/technical/INFRASTRUCTURE_REQUIREMENTS/">
-      
       
         <link rel="prev" href="../solution-architecture/">
       
@@ -2252,10 +2250,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-transformation-system" class="md-nav__link">
+  <a href="#nexus-ai-env-transformation-system" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-transformation-system
+        nexus-ai-{env}-transformation-system
       
     </span>
   </a>
@@ -2263,10 +2261,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-license" class="md-nav__link">
+  <a href="#nexus-ai-env-license" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-license
+        nexus-ai-{env}-license
       
     </span>
   </a>
@@ -2308,10 +2306,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-call-data" class="md-nav__link">
+  <a href="#nexus-ai-env-call-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-call-data
+        nexus-ai-{env}-call-data
       
     </span>
   </a>
@@ -2319,10 +2317,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-wxcc-simulator" class="md-nav__link">
+  <a href="#nexus-ai-env-wxcc-simulator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-wxcc-simulator
+        nexus-ai-{env}-wxcc-simulator
       
     </span>
   </a>
@@ -7333,10 +7331,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-transformation-system" class="md-nav__link">
+  <a href="#nexus-ai-env-transformation-system" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-transformation-system
+        nexus-ai-{env}-transformation-system
       
     </span>
   </a>
@@ -7344,10 +7342,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-license" class="md-nav__link">
+  <a href="#nexus-ai-env-license" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-license
+        nexus-ai-{env}-license
       
     </span>
   </a>
@@ -7389,10 +7387,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-call-data" class="md-nav__link">
+  <a href="#nexus-ai-env-call-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-call-data
+        nexus-ai-{env}-call-data
       
     </span>
   </a>
@@ -7400,10 +7398,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#call-processing-env-wxcc-simulator" class="md-nav__link">
+  <a href="#nexus-ai-env-wxcc-simulator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        call-processing-{env}-wxcc-simulator
+        nexus-ai-{env}-wxcc-simulator
       
     </span>
   </a>
@@ -7801,15 +7799,15 @@
 
 
 <h1 id="call-processing-capability-infrastructure-requirements">Call Processing Capability - Infrastructure Requirements<a class="headerlink" href="#call-processing-capability-infrastructure-requirements" title="Permanent link">&para;</a></h1>
-<p>This document lists all environment variables, secrets, DynamoDB tables, and S3 buckets required for the <strong>call-processing</strong> capability (nexus-backend service + UI).</p>
+<p>This document lists all environment variables, secrets, DynamoDB tables, and S3 buckets required for the <strong>nexus-ai</strong> capability (nexus-backend service + UI).</p>
 <hr />
 <h2 id="naming-convention">Naming Convention<a class="headerlink" href="#naming-convention" title="Permanent link">&para;</a></h2>
 <p>All resources follow the <code>capability-env-name</code> naming convention.</p>
 <h3 id="ssm-parameters-secrets">SSM Parameters &amp; Secrets<a class="headerlink" href="#ssm-parameters-secrets" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/call-processing/{env}/{category}/{resource}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/nexus-ai/{env}/{category}/{resource}
 </code></pre></div>
 <h3 id="aws-resources-dynamodb-s3-etc">AWS Resources (DynamoDB, S3, etc.)<a class="headerlink" href="#aws-resources-dynamodb-s3-etc" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>call-processing-{env}-{resource-name}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nexus-ai-{env}-{resource-name}
 </code></pre></div>
 <h3 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
 <table>
@@ -7822,9 +7820,9 @@
 </thead>
 <tbody>
 <tr>
-<td><code>call-processing</code></td>
+<td><code>nexus-ai</code></td>
 <td>Capability name (fixed)</td>
-<td><code>call-processing</code></td>
+<td><code>nexus-ai</code></td>
 </tr>
 <tr>
 <td><code>{env}</code></td>
@@ -7855,28 +7853,28 @@
 <tbody>
 <tr>
 <td>SSM Parameter</td>
-<td><code>/call-processing/{env}/server/log-level</code></td>
-<td><code>/call-processing/prod/server/log-level</code></td>
+<td><code>/nexus-ai/{env}/server/log-level</code></td>
+<td><code>/nexus-ai/prod/server/log-level</code></td>
 </tr>
 <tr>
 <td>Secret</td>
-<td><code>call-processing/{env}/api-keys</code></td>
-<td><code>call-processing/prod/api-keys</code></td>
+<td><code>nexus-ai/{env}/api-keys</code></td>
+<td><code>nexus-ai/prod/api-keys</code></td>
 </tr>
 <tr>
 <td>DynamoDB Table</td>
-<td><code>call-processing-{env}-{name}</code></td>
+<td><code>nexus-ai-{env}-{name}</code></td>
 <td><code>nexus-ai-prod-transformation-system</code></td>
 </tr>
 <tr>
 <td>S3 Bucket</td>
-<td><code>call-processing-{env}-{name}</code></td>
+<td><code>nexus-ai-{env}-{name}</code></td>
 <td><code>nexus-ai-prod-call-data</code></td>
 </tr>
 <tr>
 <td>CloudWatch Log Group</td>
-<td><code>/aws/call-processing/{env}</code></td>
-<td><code>/aws/call-processing/prod</code></td>
+<td><code>/aws/nexus-ai/{env}</code></td>
+<td><code>/aws/nexus-ai/prod</code></td>
 </tr>
 </tbody>
 </table>
@@ -7884,7 +7882,7 @@
 <p>The ECS task definition includes an <code>ENVIRONMENT</code> variable (e.g., <code>dev</code>, <code>stage</code>, <code>test</code>, <code>prod</code>) that the service uses to construct the correct resource names at runtime.</p>
 <hr />
 <h2 id="dynamodb-tables">DynamoDB Tables<a class="headerlink" href="#dynamodb-tables" title="Permanent link">&para;</a></h2>
-<p>Table names follow the <code>call-processing-{env}-{name}</code> convention:</p>
+<p>Table names follow the <code>nexus-ai-{env}-{name}</code> convention:</p>
 <table>
 <thead>
 <tr>
@@ -7897,21 +7895,21 @@
 </thead>
 <tbody>
 <tr>
-<td><code>call-processing-{env}-transformation-system</code></td>
+<td><code>nexus-ai-{env}-transformation-system</code></td>
 <td><code>nexus-ai-prod-transformation-system</code></td>
 <td>Journey/Stage/Job state management</td>
 <td>PK (HASH), SK (RANGE)</td>
 <td>GSI1 (GSI1PK, GSI1SK)</td>
 </tr>
 <tr>
-<td><code>call-processing-{env}-license</code></td>
+<td><code>nexus-ai-{env}-license</code></td>
 <td><code>nexus-ai-prod-license</code></td>
 <td>License records + audit logs</td>
 <td>PK (HASH), SK (RANGE)</td>
 <td>status-index, holder-index, license-index</td>
 </tr>
 <tr>
-<td><code>call-processing-{env}-wxcc-task-tracking</code></td>
+<td><code>nexus-ai-{env}-wxcc-task-tracking</code></td>
 <td><code>nexus-ai-prod-wxcc-task-tracking</code></td>
 <td>WXCC task tracking</td>
 <td>task_id (HASH)</td>
@@ -7920,13 +7918,13 @@
 </tbody>
 </table>
 <h3 id="table-schemas">Table Schemas<a class="headerlink" href="#table-schemas" title="Permanent link">&para;</a></h3>
-<h4 id="call-processing-env-transformation-system">call-processing-{env}-transformation-system<a class="headerlink" href="#call-processing-env-transformation-system" title="Permanent link">&para;</a></h4>
+<h4 id="nexus-ai-env-transformation-system">nexus-ai-{env}-transformation-system<a class="headerlink" href="#nexus-ai-env-transformation-system" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>PK: &quot;JOURNEY#&lt;id&gt;&quot; | &quot;JOB#&lt;id&gt;&quot; | &quot;STAGE#&lt;id&gt;&quot;
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>SK: &quot;METADATA&quot; | &quot;STATUS&quot; | &quot;STAGE#&lt;n&gt;&quot;
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>GSI1PK: For alternate access patterns
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>GSI1SK: For sorting
 </code></pre></div>
-<h4 id="call-processing-env-license">call-processing-{env}-license<a class="headerlink" href="#call-processing-env-license" title="Permanent link">&para;</a></h4>
+<h4 id="nexus-ai-env-license">nexus-ai-{env}-license<a class="headerlink" href="#nexus-ai-env-license" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>License Records:
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  PK: &quot;INSTANCE#&lt;instance_id&gt;&quot;
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  SK: &quot;LICENSE#&lt;license_id&gt;&quot;
@@ -7937,7 +7935,7 @@
 </code></pre></div>
 <hr />
 <h2 id="s3-buckets">S3 Buckets<a class="headerlink" href="#s3-buckets" title="Permanent link">&para;</a></h2>
-<p>Bucket names follow the <code>call-processing-{env}-{name}</code> convention:</p>
+<p>Bucket names follow the <code>nexus-ai-{env}-{name}</code> convention:</p>
 <table>
 <thead>
 <tr>
@@ -7950,35 +7948,35 @@
 </thead>
 <tbody>
 <tr>
-<td><code>call-processing-{env}-call-data</code></td>
+<td><code>nexus-ai-{env}-call-data</code></td>
 <td><code>nexus-ai-prod-call-data</code></td>
 <td>Processed call data for Glue tables</td>
 <td>Yes</td>
 <td><code>S3_RECORDINGS_BUCKET</code></td>
 </tr>
 <tr>
-<td><code>call-processing-{env}-wxcc-simulator</code></td>
+<td><code>nexus-ai-{env}-wxcc-simulator</code></td>
 <td><code>nexus-ai-prod-wxcc-simulator</code></td>
 <td>WXCC simulator data</td>
 <td>Yes</td>
 <td><code>WXCC_SIMULATOR_BUCKET</code></td>
 </tr>
 <tr>
-<td><code>call-processing-{env}-journey-logs</code></td>
+<td><code>nexus-ai-{env}-journey-logs</code></td>
 <td><code>nexus-ai-prod-journey-logs</code></td>
 <td>Journey execution logs</td>
 <td>Yes</td>
 <td><code>S3_JOURNEY_LOGS_BUCKET</code></td>
 </tr>
 <tr>
-<td><code>call-processing-{env}-journey-reports</code></td>
+<td><code>nexus-ai-{env}-journey-reports</code></td>
 <td><code>nexus-ai-prod-journey-reports</code></td>
 <td>Journey reports and artifacts</td>
 <td>Yes</td>
 <td><code>S3_JOURNEY_REPORTS_BUCKET</code></td>
 </tr>
 <tr>
-<td><code>call-processing-{env}-journey-specs</code></td>
+<td><code>nexus-ai-{env}-journey-specs</code></td>
 <td><code>nexus-ai-prod-journey-specs</code></td>
 <td>Journey specifications (UI development)</td>
 <td>Optional</td>
@@ -7987,8 +7985,8 @@
 </tbody>
 </table>
 <h3 id="s3-bucket-structure">S3 Bucket Structure<a class="headerlink" href="#s3-bucket-structure" title="Permanent link">&para;</a></h3>
-<h4 id="call-processing-env-call-data">call-processing-{env}-call-data<a class="headerlink" href="#call-processing-env-call-data" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>call-processing-{env}-call-data/
+<h4 id="nexus-ai-env-call-data">nexus-ai-{env}-call-data<a class="headerlink" href="#nexus-ai-env-call-data" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>nexus-ai-{env}-call-data/
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── call-data/                    # Glue table data (Parquet)
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   └── year=YYYY/month=MM/day=DD/
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│       └── *.parquet
@@ -8004,8 +8002,8 @@
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>└── athena-results/               # Athena query results
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    └── *.csv
 </code></pre></div>
-<h4 id="call-processing-env-wxcc-simulator">call-processing-{env}-wxcc-simulator<a class="headerlink" href="#call-processing-env-wxcc-simulator" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>call-processing-{env}-wxcc-simulator/
+<h4 id="nexus-ai-env-wxcc-simulator">nexus-ai-{env}-wxcc-simulator<a class="headerlink" href="#nexus-ai-env-wxcc-simulator" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nexus-ai-{env}-wxcc-simulator/
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── wxcc-simulator/
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>│   ├── tasks/                    # Simulated WXCC tasks
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│   ├── recordings/               # Task recordings
@@ -8148,7 +8146,7 @@
 <tr>
 <td><code>WXCC_SIMULATOR_BUCKET</code></td>
 <td>S3 bucket for simulator data</td>
-<td><code>call-processing-{env}-wxcc-simulator</code></td>
+<td><code>nexus-ai-{env}-wxcc-simulator</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
@@ -8191,25 +8189,25 @@
 <tr>
 <td><code>S3_RECORDINGS_BUCKET</code></td>
 <td>S3 bucket for call data &amp; Glue tables</td>
-<td><code>call-processing-{env}-call-data</code></td>
+<td><code>nexus-ai-{env}-call-data</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
 <td><code>S3_JOURNEY_LOGS_BUCKET</code></td>
 <td>S3 bucket for journey logs</td>
-<td><code>call-processing-{env}-journey-logs</code></td>
+<td><code>nexus-ai-{env}-journey-logs</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
 <td><code>S3_JOURNEY_REPORTS_BUCKET</code></td>
 <td>S3 bucket for journey reports</td>
-<td><code>call-processing-{env}-journey-reports</code></td>
+<td><code>nexus-ai-{env}-journey-reports</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
 <td><code>GLUE_DATABASE_NAME</code></td>
 <td>AWS Glue database name</td>
-<td><code>call-processing-{env}-analytics</code></td>
+<td><code>nexus-ai-{env}-analytics</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
@@ -8221,19 +8219,19 @@
 <tr>
 <td><code>DYNAMODB_TABLE</code></td>
 <td>DynamoDB transformation system table</td>
-<td><code>call-processing-{env}-transformation-system</code></td>
+<td><code>nexus-ai-{env}-transformation-system</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
 <td><code>LICENSE_TABLE</code></td>
 <td>DynamoDB license table</td>
-<td><code>call-processing-{env}-license</code></td>
+<td><code>nexus-ai-{env}-license</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
 <td><code>WXCC_TASK_TABLE</code></td>
 <td>DynamoDB WXCC task tracking table</td>
-<td><code>call-processing-{env}-wxcc-task-tracking</code></td>
+<td><code>nexus-ai-{env}-wxcc-task-tracking</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
@@ -8326,7 +8324,7 @@
 <tr>
 <td><code>CLOUDWATCH_LOG_GROUP</code></td>
 <td>CloudWatch log group</td>
-<td><code>/aws/call-processing/default</code></td>
+<td><code>/aws/nexus-ai/default</code></td>
 <td>SSM Parameter</td>
 </tr>
 <tr>
@@ -8551,34 +8549,34 @@
 </thead>
 <tbody>
 <tr>
-<td><code>call-processing/{env}/api-keys</code></td>
+<td><code>nexus-ai/{env}/api-keys</code></td>
 <td><code>API_KEY</code></td>
-<td><code>call-processing/prod/api-keys</code></td>
+<td><code>nexus-ai/prod/api-keys</code></td>
 </tr>
 <tr>
-<td><code>call-processing/{env}/wxcc</code></td>
+<td><code>nexus-ai/{env}/wxcc</code></td>
 <td><code>WXCC_SIM_TOKEN</code></td>
-<td><code>call-processing/prod/wxcc</code></td>
+<td><code>nexus-ai/prod/wxcc</code></td>
 </tr>
 <tr>
-<td><code>call-processing/{env}/openai</code></td>
+<td><code>nexus-ai/{env}/openai</code></td>
 <td><code>OPENAI_API_KEY</code></td>
-<td><code>call-processing/prod/openai</code></td>
+<td><code>nexus-ai/prod/openai</code></td>
 </tr>
 <tr>
-<td><code>call-processing/{env}/license</code></td>
+<td><code>nexus-ai/{env}/license</code></td>
 <td><code>LICENSE_PUBLIC_KEY</code>, <code>LICENSE_PRIVATE_KEY</code></td>
-<td><code>call-processing/prod/license</code></td>
+<td><code>nexus-ai/prod/license</code></td>
 </tr>
 <tr>
-<td><code>call-processing/{env}/anthropic</code></td>
+<td><code>nexus-ai/{env}/anthropic</code></td>
 <td><code>CLAUDE_API_KEY</code>, <code>ANTHROPIC_API_KEY</code></td>
-<td><code>call-processing/prod/anthropic</code></td>
+<td><code>nexus-ai/prod/anthropic</code></td>
 </tr>
 <tr>
-<td><code>call-processing/{env}/github</code></td>
+<td><code>nexus-ai/{env}/github</code></td>
 <td><code>GITHUB_TOKEN</code></td>
-<td><code>call-processing/prod/github</code></td>
+<td><code>nexus-ai/prod/github</code></td>
 </tr>
 </tbody>
 </table>
@@ -8598,124 +8596,124 @@
 </thead>
 <tbody>
 <tr>
-<td><code>/call-processing/{env}/aws/region</code></td>
+<td><code>/nexus-ai/{env}/aws/region</code></td>
 <td><code>AWS_REGION</code></td>
-<td><code>/call-processing/prod/aws/region</code></td>
+<td><code>/nexus-ai/prod/aws/region</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/aws/role-arn</code></td>
+<td><code>/nexus-ai/{env}/aws/role-arn</code></td>
 <td><code>AWS_ROLE_ARN</code></td>
-<td><code>/call-processing/prod/aws/role-arn</code></td>
+<td><code>/nexus-ai/prod/aws/role-arn</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/server/environment</code></td>
+<td><code>/nexus-ai/{env}/server/environment</code></td>
 <td><code>ENVIRONMENT</code></td>
-<td><code>/call-processing/prod/server/environment</code></td>
+<td><code>/nexus-ai/prod/server/environment</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/server/log-level</code></td>
+<td><code>/nexus-ai/{env}/server/log-level</code></td>
 <td><code>LOG_LEVEL</code></td>
-<td><code>/call-processing/prod/server/log-level</code></td>
+<td><code>/nexus-ai/prod/server/log-level</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/server/min-workers</code></td>
+<td><code>/nexus-ai/{env}/server/min-workers</code></td>
 <td><code>MIN_WORKERS</code></td>
-<td><code>/call-processing/prod/server/min-workers</code></td>
+<td><code>/nexus-ai/prod/server/min-workers</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/server/max-workers</code></td>
+<td><code>/nexus-ai/{env}/server/max-workers</code></td>
 <td><code>MAX_WORKERS</code></td>
-<td><code>/call-processing/prod/server/max-workers</code></td>
+<td><code>/nexus-ai/prod/server/max-workers</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/server/timeout</code></td>
+<td><code>/nexus-ai/{env}/server/timeout</code></td>
 <td><code>MCP_REQUEST_TIMEOUT</code></td>
-<td><code>/call-processing/prod/server/timeout</code></td>
+<td><code>/nexus-ai/prod/server/timeout</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/cognito/region</code></td>
+<td><code>/nexus-ai/{env}/cognito/region</code></td>
 <td><code>COGNITO_REGION</code></td>
-<td><code>/call-processing/prod/cognito/region</code></td>
+<td><code>/nexus-ai/prod/cognito/region</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/cognito/user-pool-id</code></td>
+<td><code>/nexus-ai/{env}/cognito/user-pool-id</code></td>
 <td><code>COGNITO_USER_POOL_ID</code></td>
-<td><code>/call-processing/prod/cognito/user-pool-id</code></td>
+<td><code>/nexus-ai/prod/cognito/user-pool-id</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/cognito/app-client-id</code></td>
+<td><code>/nexus-ai/{env}/cognito/app-client-id</code></td>
 <td><code>COGNITO_APP_CLIENT_ID</code></td>
-<td><code>/call-processing/prod/cognito/app-client-id</code></td>
+<td><code>/nexus-ai/prod/cognito/app-client-id</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/wxcc/enabled</code></td>
+<td><code>/nexus-ai/{env}/wxcc/enabled</code></td>
 <td><code>WXCC_SIMULATOR_ENABLED</code></td>
-<td><code>/call-processing/prod/wxcc/enabled</code></td>
+<td><code>/nexus-ai/prod/wxcc/enabled</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/wxcc/bucket</code></td>
+<td><code>/nexus-ai/{env}/wxcc/bucket</code></td>
 <td><code>WXCC_SIMULATOR_BUCKET</code></td>
-<td><code>/call-processing/prod/wxcc/bucket</code></td>
+<td><code>/nexus-ai/prod/wxcc/bucket</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/wxcc/prefix</code></td>
+<td><code>/nexus-ai/{env}/wxcc/prefix</code></td>
 <td><code>WXCC_SIMULATOR_PREFIX</code></td>
-<td><code>/call-processing/prod/wxcc/prefix</code></td>
+<td><code>/nexus-ai/prod/wxcc/prefix</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/wxcc/org-id</code></td>
+<td><code>/nexus-ai/{env}/wxcc/org-id</code></td>
 <td><code>WXCC_SIM_ORG_ID</code></td>
-<td><code>/call-processing/prod/wxcc/org-id</code></td>
+<td><code>/nexus-ai/prod/wxcc/org-id</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/s3/recordings-bucket</code></td>
+<td><code>/nexus-ai/{env}/s3/recordings-bucket</code></td>
 <td><code>S3_RECORDINGS_BUCKET</code></td>
-<td><code>/call-processing/prod/s3/recordings-bucket</code></td>
+<td><code>/nexus-ai/prod/s3/recordings-bucket</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/s3/journey-logs-bucket</code></td>
+<td><code>/nexus-ai/{env}/s3/journey-logs-bucket</code></td>
 <td><code>S3_JOURNEY_LOGS_BUCKET</code></td>
-<td><code>/call-processing/prod/s3/journey-logs-bucket</code></td>
+<td><code>/nexus-ai/prod/s3/journey-logs-bucket</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/s3/journey-reports-bucket</code></td>
+<td><code>/nexus-ai/{env}/s3/journey-reports-bucket</code></td>
 <td><code>S3_JOURNEY_REPORTS_BUCKET</code></td>
-<td><code>/call-processing/prod/s3/journey-reports-bucket</code></td>
+<td><code>/nexus-ai/prod/s3/journey-reports-bucket</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/dynamodb/transformation-table</code></td>
+<td><code>/nexus-ai/{env}/dynamodb/transformation-table</code></td>
 <td><code>DYNAMODB_TABLE</code></td>
-<td><code>/call-processing/prod/dynamodb/transformation-table</code></td>
+<td><code>/nexus-ai/prod/dynamodb/transformation-table</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/dynamodb/license-table</code></td>
+<td><code>/nexus-ai/{env}/dynamodb/license-table</code></td>
 <td><code>LICENSE_TABLE</code></td>
-<td><code>/call-processing/prod/dynamodb/license-table</code></td>
+<td><code>/nexus-ai/prod/dynamodb/license-table</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/dynamodb/wxcc-task-table</code></td>
+<td><code>/nexus-ai/{env}/dynamodb/wxcc-task-table</code></td>
 <td><code>WXCC_TASK_TABLE</code></td>
-<td><code>/call-processing/prod/dynamodb/wxcc-task-table</code></td>
+<td><code>/nexus-ai/prod/dynamodb/wxcc-task-table</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/glue/database</code></td>
+<td><code>/nexus-ai/{env}/glue/database</code></td>
 <td><code>GLUE_DATABASE_NAME</code></td>
-<td><code>/call-processing/prod/glue/database</code></td>
+<td><code>/nexus-ai/prod/glue/database</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/glue/table</code></td>
+<td><code>/nexus-ai/{env}/glue/table</code></td>
 <td><code>GLUE_TABLE_NAME</code></td>
-<td><code>/call-processing/prod/glue/table</code></td>
+<td><code>/nexus-ai/prod/glue/table</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/cloudwatch/log-group</code></td>
+<td><code>/nexus-ai/{env}/cloudwatch/log-group</code></td>
 <td><code>CLOUDWATCH_LOG_GROUP</code></td>
-<td><code>/call-processing/prod/cloudwatch/log-group</code></td>
+<td><code>/nexus-ai/prod/cloudwatch/log-group</code></td>
 </tr>
 <tr>
-<td><code>/call-processing/{env}/cloudwatch/stream-prefix</code></td>
+<td><code>/nexus-ai/{env}/cloudwatch/stream-prefix</code></td>
 <td><code>CLOUDWATCH_LOG_STREAM_PREFIX</code></td>
-<td><code>/call-processing/prod/cloudwatch/stream-prefix</code></td>
+<td><code>/nexus-ai/prod/cloudwatch/stream-prefix</code></td>
 </tr>
 </tbody>
 </table>
@@ -8723,7 +8721,7 @@
 <hr />
 <h2 id="iam-permissions-required">IAM Permissions Required<a class="headerlink" href="#iam-permissions-required" title="Permanent link">&para;</a></h2>
 <h3 id="dynamodb">DynamoDB<a class="headerlink" href="#dynamodb" title="Permanent link">&para;</a></h3>
-<p>Resources use pattern: <code>call-processing-{env}-*</code></p>
+<p>Resources use pattern: <code>nexus-ai-{env}-*</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="s2">&quot;dynamodb:GetItem&quot;</span><span class="p">,</span>
@@ -8737,16 +8735,16 @@
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="s2">&quot;dynamodb:DescribeTable&quot;</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="p">],</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="s2">&quot;arn:aws:dynamodb:REGION:ACCOUNT:table/call-processing-*&quot;</span><span class="p">,</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="s2">&quot;arn:aws:dynamodb:REGION:ACCOUNT:table/call-processing-*/index/*&quot;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="s2">&quot;arn:aws:dynamodb:REGION:ACCOUNT:table/nexus-ai-*&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="s2">&quot;arn:aws:dynamodb:REGION:ACCOUNT:table/nexus-ai-*/index/*&quot;</span>
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">  </span><span class="p">]</span>
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><strong>Note</strong>: Wildcard <code>call-processing-*</code> covers all environments and tables (e.g., <code>nexus-ai-prod-transformation-system</code>, <code>nexus-ai-dev-license</code>)</p>
+<p><strong>Note</strong>: Wildcard <code>nexus-ai-*</code> covers all environments and tables (e.g., <code>nexus-ai-prod-transformation-system</code>, <code>nexus-ai-dev-license</code>)</p>
 </blockquote>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
-<p>Resources use pattern: <code>call-processing-{env}-*</code></p>
+<p>Resources use pattern: <code>nexus-ai-{env}-*</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
@@ -8756,13 +8754,13 @@
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="s2">&quot;s3:GetBucketLocation&quot;</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="p">],</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="s2">&quot;arn:aws:s3:::call-processing-*&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="s2">&quot;arn:aws:s3:::call-processing-*/*&quot;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="s2">&quot;arn:aws:s3:::nexus-ai-*&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="s2">&quot;arn:aws:s3:::nexus-ai-*/*&quot;</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="p">]</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><strong>Note</strong>: Wildcard <code>call-processing-*</code> covers all environments and buckets (e.g., <code>nexus-ai-prod-call-data</code>, <code>nexus-ai-dev-wxcc-simulator</code>)</p>
+<p><strong>Note</strong>: Wildcard <code>nexus-ai-*</code> covers all environments and buckets (e.g., <code>nexus-ai-prod-call-data</code>, <code>nexus-ai-dev-wxcc-simulator</code>)</p>
 </blockquote>
 <h3 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
@@ -8772,7 +8770,7 @@
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="s2">&quot;logs:PutLogEvents&quot;</span><span class="p">,</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="s2">&quot;logs:DescribeLogStreams&quot;</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="p">],</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:logs:REGION:ACCOUNT:log-group:/aws/call-processing/*&quot;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:logs:REGION:ACCOUNT:log-group:/aws/nexus-ai/*&quot;</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="ssm-parameter-store">SSM Parameter Store<a class="headerlink" href="#ssm-parameter-store" title="Permanent link">&para;</a></h3>
@@ -8782,11 +8780,11 @@
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="s2">&quot;ssm:GetParameters&quot;</span><span class="p">,</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="s2">&quot;ssm:GetParametersByPath&quot;</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="p">],</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:ssm:REGION:ACCOUNT:parameter/call-processing/*&quot;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:ssm:REGION:ACCOUNT:parameter/nexus-ai/*&quot;</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><strong>Note</strong>: The wildcard <code>*</code> covers all environments (<code>/call-processing/dev/*</code>, <code>/call-processing/prod/*</code>, etc.)</p>
+<p><strong>Note</strong>: The wildcard <code>*</code> covers all environments (<code>/nexus-ai/dev/*</code>, <code>/nexus-ai/prod/*</code>, etc.)</p>
 </blockquote>
 <h3 id="secrets-manager">Secrets Manager<a class="headerlink" href="#secrets-manager" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
@@ -8794,11 +8792,11 @@
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="s2">&quot;secretsmanager:GetSecretValue&quot;</span><span class="p">,</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="s2">&quot;secretsmanager:DescribeSecret&quot;</span>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="p">],</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:secretsmanager:REGION:ACCOUNT:secret:call-processing/*&quot;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:secretsmanager:REGION:ACCOUNT:secret:nexus-ai/*&quot;</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
 </code></pre></div>
 <blockquote>
-<p><strong>Note</strong>: The wildcard <code>*</code> covers all environments (<code>call-processing/dev/*</code>, <code>call-processing/prod/*</code>, etc.)</p>
+<p><strong>Note</strong>: The wildcard <code>*</code> covers all environments (<code>nexus-ai/dev/*</code>, <code>nexus-ai/prod/*</code>, etc.)</p>
 </blockquote>
 <h3 id="glueathena-for-call-processing">Glue/Athena (for Call Processing)<a class="headerlink" href="#glueathena-for-call-processing" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
@@ -8821,38 +8819,38 @@
 </code></pre></div>
 <h3 id="ssm-parameters-to-create-for-prod">SSM Parameters to Create (for prod)<a class="headerlink" href="#ssm-parameters-to-create-for-prod" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># AWS</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>/call-processing/prod/aws/region<span class="o">=</span>ap-southeast-1
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>/nexus-ai/prod/aws/region<span class="o">=</span>ap-southeast-1
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Server</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>/call-processing/prod/server/environment<span class="o">=</span>production
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>/call-processing/prod/server/log-level<span class="o">=</span>INFO
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>/nexus-ai/prod/server/environment<span class="o">=</span>production
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>/nexus-ai/prod/server/log-level<span class="o">=</span>INFO
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># Cognito</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>/call-processing/prod/cognito/region<span class="o">=</span>ap-southeast-1
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>/call-processing/prod/cognito/user-pool-id<span class="o">=</span>&lt;user-pool-id&gt;
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>/call-processing/prod/cognito/app-client-id<span class="o">=</span>&lt;app-client-id&gt;
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>/nexus-ai/prod/cognito/region<span class="o">=</span>ap-southeast-1
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>/nexus-ai/prod/cognito/user-pool-id<span class="o">=</span>&lt;user-pool-id&gt;
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>/nexus-ai/prod/cognito/app-client-id<span class="o">=</span>&lt;app-client-id&gt;
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1"># S3 Buckets (values are the actual bucket names)</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>/call-processing/prod/s3/recordings-bucket<span class="o">=</span>nexus-ai-prod-call-data
-<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>/call-processing/prod/s3/journey-logs-bucket<span class="o">=</span>nexus-ai-prod-journey-logs
-<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>/call-processing/prod/s3/journey-reports-bucket<span class="o">=</span>nexus-ai-prod-journey-reports
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>/nexus-ai/prod/s3/recordings-bucket<span class="o">=</span>nexus-ai-prod-call-data
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>/nexus-ai/prod/s3/journey-logs-bucket<span class="o">=</span>nexus-ai-prod-journey-logs
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>/nexus-ai/prod/s3/journey-reports-bucket<span class="o">=</span>nexus-ai-prod-journey-reports
 <a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>
 <a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="c1"># DynamoDB Tables (values are the actual table names)</span>
-<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>/call-processing/prod/dynamodb/transformation-table<span class="o">=</span>nexus-ai-prod-transformation-system
-<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>/call-processing/prod/dynamodb/license-table<span class="o">=</span>nexus-ai-prod-license
-<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>/call-processing/prod/dynamodb/wxcc-task-table<span class="o">=</span>nexus-ai-prod-wxcc-task-tracking
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>/nexus-ai/prod/dynamodb/transformation-table<span class="o">=</span>nexus-ai-prod-transformation-system
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>/nexus-ai/prod/dynamodb/license-table<span class="o">=</span>nexus-ai-prod-license
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>/nexus-ai/prod/dynamodb/wxcc-task-table<span class="o">=</span>nexus-ai-prod-wxcc-task-tracking
 <a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>
 <a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="c1"># Glue</span>
-<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>/call-processing/prod/glue/database<span class="o">=</span>nexus-ai-prod-analytics
-<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>/call-processing/prod/glue/table<span class="o">=</span>wxcc_calls
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>/nexus-ai/prod/glue/database<span class="o">=</span>nexus-ai-prod-analytics
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>/nexus-ai/prod/glue/table<span class="o">=</span>wxcc_calls
 <a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>
 <a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="c1"># WXCC Simulator</span>
-<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>/call-processing/prod/wxcc/bucket<span class="o">=</span>nexus-ai-prod-wxcc-simulator
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>/nexus-ai/prod/wxcc/bucket<span class="o">=</span>nexus-ai-prod-wxcc-simulator
 </code></pre></div>
 <h3 id="secrets-to-create-for-prod">Secrets to Create (for prod)<a class="headerlink" href="#secrets-to-create-for-prod" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>call-processing/prod/api-keys<span class="w">     </span><span class="c1"># Contains: API_KEY</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>call-processing/prod/openai<span class="w">       </span><span class="c1"># Contains: OPENAI_API_KEY</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>call-processing/prod/license<span class="w">      </span><span class="c1"># Contains: LICENSE_PUBLIC_KEY, LICENSE_PRIVATE_KEY</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>nexus-ai/prod/api-keys<span class="w">     </span><span class="c1"># Contains: API_KEY</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>nexus-ai/prod/openai<span class="w">       </span><span class="c1"># Contains: OPENAI_API_KEY</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>nexus-ai/prod/license<span class="w">      </span><span class="c1"># Contains: LICENSE_PUBLIC_KEY, LICENSE_PRIVATE_KEY</span>
 </code></pre></div>
 <h3 id="dynamodb-tables-required-for-prod">DynamoDB Tables (Required for prod)<a class="headerlink" href="#dynamodb-tables-required-for-prod" title="Permanent link">&para;</a></h3>
 <ul>
@@ -8973,7 +8971,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 19, 2026 14:15:33 UTC">April 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 11:02:42 UTC">April 26, 2026</span>
   </span>
 
     
