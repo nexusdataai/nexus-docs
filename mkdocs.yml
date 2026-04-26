@@ -1,8 +1,10 @@
 site_name: Totogi CallSense Platform
+site_url: https://nexus.ptrtechnology.com/docs/
 site_description: Comprehensive documentation for the Totogi CallSense Platform - Call Processing Capability and AI-powered call analytics platform
 site_author: Starhub Trilogy Team
 repo_url: https://github.com/yourusername/starhub-docs
 repo_name: starhub-docs
+use_directory_urls: true
 
 theme:
   name: material

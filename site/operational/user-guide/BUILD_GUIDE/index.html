@@ -12,6 +12,8 @@
         <meta name="author" content="Starhub Trilogy Team">
       
       
+        <link rel="canonical" href="https://nexus.ptrtechnology.com/docs/operational/user-guide/BUILD_GUIDE/">
+      
       
         <link rel="prev" href="../08-kubernetes-deployment/">
       
@@ -6761,7 +6763,7 @@
 <h4 id="12-create-pyinstaller-spec-file">1.2 Create PyInstaller Spec File<a class="headerlink" href="#12-create-pyinstaller-spec-file" title="Permanent link">&para;</a></h4>
 <p>Create <code>backend/backend.spec</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># -*- mode: python ; coding: utf-8 -*-</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">PyInstaller.utils.hooks</span><span class="w"> </span><span class="kn">import</span> <span class="n">collect_data_files</span><span class="p">,</span> <span class="n">collect_submodules</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">PyInstaller.utils.hooks</span> <span class="kn">import</span> <span class="n">collect_data_files</span><span class="p">,</span> <span class="n">collect_submodules</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">block_cipher</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>

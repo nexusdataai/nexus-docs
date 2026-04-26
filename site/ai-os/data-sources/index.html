@@ -12,6 +12,8 @@
         <meta name="author" content="Starhub Trilogy Team">
       
       
+        <link rel="canonical" href="https://nexus.ptrtechnology.com/docs/ai-os/data-sources/">
+      
       
       
       
@@ -7593,7 +7595,7 @@ Reasoner automatically infers:</p>
 Vector = pattern detection</p>
 <hr />
 <h1 id="11-example-lambda-pseudocode">🛠 11️⃣ Example Lambda Pseudocode<a class="headerlink" href="#11-example-lambda-pseudocode" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
 <a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;Records&#39;</span><span class="p">]:</span>
 <a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>        <span class="k">if</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;eventName&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;INSERT&#39;</span><span class="p">:</span>
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>            <span class="n">txn</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">][</span><span class="s1">&#39;NewImage&#39;</span><span class="p">]</span>
