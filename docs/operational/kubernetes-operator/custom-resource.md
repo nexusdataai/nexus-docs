@@ -1,22 +1,22 @@
 # Custom Resource Reference
 
-Complete reference for the `TotogiCapability` Custom Resource Definition (CRD).
+Complete reference for the `NexusAICapability` Custom Resource Definition (CRD).
 
 ## Overview
 
-The `TotogiCapability` CRD defines a complete Totogi capability deployment including AWS infrastructure and Kubernetes workloads.
+The `NexusAICapability` CRD defines a complete NexusAI capability deployment including AWS infrastructure and Kubernetes workloads.
 
 ```yaml
-apiVersion: totogi.com/v1
-kind: TotogiCapability
+apiVersion: nexus.ai/v1
+kind: NexusAICapability
 ```
 
 ## Short Names
 
 The CRD supports short names for convenience:
 
-- `tc` - TotogiCapability
-- `tcap` - TotogiCapability
+- `tc` - NexusAICapability
+- `tcap` - NexusAICapability
 
 ```bash
 kubectl get tc -A       # List all capabilities
@@ -29,7 +29,7 @@ kubectl get tcap -A     # Same as above
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `capabilityName` | string | Name of the capability (e.g., `call-processing`) |
+| `capabilityName` | string | Name of the capability (e.g., `nexus-ai`) |
 | `version` | string | Semantic version (e.g., `1.0.0`) |
 | `environment` | string | Target environment: `dev`, `staging`, `prod`, `test` |
 | `region` | string | AWS region (e.g., `ap-southeast-1`) |
@@ -160,18 +160,18 @@ The operator maintains these status fields:
 ## Complete Example
 
 ```yaml
-apiVersion: totogi.com/v1
-kind: TotogiCapability
+apiVersion: nexus.ai/v1
+kind: NexusAICapability
 metadata:
-  name: call-processing-prod
-  namespace: call-processing-prod
+  name: nexus-ai-prod
+  namespace: nexus-ai-prod
   labels:
-    app.kubernetes.io/name: call-processing
+    app.kubernetes.io/name: nexus-ai
     app.kubernetes.io/version: "1.0.0"
-    totogi.com/environment: prod
+    nexus.ai/environment: prod
 spec:
   # Required fields
-  capabilityName: call-processing
+  capabilityName: nexus-ai
   version: "1.0.0"
   environment: prod
   region: ap-southeast-1
@@ -180,7 +180,7 @@ spec:
   frontend:
     enabled: true
     replicas: 3
-    image: "764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/call-processing-ui:v1.0.0"
+    image: "764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/nexus-ai-ui:v1.0.0"
     resources:
       requests:
         cpu: "200m"
@@ -193,7 +193,7 @@ spec:
   backend:
     enabled: true
     replicas: 3
-    image: "764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/call-processing-api:v1.0.0"
+    image: "764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/nexus-ai-api:v1.0.0"
     resources:
       requests:
         cpu: "500m"
@@ -218,7 +218,7 @@ spec:
     tls:
       enabled: true
       certificateArn: "arn:aws:acm:ap-southeast-1:764119721991:certificate/xxx"
-    customDomain: "call-processing.example.com"
+    customDomain: "nexus-ai.example.com"
   
   # Auto-scaling
   hpa:
@@ -239,13 +239,13 @@ spec:
 ## Minimal Example
 
 ```yaml
-apiVersion: totogi.com/v1
-kind: TotogiCapability
+apiVersion: nexus.ai/v1
+kind: NexusAICapability
 metadata:
-  name: call-processing-dev
-  namespace: call-processing-dev
+  name: nexus-ai-dev
+  namespace: nexus-ai-dev
 spec:
-  capabilityName: call-processing
+  capabilityName: nexus-ai
   version: "1.0.0"
   environment: dev
   region: ap-southeast-1
@@ -292,10 +292,10 @@ spec:
 When listing capabilities, these columns are displayed:
 
 ```bash
-$ kubectl get totogicapabilities -A
+$ kubectl get nexuscapabilities -A
 NAMESPACE              NAME                   CAPABILITY        VERSION   ENVIRONMENT   PHASE   AGE
-call-processing-dev    call-processing-dev    call-processing   1.0.0     dev           Ready   5m
-call-processing-prod   call-processing-prod   call-processing   1.0.0     prod          Ready   1h
+nexus-ai-dev    nexus-ai-dev    nexus-ai   1.0.0     dev           Ready   5m
+nexus-ai-prod   nexus-ai-prod   nexus-ai   1.0.0     prod          Ready   1h
 ```
 
 ---

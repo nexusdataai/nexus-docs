@@ -1,23 +1,23 @@
-# Telco AI Capability & Provisioner/Deployer - FAQ
+# Enterprise AI Capability FAQ
 
-## What is a Telco AI Capability?
+## What is an Enterprise AI Capability?
 
-A **Telco AI Capability** is a complete, deployable business solution that leverages artificial intelligence to solve specific telecommunications or enterprise challenges. Think of it as a self-contained AI-powered application that can be deployed independently to deliver immediate business value.
+An **Enterprise AI Capability** is a complete, deployable business solution that leverages artificial intelligence to solve specific enterprise challenges. Think of it as a self-contained AI-powered application that can be deployed independently to deliver immediate business value.
 
-**Examples of Telco AI Capabilities:**
-- **Network Optimization**: AI-driven automation to optimize network performance, predict congestion, and balance loads in real-time
-- **NOC Operations Optimization**: Intelligent incident management, automated troubleshooting, and predictive maintenance for network operations centers
+**Examples of Enterprise AI Capabilities:**
+- **Contact Center Intelligence**: AI-powered call analytics, quality assurance, transcription, and agent coaching
+- **Operations Optimization**: Intelligent incident management, automated troubleshooting, and predictive maintenance
 - **Enhanced Customer Engagement**: AI-powered conversational interfaces for customer support, personalized recommendations, and proactive service management
-- **Fraud Detection & Prevention**: Real-time anomaly detection and automated fraud prevention for telecom services
+- **Fraud Detection & Prevention**: Real-time anomaly detection and automated fraud prevention across enterprise systems
 - **Revenue Assurance**: AI-driven billing analysis and revenue leakage detection
 
 Each capability represents a **complete, production-ready solution** that addresses a specific business need with minimal integration effort.
 
 ---
 
-## What Should a Telco AI Capability Include at Minimum?
+## What Should an Enterprise AI Capability Include at Minimum?
 
-Every Telco AI Capability must include these **two core components** to be considered deployment-ready:
+Every Enterprise AI Capability must include these **two core components** to be considered deployment-ready:
 
 ### 1. AI-Native User Interface
 - **Modern, Conversational UI**: Natural language interactions where appropriate (chat, voice, visual)
@@ -46,7 +46,7 @@ A comprehensive backend that includes:
 - **Standardized Interfaces**: Consistent tool signatures and behaviors
 
 #### d. Ontology Support
-- **Domain Knowledge Graphs**: Structured representation of telecom concepts
+- **Domain Knowledge Graphs**: Structured representation of domain concepts
 - **Semantic Understanding**: Context-aware reasoning and inference
 - **Data Integration**: Map diverse data sources to unified ontology
 - **Query Capabilities**: SPARQL or graph query support for complex relationships
@@ -57,7 +57,7 @@ A comprehensive backend that includes:
 
 ## What is a Provisioner/Deployer?
 
-The **Provisioner** (also called **Deployer** or **Totogi Customer Toolkit**) is an enterprise-grade, self-service platform that enables customers to deploy Telco AI Capabilities to their own cloud infrastructure **in under 30 minutes with zero cloud expertise required**.
+The **Provisioner** (also called **Deployer** or **NexusAI Toolkit**) is an enterprise-grade, self-service platform that enables customers to deploy Enterprise AI Capabilities to their own cloud infrastructure **in under 30 minutes with zero cloud expertise required**.
 
 ### What Problem Does It Solve?
 
@@ -113,7 +113,7 @@ Deploys capabilities to any infrastructure:
 
 ## What Gets Deployed?
 
-When you deploy a Telco AI Capability using the Provisioner, it creates a **complete, production-ready environment**:
+When you deploy an Enterprise AI Capability using the Provisioner, it creates a **complete, production-ready environment**:
 
 ### Frontend Infrastructure
 - **Content Delivery Network (CDN)**: Global distribution with edge caching
@@ -171,7 +171,7 @@ When you deploy a Telco AI Capability using the Provisioner, it creates a **comp
 
 ## Key Takeaways
 
-1. **Telco AI Capabilities** are complete, self-contained AI-powered solutions for specific business problems
+1. **Enterprise AI Capabilities** are complete, self-contained AI-powered solutions for specific business problems
 2. **Minimum Components**: AI-Native UI + Backend (AI Engine + APIs + MCP Tools + Ontology)
 3. **Provisioner/Deployer** is the self-service platform that deploys capabilities to any cloud in minutes
 4. **Architecture Benefits**: Speed, cost efficiency, customer control, and vendor independence

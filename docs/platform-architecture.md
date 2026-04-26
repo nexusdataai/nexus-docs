@@ -1,19 +1,19 @@
 # Platform Architecture
 
-This page provides a comprehensive overview of the Totogi CallSense Platform architecture, including high-level system design, deployment architecture, and data flow patterns.
+This page provides a comprehensive overview of the NexusAI Data Platform architecture, including high-level system design, deployment architecture, and data flow patterns.
 
 ---
 
 ## Overview
 
-The Totogi CallSense Platform is an enterprise-grade AI-powered call processing and analytics platform that delivers:
+The NexusAI Data Platform is an enterprise-grade AI operating platform that delivers:
 
-- **100% automated QA coverage** of all calls (vs. 30% manual coverage)
-- **Real-time AI insights** on sentiment, compliance, and performance
+- **Modular AI capabilities** deployed into customer-owned cloud infrastructure
+- **Real-time AI insights** on operational data, compliance, and performance
 - **Multi-million dollar revenue impact** with measurable ROI
 - **Automated quality assurance** and compliance monitoring
-- **Real-time sentiment analysis** and coaching recommendations
-- **Salesforce and Office 365 integration**
+- **AI-powered analytics** with actionable recommendations
+- **Enterprise system integration** (Salesforce, Office 365, Webex, and more)
 
 ---
 
@@ -23,7 +23,7 @@ The Totogi CallSense Platform is an enterprise-grade AI-powered call processing 
 
 ```mermaid
 graph TD
-    A[Totogi CallSense Platform] --> B[Backend Services]
+    A[NexusAI Data Platform] --> B[Backend Services]
     A --> C[UI Application]
     A --> D[Deployment Tools]
     
@@ -52,13 +52,13 @@ graph TD
 ```mermaid
 graph TB
     subgraph UI["USER INTERFACES"]
-        UI1[StarHub UI<br/>Analytics Dashboard<br/>React + TypeScript<br/>Port: 5173]
-        UI2[StarHub Deployer<br/>Wizard Frontend<br/>React + TypeScript<br/>Port: 5173]
+        UI1[NexusAI UI<br/>Analytics Dashboard<br/>React + TypeScript<br/>Port: 5173]
+        UI2[NexusAI Deployer<br/>Wizard Frontend<br/>React + TypeScript<br/>Port: 5173]
         UI3[Electron App<br/>Desktop Application<br/>Cross-platform]
     end
     
     subgraph Backend["BACKEND SERVICES"]
-        BE1[StarHub Backend<br/>Call Processing<br/>Python 3.11+ FastAPI<br/>MCP HTTP Gateway<br/>Port: 8000]
+        BE1[NexusAI Backend<br/>Call Processing<br/>Python 3.11+ FastAPI<br/>MCP HTTP Gateway<br/>Port: 8000]
         BE2[Deployer Backend<br/>AWS Orchestration<br/>Python + FastAPI<br/>CloudFormation<br/>Port: 8001]
     end
     
@@ -121,21 +121,21 @@ The platform consists of three primary repositories:
 
 | Repository | Application | Purpose | Technology Stack |
 |------------|-------------|---------|------------------|
-| **starhub-ui** | Totogi CallSense | Analytics Dashboard & Visualization | React 18, TypeScript, Vite, Tailwind CSS, Recharts |
-| **starhub-backend** | Totogi CallSense | Call Processing & MCP Server | Python 3.11+, FastAPI, boto3, MCP Protocol |
-| **starhub-deployer** | Totogi Toolkit | Deployment Wizard & AWS Orchestration | React + Python FastAPI + Electron |
+| **nexus-ui** | NexusAI | Analytics Dashboard & Visualization | React 18, TypeScript, Vite, Tailwind CSS, Recharts |
+| **nexus-backend** | NexusAI | Call Processing & MCP Server | Python 3.11+, FastAPI, boto3, MCP Protocol |
+| **nexus-deployer** | NexusAI Toolkit | Deployment Wizard & AWS Orchestration | React + Python FastAPI + Electron |
 
 ### Repository Mapping
 
 ```
-Application 1: Totogi CallSense
-├── starhub-ui (Frontend)
+Application 1: NexusAI
+├── nexus-ui (Frontend)
 │   └── React-based analytics dashboard
-└── starhub-backend (Backend)
+└── nexus-backend (Backend)
     └── Python-based call processing engine
 
-Application 2: Totogi Toolkit
-└── starhub-deployer (Complete Application)
+Application 2: NexusAI Toolkit
+└── nexus-deployer (Complete Application)
     ├── Frontend (React wizard)
     ├── Backend (Python orchestrator)
     └── Desktop (Electron wrapper)
@@ -145,7 +145,7 @@ Application 2: Totogi Toolkit
 
 ## Core Components
 
-### StarHub UI (Analytics Dashboard)
+### NexusAI UI (Analytics Dashboard)
 
 **Technology Stack:**
 - **Frontend**: React 18, TypeScript, Vite
@@ -164,7 +164,7 @@ Application 2: Totogi Toolkit
 
 **Component Structure:**
 ```
-starhub-ui/src/
+nexus-ui/src/
 ├── components/
 │   ├── dashboards/          # Analytics dashboards
 │   ├── journeys/            # Journey management UI
@@ -190,7 +190,7 @@ starhub-ui/src/
 
 ---
 
-### StarHub Backend (Call Processing Engine)
+### NexusAI Backend (Call Processing Engine)
 
 **Technology Stack:**
 - **Framework**: Python 3.11+, FastAPI
@@ -348,7 +348,7 @@ graph TD
 ### S3 Data Structure
 
 ```
-s3://call-processing-{env}-call-data/
+s3://nexus-ai-{env}-call-data/
 ├── audio/
 │   └── year=YYYY/month=MM/day=DD/
 │       └── {call-id}-audio.wav
@@ -370,9 +370,9 @@ s3://call-processing-{env}-call-data/
 
 | Table | Purpose | Key Schema |
 |-------|---------|------------|
-| `call-processing-{env}-transformation-system` | Journey/Stage/Job tracking | PK: journey_id, SK: entity_type |
-| `call-processing-{env}-license` | License management | PK: license_key |
-| `call-processing-{env}-wxcc-tracking` | WXCC task tracking | PK: task_id |
+| `nexus-ai-{env}-transformation-system` | Journey/Stage/Job tracking | PK: journey_id, SK: entity_type |
+| `nexus-ai-{env}-license` | License management | PK: license_key |
+| `nexus-ai-{env}-wxcc-tracking` | WXCC task tracking | PK: task_id |
 
 ---
 
@@ -382,18 +382,18 @@ s3://call-processing-{env}-call-data/
 
 | Source | Target | Protocol | Purpose |
 |--------|--------|----------|---------|
-| StarHub UI | StarHub Backend | HTTP/REST | Call analytics, journey management |
-| StarHub UI | StarHub Deployer | HTTP/REST | Deployment status, capability info |
-| StarHub Backend | AWS Services | boto3 SDK | DynamoDB, S3, Glue, CloudWatch |
-| StarHub Backend | Webex CC | REST API | Call recordings, task data |
-| StarHub Backend | OpenAI | REST API | Transcription, AI analysis |
-| StarHub Deployer | AWS CloudFormation | boto3 SDK | Stack provisioning |
+| NexusAI UI | NexusAI Backend | HTTP/REST | Call analytics, journey management |
+| NexusAI UI | NexusAI Deployer | HTTP/REST | Deployment status, capability info |
+| NexusAI Backend | AWS Services | boto3 SDK | DynamoDB, S3, Glue, CloudWatch |
+| NexusAI Backend | Webex CC | REST API | Call recordings, task data |
+| NexusAI Backend | OpenAI | REST API | Transcription, AI analysis |
+| NexusAI Deployer | AWS CloudFormation | boto3 SDK | Stack provisioning |
 
 ---
 
 ## AWS Deployment Architecture
 
-The complete infrastructure deployed by StarHub Deployer:
+The complete infrastructure deployed by NexusAI Deployer:
 
 ### VPC Architecture
 - **VPC CIDR**: 10.0.0.0/16
@@ -476,9 +476,9 @@ The complete infrastructure deployed by StarHub Deployer:
 
 | Environment | Config Source | Resource Pattern |
 |-------------|---------------|------------------|
-| **ECS/AWS** | SSM Parameter Store + Secrets Manager | `call-processing-prod-*` |
-| **Local AWS** | Environment variables | `call-processing-dev-*` |
-| **LocalStack** | `.env.local` file | `call-processing-local-*` |
+| **ECS/AWS** | SSM Parameter Store + Secrets Manager | `nexus-ai-prod-*` |
+| **Local AWS** | Environment variables | `nexus-ai-dev-*` |
+| **LocalStack** | `.env.local` file | `nexus-ai-local-*` |
 
 ### Key Environment Variables
 
@@ -498,16 +498,16 @@ The complete infrastructure deployed by StarHub Deployer:
 
 | Service | Endpoint | Purpose |
 |---------|----------|---------|
-| StarHub Backend | `/health` | Service health |
-| StarHub Backend | `/ready` | Readiness probe |
-| StarHub Backend | `/live` | Liveness probe |
-| StarHub Deployer | `/` | Root health check |
-| StarHub Deployer | `/api/health` | Detailed health |
+| NexusAI Backend | `/health` | Service health |
+| NexusAI Backend | `/ready` | Readiness probe |
+| NexusAI Backend | `/live` | Liveness probe |
+| NexusAI Deployer | `/` | Root health check |
+| NexusAI Deployer | `/api/health` | Detailed health |
 
 ### CloudWatch Integration
 
 - **Logs**: Application logs streamed to CloudWatch Logs
-- **Metrics**: Custom metrics for call processing
+- **Metrics**: Custom metrics for data processing and AI analysis
 - **Alarms**: Automated alerts for failures
 - **Dashboards**: Real-time monitoring dashboards
 
@@ -546,7 +546,7 @@ The complete infrastructure deployed by StarHub Deployer:
 - **S3 replication** for data durability
 - **DynamoDB global tables** (optional)---## Version Information| Application | Component | Version | Status |
 |-------------|-----------|---------|--------|
-| **Totogi CallSense** | StarHub UI | 1.0.0 | Production Ready |
-| **Totogi CallSense** | StarHub Backend | 2.0.0 | Production Ready |
-| **Totogi Toolkit** | StarHub Deployer | 1.0.0 | Production Ready |---*Last Updated: January 2026*  
+| **NexusAI** | NexusAI UI | 1.0.0 | Production Ready |
+| **NexusAI** | NexusAI Backend | 2.0.0 | Production Ready |
+| **NexusAI Toolkit** | NexusAI Deployer | 1.0.0 | Production Ready |---*Last Updated: January 2026*  
 *Document Version: 2.0*

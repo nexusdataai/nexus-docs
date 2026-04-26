@@ -100,7 +100,7 @@ Complete documentation for EKS 1.34 cluster with CIS Level 2 hardening on Amazon
 ### For DevOps/Engineers
 1. START → [README.md](./README.md)
 2. THEN → [eks-hardened-nodes-solution.md](./eks-hardened-nodes-solution.md)
-3. REFERENCE → Deployment scripts in `starhub-backend/deploy/eks/`
+3. REFERENCE → Deployment scripts in `nexus-backend/deploy/eks/`
 
 ### For Auditors
 1. START → [FINAL-VERIFICATION-REPORT.md](./FINAL-VERIFICATION-REPORT.md)
@@ -145,7 +145,7 @@ Complete documentation for EKS 1.34 cluster with CIS Level 2 hardening on Amazon
 
 **Deployment Scripts:**
 ```
-starhub-backend/deploy/eks/
+nexus-backend/deploy/eks/
 ├── create-hardened-eks-cluster.sh    # Main creation script
 ├── cis-level2-full-hardening.sh      # Hardening script
 └── README.md                          # This file
@@ -153,7 +153,7 @@ starhub-backend/deploy/eks/
 
 **Documentation:**
 ```
-starhub-docs/docs/technical/eks-hardening/
+nexus-docs/docs/technical/eks-hardening/
 ├── INDEX.md                           # This index
 ├── README.md                          # Quick start guide
 ├── FINAL-VERIFICATION-REPORT.md       # Verification results
@@ -179,5 +179,5 @@ starhub-docs/docs/technical/eks-hardening/
 ---
 
 **Created:** January 20, 2026  
-**Cluster:** starhub-test  
+**Cluster:** nexus-dev  
 **Compliance:** CIS Level 2 (75-80%)

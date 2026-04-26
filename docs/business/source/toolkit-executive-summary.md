@@ -1,5 +1,5 @@
 # Executive Summary
-## Totogi Toolkit: Self-Service Deployment Platform
+## NexusAI Toolkit: Self-Service Deployment Platform
 
 **Document Type:** Executive Summary  
 **Version:** 1.0  
@@ -12,13 +12,13 @@
 
 The global enterprise software market is experiencing a fundamental shift: **73% of B2B buyers now prefer self-service digital experiences over vendor-led implementations**. Traditional software deployments requiring 3-6 months and $100K-$500K in professional services fees are no longer competitive in a market demanding immediate value delivery.
 
-**Totogi Toolkit** capitalizes on this market transformation by enabling customers to deploy complex, enterprise-grade telecommunications capabilities (like **Totogi CallSense**) in **under 30 minutes** with **zero professional services costs**, while maintaining complete control over their infrastructure.
+**NexusAI Toolkit** capitalizes on this market transformation by enabling customers to deploy the complete NexusAI enterprise AI stack in **under 30 minutes** with **zero professional services costs**, while maintaining complete control over their infrastructure.
 
 ---
 
 ## What It Is
 
-**Totogi Toolkit** is an enterprise-grade, self-service deployment platform that enables IT teams to provision complete Totogi capabilities into their AWS infrastructure through a guided wizard interface.
+**NexusAI Toolkit** is an enterprise-grade, self-service deployment platform that enables IT teams to provision complete NexusAI capabilities into their AWS infrastructure through a guided wizard interface.
 
 ### Core Capabilities:
 
@@ -81,7 +81,7 @@ The global enterprise software market is experiencing a fundamental shift: **73%
 - **Innovation enablement** - experiment without long commitments
 - **Risk reduction** - test in real environment before purchase
 
-### For Totogi:
+### For NexusAI:
 
 **Revenue Enablement:**
 - **Accelerates sales cycles** - Prospects can self-deploy for evaluation
@@ -102,10 +102,10 @@ The global enterprise software market is experiencing a fundamental shift: **73%
 ### Primary Use Cases:
 
 **1. Rapid Capability Deployment**
-- Customer purchases Totogi CallSense license
-- Downloads Totogi Toolkit (desktop app or web)
+- Customer purchases NexusAI license
+- Downloads NexusAI Toolkit (desktop app or web)
 - Runs wizard: AWS credentials → capability selection → deploy
-- **30 minutes later**: Fully functional CallSense platform
+- **30 minutes later**: Fully functional NexusAI platform
 - **Impact**: Deploy same day instead of 3-6 month project
 
 **2. Multi-Environment Pipeline**
@@ -115,7 +115,7 @@ The global enterprise software market is experiencing a fundamental shift: **73%
 - **Impact**: Complete pipeline in 2 weeks vs. 3-6 months
 
 **3. Self-Service Updates & Patches**
-- Security patch released by Totogi
+- Security patch released by NexusAI
 - Customer runs Toolkit update wizard
 - Applies patch with zero downtime
 - **Impact**: Meet compliance within 30-day policy window
@@ -127,7 +127,7 @@ The global enterprise software market is experiencing a fundamental shift: **73%
 - **Impact**: 30-minute recovery vs. hours/days
 
 **5. Risk-Free Evaluation**
-- Prospect evaluates Totogi CallSense
+- Prospect evaluates NexusAI
 - Deploys full capability to their AWS for trial
 - Tests with real data in their environment
 - **Impact**: 2-week POC vs. 2-3 month evaluation
@@ -135,16 +135,16 @@ The global enterprise software market is experiencing a fundamental shift: **73%
 ### Typical Customer Journey:
 
 ```
-Day 1:    Download Totogi Toolkit
+Day 1:    Download NexusAI Toolkit
           → Enter AWS credentials
-          → Select "Totogi CallSense" capability
+          → Select "NexusAI" capability
           → Click "Deploy"
           → 30 minutes: Infrastructure provisioned ✅
 
 Week 1:   Development team integration testing
-          → Configure Webex CC connector
-          → Set up Salesforce integration
-          → Process first 100 calls
+          -> Connect enterprise data sources (ERP, CRM, databases)
+          -> Configure knowledge graph and agent policies
+          -> Validate end-to-end workflows
 
 Week 2:   Deploy to staging environment
           → QA validation and testing
@@ -166,7 +166,7 @@ Month 2+: Self-service operations
 
 ### Ideal Customer Profile:
 
-- **Industries:** Any enterprise using Totogi capabilities (Telecom, Finance, Healthcare)
+- **Industries:** Any enterprise deploying NexusAI (Financial Services, Manufacturing, Healthcare, Telecommunications)
 - **Company Size:** 500-50,000 employees
 - **IT Maturity:** Using AWS, basic DevOps practices
 - **Decision Makers:** CTO, VP Engineering, IT Directors
@@ -174,7 +174,7 @@ Month 2+: Self-service operations
 
 ### Market Segments:
 
-All Totogi customers and prospects benefit from Toolkit:
+All NexusAI customers and prospects benefit from Toolkit:
 
 | Customer Type | Benefit | Impact |
 |---------------|---------|---------|
@@ -191,7 +191,7 @@ All Totogi customers and prospects benefit from Toolkit:
 
 **"Deploy Enterprise Capabilities in 30 Minutes to Your Own AWS, Zero Expertise Required"**
 
-| Competitor Approach | Totogi Toolkit Advantage |
+| Competitor Approach | NexusAI Toolkit Advantage |
 |---------------------|-------------------------|
 | **Traditional Vendors** (Professional services) | 94% faster, 100% cheaper |
 | **SaaS Providers** (Multi-tenant) | Complete customer control & data sovereignty |
@@ -200,7 +200,7 @@ All Totogi customers and prospects benefit from Toolkit:
 
 ### Defensibility:
 
-- **Integration with Totogi Capabilities** - Purpose-built for Totogi products
+- **Integration with NexusAI Capabilities** - Purpose-built for NexusAI products
 - **Continuous Improvement** - Every deployment improves the automation
 - **Customer Lock-in** - Becomes standard deployment process
 - **Network Effects** - More capabilities → more valuable platform
@@ -212,11 +212,11 @@ All Totogi customers and prospects benefit from Toolkit:
 ### Wizard Flow (8 Steps):
 
 1. **Welcome & License Validation**
-   - Enter Totogi license key
+   - Enter NexusAI license key
    - Validate entitlements
 
 2. **Capability Selection**
-   - Choose capabilities to deploy (e.g., CallSense)
+   - Choose capabilities to deploy (e.g., NexusAI)
    - Select architecture options
 
 3. **AWS Configuration**
@@ -263,9 +263,9 @@ All Totogi customers and prospects benefit from Toolkit:
 
 ### Toolkit Inclusion Model:
 
-**Totogi Toolkit is included** with Totogi capability subscriptions:
+**NexusAI Toolkit is included** with NexusAI capability subscriptions:
 - No separate charge for Toolkit
-- Bundled with CallSense and other Totogi capabilities
+- Bundled with NexusAI and other NexusAI capabilities
 - Updates and support included
 
 ### Value Delivered:
@@ -277,7 +277,7 @@ All Totogi customers and prospects benefit from Toolkit:
 | **Ongoing Update Cost Avoided** | $50K-$100K annually |
 | **Total Customer Savings** | $200K-$350K over 2 years |
 
-### Business Impact for Totogi:
+### Business Impact for NexusAI:
 
 **Cost Structure Change:**
 
@@ -322,7 +322,7 @@ All Totogi customers and prospects benefit from Toolkit:
 | **Customers lack AWS permissions** | Medium | Permission checker; clear documentation; support team |
 | **Complex environments cause failures** | Medium | Validation checks; rollback automation; support escalation |
 | **Security vulnerabilities** | High | SOC2 certification; security audits; bug bounty program |
-| **Competitors copy approach** | Low | Integration with Totogi products; continuous innovation |
+| **Competitors copy approach** | Low | Integration with NexusAI products; continuous innovation |
 
 **Overall Risk Level:** **LOW** - Well-understood technical risks with proven mitigation
 
@@ -330,7 +330,7 @@ All Totogi customers and prospects benefit from Toolkit:
 
 ## Strategic Importance
 
-### Why Toolkit Matters for Totogi:
+### Why Toolkit Matters for NexusAI:
 
 1. **Competitive Differentiation** - Unique self-service capability deployment
 2. **Revenue Scaling** - Grow customers without growing services team
@@ -347,33 +347,33 @@ All Totogi customers and prospects benefit from Toolkit:
 
 ---
 
-## Integration with Totogi CallSense
+## Integration with NexusAI
 
 ### How They Work Together:
 
 ```
-1. Customer subscribes to Totogi CallSense
+1. Customer subscribes to NexusAI
    ↓
-2. Receives Totogi Toolkit access
+2. Receives NexusAI Toolkit access
    ↓
-3. Uses Toolkit to deploy CallSense to their AWS
+3. Uses Toolkit to deploy NexusAI to their AWS
    ↓
-4. CallSense platform ready in 30 minutes
+4. NexusAI platform ready in 30 minutes
    ↓
-5. Customer uses CallSense for call analytics
+5. Customer uses NexusAI for enterprise AI operations
    ↓
 6. Uses Toolkit for updates, scaling, DR
 ```
 
-**Toolkit enables CallSense deployment and lifecycle management**
+**Toolkit enables NexusAI deployment and lifecycle management**
 
 ---
 
 ## Recommendation
 
-**STRONG RECOMMENDATION TO BUNDLE WITH ALL TOTOGI CAPABILITIES**
+**STRONG RECOMMENDATION TO BUNDLE WITH ALL NEXUSAI CAPABILITIES**
 
-Totogi Toolkit is a **strategic enabler** that:
+NexusAI Toolkit is a **strategic enabler** that:
 - Accelerates customer acquisition (faster trials)
 - Reduces operational costs (90% services reduction)
 - Improves margins (33-point improvement)
@@ -381,7 +381,7 @@ Totogi Toolkit is a **strategic enabler** that:
 
 ### Investment Decision Framework:
 
-✅ **Strategic Enabler:** Accelerates Totogi capability adoption  
+✅ **Strategic Enabler:** Accelerates NexusAI capability adoption  
 ✅ **Cost Reduction:** 90% reduction in professional services  
 ✅ **Margin Improvement:** 33-point gross margin increase  
 ✅ **Customer Value:** $200K-$350K savings over 2 years  
@@ -401,14 +401,14 @@ Totogi Toolkit is a **strategic enabler** that:
 **Immediate Actions:**
 
 1. ✅ Complete Toolkit beta with 10 design partners
-2. ✅ Integrate with Totogi CallSense deployment
+2. ✅ Integrate with NexusAI deployment
 3. ✅ Document all AWS services and permissions
 4. ✅ Create video tutorials and documentation
 
 **Q2 2026:**
 
 5. ⏳ General availability launch
-6. ⏳ Bundle with all Totogi capability licenses
+6. ⏳ Bundle with all NexusAI capability licenses
 7. ⏳ Train customer success team
 8. ⏳ Enable self-service trial deployments
 
@@ -423,7 +423,7 @@ Totogi Toolkit is a **strategic enabler** that:
 
 ## Conclusion
 
-**Totogi Toolkit transforms the deployment experience from a 3-6 month barrier into a 30-minute enabler.**
+**NexusAI Toolkit transforms the deployment experience from a 3-6 month barrier into a 30-minute enabler.**
 
 By providing:
 - **30-minute deployment** (vs. 3-6 months)
@@ -438,7 +438,7 @@ We deliver a **competitive advantage** that:
 - ✅ Enhances customer satisfaction
 - ✅ Establishes new industry standard
 
-**Totogi Toolkit is not just a deployment tool—it's a business model transformation.**
+**NexusAI Toolkit is not just a deployment tool—it's a business model transformation.**
 
 **The question is not whether to build—it's how fast we can deploy it to every customer.**
 
@@ -449,6 +449,6 @@ We deliver a **competitive advantage** that:
 **Classification:** Confidential - Executive Review  
 
 For detailed analysis, see:
-- [Totogi CallSense Executive Summary](./executive-summary.md)
+- [NexusAI Executive Summary](./executive-summary.md)
 - [Technical Solution Architecture](../../technical/solution-architecture.md)
 - [Deployment User Guide](../../operational/user-guide/03-deployment-wizard.md)

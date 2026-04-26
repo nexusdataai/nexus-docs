@@ -1,6 +1,6 @@
 # LocalStack Quick Start Guide
 
-Get starhub-backend running with LocalStack in 3 steps.
+Get nexus-backend running with LocalStack in 3 steps.
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ Expected response:
 
 | Service | URL | Purpose |
 |---------|-----|---------|
-| API Server | http://localhost:8000 | starhub-backend API |
+| API Server | http://localhost:8000 | nexus-backend API |
 | LocalStack | http://localhost:4566 | AWS services |
 | DynamoDB Admin | http://localhost:8001 | Database browser |
 
@@ -98,7 +98,7 @@ python scripts/seed-localstack-data.py
 **LocalStack won't start:**
 ```bash
 docker ps                              # Check Docker is running
-docker logs starhub-localstack         # View LocalStack logs
+docker logs nexus-localstack         # View LocalStack logs
 ```
 
 **Connection refused:**

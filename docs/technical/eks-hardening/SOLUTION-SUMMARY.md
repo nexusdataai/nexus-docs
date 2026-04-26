@@ -25,7 +25,7 @@ After 4+ hours of debugging, the working solution has been implemented and verif
 
 ## Current Cluster Status
 
-**Cluster:** `starhub-test`
+**Cluster:** `nexus-dev`
 - Version: 1.34
 - Region: ap-southeast-1
 - Auth Mode: API_AND_CONFIG_MAP
@@ -180,7 +180,7 @@ Create a privileged DaemonSet that applies hardening to all nodes automatically.
 **Kubeconfig:**
 ```bash
 aws eks update-kubeconfig \
-    --name starhub-test \
+    --name nexus-dev \
     --region ap-southeast-1 \
     --profile external-access
 ```

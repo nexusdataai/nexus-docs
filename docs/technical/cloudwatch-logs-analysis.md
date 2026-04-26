@@ -1,5 +1,5 @@
 # CloudWatch Logs Analysis
-## Totogi CallSense Platform - Backend Services
+## NexusAI Data Platform - Backend Services
 
 **Document Type:** Technical Analysis  
 **Version:** 1.0  
@@ -10,7 +10,7 @@
 
 ## Backend Services Overview
 
-The Totogi CallSense backend consists of multiple services running on ECS Fargate, all sending logs to CloudWatch:
+The NexusAI backend consists of multiple services running on ECS Fargate, all sending logs to CloudWatch:
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
@@ -51,11 +51,11 @@ The Totogi CallSense backend consists of multiple services running on ECS Fargat
 ### Production Log Group Structure:
 
 ```
-/aws/ecs/call-processing-prod/
+/aws/ecs/nexus-ai-prod/
 ├── gateway/                    # MCP HTTP Gateway logs
 │   ├── task-{id}/stream-1
 │   └── task-{id}/stream-2
-├── call-processing/            # Call processing job logs
+├── nexus-ai/            # Call processing job logs
 │   ├── task-{id}/stream-1
 │   └── task-{id}/stream-2
 └── mcp-workers/                # MCP server worker logs

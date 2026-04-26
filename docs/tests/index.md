@@ -1,6 +1,6 @@
-# CallSense Test Documentation
+# NexusAI Test Documentation
 
-**Project:** Starhub Enterprise Sales Call Analytics (CallSense)  
+**Project:** NexusAI Enterprise Analytics  
 **Document Version:** 1.0  
 **Date:** March 11, 2026
 
@@ -8,7 +8,7 @@
 
 ## 1. Overview
 
-CallSense has a comprehensive automated testing infrastructure covering the backend (Python) and frontend (TypeScript/React). Tests are organized into six tiers, each targeting a different layer of confidence:
+NexusAI has a comprehensive automated testing infrastructure covering the backend (Python) and frontend (TypeScript/React). Tests are organized into six tiers, each targeting a different layer of confidence:
 
 | Tier | Framework | Location | Needs Server | Needs AWS |
 |------|-----------|----------|:------------:|:---------:|
@@ -19,9 +19,9 @@ CallSense has a comprehensive automated testing infrastructure covering the back
 | BDD | behave | `tests/bdd/features/` | Yes | No |
 | Endurance | behave + custom runner | `tests/endurance/` | Yes | Optional |
 | E2E | pytest | `tests/e2e/` | Yes | Yes (live) |
-| Frontend Unit | vitest + React Testing Library | `starhub-ui/src/**/__tests__/` | No | No |
+| Frontend Unit | vitest + React Testing Library | `nexus-ui/src/**/__tests__/` | No | No |
 
-All backend paths are relative to `/opt/mycode/trilogy/starhub-backend`.
+All backend paths are relative to `/opt/mycode/nexus/nexus-backend`.
 
 ---
 
@@ -32,7 +32,7 @@ The primary test orchestrator is `tests/run_tests.sh` (~1600 lines). It handles 
 ### Quick Reference
 
 ```bash
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 
 # Run quick smoke test (< 1 minute)
 ./tests/run_tests.sh smoke
@@ -267,14 +267,14 @@ Endurance tests run BDD scenarios repeatedly for a configurable duration (defaul
 
 ## 4. Frontend Tests
 
-**Location:** `starhub-ui/src/**/__tests__/`  
+**Location:** `nexus-ui/src/**/__tests__/`  
 **Runner:** `vitest`  
 **Framework:** vitest + React Testing Library + fast-check (property tests)
 
 ### Running Frontend Tests
 
 ```bash
-cd /opt/mycode/trilogy/starhub-ui
+cd /opt/mycode/nexus/nexus-ui
 
 # Run all tests
 npm run test
@@ -422,7 +422,7 @@ The dashboard shows a 2x2 grid of test categories (Unit, Integration, BDD, Endur
 **Option 2: Upload existing reports**
 
 ```bash
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 ./tests/report_setup/upload_reports_to_cloudfront.sh
 ```
 
@@ -480,7 +480,7 @@ cd /opt/mycode/trilogy/starhub-backend
 
 ### Frontend Test Setup
 
-**File:** `starhub-ui/src/test/setup.ts`
+**File:** `nexus-ui/src/test/setup.ts`
 
 - Mocks `import.meta.env` (VITE_API_BASE_URL, VITE_BYPASS_AUTH, etc.)
 - Mocks `window.location` (assign, reload)
@@ -494,21 +494,21 @@ cd /opt/mycode/trilogy/starhub-backend
 
 ```bash
 # Backend: create venv and install dependencies
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r tests/requirements-test.txt
 
 # Frontend: install node dependencies
-cd /opt/mycode/trilogy/starhub-ui
+cd /opt/mycode/nexus/nexus-ui
 npm install
 ```
 
 ### Run Backend Unit Tests (no server needed)
 
 ```bash
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 source .venv/bin/activate
 ./tests/run_tests.sh unit
 ```
@@ -517,12 +517,12 @@ source .venv/bin/activate
 
 ```bash
 # Terminal 1: Start the server
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 source .venv/bin/activate
 python mcp_http_gateway.py
 
 # Terminal 2: Run integration tests
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 source .venv/bin/activate
 ./tests/run_tests.sh integration --server http://localhost:8000
 ```
@@ -542,7 +542,7 @@ source .venv/bin/activate
 ### Run Frontend Tests
 
 ```bash
-cd /opt/mycode/trilogy/starhub-ui
+cd /opt/mycode/nexus/nexus-ui
 npm run test           # single run
 npm run test:watch     # watch mode
 npm run test:coverage  # with coverage
@@ -551,7 +551,7 @@ npm run test:coverage  # with coverage
 ### Run Everything and Publish
 
 ```bash
-cd /opt/mycode/trilogy/starhub-backend
+cd /opt/mycode/nexus/nexus-backend
 source .venv/bin/activate
 ./tests/run_tests.sh all --server http://localhost:8000 --upload
 ```

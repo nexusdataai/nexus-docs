@@ -1,8 +1,8 @@
-# StarHub Solution Architecture
+# NexusAI Solution Architecture
 
 ## Executive Summary
 
-StarHub is an enterprise-grade AWS installer toolkit that enables customers to deploy modular business capabilities into their own AWS accounts. The solution follows a modern, cloud-native architecture with a Progressive Web Application (PWA) frontend deployed on CDN/S3, a scalable backend API layer, and integrated AWS infrastructure orchestration capabilities.
+NexusAI is an enterprise-grade AWS installer toolkit that enables customers to deploy modular business capabilities into their own AWS accounts. The solution follows a modern, cloud-native architecture with a Progressive Web Application (PWA) frontend deployed on CDN/S3, a scalable backend API layer, and integrated AWS infrastructure orchestration capabilities.
 
 ---
 
@@ -347,7 +347,7 @@ StarHub is an enterprise-grade AWS installer toolkit that enables customers to d
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    StarHub Platform                         │
+│                    NexusAI Platform                         │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
@@ -639,6 +639,6 @@ Staging Deploy → Smoke Tests → Production Deploy
 
 ## 12. Conclusion
 
-The StarHub solution architecture provides a secure, scalable, and highly available platform for enterprise customers to deploy modular business capabilities into their AWS accounts. By leveraging AWS managed services, modern web technologies, and cloud-native best practices, StarHub delivers a robust foundation for continuous capability delivery and operational excellence.
+The NexusAI solution architecture provides a secure, scalable, and highly available platform for enterprise customers to deploy modular business capabilities into their AWS accounts. By leveraging AWS managed services, modern web technologies, and cloud-native best practices, NexusAI delivers a robust foundation for continuous capability delivery and operational excellence.
 
 The architecture supports multi-environment deployments, comprehensive security controls, and operational visibility while maintaining cost efficiency and performance at scale.

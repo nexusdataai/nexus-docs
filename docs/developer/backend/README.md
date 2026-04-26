@@ -1,8 +1,8 @@
-# Call Processing Capability - Starhub Backend
+# NexusAI Platform - Backend
 
-**Enterprise-grade AI-powered call processing and analytics platform for Webex Contact Center**
+**Enterprise-grade AI-powered analytics and data processing platform**
 
-This repository contains the backend service for the **Call Processing Capability**, a comprehensive platform for processing Webex Contact Center calls with AI-powered transcription, analysis, and reporting.
+This repository contains the backend service for the NexusAI platform, providing AI-powered data processing, transcription, analysis, and reporting capabilities.
 
 ## 🎯 Overview
 
@@ -83,9 +83,9 @@ The service uses a centralized configuration provider that supports multiple env
 
 | Environment | Config Source | Resource Pattern |
 |-------------|---------------|------------------|
-| **ECS/AWS** | SSM Parameter Store + Secrets Manager | `call-processing-prod-*` |
-| **Local AWS** | Environment variables | `call-processing-dev-*` |
-| **LocalStack** | `.env.local` file | `call-processing-local-*` |
+| **ECS/AWS** | SSM Parameter Store + Secrets Manager | `nexus-ai-prod-*` |
+| **Local AWS** | Environment variables | `nexus-ai-dev-*` |
+| **LocalStack** | `.env.local` file | `nexus-ai-local-*` |
 
 ### Running the Gateway
 
@@ -232,10 +232,10 @@ AWS_PROFILE=myprofile ENVIRONMENT=prod ./gateway.sh start
 
 | Variable | Pattern | Example (prod) |
 |----------|---------|----------------|
-| `DYNAMODB_TABLE` | `call-processing-{env}-transformation-system` | `call-processing-prod-transformation-system` |
-| `LICENSE_TABLE` | `call-processing-{env}-license` | `call-processing-prod-license` |
-| `S3_RECORDINGS_BUCKET` | `call-processing-{env}-call-data` | `call-processing-prod-call-data` |
-| `WXCC_SIMULATOR_BUCKET` | `call-processing-{env}-wxcc-simulator` | `call-processing-prod-wxcc-simulator` |
+| `DYNAMODB_TABLE` | `nexus-ai-{env}-transformation-system` | `nexus-ai-prod-transformation-system` |
+| `LICENSE_TABLE` | `nexus-ai-{env}-license` | `nexus-ai-prod-license` |
+| `S3_RECORDINGS_BUCKET` | `nexus-ai-{env}-call-data` | `nexus-ai-prod-call-data` |
+| `WXCC_SIMULATOR_BUCKET` | `nexus-ai-{env}-wxcc-simulator` | `nexus-ai-prod-wxcc-simulator` |
 
 #### LocalStack Configuration
 
@@ -253,7 +253,7 @@ For comprehensive configuration details, see [INFRASTRUCTURE_REQUIREMENTS.md](do
 
 ```bash
 # Build Docker image
-docker build -t call-processing-backend:latest .
+docker build -t nexus-ai-backend:latest .
 
 # Run with docker-compose
 docker-compose up
@@ -262,7 +262,7 @@ docker-compose up
 docker run -p 8000:8000 \
   -e ENVIRONMENT=prod \
   -e AWS_REGION=ap-southeast-1 \
-  call-processing-backend:latest
+  nexus-ai-backend:latest
 ```
 
 ### ECS Deployment
@@ -277,8 +277,8 @@ The service is designed to run on AWS ECS with:
 ENVIRONMENT=prod
 
 # Service automatically loads config from:
-# - SSM: /call-processing/prod/...
-# - Secrets: call-processing/prod/...
+# - SSM: /nexus-ai/prod/...
+# - Secrets: nexus-ai/prod/...
 ```
 
 ## 📚 API Reference
@@ -355,7 +355,7 @@ pytest tests/e2e/ -v
 ## 🏗️ Project Structure
 
 ```
-starhub-backend/
+nexus-backend/
 ├── src/
 │   ├── apis/                 # REST API endpoints
 │   │   ├── journey_api.py
@@ -420,6 +420,6 @@ This project is proprietary and confidential.
 ---
 
 **Version**: 2.0.0  
-**Capability**: call-processing  
+**Capability**: nexus-ai  
 **Last Updated**: December 2024  
 **Status**: Production Ready

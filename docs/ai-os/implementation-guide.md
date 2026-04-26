@@ -1,6 +1,6 @@
 # AI Data Plane & Control Plane — Implementation Guide
 
-This document describes the complete implementation of the AI Data Plane and AI Control Plane as deployed in the StarHub CallSense platform. It maps the reference architecture (see `architecture.md` and `Total-system-architecture.md`) to actual code, APIs, infrastructure, and testing procedures.
+This document describes the complete implementation of the AI Data Plane and AI Control Plane as deployed in the NexusAI platform. It maps the reference architecture (see `architecture.md` and `Total-system-architecture.md`) to actual code, APIs, infrastructure, and testing procedures.
 
 ---
 
@@ -8,12 +8,12 @@ This document describes the complete implementation of the AI Data Plane and AI 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│  FRONTEND (starhub-ui)                                              │
+│  FRONTEND (nexus-ui)                                              │
 │  /copilot → CopilotPage.tsx → POST /api/v1/control-plane/agent     │
 └──────────────────────────┬──────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│  AI CONTROL PLANE (starhub-backend)                                 │
+│  AI CONTROL PLANE (nexus-backend)                                 │
 │                                                                     │
 │  ┌─ Intent Analyzer ──────────────────────────────────────────────┐ │
 │  │  Classifies: read_only | low_risk_write | high_risk_write      │ │
@@ -33,11 +33,11 @@ This document describes the complete implementation of the AI Data Plane and AI 
 └──────────────────────────┬──────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│  AI DATA PLANE (starhub-backend + BSSMagic)                         │
+│  AI DATA PLANE (nexus-backend + BSSMagic)                         │
 │                                                                     │
 │  ┌─ FDW Path ────────────────────────────────────────────────────┐  │
 │  │  PostgreSQL 17 + Multicorn FDW → Salesforce (1661 tables)     │  │
-│  │  Schema: starhub_itxp2dev                                     │  │
+│  │  Schema: nexus_data                                     │  │
 │  └───────────────────────────────────────────────────────────────┘  │
 │  ┌─ CRM Path ────────────────────────────────────────────────────┐  │
 │  │  BSSMagic TMF API → Salesforce writes (Lead creation, SOQL)   │  │
@@ -55,10 +55,10 @@ The Data Plane provides virtualized read/write access to enterprise source syste
 
 | Component | Technology | Location |
 |-----------|-----------|----------|
-| Database | PostgreSQL 17 (Debian) | EKS pod `call-processing-prod-bssmagic-0` |
+| Database | PostgreSQL 17 (Debian) | EKS pod `nexus-ai-prod-bssmagic-0` |
 | FDW Extension | Multicorn (Python FDW) | Pre-installed in BSSMagic image |
 | Vector Extension | pgvector 0.8.1 | Installed at runtime |
-| Foreign Server | `starhub_itxp2dev` | Points to Salesforce sandbox |
+| Foreign Server | `nexus_data` | Points to Salesforce sandbox |
 | Foreign Tables | 1,661 tables | Maps to Salesforce objects |
 | CRM Runtime | BSSMagic TMF API (port 8000) | Same pod as PostgreSQL |
 
@@ -93,7 +93,7 @@ The Data Plane provides virtualized read/write access to enterprise source syste
 
 **Current production values:**
 ```
-FDW_PG_HOST=call-processing-prod-bssmagic-svc
+FDW_PG_HOST=nexus-ai-prod-bssmagic-svc
 FDW_PG_PORT=5432
 FDW_PG_DATABASE=bssmagic
 FDW_PG_USER=postgres
@@ -118,7 +118,7 @@ Base path: `/api/fdw`
 ```json
 {
   "table": "Lead",
-  "schemaName": "starhub_itxp2dev",
+  "schemaName": "nexus_data",
   "columns": ["Id", "Name", "Company", "Email"],
   "filters": [
     {"column": "Company", "operator": "like", "value": "%Networks%"}
@@ -153,12 +153,12 @@ curl -s http://localhost:8000/api/fdw/servers | python3 -m json.tool
 curl -s http://localhost:8000/api/fdw/tables | python3 -c "import sys,json; [print(t['tableName']) for t in json.load(sys.stdin)[:5]]"
 
 # Get columns for Lead table
-curl -s http://localhost:8000/api/fdw/tables/starhub_itxp2dev/Lead/columns | python3 -m json.tool
+curl -s http://localhost:8000/api/fdw/tables/nexus_data/Lead/columns | python3 -m json.tool
 
 # Query Leads
 curl -s -X POST http://localhost:8000/api/fdw/query \
   -H 'Content-Type: application/json' \
-  -d '{"table":"Lead","schemaName":"starhub_itxp2dev","columns":["Name","Company"],"limit":5}'
+  -d '{"table":"Lead","schemaName":"nexus_data","columns":["Name","Company"],"limit":5}'
 
 # Health check
 curl -s http://localhost:8000/api/v1/health/fdw
@@ -166,8 +166,8 @@ curl -s http://localhost:8000/api/v1/health/fdw
 
 **Via kubectl:**
 ```bash
-POD=$(kubectl get pods -n call-processing-prod -l app=call-processing-prod-backend -o jsonpath='{.items[0].metadata.name}')
-kubectl exec $POD -n call-processing-prod -- curl -s http://localhost:8000/api/fdw/servers
+POD=$(kubectl get pods -n nexus-ai-prod -l app=nexus-ai-prod-backend -o jsonpath='{.items[0].metadata.name}')
+kubectl exec $POD -n nexus-ai-prod -- curl -s http://localhost:8000/api/fdw/servers
 ```
 
 ---
@@ -206,7 +206,7 @@ The Control Plane provides semantic intelligence, agent-based reasoning, and pol
 CREATE TABLE control_plane_embeddings (
     id SERIAL PRIMARY KEY,
     content_type VARCHAR(50) NOT NULL,       -- fdw_table, fdw_server, tmf_spec
-    source_id VARCHAR(255) NOT NULL,         -- e.g. starhub_itxp2dev.Lead
+    source_id VARCHAR(255) NOT NULL,         -- e.g. nexus_data.Lead
     content TEXT NOT NULL,                    -- Natural language description
     metadata JSONB DEFAULT '{}',             -- Structured column/table metadata
     embedding vector(1536),                  -- OpenAI text-embedding-3-small
@@ -223,7 +223,7 @@ CREATE TABLE control_plane_embeddings (
 **Current contents:**
 | content_type | count | Description |
 |-------------|-------|-------------|
-| fdw_server | 1 | starhub_itxp2dev (Multicorn wrapper) |
+| fdw_server | 1 | nexus_data (Multicorn wrapper) |
 | fdw_table | 1,661 | All Salesforce objects with column metadata |
 | tmf_spec | 0 | (available for future indexing) |
 | **Total** | **1,662** | |
@@ -343,8 +343,8 @@ curl -s -X POST http://localhost:8000/api/v1/control-plane/agent \
 
 **Via kubectl:**
 ```bash
-POD=$(kubectl get pods -n call-processing-prod -l app=call-processing-prod-backend -o jsonpath='{.items[0].metadata.name}')
-kubectl exec $POD -n call-processing-prod -- curl -s -X POST http://localhost:8000/api/v1/control-plane/agent \
+POD=$(kubectl get pods -n nexus-ai-prod -l app=nexus-ai-prod-backend -o jsonpath='{.items[0].metadata.name}')
+kubectl exec $POD -n nexus-ai-prod -- curl -s -X POST http://localhost:8000/api/v1/control-plane/agent \
   -H 'Content-Type: application/json' \
   -d '{"question": "What columns does the Account table have?"}'
 ```
@@ -357,9 +357,9 @@ kubectl exec $POD -n call-processing-prod -- curl -s -X POST http://localhost:80
 
 | File | Description |
 |------|-------------|
-| `starhub-ui/src/pages/CopilotPage.tsx` | Full chat interface component |
-| `starhub-ui/src/App.tsx` | Route: `/copilot` |
-| `starhub-ui/src/components/Sidebar.tsx` | Navigation item: "AI Copilot" (Sparkles icon) |
+| `nexus-ui/src/pages/CopilotPage.tsx` | Full chat interface component |
+| `nexus-ui/src/App.tsx` | Route: `/copilot` |
+| `nexus-ui/src/components/Sidebar.tsx` | Navigation item: "AI Copilot" (Sparkles icon) |
 
 ### 4.2 Accessing the Copilot
 
@@ -398,28 +398,28 @@ Authentication is handled via session cookies (same as all other API calls).
 
 | Pod | Replicas | Contains |
 |-----|----------|----------|
-| `call-processing-prod-backend` | 3 | FastAPI gateway + Control Plane APIs |
-| `call-processing-prod-frontend` | 3 | Nginx + React SPA (Copilot UI) |
-| `call-processing-prod-bssmagic` | 1 (StatefulSet) | PostgreSQL 17 + pgvector + Multicorn FDW + BSSMagic runtime |
+| `nexus-ai-prod-backend` | 3 | FastAPI gateway + Control Plane APIs |
+| `nexus-ai-prod-frontend` | 3 | Nginx + React SPA (Copilot UI) |
+| `nexus-ai-prod-bssmagic` | 1 (StatefulSet) | PostgreSQL 17 + pgvector + Multicorn FDW + BSSMagic runtime |
 
 ### 5.2 External Dependencies
 
 | Service | Usage | Credentials |
 |---------|-------|-------------|
-| OpenAI API | Embeddings (text-embedding-3-small) + Chat (gpt-4o-mini) | AWS Secrets Manager: `call-processing/prod/openai` |
+| OpenAI API | Embeddings (text-embedding-3-small) + Chat (gpt-4o-mini) | AWS Secrets Manager: `nexus-ai/prod/openai` |
 | AWS DynamoDB | Audit logs (`control-plane-audit`), Data plane configs | IAM role attached to EKS |
 | Salesforce | Source system accessed via FDW + BSSMagic | Configured in BSSMagic pod |
 
 ### 5.3 Deploying Changes
 
 ```bash
-cd /opt/mycode/trilogy/starhub-deployer/kube-operator
+cd /opt/mycode/nexus/nexus-deployer/kube-operator
 ./deploy-app-changes.sh
 ```
 
 This script:
 1. Builds backend Docker image (`ai-job-engine`)
-2. Builds frontend Docker image (`starhub-ui`)
+2. Builds frontend Docker image (`nexus-ui`)
 3. Pushes both to ECR
 4. Restarts backend and frontend pods
 5. Waits for all pods to be ready
@@ -435,9 +435,9 @@ This re-reads all foreign tables from the FDW discovery cache, generates new emb
 
 **Note:** pgvector is installed at runtime in the BSSMagic pod. If the pod restarts, pgvector must be reinstalled:
 ```bash
-kubectl exec call-processing-prod-bssmagic-0 -n call-processing-prod -c bssmagic-runtime -- \
+kubectl exec nexus-ai-prod-bssmagic-0 -n nexus-ai-prod -c bssmagic-runtime -- \
   bash -c "apt-get update -qq && apt-get install -y -qq postgresql-17-pgvector"
-kubectl exec call-processing-prod-bssmagic-0 -n call-processing-prod -c bssmagic-runtime -- \
+kubectl exec nexus-ai-prod-bssmagic-0 -n nexus-ai-prod -c bssmagic-runtime -- \
   psql -U postgres -d bssmagic -c "CREATE EXTENSION IF NOT EXISTS vector;"
 ```
 

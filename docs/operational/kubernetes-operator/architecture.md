@@ -1,6 +1,6 @@
 # Operator Architecture
 
-This document describes the architecture of the Totogi Kubernetes Operator.
+This document describes the architecture of the Nexus Kubernetes Operator.
 
 ## High-Level Architecture
 
@@ -8,10 +8,10 @@ This document describes the architecture of the Totogi Kubernetes Operator.
 ┌─────────────────────────────────────────────────────────────────┐
 │                        EKS Cluster                               │
 │  ┌─────────────────────────────────────────────────────────┐    │
-│  │                totogi-system namespace                   │    │
+│  │                nexus-system namespace                   │    │
 │  │  ┌─────────────────────────────────────────────────┐    │    │
-│  │  │              Totogi Operator                     │    │    │
-│  │  │  - Watches TotogiCapability CRs                 │    │    │
+│  │  │              Nexus Operator                     │    │    │
+│  │  │  - Watches NexusAICapability CRs                 │    │    │
 │  │  │  - Provisions AWS resources                     │    │    │
 │  │  │  - Deploys K8s workloads                        │    │    │
 │  │  │  - Manages lifecycle (create/update/delete)     │    │    │
@@ -53,13 +53,13 @@ The operator creates these Kubernetes resources in the cluster:
 
 | Resource | Name | Purpose |
 |----------|------|---------|
-| **Namespace** | `totogi-system` | Operator's home namespace |
-| **ServiceAccount** | `totogi-operator` | Identity for operator with IRSA |
-| **ClusterRole** | `totogi-operator` | Cluster-wide permissions |
-| **ClusterRoleBinding** | `totogi-operator` | Binds role to service account |
-| **Deployment** | `totogi-operator` | Operator pod deployment |
-| **Service** | `totogi-operator:8080` | Health check endpoint |
-| **CRD** | `totogicapabilities.totogi.com` | Custom Resource Definition |
+| **Namespace** | `nexus-system` | Operator's home namespace |
+| **ServiceAccount** | `nexus-operator` | Identity for operator with IRSA |
+| **ClusterRole** | `nexus-operator` | Cluster-wide permissions |
+| **ClusterRoleBinding** | `nexus-operator` | Binds role to service account |
+| **Deployment** | `nexus-operator` | Operator pod deployment |
+| **Service** | `nexus-operator:8080` | Health check endpoint |
+| **CRD** | `nexuscapabilities.nexus.ai` | Custom Resource Definition |
 
 ### AWS Resources
 
@@ -67,8 +67,8 @@ The operator creates these AWS resources:
 
 | Resource | Name | Purpose |
 |----------|------|---------|
-| **IAM Role** | `TotogiOperatorRole` | Operator's AWS permissions (IRSA) |
-| **ECR Repository** | `totogi-operator` | Operator container image |
+| **IAM Role** | `NexusAIOperatorRole` | Operator's AWS permissions (IRSA) |
+| **ECR Repository** | `nexus-operator` | Operator container image |
 
 ## Operator Flow
 
@@ -99,10 +99,10 @@ sequenceDiagram
 sequenceDiagram
     participant User
     participant K8s as Kubernetes API
-    participant Op as Totogi Operator
+    participant Op as Nexus Operator
     participant AWS as AWS Services
 
-    User->>K8s: Apply TotogiCapability CR
+    User->>K8s: Apply NexusAICapability CR
     K8s->>Op: New CR detected
     Op->>AWS: Create DynamoDB tables
     Op->>AWS: Create S3 buckets
@@ -123,9 +123,9 @@ sequenceDiagram
 sequenceDiagram
     participant User
     participant K8s as Kubernetes API
-    participant Op as Totogi Operator
+    participant Op as Nexus Operator
 
-    User->>K8s: Update TotogiCapability CR
+    User->>K8s: Update NexusAICapability CR
     K8s->>Op: CR change detected
     Op->>Op: Calculate diff
     Op->>K8s: Rolling update deployments
@@ -139,10 +139,10 @@ sequenceDiagram
 sequenceDiagram
     participant User
     participant K8s as Kubernetes API
-    participant Op as Totogi Operator
+    participant Op as Nexus Operator
     participant AWS as AWS Services
 
-    User->>K8s: Delete TotogiCapability CR
+    User->>K8s: Delete NexusAICapability CR
     K8s->>Op: Deletion detected
     Op->>K8s: Delete K8s resources
     
@@ -218,7 +218,7 @@ The operator runs with hardened security context:
 ```yaml
 securityContext:
   runAsNonRoot: true
-  runAsUser: 1000        # totogi user
+  runAsUser: 1000        # nexus user
   fsGroup: 1000
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
@@ -239,7 +239,7 @@ The operator uses IRSA for AWS authentication:
 
 The operator ClusterRole has permissions for:
 
-- TotogiCapability CRD management
+- NexusAICapability CRD management
 - Namespace, Service, Deployment creation
 - ConfigMap, Secret management
 - CRD access
@@ -249,7 +249,7 @@ The operator ClusterRole has permissions for:
 ```
 kube-operator/
 ├── src/
-│   └── totogi_operator/
+│   └── nexus_operator/
 │       ├── __init__.py
 │       ├── main.py                 # Entry point, Kopf handlers
 │       ├── resources/
@@ -277,7 +277,7 @@ kube-operator/
 ├── Dockerfile                      # Operator container image
 ├── pyproject.toml                  # Python project config
 ├── requirements.txt                # Python dependencies
-└── operator-starhub-test.sh        # Management script
+└── operator-nexus-dev.sh        # Management script
 ```
 
 ## Technology Stack

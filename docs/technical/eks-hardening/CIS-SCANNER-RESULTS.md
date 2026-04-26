@@ -1,7 +1,7 @@
 # CIS Scanner Verification Results
 
 **Date:** January 20, 2026
-**Cluster:** starhub-test
+**Cluster:** nexus-dev
 **Scan Method:** Manual verification of key CIS controls
 
 ---

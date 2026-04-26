@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Totogi Customer Toolkit is a cloud-native, enterprise-grade management platform that enables customers to deploy and manage modular business capabilities across their own infrastructure. The system architecture follows a modern three-tier design with a Progressive Web Application (PWA) frontend, a microservices-based backend API layer, and a multi-tenant data layer. The toolkit supports both browser-based PWA access and native desktop applications via Electron, providing flexibility for different deployment scenarios.
+The NexusAI Toolkit is a cloud-native, enterprise-grade management platform that enables customers to deploy and manage modular business capabilities across their own infrastructure. The system architecture follows a modern three-tier design with a Progressive Web Application (PWA) frontend, a microservices-based backend API layer, and a multi-tenant data layer. The toolkit supports both browser-based PWA access and native desktop applications via Electron, providing flexibility for different deployment scenarios.
 
 The core design principle is security-first with defense-in-depth: multi-factor authentication, license-based entitlement validation, role-based access control, and comprehensive audit logging. The system orchestrates infrastructure deployments using CloudFormation templates while providing real-time monitoring, health checks, and lifecycle management capabilities.
 
@@ -210,7 +210,7 @@ POST   /api/v1/license/refresh
 **License Key Format:**
 ```
 {
-  "licenseKey": "TOTOGI-XXXX-XXXX-XXXX-XXXX",
+  "licenseKey": "NEXUS-XXXX-XXXX-XXXX-XXXX",
   "tenantId": "uuid",
   "entitlements": ["capability-1", "capability-2"],
   "userLimit": 50,
@@ -1406,7 +1406,7 @@ All API errors follow a consistent JSON structure:
 
 **Property Test Tagging:** Each property-based test must include a comment with the format:
 ```javascript
-// Feature: totogi-customer-toolkit, Property 1: Valid credentials create sessions
+// Feature: nexus-customer-toolkit, Property 1: Valid credentials create sessions
 ```
 
 **Key Property Test Areas:**

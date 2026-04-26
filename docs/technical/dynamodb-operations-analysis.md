@@ -1,5 +1,5 @@
 # DynamoDB Operations Analysis
-## Totogi CallSense Platform - Job Execution
+## NexusAI Data Platform - Job Execution
 
 **Document Type:** Technical Analysis  
 **Version:** 1.0  

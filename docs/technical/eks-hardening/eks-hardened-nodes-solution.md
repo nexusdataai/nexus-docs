@@ -36,7 +36,7 @@ AMI_ID=$(aws ssm get-parameter \
 
 # 2. Create node group (no launch template needed)
 aws eks create-nodegroup \
-    --cluster-name starhub-test \
+    --cluster-name nexus-dev \
     --nodegroup-name eks-optimized-nodes \
     --scaling-config minSize=2,maxSize=2,desiredSize=2 \
     --subnets subnet-04eb57c1c37de9fd6 subnet-07d2d5fc70ced7144 \
@@ -67,7 +67,7 @@ aws ssm send-command \
 ## Current Cluster Status
 
 ### Cluster Details
-- **Name**: `starhub-test`
+- **Name**: `nexus-dev`
 - **Version**: 1.34
 - **Auth Mode**: API_AND_CONFIG_MAP
 - **Status**: ACTIVE ✅

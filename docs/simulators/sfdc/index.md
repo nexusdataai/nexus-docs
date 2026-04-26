@@ -1,4 +1,4 @@
-# SFDC Simulator Guide
+# Enterprise Data Simulator - CRM (Salesforce)
 
 !!! info "Screenshots"
     To capture additional screenshots of the simulator UI, run the Playwright script:
@@ -8,7 +8,7 @@
 
 ## Overview
 
-The **SFDC (Salesforce) Simulator** replaces the live PostgreSQL Foreign Data Wrapper (FDW) connection to Salesforce with an in-memory data store backed by S3 dumps. This allows the CallSense platform to query Salesforce CRM data (Accounts, Leads, Opportunities, Contacts, and custom objects) during development and testing without a live Salesforce org or a PostgreSQL FDW extension.
+The **SFDC (Salesforce) Simulator** replaces the live PostgreSQL Foreign Data Wrapper (FDW) connection to Salesforce with an in-memory data store backed by S3 dumps. This allows the NexusAI platform to query Salesforce CRM data (Accounts, Leads, Opportunities, Contacts, and custom objects) during development and testing without a live Salesforce org or a PostgreSQL FDW extension.
 
 **Key capabilities:**
 
@@ -24,12 +24,12 @@ The **SFDC (Salesforce) Simulator** replaces the live PostgreSQL Foreign Data Wr
 
 ### Real Mode vs Simulator Mode
 
-The platform uses `SFDC_SIMULATOR_ENABLED` (and the SSM parameter `/call-processing/{env}/sfdc/enabled`) to decide how FDW queries are served. When the simulator is enabled, `fdw_api.configure()` injects the `SFDCSimulatorService` in place of the real PostgreSQL FDW services.
+The platform uses `SFDC_SIMULATOR_ENABLED` (and the SSM parameter `/nexus-ai/{env}/sfdc/enabled`) to decide how FDW queries are served. When the simulator is enabled, `fdw_api.configure()` injects the `SFDCSimulatorService` in place of the real PostgreSQL FDW services.
 
 ```mermaid
 flowchart TB
     subgraph realMode [Real Mode]
-        AppR[CallSense Backend]
+        AppR[NexusAI Backend]
         FDW_API_R[FDW API Router]
         Discovery_R[FDWDiscoveryService]
         Query_R[FDWQueryService]
@@ -45,7 +45,7 @@ flowchart TB
     end
 
     subgraph simMode [Simulator Mode]
-        AppS[CallSense Backend]
+        AppS[NexusAI Backend]
         FDW_API_S[FDW API Router]
         SimService[SFDCSimulatorService\nin-memory dicts]
         S3[(S3 Bucket\nsfdc-simulator)]
@@ -71,12 +71,12 @@ This means **no code changes** are required in any FDW consumer -- the swap is t
 
 | Component | Location | Role |
 |-----------|----------|------|
-| **SFDCSimulatorService** | `starhub-backend/src/services/sfdc_simulator_service.py` | Core service: loads S3 dumps, serves queries in-memory |
-| **Simulator API** | `starhub-backend/src/apis/sfdc_simulator_api.py` | FastAPI router for simulator admin operations |
-| **Dump Script** | `starhub-backend/scripts/sfdc-simulator/dump_sfdc_via_fdw.py` | CLI tool to dump live FDW data to S3 |
-| **FDW Models** | `starhub-backend/src/models/fdw_models.py` | Shared Pydantic models (ForeignServerInfo, ForeignTableInfo, etc.) |
-| **UI Panel** | `starhub-ui/src/components/sfdc-simulator/SFDCSimulatorPanel.tsx` | Main React component for the Salesforce Simulator tab |
-| **UI Service** | `starhub-ui/src/services/sfdcSimulatorService.ts` | Frontend API client |
+| **SFDCSimulatorService** | `nexus-backend/src/services/sfdc_simulator_service.py` | Core service: loads S3 dumps, serves queries in-memory |
+| **Simulator API** | `nexus-backend/src/apis/sfdc_simulator_api.py` | FastAPI router for simulator admin operations |
+| **Dump Script** | `nexus-backend/scripts/sfdc-simulator/dump_sfdc_via_fdw.py` | CLI tool to dump live FDW data to S3 |
+| **FDW Models** | `nexus-backend/src/models/fdw_models.py` | Shared Pydantic models (ForeignServerInfo, ForeignTableInfo, etc.) |
+| **UI Panel** | `nexus-ui/src/components/sfdc-simulator/SFDCSimulatorPanel.tsx` | Main React component for the Salesforce Simulator tab |
+| **UI Service** | `nexus-ui/src/services/sfdcSimulatorService.ts` | Frontend API client |
 
 ### S3 Storage Layout
 
@@ -88,12 +88,12 @@ s3://{bucket}/{prefix}/
 ├── servers.json                         # Foreign server definitions
 ├── tables.json                          # Foreign table list (all schemas)
 ├── columns/
-│   ├── starhub_itxp2dev.Account.json    # Column metadata per table
-│   ├── starhub_itxp2dev.Lead.json
+│   ├── nexus_data.Account.json    # Column metadata per table
+│   ├── nexus_data.Lead.json
 │   └── ...
 ├── data/
-│   ├── starhub_itxp2dev.Account.json    # Row data per table
-│   ├── starhub_itxp2dev.Lead.json
+│   ├── nexus_data.Account.json    # Row data per table
+│   ├── nexus_data.Lead.json
 │   └── ...
 └── _dump_status.json                    # Current dump operation status
 ```
@@ -212,7 +212,7 @@ The mode toggle at the top of the page (visible in the overview screenshot as "S
 
 Click **Switch to Real** or **Switch to Simulator** to toggle the mode. This:
 
-1. Updates the SSM parameter `/call-processing/{env}/sfdc/enabled`
+1. Updates the SSM parameter `/nexus-ai/{env}/sfdc/enabled`
 2. Changes how `fdw_api` resolves its service providers
 3. Takes effect immediately for subsequent FDW queries
 
@@ -253,7 +253,7 @@ The FDW Objects table (visible at the bottom of the overview screenshot) lists a
 
 | Column | Description |
 |--------|-------------|
-| Schema | Salesforce schema name (e.g., `starhub_itxp2dev`) |
+| Schema | Salesforce schema name (e.g., `nexus_data`) |
 | Table | Table name (e.g., `Account`, `Lead`, `Opportunity`) |
 | Columns | Number of columns in the table |
 | Rows | Number of data rows loaded |
@@ -277,7 +277,7 @@ This is useful for verifying that the dump contains the expected data before run
 The **Dump from Live FDW** section at the bottom of the page allows you to create a fresh data snapshot from a running real FDW environment:
 
 1. Enter the **Source URL** of a deployed FDW runtime (the ALB URL).
-2. Optionally specify a schema name (default: `starhub_itxp2dev`).
+2. Optionally specify a schema name (default: `nexus_data`).
 3. Click **Start Dump**.
 
 The dump runs in the background, querying the live FDW API and uploading results to S3. Progress is tracked via `_dump_status.json` in S3 for multi-pod consistency.
@@ -294,7 +294,7 @@ Click **Reset** to reload the original S3 dump into memory. This discards any in
 
 ### Dump Script
 
-The dump script (`starhub-backend/scripts/sfdc-simulator/dump_sfdc_via_fdw.py`) extracts data from a live FDW runtime and saves it to S3 or a local directory.
+The dump script (`nexus-backend/scripts/sfdc-simulator/dump_sfdc_via_fdw.py`) extracts data from a live FDW runtime and saves it to S3 or a local directory.
 
 #### Basic Usage
 
@@ -302,24 +302,24 @@ The dump script (`starhub-backend/scripts/sfdc-simulator/dump_sfdc_via_fdw.py`) 
 # Dump priority tables from a deployed environment to S3
 python scripts/sfdc-simulator/dump_sfdc_via_fdw.py \
   --url http://k8s-alb.elb.amazonaws.com \
-  --s3-bucket call-processing-dev-sfdc-simulator
+  --s3-bucket nexus-ai-dev-sfdc-simulator
 
 # Auto-detect ALB URL from kubectl and dump to S3
 python scripts/sfdc-simulator/dump_sfdc_via_fdw.py \
   --auto-detect \
-  --s3-bucket call-processing-dev-sfdc-simulator
+  --s3-bucket nexus-ai-dev-sfdc-simulator
 
 # Dump specific tables only
 python scripts/sfdc-simulator/dump_sfdc_via_fdw.py \
   --url http://k8s-alb.elb.amazonaws.com \
   --tables Account,Lead,Contact,Opportunity \
-  --s3-bucket call-processing-dev-sfdc-simulator
+  --s3-bucket nexus-ai-dev-sfdc-simulator
 
 # Dump ALL tables (slow -- queries every table in the schema)
 python scripts/sfdc-simulator/dump_sfdc_via_fdw.py \
   --url http://k8s-alb.elb.amazonaws.com \
   --all \
-  --s3-bucket call-processing-dev-sfdc-simulator
+  --s3-bucket nexus-ai-dev-sfdc-simulator
 
 # Local-only dump (no S3 upload)
 python scripts/sfdc-simulator/dump_sfdc_via_fdw.py \
@@ -334,7 +334,7 @@ python scripts/sfdc-simulator/dump_sfdc_via_fdw.py \
 | `--url` | URL | -- | ALB URL of the deployed FDW runtime |
 | `--auto-detect` | flag | off | Auto-detect ALB URL from `kubectl get ingress` |
 | `--namespace` | string | all | Kubernetes namespace for auto-detection |
-| `--schema` | string | `starhub_itxp2dev` | PostgreSQL schema to dump |
+| `--schema` | string | `nexus_data` | PostgreSQL schema to dump |
 | `--tables` | string | -- | Comma-separated table names (overrides priority list) |
 | `--all` | flag | off | Dump data for all tables in the schema |
 | `--limit` | int | 10,000 | Max rows per table |
@@ -384,9 +384,9 @@ Response:
 {
   "enabled": true,
   "loaded": true,
-  "bucket": "call-processing-dev-sfdc-simulator",
+  "bucket": "nexus-ai-dev-sfdc-simulator",
   "prefix": "sfdc-simulator",
-  "schema": "starhub_itxp2dev",
+  "schema": "nexus_data",
   "table_count": 245,
   "tables_with_data": 12,
   "total_rows": 8543,
@@ -431,7 +431,7 @@ curl -X PUT http://localhost:8000/api/v1/config/sfdc-mode \
 
 ```bash
 # Get first 50 rows from the Account table
-curl "http://localhost:8000/api/v1/sfdc-simulator/objects/starhub_itxp2dev/Account?limit=50&offset=0"
+curl "http://localhost:8000/api/v1/sfdc-simulator/objects/nexus_data/Account?limit=50&offset=0"
 ```
 
 ---
@@ -453,7 +453,7 @@ The SFDC Simulator settings are also available in the application **Settings** p
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
 | Enabled | Toggle | off | Enable SFDC simulator mode (use in-memory data instead of real FDW) |
-| Bucket | Text | `call-processing-{env}-sfdc-simulator` | S3 bucket for SFDC simulator data dumps |
+| Bucket | Text | `nexus-ai-{env}-sfdc-simulator` | S3 bucket for SFDC simulator data dumps |
 | Prefix | Text | `sfdc-simulator` | S3 prefix for SFDC simulator data |
 
 Changes are persisted to AWS SSM Parameter Store and take effect immediately. Use **Save Changes** to apply or **Reset** to revert to defaults.
@@ -462,9 +462,9 @@ Changes are persisted to AWS SSM Parameter Store and take effect immediately. Us
 
 | Parameter Path | Description |
 |---------------|-------------|
-| `/call-processing/{env}/sfdc/enabled` | `true`/`false` -- master enable flag (toggled by Config API or Settings UI) |
-| `/call-processing/{env}/sfdc/bucket` | S3 bucket name for simulator data dumps |
-| `/call-processing/{env}/sfdc/prefix` | S3 key prefix for dump files |
+| `/nexus-ai/{env}/sfdc/enabled` | `true`/`false` -- master enable flag (toggled by Config API or Settings UI) |
+| `/nexus-ai/{env}/sfdc/bucket` | S3 bucket name for simulator data dumps |
+| `/nexus-ai/{env}/sfdc/prefix` | S3 key prefix for dump files |
 
 ### In-Memory Data Structure
 

@@ -408,7 +408,7 @@ s3://{bucket}/
 
 ### Setting Up `.env.local` for Local Development
 
-Create a `.env.local` file in the project root (`starhub-backend/.env.local`) with all required credentials.
+Create a `.env.local` file in the project root (`nexus-backend/.env.local`) with all required credentials.
 
 #### Complete `.env.local` Template
 
@@ -421,7 +421,7 @@ Create a `.env.local` file in the project root (`starhub-backend/.env.local`) wi
 AWS_REGION=ap-southeast-1
 
 # Capability and Environment (used for naming convention)
-CAPABILITY_NAME=call-processing
+CAPABILITY_NAME=nexus-ai
 ENVIRONMENT=dev
 
 # Secrets Backend (false = use local .env.local, true = use AWS Secrets Manager)
@@ -512,7 +512,7 @@ OPENAI_TRANSCRIPTION_MODEL=gpt-4o-transcribe
 # =============================================================================
 
 # S3 bucket for storing recordings, transcripts, and metadata
-S3_RECORDINGS_BUCKET=call-processing-dev-recordings
+S3_RECORDINGS_BUCKET=nexus-ai-dev-recordings
 
 # S3 prefixes (usually don't need to change)
 S3_CALL_DATA_PREFIX=call-data/
@@ -523,7 +523,7 @@ S3_CALL_DETAIL_PREFIX=call-detail/
 # =============================================================================
 
 # Glue database name for analytics
-GLUE_DATABASE_NAME=call-processing-dev-wxcc-analytics
+GLUE_DATABASE_NAME=nexus-ai-dev-wxcc-analytics
 
 # Glue table name
 GLUE_TABLE_NAME=calls
@@ -533,7 +533,7 @@ GLUE_TABLE_NAME=calls
 # =============================================================================
 
 # DynamoDB table for deduplication tracking
-DYNAMODB_TRACKING_TABLE=call-processing-dev-wxcc-task-tracking
+DYNAMODB_TRACKING_TABLE=nexus-ai-dev-wxcc-task-tracking
 
 # Task record TTL in days
 TASK_TRACKING_TTL_DAYS=30
@@ -551,7 +551,7 @@ WXCC_SIMULATOR_BASE_URL=http://localhost:8000/api/v1/simulator
 # Simulator credentials (fixed values for testing)
 WXCC_SIM_ORG_ID=sim-org-001
 WXCC_SIM_TOKEN=test-token-12345
-WXCC_SIMULATOR_BUCKET=call-processing-dev-recordings
+WXCC_SIMULATOR_BUCKET=nexus-ai-dev-recordings
 WXCC_SIMULATOR_PREFIX=wxcc-simulator
 
 # =============================================================================
@@ -788,7 +788,7 @@ The WXCC Simulator provides a mock Webex Contact Center API for local developmen
 1. **Ensure the backend server is running:**
 
 ```bash
-cd starhub-backend
+cd nexus-backend
 python -m uvicorn src.main:app --host 0.0.0.0 --port 8000
 ```
 
@@ -851,7 +851,7 @@ When you run the seed command, you'll see detailed output:
 ### Prerequisites
 
 1. Backend server running on port 8000
-2. Frontend (starhub-ui) running on port 3000
+2. Frontend (nexus-ui) running on port 3000
 3. A Call Processing journey created in the system
 
 ### Step 1: Seed the Simulator with Test Data

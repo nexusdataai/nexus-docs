@@ -4,7 +4,7 @@ This guide walks you through each step of the deployment wizard in detail.
 
 ## Overview
 
-The deployment wizard is a step-by-step process that guides you through deploying a Totogi capability to your AWS environment. The wizard handles all the complexity of infrastructure provisioning while giving you full visibility into the process.
+The deployment wizard is a step-by-step process that guides you through deploying a NexusAI capability to your AWS environment. The wizard handles all the complexity of infrastructure provisioning while giving you full visibility into the process.
 
 ---
 
@@ -78,11 +78,11 @@ Choose your preferred deployment architecture for both frontend and backend:
 
 ### EKS (Kubernetes) Option - NEW
 
-When selecting **EKS (Kubernetes)**, the deployment uses the **Totogi Kubernetes Operator**:
+When selecting **EKS (Kubernetes)**, the deployment uses the **Nexus Kubernetes Operator**:
 
 | Feature | What It Does |
 |---------|--------------|
-| **Custom Resources** | Deploy using `TotogiCapability` CRDs |
+| **Custom Resources** | Deploy using `NexusAICapability` CRDs |
 | **Auto AWS Provisioning** | Creates DynamoDB tables, S3 buckets, Glue databases |
 | **IRSA** | Secure IAM Roles for Service Accounts |
 | **LoadBalancers** | Automatic service exposure via AWS ALB/NLB |

@@ -1,10 +1,10 @@
-# Starhub Trilogy Documentation
+# NexusAI Documentation
 
-Centralized documentation site for the Starhub Trilogy project built with MkDocs Material.
+Centralized documentation site for the NexusAI project built with MkDocs Material.
 
 ## Overview
 
-This repository hosts a comprehensive documentation portal that organizes all documentation across the Starhub Trilogy project into logical categories. The documentation site provides a single access point to all project documentation while keeping source documents in their original locations.
+This repository hosts a comprehensive documentation portal that organizes all documentation across the NexusAI project into logical categories. The documentation site provides a single access point to all project documentation while keeping source documents in their original locations.
 
 ## Documentation Structure
 
@@ -68,7 +68,7 @@ The workflow (`.github/workflows/docs.yml`) handles:
 ## Project Structure
 
 ```
-starhub-docs/
+nexus-docs/
 ├── docs/                      # Documentation content
 │   ├── index.md              # Landing page
 │   ├── business/             # Business documentation
@@ -112,12 +112,12 @@ The site configuration is in `mkdocs.yml`:
 
 ## Links to Source Repositories
 
-The Starhub Trilogy consists of multiple repositories:
+The NexusAI consists of multiple repositories:
 
-- **starhub-backend** - Backend services and API
-- **starhub-ui** - React-based frontend application
-- **starhub-deployer** - AWS deployment automation
-- **starhub-docs** - This documentation site
+- **nexus-backend** - Backend services and API
+- **nexus-ui** - React-based frontend application
+- **nexus-deployer** - AWS deployment automation
+- **nexus-docs** - This documentation site
 - **project-notes** - Project metadata and notes
 
 ## Features
@@ -134,7 +134,7 @@ The Starhub Trilogy consists of multiple repositories:
 ## Accessing the Documentation
 
 - **Local**: http://127.0.0.1:8000 (when running `mkdocs serve`)
-- **Production**: https://yourusername.github.io/starhub-docs/ (replace with actual URL)
+- **Production**: https://yourusername.github.io/nexus-docs/ (replace with actual URL)
 
 ## Support
 

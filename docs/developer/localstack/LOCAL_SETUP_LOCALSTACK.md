@@ -1,6 +1,6 @@
 # LocalStack Complete Setup Guide
 
-Comprehensive guide for setting up LocalStack development environment for starhub-backend.
+Comprehensive guide for setting up LocalStack development environment for nexus-backend.
 
 ## Table of Contents
 
@@ -68,7 +68,7 @@ python --version
 
 ```bash
 git clone <repository-url>
-cd starhub-backend
+cd nexus-backend
 ```
 
 ### 2. Install Python Dependencies
@@ -388,7 +388,7 @@ cat .env.local | grep USE_LOCALSTACK
 docker ps | grep localstack
 
 # Check LocalStack logs
-docker logs starhub-localstack
+docker logs nexus-localstack
 
 # Verify LocalStack is healthy directly
 curl http://localhost:4566/_localstack/health
@@ -445,7 +445,7 @@ docker-compose -f docker-compose-localstack.yml down
 **Solution:**
 ```bash
 # Check logs
-docker logs starhub-localstack
+docker logs nexus-localstack
 
 # Restart with clean state
 docker-compose -f docker-compose-localstack.yml down -v
@@ -476,17 +476,17 @@ docker-compose -f docker-compose-localstack.yml down -v
 
 ```bash
 # View LocalStack logs
-docker logs -f starhub-localstack
+docker logs -f nexus-localstack
 
 # Check container status
 docker ps -a | grep localstack
 
 # Inspect container
-docker inspect starhub-localstack
+docker inspect nexus-localstack
 
 # Check network
 docker network ls
-docker network inspect starhub-local
+docker network inspect nexus-local
 ```
 
 ## Advanced Topics
@@ -549,4 +549,4 @@ services:
 - [LocalStack Documentation](https://docs.localstack.cloud/)
 - [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/)
 - [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-- [starhub-backend API Documentation](../api/README.md)
+- [nexus-backend API Documentation](../api/README.md)

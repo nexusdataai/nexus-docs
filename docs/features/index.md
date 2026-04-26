@@ -1,6 +1,6 @@
 # Features & Capabilities
 
-This section provides detailed documentation on platform capabilities, feature architecture, and telco AI capabilities.
+This section provides detailed documentation on platform capabilities, feature architecture, and enterprise AI capabilities.
 
 ## Overview
 
@@ -8,7 +8,7 @@ The features and capabilities documentation covers:
 
 - **Platform Capabilities** - What the platform can do
 - **Feature Architecture** - How features are designed and implemented
-- **Telco AI Capabilities** - AI-specific features for telecommunications
+- **Enterprise AI Capabilities** - AI-specific features for enterprise operations
 - **AWS Compliance** - Well-Architected Framework compliance
 
 ## Available Documents
@@ -20,10 +20,10 @@ Comprehensive architecture documentation covering all platform capabilities, the
 
 ---
 
-### Telco AI FAQ
-Frequently asked questions about the Telco AI capabilities, including use cases, limitations, and best practices.
+### Enterprise AI FAQ
+Frequently asked questions about the Enterprise AI capabilities, including use cases, limitations, and best practices.
 
-📄 [View Telco AI FAQ](source/telco-ai-capability-faq.md)
+📄 [View Enterprise AI FAQ](source/enterprise-ai-capability-faq.md)
 
 ---
 

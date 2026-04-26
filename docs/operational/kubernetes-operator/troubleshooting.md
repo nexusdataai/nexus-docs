@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Common issues and solutions for the Totogi Kubernetes Operator.
+Common issues and solutions for the Nexus Kubernetes Operator.
 
 ## Quick Diagnostics
 
@@ -8,19 +8,19 @@ Run these commands to gather diagnostic information:
 
 ```bash
 # Operator status
-./operator-starhub-test.sh status
+./operator-nexus-dev.sh status
 
 # Operator pods
-kubectl -n totogi-system get pods
+kubectl -n nexus-system get pods
 
 # Operator logs
-kubectl -n totogi-system logs deployment/totogi-operator --tail=100
+kubectl -n nexus-system logs deployment/nexus-operator --tail=100
 
 # Events
-kubectl -n totogi-system get events --sort-by='.lastTimestamp' | tail -20
+kubectl -n nexus-system get events --sort-by='.lastTimestamp' | tail -20
 
 # CRD status
-kubectl get crd totogicapabilities.totogi.com
+kubectl get crd nexuscapabilities.nexus.ai
 ```
 
 ## Common Issues
@@ -37,7 +37,7 @@ error: You must be logged in to the server (Unauthorized)
 **Solution:** The deploy script automatically fixes this. Run:
 
 ```bash
-./operator-starhub-test.sh deploy
+./operator-nexus-dev.sh deploy
 ```
 
 Or manually add to aws-auth:
@@ -54,7 +54,7 @@ kubectl patch configmap aws-auth -n kube-system --type merge -p '{
 **Symptoms:**
 ```
 NAME                              READY   STATUS             RESTARTS   AGE
-totogi-operator-xxx-xxx           0/1     ImagePullBackOff   0          5m
+nexus-operator-xxx-xxx           0/1     ImagePullBackOff   0          5m
 ```
 
 **Cause:** Operator image doesn't exist in ECR.
@@ -63,7 +63,7 @@ totogi-operator-xxx-xxx           0/1     ImagePullBackOff   0          5m
 
 ```bash
 ./build-and-push.sh
-./operator-starhub-test.sh deploy --force
+./operator-nexus-dev.sh deploy --force
 ```
 
 ### Issue: Operator Pod Not Starting
@@ -75,8 +75,8 @@ totogi-operator-xxx-xxx           0/1     ImagePullBackOff   0          5m
 **Diagnosis:**
 
 ```bash
-kubectl -n totogi-system describe pod -l app.kubernetes.io/name=totogi-operator
-kubectl -n totogi-system logs deployment/totogi-operator
+kubectl -n nexus-system describe pod -l app.kubernetes.io/name=nexus-operator
+kubectl -n nexus-system logs deployment/nexus-operator
 ```
 
 **Common causes and solutions:**
@@ -117,10 +117,10 @@ aws sts get-caller-identity --profile external-access
 
 ```bash
 # Check operator logs
-kubectl -n totogi-system logs -f deployment/totogi-operator
+kubectl -n nexus-system logs -f deployment/nexus-operator
 
 # Check capability status
-kubectl describe totogicapability <name>
+kubectl describe nexuscapability <name>
 
 # Check events
 kubectl get events -n <capability-namespace>
@@ -146,7 +146,7 @@ ERROR | Failed to create DynamoDB table: AccessDeniedException
 
 1. Check IAM role policy:
 ```bash
-aws iam get-role-policy --role-name TotogiOperatorRole --policy-name TotogiOperatorPolicy
+aws iam get-role-policy --role-name NexusAIOperatorRole --policy-name NexusAIOperatorPolicy
 ```
 
 2. Verify required permissions:
@@ -169,13 +169,13 @@ NoCredentialProviders: no valid providers in chain
 
 ```bash
 # Check ServiceAccount annotation
-kubectl get sa totogi-operator -n totogi-system -o yaml | grep eks.amazonaws.com
+kubectl get sa nexus-operator -n nexus-system -o yaml | grep eks.amazonaws.com
 
 # Verify OIDC provider
 aws iam list-open-id-connect-providers
 
 # Check IAM role trust policy
-aws iam get-role --role-name TotogiOperatorRole --query 'Role.AssumeRolePolicyDocument'
+aws iam get-role --role-name NexusAIOperatorRole --query 'Role.AssumeRolePolicyDocument'
 ```
 
 **Solution:**
@@ -197,11 +197,11 @@ eksctl utils associate-iam-oidc-provider --cluster <cluster-name> --approve
 
 ```bash
 # Remove finalizer
-kubectl patch totogicapability <name> -n <namespace> \
+kubectl patch nexuscapability <name> -n <namespace> \
   -p '{"metadata":{"finalizers":null}}' --type=merge
 
 # Force delete
-kubectl delete totogicapability <name> -n <namespace> --force --grace-period=0
+kubectl delete nexuscapability <name> -n <namespace> --force --grace-period=0
 ```
 
 ### Issue: LoadBalancer Not Getting External IP
@@ -231,10 +231,10 @@ kubectl get events -n <namespace> | grep LoadBalancer
 
 ```bash
 # Set debug level
-kubectl -n totogi-system set env deployment/totogi-operator LOG_LEVEL=DEBUG
+kubectl -n nexus-system set env deployment/nexus-operator LOG_LEVEL=DEBUG
 
 # View debug logs
-kubectl -n totogi-system logs -f deployment/totogi-operator
+kubectl -n nexus-system logs -f deployment/nexus-operator
 ```
 
 ### Check AWS API Calls
@@ -248,7 +248,7 @@ kubectl -n totogi-system logs -f deployment/totogi-operator
 
 ```bash
 # From operator pod
-kubectl -n totogi-system exec -it deploy/totogi-operator -- python -c "
+kubectl -n nexus-system exec -it deploy/nexus-operator -- python -c "
 import boto3
 sts = boto3.client('sts')
 print(sts.get_caller_identity())
@@ -258,8 +258,8 @@ print(sts.get_caller_identity())
 ### Check Resource Quotas
 
 ```bash
-kubectl describe resourcequota -n totogi-system
-kubectl describe limitrange -n totogi-system
+kubectl describe resourcequota -n nexus-system
+kubectl describe limitrange -n nexus-system
 ```
 
 ## Recovery Procedures
@@ -268,10 +268,10 @@ kubectl describe limitrange -n totogi-system
 
 ```bash
 # 1. Check what failed
-kubectl describe totogicapability <name>
+kubectl describe nexuscapability <name>
 
 # 2. Delete the failed capability
-kubectl delete totogicapability <name>
+kubectl delete nexuscapability <name>
 
 # 3. Clean up any partial AWS resources
 aws dynamodb delete-table --table-name <capability>-<env>-transformation-system
@@ -285,13 +285,13 @@ kubectl apply -f capability.yaml
 
 ```bash
 # 1. Check crash reason
-kubectl -n totogi-system logs deployment/totogi-operator --previous
+kubectl -n nexus-system logs deployment/nexus-operator --previous
 
 # 2. Restart operator
-kubectl -n totogi-system rollout restart deployment/totogi-operator
+kubectl -n nexus-system rollout restart deployment/nexus-operator
 
 # 3. If persistent, redeploy
-./operator-starhub-test.sh delete
+./operator-nexus-dev.sh delete
 ./build-and-deploy.sh
 ```
 
@@ -299,10 +299,10 @@ kubectl -n totogi-system rollout restart deployment/totogi-operator
 
 ```bash
 # 1. Delete operator
-./operator-starhub-test.sh delete
+./operator-nexus-dev.sh delete
 
 # 2. Clean up CRs manually
-kubectl delete totogicapabilities --all -A
+kubectl delete nexuscapabilities --all -A
 
 # 3. Redeploy
 ./build-and-deploy.sh
@@ -314,8 +314,8 @@ kubectl delete totogicapabilities --all -A
 
 Before reporting an issue, gather:
 
-1. Operator status: `./operator-starhub-test.sh status`
-2. Operator logs: `kubectl -n totogi-system logs deployment/totogi-operator`
+1. Operator status: `./operator-nexus-dev.sh status`
+2. Operator logs: `kubectl -n nexus-system logs deployment/nexus-operator`
 3. Capability description: `kubectl describe tc <name>`
 4. Events: `kubectl get events -A --sort-by='.lastTimestamp'`
 5. AWS credentials: `aws sts get-caller-identity`

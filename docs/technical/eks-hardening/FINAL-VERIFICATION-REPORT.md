@@ -8,7 +8,7 @@
 ## ✅ EKS CLUSTER HEALTH - EXCELLENT
 
 ### Cluster Status
-- **Name:** starhub-test
+- **Name:** nexus-dev
 - **Version:** 1.34 ✅
 - **Status:** ACTIVE ✅
 - **Platform Version:** eks.12 ✅

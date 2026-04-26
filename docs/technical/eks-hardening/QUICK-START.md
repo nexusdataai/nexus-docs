@@ -14,8 +14,8 @@
 ### Step 1: Run the Creation Script
 
 ```bash
-cd /opt/mycode/trilogy/starhub-backend/deploy/eks
-./create-hardened-eks-cluster.sh starhub-test
+cd /opt/mycode/nexus/nexus-backend/deploy/eks
+./create-hardened-eks-cluster.sh nexus-dev
 ```
 
 **Time:** 15-20 minutes
@@ -82,7 +82,7 @@ Why not 100%? 5 controls excepted for Kubernetes compatibility:
 
 ## 📁 Documentation
 
-### Located in: `/opt/mycode/trilogy/starhub-docs/docs/technical/eks-hardening/`
+### Located in: `/opt/mycode/nexus/nexus-docs/docs/technical/eks-hardening/`
 
 **Read These:**
 1. **INDEX.md** - Start here for navigation
@@ -93,7 +93,7 @@ Why not 100%? 5 controls excepted for Kubernetes compatibility:
 
 ## 🔧 Scripts
 
-### Located in: `/opt/mycode/trilogy/starhub-backend/deploy/eks/`
+### Located in: `/opt/mycode/nexus/nexus-backend/deploy/eks/`
 
 1. **`create-hardened-eks-cluster.sh`** - Main creation script
 2. **`cis-level2-full-hardening.sh`** - CIS hardening script
@@ -103,7 +103,7 @@ Why not 100%? 5 controls excepted for Kubernetes compatibility:
 
 ## ✅ Current Status
 
-**Cluster:** starhub-test
+**Cluster:** nexus-dev
 - Status: ACTIVE ✅
 - Nodes: 2/2 Ready ✅
 - CIS Hardening: Applied ✅

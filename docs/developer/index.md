@@ -1,6 +1,6 @@
 # Developer Guide
 
-This section provides development guides, API documentation, testing procedures, and setup instructions for developers working on the Starhub Trilogy platform.
+This section provides development guides, API documentation, testing procedures, and setup instructions for developers working on the NexusAI platform.
 
 ## Overview
 
@@ -64,7 +64,7 @@ Guide to setting up LocalStack for local development without AWS costs.
 ```bash
 # Clone repository
 git clone <repository-url>
-cd starhub-backend
+cd nexus-backend
 
 # Start LocalStack
 docker-compose -f docker-compose-localstack.yml up -d
@@ -112,7 +112,7 @@ pip install -r requirements.txt
 ```bash
 # Clone repository
 git clone <repository-url>
-cd starhub-ui
+cd nexus-ui
 
 # Install dependencies
 npm install
@@ -425,7 +425,7 @@ logger.debug("Debug message")
 
 ### Internal Documentation
 - [Architecture](../technical/architecture/job-execution-flow.md)
-- [Call Processing](../technical/call-processing/)
+- [Call Processing](../technical/nexus-ai/)
 - [Gateway](../technical/gateway/)
 - [Database Design](../technical/dbdesign/journey-data.md)
 

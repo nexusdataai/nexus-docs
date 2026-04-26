@@ -1,6 +1,6 @@
 # Business Documentation
 
-This section contains executive summaries, business requirements, and business cases that define the strategic value and objectives of the Starhub Trilogy platform.
+This section contains executive summaries, business requirements, and business cases that define the strategic value and objectives of the NexusAI platform.
 
 ## Overview
 
@@ -13,58 +13,58 @@ The business documentation provides comprehensive insights into:
 
 ## Available Documents
 
-### Totogi CallSense Executive Summary
-Comprehensive executive summary for **Totogi CallSense** - the AI-powered call analytics platform with proven 25-55x ROI.
+### NexusAI Executive Summary
+Comprehensive executive summary for **NexusAI** - The Intelligent AI Operating Layer for the Enterprise.
 
-**Focus:** Call processing capability, revenue impact, customer ROI  
+**Focus:** Enterprise reasoning platform, workflow automation, decision acceleration, ROI  
 **Document:** Version 2.0 | January 2026
 
-📄 [View CallSense Executive Summary](source/executive-summary.md)
+[View NexusAI Executive Summary](source/executive-summary.md)
 
 ---
 
-### Totogi Toolkit Executive Summary
-Complete executive summary for **Totogi Toolkit** - the self-service deployment platform that enables 30-minute infrastructure provisioning.
+### NexusAI Toolkit Executive Summary
+Complete executive summary for **NexusAI Toolkit** - the self-service deployment platform that enables 30-minute infrastructure provisioning.
 
 **Focus:** Deployment automation, cost savings, operational efficiency  
 **Document:** Version 1.0 | January 2026
 
-📄 [View Toolkit Executive Summary](source/toolkit-executive-summary.md)
+[View Toolkit Executive Summary](source/toolkit-executive-summary.md)
 
 ---
 
 ### Business Requirements
 Detailed business requirements that drive the platform development and feature priorities.
 
-📄 [View Business Requirements](source/business-requirements.md)
+[View Business Requirements](source/business-requirements.md)
 
 ---
 
 ### Business Overview
 Comprehensive overview of the business context, stakeholders, and organizational alignment.
 
-📄 [View Business Overview](source/business-overview.md)
+[View Business Overview](source/business-overview.md)
 
 ---
 
 ## Key Stakeholders
 
-The Starhub Trilogy platform serves multiple stakeholder groups:
+The NexusAI platform serves multiple stakeholder groups:
 
-- **Contact Center Managers** - Operational insights and call analytics
-- **Quality Assurance Teams** - Call quality monitoring and compliance
-- **Business Analysts** - Data-driven decision making
-- **Executive Leadership** - Strategic oversight and ROI tracking
+- **CIOs / CTOs** - Enterprise AI strategy and infrastructure alignment
+- **Operations Leaders** - Workflow automation and process optimization
+- **Business Analysts** - Cross-system reasoning and data-driven decision making
+- **Executive Leadership** - Strategic oversight, ROI tracking, and competitive positioning
 
 ## Business Value Proposition
 
 The platform delivers value through:
 
-- ✅ **Operational Efficiency** - Automated call processing reduces manual effort
-- ✅ **Quality Insights** - AI-powered analysis identifies improvement areas
-- ✅ **Compliance** - Ensures regulatory compliance and documentation
-- ✅ **Cost Savings** - Reduces operational costs through automation
-- ✅ **Scalability** - Enterprise-grade architecture supports growth
+- **Workflow Automation** - 40-60% of repetitive enterprise workflows automated via autonomous agents
+- **Decision Acceleration** - 50% faster decisions through semantic knowledge graphs and cross-system reasoning
+- **Ops Cost Reduction** - 30-40% reduction in operational costs through AI-driven automation
+- **Enterprise Integration** - Connects siloed systems into a unified intelligent operating layer
+- **Scalability** - Kubernetes-native architecture deploys on-prem or in any cloud
 
 ---
 

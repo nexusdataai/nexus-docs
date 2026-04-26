@@ -114,18 +114,18 @@ aws logs describe-log-groups $ENDPOINT
 
 # List log streams
 aws logs describe-log-streams \
-    --log-group-name /aws/starhub-backend/api \
+    --log-group-name /aws/nexus-backend/api \
     $ENDPOINT
 
 # Get log events
 aws logs get-log-events \
-    --log-group-name /aws/starhub-backend/api \
+    --log-group-name /aws/nexus-backend/api \
     --log-stream-name your-stream-name \
     $ENDPOINT
 
 # Put log events
 aws logs put-log-events \
-    --log-group-name /aws/starhub-backend/api \
+    --log-group-name /aws/nexus-backend/api \
     --log-stream-name test-stream \
     --log-events timestamp=$(date +%s000),message="Test log" \
     $ENDPOINT
@@ -180,11 +180,11 @@ aws logs put-log-events \
 docker ps
 
 # View LocalStack logs
-docker logs starhub-localstack
-docker logs -f starhub-localstack  # Follow logs
+docker logs nexus-localstack
+docker logs -f nexus-localstack  # Follow logs
 
 # Restart LocalStack
-docker restart starhub-localstack
+docker restart nexus-localstack
 
 # Stop all LocalStack services
 docker-compose -f docker-compose-localstack.yml down
@@ -200,7 +200,7 @@ docker-compose -f docker-compose-localstack.yml up -d --build
 
 After starting LocalStack, verify:
 
-- [ ] `docker ps` shows `starhub-localstack` running
+- [ ] `docker ps` shows `nexus-localstack` running
 - [ ] `curl http://localhost:4566/_localstack/health` returns services
 - [ ] DynamoDB Admin accessible at http://localhost:8001
 - [ ] `./localstack/test-localstack.sh` passes all checks
@@ -220,24 +220,24 @@ After starting LocalStack, verify:
 |--------|---------|
 | transformation-journey-logs | Journey execution logs |
 | transformation-journey-reports | Generated reports |
-| starhub-dev-wxcc-recordings | WXCC call recordings |
-| starhub-dev-wxcc-transcripts | WXCC call transcripts |
-| starhub-dev-wxcc-simulator | WXCC simulator data |
+| nexus-dev-wxcc-recordings | WXCC call recordings |
+| nexus-dev-wxcc-transcripts | WXCC call transcripts |
+| nexus-dev-wxcc-simulator | WXCC simulator data |
 
 ### CloudWatch Log Groups
 
 | Log Group | Purpose |
 |-----------|---------|
-| /aws/starhub-backend/api | API server logs |
-| /aws/starhub-backend/jobs | Background job logs |
+| /aws/nexus-backend/api | API server logs |
+| /aws/nexus-backend/jobs | Background job logs |
 
 ## Troubleshooting Quick Reference
 
 | Issue | Command |
 |-------|---------|
 | Check if LocalStack running | `docker ps \| grep localstack` |
-| View LocalStack logs | `docker logs starhub-localstack` |
+| View LocalStack logs | `docker logs nexus-localstack` |
 | Check health | `curl http://localhost:4566/_localstack/health` |
-| Restart LocalStack | `docker restart starhub-localstack` |
+| Restart LocalStack | `docker restart nexus-localstack` |
 | Full reset | `docker-compose -f docker-compose-localstack.yml down -v` |
 | Re-initialize | `./localstack/localstack-init.sh` |

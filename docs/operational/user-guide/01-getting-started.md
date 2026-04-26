@@ -1,10 +1,10 @@
 # Getting Started
 
-This guide will help you get up and running with the Totogi Capability Installer.
+This guide will help you get up and running with the NexusAI Deployer.
 
 ## Overview
 
-The Totogi Capability Installer is a desktop application that deploys Totogi's telco business capabilities to your AWS environment. The deployment process is guided by a step-by-step wizard that handles all the complexity of AWS infrastructure provisioning.
+The NexusAI Deployer is a desktop application that deploys NexusAI capabilities to your AWS environment. The deployment process is guided by a step-by-step wizard that handles all the complexity of AWS infrastructure provisioning.
 
 ## Before You Begin
 
@@ -83,7 +83,7 @@ The wizard guides you through these steps:
 
 ### Step 1: Launch the Application
 
-Double-click the Totogi Installer icon to launch the application. You will see the welcome screen:
+Double-click the NexusAI Installer icon to launch the application. You will see the welcome screen:
 
 ![Home Screen](./screen-shots/home.png)
 
@@ -220,9 +220,9 @@ When using the Kubernetes Operator deployment:
 - Secrets Manager entries
 - SSM Parameter Store entries
 
-**Operator Components (in `totogi-system` namespace):**
-- Totogi Operator deployment
-- TotogiCapability CRD
+**Operator Components (in `nexus-system` namespace):**
+- Nexus Operator deployment
+- NexusAICapability CRD
 - RBAC roles and bindings
 
 ---

@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide covers installing the Totogi Capability Installer on your system.
+This guide covers installing the NexusAI Deployer on your system.
 
 ## Download
 
@@ -10,11 +10,11 @@ Download the installer for your operating system from the provided distribution 
 
 | Platform | Format | File |
 |----------|--------|------|
-| Windows | NSIS Installer | `Totogi-Installer-Setup-x.x.x.exe` |
-| Windows | Portable | `Totogi-Installer-x.x.x-portable.exe` |
-| macOS | DMG | `Totogi-Installer-x.x.x.dmg` |
-| Linux | AppImage | `Totogi-Installer-x.x.x.AppImage` |
-| Linux | DEB | `totogi-installer_x.x.x_amd64.deb` |
+| Windows | NSIS Installer | `NexusAI-Installer-Setup-x.x.x.exe` |
+| Windows | Portable | `NexusAI-Installer-x.x.x-portable.exe` |
+| macOS | DMG | `NexusAI-Installer-x.x.x.dmg` |
+| Linux | AppImage | `NexusAI-Installer-x.x.x.AppImage` |
+| Linux | DEB | `nexus-installer_x.x.x_amd64.deb` |
 
 ---
 
@@ -23,11 +23,11 @@ Download the installer for your operating system from the provided distribution 
 ### Using the Installer (Recommended)
 
 1. **Run the installer**
-   - Double-click `Totogi-Installer-Setup-x.x.x.exe`
+   - Double-click `NexusAI-Installer-Setup-x.x.x.exe`
    - If prompted by Windows Defender, click "More info" → "Run anyway"
 
 2. **Choose installation options**
-   - Select installation directory (default: `C:\Program Files\Totogi Installer`)
+   - Select installation directory (default: `C:\Program Files\NexusAI Installer`)
    - Choose whether to create desktop shortcut
    - Choose whether to create Start Menu shortcut
 
@@ -43,7 +43,7 @@ Download the installer for your operating system from the provided distribution 
    - Run directly from any location
 
 2. **Launch the application**
-   - Double-click `Totogi-Installer-x.x.x-portable.exe`
+   - Double-click `NexusAI-Installer-x.x.x-portable.exe`
 
 ### Windows Requirements
 
@@ -57,16 +57,16 @@ Download the installer for your operating system from the provided distribution 
 ## macOS Installation
 
 1. **Open the DMG file**
-   - Double-click `Totogi-Installer-x.x.x.dmg`
+   - Double-click `NexusAI-Installer-x.x.x.dmg`
 
 2. **Install the application**
-   - Drag the Totogi Installer icon to the Applications folder
+   - Drag the NexusAI Installer icon to the Applications folder
 
 3. **First launch**
    - Open from Applications folder
    - If blocked by Gatekeeper:
      - Go to System Preferences → Security & Privacy
-     - Click "Open Anyway" for Totogi Installer
+     - Click "Open Anyway" for NexusAI Installer
 
 ### macOS Requirements
 
@@ -82,19 +82,19 @@ Download the installer for your operating system from the provided distribution 
 
 1. **Make executable**
    ```bash
-   chmod +x Totogi-Installer-x.x.x.AppImage
+   chmod +x NexusAI-Installer-x.x.x.AppImage
    ```
 
 2. **Run the application**
    ```bash
-   ./Totogi-Installer-x.x.x.AppImage
+   ./NexusAI-Installer-x.x.x.AppImage
    ```
 
 ### Using DEB Package (Debian/Ubuntu)
 
 1. **Install the package**
    ```bash
-   sudo dpkg -i totogi-installer_x.x.x_amd64.deb
+   sudo dpkg -i nexus-installer_x.x.x_amd64.deb
    ```
 
 2. **Install dependencies (if needed)**
@@ -104,7 +104,7 @@ Download the installer for your operating system from the provided distribution 
 
 3. **Launch from applications menu or terminal**
    ```bash
-   totogi-installer
+   nexus-installer
    ```
 
 ### Linux Requirements
@@ -142,20 +142,20 @@ If you see "Failed to load capabilities", refer to the [Troubleshooting Guide](.
 ### Windows
 
 **Using installer:**
-- Go to Settings → Apps → Totogi Installer → Uninstall
+- Go to Settings → Apps → NexusAI Installer → Uninstall
 
 **Or use Control Panel:**
-- Control Panel → Programs → Uninstall a program → Totogi Installer
+- Control Panel → Programs → Uninstall a program → NexusAI Installer
 
 ### macOS
 
-- Drag Totogi Installer from Applications to Trash
+- Drag NexusAI Installer from Applications to Trash
 - Empty Trash
 
 ### Linux (DEB)
 
 ```bash
-sudo apt remove totogi-installer
+sudo apt remove nexus-installer
 ```
 
 ### Linux (AppImage)
@@ -170,9 +170,9 @@ The application stores configuration in:
 
 | Platform | Location |
 |----------|----------|
-| Windows | `%APPDATA%\Totogi Installer\` |
-| macOS | `~/Library/Application Support/Totogi Installer/` |
-| Linux | `~/.config/Totogi Installer/` |
+| Windows | `%APPDATA%\NexusAI Installer\` |
+| macOS | `~/Library/Application Support/NexusAI Installer/` |
+| Linux | `~/.config/NexusAI Installer/` |
 
 ---
 
@@ -220,7 +220,7 @@ $env:HTTPS_PROXY = "http://proxy.example.com:8080"
 
 1. Go to System Preferences → Security & Privacy
 2. Click the lock to make changes
-3. Click "Open Anyway" next to Totogi Installer
+3. Click "Open Anyway" next to NexusAI Installer
 
 ### Linux: AppImage won't run
 

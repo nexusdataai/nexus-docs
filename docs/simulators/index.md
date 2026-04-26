@@ -1,16 +1,16 @@
-# Simulators
+# Enterprise Data Simulators
 
 ---
 
 ## Overview
 
-The Totogi CallSense platform includes two built-in simulators that allow development and QA teams to test the full call-processing and analytics pipeline without connecting to live external systems. Both simulators can be managed through the **Simulators** page in the application UI (accessible at `/operations/simulators`) or via REST APIs and CLI scripts.
+The NexusAI platform includes two built-in simulators that allow development and QA teams to test the full data-processing and analytics pipeline without connecting to live external systems. Both simulators can be managed through the **Simulators** page in the application UI (accessible at `/operations/simulators`) or via REST APIs and CLI scripts.
 
 | Aspect | WXCC Simulator | SFDC Simulator |
 |--------|---------------|----------------|
-| **Purpose** | Mock the Webex Contact Center (WXCC) API for tasks and call recordings | Mock the Salesforce Foreign Data Wrapper (FDW) for CRM table data |
+| **Purpose** | Mock the Webex Contact Center (WXCC) API for tasks and recordings | Mock the Salesforce Foreign Data Wrapper (FDW) for CRM table data |
 | **Replaces** | Real Webex CC Graph API (OAuth-based) | Real PostgreSQL FDW connected to Salesforce |
-| **Storage** | S3 bucket (`call-processing-{env}-wxcc-simulator`) | S3 bucket (`call-processing-{env}-sfdc-simulator`) |
+| **Storage** | S3 bucket (`nexus-ai-{env}-wxcc-simulator`) | S3 bucket (`nexus-ai-{env}-sfdc-simulator`) |
 | **Data Format** | `data.json` (tasks/recordings metadata) + audio files in S3 | JSON dumps per table: `servers.json`, `tables.json`, `columns/`, `data/` |
 | **Data Source** | Seeded synthetically (random tasks) with real or generated audio | Dumped from a live FDW runtime connected to a real Salesforce org |
 | **In-Memory Cache** | LRU cache for sample recordings (50 MB, 20 files max) | Full table data loaded into Python dicts |
@@ -26,7 +26,7 @@ When a simulator is **enabled**, the backend transparently routes API calls to t
 
 ```mermaid
 flowchart LR
-    subgraph app [CallSense Backend]
+    subgraph app [NexusAI Backend]
         Router[API Router]
         SimSwitch{Simulator\nEnabled?}
         RealWXCC[Webex CC API\nOAuth]
@@ -56,7 +56,7 @@ flowchart LR
 
 ## Accessing the Simulators
 
-1. Log in to the CallSense application as an admin user.
+1. Log in to the NexusAI application as an admin user.
 2. Navigate to **Operations > Simulators** in the sidebar (or go directly to `/operations/simulators`).
 3. The page shows two tabs: **WXCC Simulator** and **Salesforce Simulator**.
 
@@ -64,8 +64,8 @@ flowchart LR
 
 ## Guides
 
-- [WXCC Simulator Guide](wxcc/index.md) -- Webex Contact Center task and recording simulation
-- [SFDC Simulator Guide](sfdc/index.md) -- Salesforce FDW data simulation
+- [Contact Center Simulator (WXCC)](wxcc/index.md) -- Webex Contact Center task and recording simulation
+- [CRM Simulator (Salesforce)](sfdc/index.md) -- Salesforce FDW data simulation
 
 ---
 
@@ -74,13 +74,13 @@ flowchart LR
 A Playwright-based script is provided to automatically capture screenshots of both simulator tabs for documentation purposes:
 
 ```bash
-cd starhub-docs/docs/simulators
+cd nexus-docs/docs/simulators
 python3 capture-simulator-screenshots.py
 
 # With custom credentials
 python3 capture-simulator-screenshots.py \
   --url https://your-env.elb.amazonaws.com \
-  --email admin@totogi.com \
+  --email admin@nexus.ai \
   --password YourPassword
 ```
 

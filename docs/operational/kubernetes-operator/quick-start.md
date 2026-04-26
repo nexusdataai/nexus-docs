@@ -1,12 +1,12 @@
 # Quick Start Guide
 
-Get the Totogi Kubernetes Operator running in minutes.
+Get the Nexus Kubernetes Operator running in minutes.
 
 ## Prerequisites
 
 Before starting, ensure you have:
 
-- EKS cluster (e.g., `starhub-test`)
+- EKS cluster (e.g., `nexus-dev`)
 - AWS CLI configured with credentials
 - Python 3.9+ installed
 
@@ -20,16 +20,16 @@ pip install kubernetes boto3 pyyaml
 
 ```bash
 # Step 1: Navigate to operator directory
-cd /opt/mycode/trilogy/starhub-deployer/kube-operator
+cd /opt/mycode/nexus/nexus-deployer/kube-operator
 
 # Step 2: Scan cluster (optional but recommended)
-./operator-starhub-test.sh scan
+./operator-nexus-dev.sh scan
 
 # Step 3: Build and deploy (one command)
 ./build-and-deploy.sh
 
 # Step 4: Verify
-./operator-starhub-test.sh status
+./operator-nexus-dev.sh status
 ```
 
 Done! The operator is running. ✅
@@ -39,7 +39,7 @@ Done! The operator is running. ✅
 Before deploying, run a comprehensive scan:
 
 ```bash
-./operator-starhub-test.sh scan
+./operator-nexus-dev.sh scan
 ```
 
 This checks:
@@ -65,7 +65,7 @@ This checks:
 ### Check Operator Status
 
 ```bash
-./operator-starhub-test.sh status
+./operator-nexus-dev.sh status
 ```
 
 **Expected output when healthy:**
@@ -73,7 +73,7 @@ This checks:
 ✓ Operator is installed
   Status: installed
   Version: latest
-  Namespace: totogi-system
+  Namespace: nexus-system
   Ready replicas: 1/1
 
 ✓ Operator is healthy and running
@@ -82,19 +82,19 @@ This checks:
 ### Check Pods
 
 ```bash
-kubectl -n totogi-system get pods
+kubectl -n nexus-system get pods
 ```
 
 Expected:
 ```
 NAME                              READY   STATUS    RESTARTS   AGE
-totogi-operator-xxx-xxx           1/1     Running   0          2m
+nexus-operator-xxx-xxx           1/1     Running   0          2m
 ```
 
 ### View Logs
 
 ```bash
-kubectl -n totogi-system logs -f deployment/totogi-operator
+kubectl -n nexus-system logs -f deployment/nexus-operator
 ```
 
 ## Deploy a Test Capability
@@ -106,10 +106,10 @@ Once the operator is running, deploy a test capability:
 kubectl apply -f examples/test-capability.yaml
 
 # Watch deployment progress
-kubectl get totogicapabilities -A -w
+kubectl get nexuscapabilities -A -w
 
 # Check status
-kubectl describe totogicapability call-processing-dev
+kubectl describe nexuscapability nexus-ai-dev
 ```
 
 ## Success Criteria
@@ -126,11 +126,11 @@ You'll know deployment succeeded when:
 | Command | Description |
 |---------|-------------|
 | `./build-and-deploy.sh` | Build image and deploy operator |
-| `./operator-starhub-test.sh deploy` | Deploy operator only |
-| `./operator-starhub-test.sh status` | Check operator health |
-| `./operator-starhub-test.sh update` | Update operator |
-| `./operator-starhub-test.sh delete` | Safe delete (keeps IAM/ECR) |
-| `./operator-starhub-test.sh delete --full` | Complete cleanup |
+| `./operator-nexus-dev.sh deploy` | Deploy operator only |
+| `./operator-nexus-dev.sh status` | Check operator health |
+| `./operator-nexus-dev.sh update` | Update operator |
+| `./operator-nexus-dev.sh delete` | Safe delete (keeps IAM/ECR) |
+| `./operator-nexus-dev.sh delete --full` | Complete cleanup |
 
 ## What Each Script Does
 
@@ -138,15 +138,15 @@ You'll know deployment succeeded when:
 |--------|---------|-------------|
 | `build-and-push.sh` | Build Docker image, push to ECR | After code changes |
 | `build-and-deploy.sh` | Build + deploy in one command | First time setup, or after code changes |
-| `operator-starhub-test.sh` | Manage operator lifecycle | Daily operations |
+| `operator-nexus-dev.sh` | Manage operator lifecycle | Daily operations |
 
 ## Tips
 
 1. **First time?** Use `./build-and-deploy.sh` - it does everything
 2. **Code changes?** Use `./build-and-deploy.sh` - rebuilds and redeploys
-3. **Just checking?** Use `./operator-starhub-test.sh status` - quick health check
-4. **Redeploying?** Use `./operator-starhub-test.sh update` - faster than full rebuild
-5. **Cleaning up?** Use `./operator-starhub-test.sh delete` - safe delete preserves IAM/ECR
+3. **Just checking?** Use `./operator-nexus-dev.sh status` - quick health check
+4. **Redeploying?** Use `./operator-nexus-dev.sh update` - faster than full rebuild
+5. **Cleaning up?** Use `./operator-nexus-dev.sh delete` - safe delete preserves IAM/ECR
 
 ## No kubectl Required
 

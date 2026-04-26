@@ -189,7 +189,7 @@ Runs 10 black-box test scenarios (from `semantic-rag.md`) against the vector sto
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `id` | str | Deterministic ID (e.g. `STARHUB_ITXP2DEV_ACCOUNT_V1_0`) |
+| `id` | str | Deterministic ID (e.g. `NEXUS_ITXP2DEV_ACCOUNT_V1_0`) |
 | `system` | str | Salesforce / Oracle / Internal |
 | `entity_type` | str | Schema / Policy / Workflow / Integration |
 | `object_name` | str | Account / CreditApprovalFlow / CreditPolicy |
@@ -237,7 +237,7 @@ The agent receives the structured retrieval bundle and uses it to answer with:
 
 ## Enterprise Knowledge Seed Data
 
-Located in `starhub-backend/enterprise-knowledge/`:
+Located in `nexus-backend/enterprise-knowledge/`:
 
 | File | Category | Documents | Description |
 |------|----------|-----------|-------------|
@@ -274,7 +274,7 @@ CREATE TABLE control_plane_embeddings (
 
 ```cypher
 -- Nodes
-(:Entity {onto_id: 'STARHUB_ITXP2DEV_ACCOUNT_V1_0', system: 'Salesforce', entity_type: 'Schema', ...})
+(:Entity {onto_id: 'NEXUS_ITXP2DEV_ACCOUNT_V1_0', system: 'Salesforce', entity_type: 'Schema', ...})
 
 -- Edges
 (:Entity)-[:TRIGGERS]->(:Entity)

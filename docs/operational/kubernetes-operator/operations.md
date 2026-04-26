@@ -1,13 +1,13 @@
 # Management & Operations
 
-Day-to-day management and operational procedures for the Totogi Kubernetes Operator.
+Day-to-day management and operational procedures for the Nexus Kubernetes Operator.
 
 ## Operator Management
 
 ### Check Status
 
 ```bash
-./operator-starhub-test.sh status
+./operator-nexus-dev.sh status
 ```
 
 Expected healthy output:
@@ -15,7 +15,7 @@ Expected healthy output:
 ✓ Operator is installed
   Status: installed
   Version: latest
-  Namespace: totogi-system
+  Namespace: nexus-system
   Ready replicas: 1/1
 
 ✓ Operator is healthy and running
@@ -25,26 +25,26 @@ Expected healthy output:
 
 ```bash
 # Stream logs
-kubectl -n totogi-system logs -f deployment/totogi-operator
+kubectl -n nexus-system logs -f deployment/nexus-operator
 
 # Last 100 lines
-kubectl -n totogi-system logs deployment/totogi-operator --tail=100
+kubectl -n nexus-system logs deployment/nexus-operator --tail=100
 
 # Logs with timestamps
-kubectl -n totogi-system logs deployment/totogi-operator --timestamps
+kubectl -n nexus-system logs deployment/nexus-operator --timestamps
 ```
 
 ### Restart Operator
 
 ```bash
-kubectl -n totogi-system rollout restart deployment/totogi-operator
+kubectl -n nexus-system rollout restart deployment/nexus-operator
 ```
 
 ### Scale Operator
 
 ```bash
 # Not recommended - operator should run as single replica
-kubectl -n totogi-system scale deployment/totogi-operator --replicas=1
+kubectl -n nexus-system scale deployment/nexus-operator --replicas=1
 ```
 
 ## Capability Management
@@ -52,7 +52,7 @@ kubectl -n totogi-system scale deployment/totogi-operator --replicas=1
 ### List All Capabilities
 
 ```bash
-kubectl get totogicapabilities -A
+kubectl get nexuscapabilities -A
 # or
 kubectl get tc -A
 ```
@@ -60,13 +60,13 @@ kubectl get tc -A
 ### Get Capability Details
 
 ```bash
-kubectl describe totogicapability <name> -n <namespace>
+kubectl describe nexuscapability <name> -n <namespace>
 ```
 
 ### Watch Capability Status
 
 ```bash
-kubectl get totogicapabilities -A -w
+kubectl get nexuscapabilities -A -w
 ```
 
 ### Update Capability
@@ -74,7 +74,7 @@ kubectl get totogicapabilities -A -w
 Edit the CR and apply:
 
 ```bash
-kubectl edit totogicapability <name> -n <namespace>
+kubectl edit nexuscapability <name> -n <namespace>
 # or
 kubectl apply -f updated-capability.yaml
 ```
@@ -82,7 +82,7 @@ kubectl apply -f updated-capability.yaml
 ### Delete Capability
 
 ```bash
-kubectl delete totogicapability <name> -n <namespace>
+kubectl delete nexuscapability <name> -n <namespace>
 ```
 
 !!! note "Deletion Policy"
@@ -104,25 +104,25 @@ The operator exposes health endpoints on port 8080:
 
 ```bash
 # From within cluster
-kubectl -n totogi-system exec -it deploy/totogi-operator -- curl localhost:8080/healthz
-kubectl -n totogi-system exec -it deploy/totogi-operator -- curl localhost:8080/readyz
+kubectl -n nexus-system exec -it deploy/nexus-operator -- curl localhost:8080/healthz
+kubectl -n nexus-system exec -it deploy/nexus-operator -- curl localhost:8080/readyz
 ```
 
 ### Prometheus Metrics
 
 ```bash
-kubectl -n totogi-system exec -it deploy/totogi-operator -- curl localhost:8080/metrics
+kubectl -n nexus-system exec -it deploy/nexus-operator -- curl localhost:8080/metrics
 ```
 
 Available metrics:
 ```
-# HELP totogi_operator_reconciliations_total Total number of reconciliations
-# TYPE totogi_operator_reconciliations_total counter
-totogi_operator_reconciliations_total 0
+# HELP nexus_operator_reconciliations_total Total number of reconciliations
+# TYPE nexus_operator_reconciliations_total counter
+nexus_operator_reconciliations_total 0
 
-# HELP totogi_operator_ready Operator readiness status
-# TYPE totogi_operator_ready gauge
-totogi_operator_ready 1
+# HELP nexus_operator_ready Operator readiness status
+# TYPE nexus_operator_ready gauge
+nexus_operator_ready 1
 ```
 
 ## Application Updates (Quick Deploy)
@@ -130,13 +130,13 @@ totogi_operator_ready 1
 For code-only changes (no operator or infrastructure changes), use `deploy-app-changes.sh`:
 
 ```bash
-cd /opt/mycode/trilogy/starhub-deployer/kube-operator
+cd /opt/mycode/nexus/nexus-deployer/kube-operator
 ./deploy-app-changes.sh
 ```
 
 This script:
 
-1. Builds `ai-job-engine` (backend) and `starhub-ui` (frontend) Docker images
+1. Builds `ai-job-engine` (backend) and `nexus-ui` (frontend) Docker images
 2. Pushes both to ECR
 3. Deletes existing pods to trigger a rollout with the new images
 4. Waits for all pods to be Ready
@@ -178,10 +178,10 @@ kubectl delete tc myapp-dev -n myapp-dev
 
 ```bash
 # Watch deployment step-by-step
-./operator-starhub-test.sh monitor
+./operator-nexus-dev.sh monitor
 
 # Watch a specific capability
-./operator-starhub-test.sh monitor call-processing-prod/call-processing-prod
+./operator-nexus-dev.sh monitor nexus-ai-prod/nexus-ai-prod
 ```
 
 The monitor shows a live-updating table with each step's status, duration, and resources created.
@@ -189,7 +189,7 @@ The monitor shows a live-updating table with each step's status, duration, and r
 ## Post-Deployment Verification
 
 ```bash
-./operator-starhub-test.sh verify-capability
+./operator-nexus-dev.sh verify-capability
 ```
 
 This runs 4 verification sections:
@@ -204,23 +204,23 @@ This runs 4 verification sections:
 ### Verify CRD
 
 ```bash
-kubectl get crd totogicapabilities.totogi.com
-kubectl api-resources | grep totogi
+kubectl get crd nexuscapabilities.nexus.ai
+kubectl api-resources | grep nexus
 ```
 
 ### Check RBAC
 
 ```bash
-kubectl get clusterrole totogi-operator -o yaml
-kubectl get clusterrolebinding totogi-operator -o yaml
-kubectl get serviceaccount totogi-operator -n totogi-system -o yaml
+kubectl get clusterrole nexus-operator -o yaml
+kubectl get clusterrolebinding nexus-operator -o yaml
+kubectl get serviceaccount nexus-operator -n nexus-system -o yaml
 ```
 
 ### View Events
 
 ```bash
 # Operator events
-kubectl -n totogi-system get events --sort-by='.lastTimestamp' | tail -20
+kubectl -n nexus-system get events --sort-by='.lastTimestamp' | tail -20
 
 # Capability events
 kubectl get events -n <capability-namespace> --sort-by='.lastTimestamp'
@@ -255,13 +255,13 @@ aws ssm get-parameters-by-path --path /<capability>/<env>/ --recursive
 ### Export Capability CR
 
 ```bash
-kubectl get totogicapability <name> -n <namespace> -o yaml > capability-backup.yaml
+kubectl get nexuscapability <name> -n <namespace> -o yaml > capability-backup.yaml
 ```
 
 ### Export All CRs
 
 ```bash
-kubectl get totogicapabilities -A -o yaml > all-capabilities-backup.yaml
+kubectl get nexuscapabilities -A -o yaml > all-capabilities-backup.yaml
 ```
 
 ### Restore Capability
@@ -279,11 +279,11 @@ kubectl apply -f capability-backup.yaml
 ./build-and-push.sh
 
 # Update deployment
-kubectl -n totogi-system set image deployment/totogi-operator \
-  totogi-operator=764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/totogi-operator:latest
+kubectl -n nexus-system set image deployment/nexus-operator \
+  nexus-operator=764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/nexus-operator:latest
 
 # Or use management script
-./operator-starhub-test.sh update
+./operator-nexus-dev.sh update
 ```
 
 ### Clean Up Failed Deployments
@@ -293,10 +293,10 @@ kubectl -n totogi-system set image deployment/totogi-operator \
 kubectl get tc -A | grep Failed
 
 # Force delete stuck capability
-kubectl delete totogicapability <name> -n <namespace> --force --grace-period=0
+kubectl delete nexuscapability <name> -n <namespace> --force --grace-period=0
 
 # Remove finalizer if stuck
-kubectl patch totogicapability <name> -n <namespace> \
+kubectl patch nexuscapability <name> -n <namespace> \
   -p '{"metadata":{"finalizers":null}}' --type=merge
 ```
 
@@ -308,10 +308,10 @@ IRSA handles credential rotation automatically. No manual rotation needed.
 
 ```bash
 # Verify ServiceAccount annotation
-kubectl get serviceaccount totogi-operator -n totogi-system -o yaml | grep eks.amazonaws.com
+kubectl get serviceaccount nexus-operator -n nexus-system -o yaml | grep eks.amazonaws.com
 
 # Verify IAM role trust policy
-aws iam get-role --role-name TotogiOperatorRole --query 'Role.AssumeRolePolicyDocument'
+aws iam get-role --role-name NexusAIOperatorRole --query 'Role.AssumeRolePolicyDocument'
 ```
 
 ## Scaling Capabilities
@@ -350,20 +350,20 @@ spec:
 
 ```bash
 # Check what the operator can do
-kubectl auth can-i --list --as=system:serviceaccount:totogi-system:totogi-operator
+kubectl auth can-i --list --as=system:serviceaccount:nexus-system:nexus-operator
 ```
 
 ### Review IAM Role Policy
 
 ```bash
-aws iam list-attached-role-policies --role-name TotogiOperatorRole
-aws iam get-role-policy --role-name TotogiOperatorRole --policy-name TotogiOperatorPolicy
+aws iam list-attached-role-policies --role-name NexusAIOperatorRole
+aws iam get-role-policy --role-name NexusAIOperatorRole --policy-name NexusAIOperatorPolicy
 ```
 
 ### Check Pod Security
 
 ```bash
-kubectl get pod -n totogi-system -o jsonpath='{.items[*].spec.securityContext}'
+kubectl get pod -n nexus-system -o jsonpath='{.items[*].spec.securityContext}'
 ```
 
 ## Performance Tuning
@@ -402,15 +402,15 @@ spec:
 
 | Task | Command |
 |------|---------|
-| Check operator status | `./operator-starhub-test.sh status` |
-| View operator logs | `kubectl -n totogi-system logs -f deployment/totogi-operator` |
+| Check operator status | `./operator-nexus-dev.sh status` |
+| View operator logs | `kubectl -n nexus-system logs -f deployment/nexus-operator` |
 | List capabilities | `kubectl get tc -A` |
 | Describe capability | `kubectl describe tc <name>` |
 | Watch capabilities | `kubectl get tc -A -w` |
 | Delete capability | `kubectl delete tc <name>` |
-| View events | `kubectl -n totogi-system get events` |
-| Restart operator | `kubectl -n totogi-system rollout restart deployment/totogi-operator` |
-| Check CRD | `kubectl get crd totogicapabilities.totogi.com` |
+| View events | `kubectl -n nexus-system get events` |
+| Restart operator | `kubectl -n nexus-system rollout restart deployment/nexus-operator` |
+| Check CRD | `kubectl get crd nexuscapabilities.nexus.ai` |
 
 ---
 

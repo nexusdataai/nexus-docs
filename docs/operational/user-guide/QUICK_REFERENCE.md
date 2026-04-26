@@ -83,8 +83,8 @@ Capability Selection → Installed → Delete → Confirm → Execute
 ## Support
 
 - **Docs**: This user guide
-- **Email**: support@totogi.com
-- **Portal**: support.totogi.com
+- **Email**: support@nexus.ai
+- **Portal**: support.nexus.ai
 
 ## Keyboard Shortcuts
 
@@ -96,4 +96,4 @@ Capability Selection → Installed → Delete → Confirm → Execute
 
 ---
 
-*Totogi Capability Installer v1.0.0*
+*NexusAI Deployer v1.0.0*

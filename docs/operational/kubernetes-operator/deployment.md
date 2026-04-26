@@ -1,6 +1,6 @@
 # Deployment Guide
 
-Step-by-step guide for deploying the Totogi Kubernetes Operator.
+Step-by-step guide for deploying the Nexus Kubernetes Operator.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ The deploying user needs these permissions:
 
 ## Deployment Scripts
 
-All scripts are located in `/opt/mycode/trilogy/starhub-deployer/kube-operator/`.
+All scripts are located in `/opt/mycode/nexus/nexus-deployer/kube-operator/`.
 
 ### Script Overview
 
@@ -38,14 +38,14 @@ All scripts are located in `/opt/mycode/trilogy/starhub-deployer/kube-operator/`
 |--------|---------|
 | `build-and-deploy.sh` | Build image and deploy (all-in-one) |
 | `build-and-push.sh` | Build and push image to ECR |
-| `operator-starhub-test.sh` | Manage operator lifecycle |
+| `operator-nexus-dev.sh` | Manage operator lifecycle |
 
 ## Deployment Methods
 
 ### Method 1: One-Command Deployment (Recommended)
 
 ```bash
-cd /opt/mycode/trilogy/starhub-deployer/kube-operator
+cd /opt/mycode/nexus/nexus-deployer/kube-operator
 ./build-and-deploy.sh
 ```
 
@@ -61,7 +61,7 @@ This script:
 #### Step 1: Scan Cluster (Optional)
 
 ```bash
-./operator-starhub-test.sh scan
+./operator-nexus-dev.sh scan
 ```
 
 Verifies:
@@ -79,17 +79,17 @@ Verifies:
 
 This:
 - Builds Docker image from `Dockerfile`
-- Creates ECR repository `totogi-operator`
+- Creates ECR repository `nexus-operator`
 - Pushes image to ECR
 
 #### Step 3: Deploy Operator
 
 ```bash
-./operator-starhub-test.sh deploy
+./operator-nexus-dev.sh deploy
 ```
 
 This:
-- Creates `totogi-system` namespace
+- Creates `nexus-system` namespace
 - Applies CRD
 - Creates RBAC resources
 - Creates IAM role with IRSA
@@ -98,7 +98,7 @@ This:
 #### Step 4: Verify Deployment
 
 ```bash
-./operator-starhub-test.sh status
+./operator-nexus-dev.sh status
 ```
 
 Expected output:
@@ -106,7 +106,7 @@ Expected output:
 ✓ Operator is installed
   Status: installed
   Version: latest
-  Namespace: totogi-system
+  Namespace: nexus-system
   Ready replicas: 1/1
 
 ✓ Operator is healthy and running
@@ -119,10 +119,10 @@ For more control, use the Python scripts directly:
 ### deploy_operator_to_cluster.py
 
 ```bash
-cd /opt/mycode/trilogy/starhub-deployer/backend
+cd /opt/mycode/nexus/nexus-deployer/backend
 
 python3 scripts/deploy_operator_to_cluster.py \
-  --cluster starhub-test \
+  --cluster nexus-dev \
   --region ap-southeast-1 \
   --profile external-access
 ```
@@ -146,18 +146,18 @@ python3 scripts/deploy_operator_to_cluster.py \
 ```bash
 # Safe cleanup (keeps IAM, ECR, access)
 python3 scripts/cleanup_operator.py \
-  --cluster starhub-test \
+  --cluster nexus-dev \
   --profile external-access
 
 # Keep IAM and ECR
 python3 scripts/cleanup_operator.py \
-  --cluster starhub-test \
+  --cluster nexus-dev \
   --profile external-access \
   --keep-iam --keep-ecr
 
 # Complete cleanup (removes access)
 python3 scripts/cleanup_operator.py \
-  --cluster starhub-test \
+  --cluster nexus-dev \
   --profile external-access \
   --remove-aws-auth
 ```
@@ -176,22 +176,22 @@ kubectl apply -f examples/test-capability.yaml
 
 ```bash
 # Watch capability status
-kubectl get totogicapabilities -A -w
+kubectl get nexuscapabilities -A -w
 
 # View operator logs
-kubectl -n totogi-system logs -f deployment/totogi-operator
+kubectl -n nexus-system logs -f deployment/nexus-operator
 ```
 
 ### Check Created Resources
 
 ```bash
 # Kubernetes resources
-kubectl get all -n call-processing-dev
+kubectl get all -n nexus-ai-dev
 
 # AWS resources
-aws dynamodb list-tables | grep call-processing
-aws s3 ls | grep call-processing
-aws iam get-role --role-name call-processing-dev-app-role
+aws dynamodb list-tables | grep nexus-ai
+aws s3 ls | grep nexus-ai
+aws iam get-role --role-name nexus-ai-dev-app-role
 ```
 
 ## Production Deployment Checklist
@@ -224,7 +224,7 @@ aws iam get-role --role-name call-processing-dev-app-role
 ### Update with New Image
 
 ```bash
-cd /opt/mycode/trilogy/starhub-deployer/kube-operator
+cd /opt/mycode/nexus/nexus-deployer/kube-operator
 
 # Rebuild and redeploy
 ./build-and-deploy.sh
@@ -233,13 +233,13 @@ cd /opt/mycode/trilogy/starhub-deployer/kube-operator
 ### Update Without Rebuild
 
 ```bash
-./operator-starhub-test.sh update
+./operator-nexus-dev.sh update
 ```
 
 ### Force Redeployment
 
 ```bash
-./operator-starhub-test.sh deploy --force
+./operator-nexus-dev.sh deploy --force
 ```
 
 ## Deleting the Operator
@@ -249,7 +249,7 @@ cd /opt/mycode/trilogy/starhub-deployer/kube-operator
 Preserves IAM roles, ECR repository, and access:
 
 ```bash
-./operator-starhub-test.sh delete
+./operator-nexus-dev.sh delete
 ```
 
 ### Complete Cleanup
@@ -257,7 +257,7 @@ Preserves IAM roles, ECR repository, and access:
 Removes everything including access:
 
 ```bash
-./operator-starhub-test.sh delete --full
+./operator-nexus-dev.sh delete --full
 ```
 
 !!! warning "Access Loss"
@@ -286,7 +286,7 @@ python3 scripts/deploy_operator_to_cluster.py \
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `LOG_LEVEL` | INFO | Logging level |
-| `OPERATOR_NAMESPACE` | totogi-system | Operator namespace |
+| `OPERATOR_NAMESPACE` | nexus-system | Operator namespace |
 | `AWS_REGION` | ap-southeast-1 | AWS region |
 
 ### Customizing Deployment

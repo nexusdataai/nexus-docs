@@ -1,4 +1,4 @@
-# WXCC Simulator Guide
+# Enterprise Data Simulator - Contact Center (WXCC)
 
 !!! info "Screenshots"
     To capture additional screenshots of the simulator UI, run the Playwright script:
@@ -8,13 +8,13 @@
 
 ## Overview
 
-The **WXCC Simulator** provides a fully functional mock of the Cisco Webex Contact Center (WXCC) API within the CallSense platform. It allows teams to develop, test, and demo the call-processing pipeline -- including task ingestion, recording retrieval, transcription, and analytics -- without requiring a live Webex CC tenant or OAuth credentials.
+The **WXCC Simulator** provides a fully functional mock of the Cisco Webex Contact Center (WXCC) API within the NexusAI platform. It allows teams to develop, test, and demo the data-processing pipeline -- including task ingestion, recording retrieval, transcription, and analytics -- without requiring a live Webex CC tenant or OAuth credentials.
 
 **Key capabilities:**
 
 - Creates realistic call tasks with randomized metadata (phone numbers, queues, agents, statuses)
 - Stores and streams call recordings from S3 (real audio files or synthetic fallback)
-- Exposes WXCC-compatible REST endpoints consumed by the existing call-processing stages
+- Exposes WXCC-compatible REST endpoints consumed by the existing nexus-ai stages
 - Managed entirely through the UI, CLI, or REST API
 
 ---
@@ -56,14 +56,14 @@ flowchart TB
 
 | Component | Location | Role |
 |-----------|----------|------|
-| **WXCCSimulatorService** | `starhub-backend/src/services/wxcc_simulator_service.py` | Core service: S3 storage, task/recording CRUD, seeding, caching |
-| **Simulator API** | `starhub-backend/src/apis/wxcc_simulator_api.py` | FastAPI router exposing WXCC-compatible + admin endpoints |
-| **Simulator Processor** | `starhub-backend/src/stages/wxcc-simulator/simulator_processor.py` | Stage processor that feeds simulator tasks into the pipeline |
-| **Simulator Stage** | `starhub-backend/src/stages/wxcc-simulator/wxcc_simulator_stage.py` | Journey stage definition for WXCC simulator |
-| **Seed Script** | `starhub-backend/scripts/wxcc-simulator/seed_simulator.py` | CLI tool to seed/reset the simulator |
-| **MCP Tool** | `starhub-backend/src/tools/wxcc_simulator_tool.py` | AI tool for programmatic simulator interaction |
-| **UI Panel** | `starhub-ui/src/components/wxcc-simulator/WXCCSimulatorPanel.tsx` | Main React component for the WXCC simulator tab |
-| **UI Service** | `starhub-ui/src/services/wxccSimulatorService.ts` | Frontend API client |
+| **WXCCSimulatorService** | `nexus-backend/src/services/wxcc_simulator_service.py` | Core service: S3 storage, task/recording CRUD, seeding, caching |
+| **Simulator API** | `nexus-backend/src/apis/wxcc_simulator_api.py` | FastAPI router exposing WXCC-compatible + admin endpoints |
+| **Simulator Processor** | `nexus-backend/src/stages/wxcc-simulator/simulator_processor.py` | Stage processor that feeds simulator tasks into the pipeline |
+| **Simulator Stage** | `nexus-backend/src/stages/wxcc-simulator/wxcc_simulator_stage.py` | Journey stage definition for WXCC simulator |
+| **Seed Script** | `nexus-backend/scripts/wxcc-simulator/seed_simulator.py` | CLI tool to seed/reset the simulator |
+| **MCP Tool** | `nexus-backend/src/tools/wxcc_simulator_tool.py` | AI tool for programmatic simulator interaction |
+| **UI Panel** | `nexus-ui/src/components/wxcc-simulator/WXCCSimulatorPanel.tsx` | Main React component for the WXCC simulator tab |
+| **UI Service** | `nexus-ui/src/services/wxccSimulatorService.ts` | Frontend API client |
 
 ### S3 Storage Layout
 
@@ -126,7 +126,7 @@ flowchart LR
 
 When seeding tasks with recordings, the service selects audio files in this order:
 
-1. **Local recordings** -- Files in `starhub-backend/scripts/wxcc-simulator/recordings/` (MP3, WAV, M4A, OGG, FLAC). Best for local development where you have actual call recordings.
+1. **Local recordings** -- Files in `nexus-backend/scripts/wxcc-simulator/recordings/` (MP3, WAV, M4A, OGG, FLAC). Best for local development where you have actual call recordings.
 2. **S3 sample recordings** -- Files previously uploaded to `s3://{bucket}/{prefix}/sample-recordings/`. Used in Docker/Kubernetes environments where local files are unavailable. Cached via an LRU cache (max 20 files, 50 MB).
 3. **Synthetic audio** -- As a last resort, a 440 Hz sine wave WAV file is generated programmatically. This produces valid audio but has no speech content.
 
@@ -191,7 +191,7 @@ To populate the simulator with test data:
 4. Click **Seed Data** to begin. The process creates tasks, uploads recordings to S3, and updates `data.json`.
 
 !!! tip "Quick Testing"
-    For immediate testing with the call-processing pipeline, use a small number of tasks (2-5) with "Reset existing data first" enabled. The tasks will be created with recent timestamps.
+    For immediate testing with the nexus-ai pipeline, use a small number of tasks (2-5) with "Reset existing data first" enabled. The tasks will be created with recent timestamps.
 
 ### Managing Sample Recordings
 
@@ -248,7 +248,7 @@ Click **Reset** in the header to delete all tasks and recordings from the simula
 
 ### Seed Script
 
-The seed script (`starhub-backend/scripts/wxcc-simulator/seed_simulator.py`) supports two modes:
+The seed script (`nexus-backend/scripts/wxcc-simulator/seed_simulator.py`) supports two modes:
 
 #### API Mode (gateway running)
 
@@ -273,10 +273,10 @@ python scripts/wxcc-simulator/seed_simulator.py --api http://localhost:8000 --st
 python scripts/wxcc-simulator/seed_simulator.py --tasks 20
 
 # Seed with explicit bucket
-python scripts/wxcc-simulator/seed_simulator.py --bucket call-processing-dev-wxcc-simulator --tasks 20
+python scripts/wxcc-simulator/seed_simulator.py --bucket nexus-ai-dev-wxcc-simulator --tasks 20
 
 # Upload local sample recordings to S3 (one-time setup for Docker)
-python scripts/wxcc-simulator/seed_simulator.py --upload-samples --bucket call-processing-dev-wxcc-simulator
+python scripts/wxcc-simulator/seed_simulator.py --upload-samples --bucket nexus-ai-dev-wxcc-simulator
 ```
 
 ### CLI Options Reference
@@ -313,7 +313,7 @@ All endpoints are under `/api/v1/simulator`.
 
 ### WXCC-Compatible Endpoints
 
-These endpoints match the Webex CC API contract, allowing the existing call-processing code to work unchanged.
+These endpoints match the Webex CC API contract, allowing the existing nexus-ai code to work unchanged.
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -370,7 +370,7 @@ Response:
 {
   "enabled": true,
   "org_id": "sim-org-001",
-  "bucket": "call-processing-dev-wxcc-simulator",
+  "bucket": "nexus-ai-dev-wxcc-simulator",
   "prefix": "wxcc-simulator",
   "task_count": 10,
   "recording_count": 10,
@@ -387,7 +387,7 @@ Response:
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `WXCC_SIMULATOR_ENABLED` | `true` | Enable the WXCC simulator |
-| `WXCC_SIMULATOR_BUCKET` | `call-processing-{env}-wxcc-simulator` | S3 bucket for simulator data |
+| `WXCC_SIMULATOR_BUCKET` | `nexus-ai-{env}-wxcc-simulator` | S3 bucket for simulator data |
 | `WXCC_SIMULATOR_PREFIX` | `wxcc-simulator` | S3 key prefix |
 | `WXCC_SIMULATOR_BASE_URL` | `http://localhost:8000` | Base URL used in recording file paths |
 | `WXCC_SIM_ORG_ID` | `sim-org-001` | Simulated organization ID |
@@ -400,7 +400,7 @@ The WXCC Simulator settings are also available in the application **Settings** p
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
 | Enabled | Toggle | on | Enable WXCC simulator mode |
-| Bucket | Text | `call-processing-{env}-wxcc-simulator` | S3 bucket for simulator data |
+| Bucket | Text | `nexus-ai-{env}-wxcc-simulator` | S3 bucket for simulator data |
 | Prefix | Text | `wxcc-simulator` | S3 prefix for simulator data |
 | Org Id | Text | `sim-org-001` | Simulated organization ID |
 
@@ -410,10 +410,10 @@ Changes are persisted to AWS SSM Parameter Store and take effect immediately. Us
 
 | Parameter Path | Description |
 |---------------|-------------|
-| `/call-processing/{env}/wxcc/enabled` | `true`/`false` -- master enable flag |
-| `/call-processing/{env}/wxcc/bucket` | S3 bucket name |
-| `/call-processing/{env}/wxcc/prefix` | S3 prefix |
-| `/call-processing/{env}/wxcc/org-id` | Organization ID |
+| `/nexus-ai/{env}/wxcc/enabled` | `true`/`false` -- master enable flag |
+| `/nexus-ai/{env}/wxcc/bucket` | S3 bucket name |
+| `/nexus-ai/{env}/wxcc/prefix` | S3 prefix |
+| `/nexus-ai/{env}/wxcc/org-id` | Organization ID |
 
 ### Per-Journey Configuration
 

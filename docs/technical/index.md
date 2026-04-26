@@ -207,7 +207,7 @@ Analytics database with tables for:
 ## Additional Resources
 
 - [Architecture Documentation](architecture/job-execution-flow.md)
-- [Call Processing Details](call-processing/)
+- [Call Processing Details](nexus-ai/)
 - [Gateway Documentation](gateway/)
 - [Database Design](dbdesign/journey-data.md)
 

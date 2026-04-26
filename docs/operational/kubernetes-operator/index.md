@@ -1,13 +1,13 @@
 # Kubernetes Operator Deployment
 
-This section covers the Totogi Kubernetes Operator for deploying and managing Totogi capabilities on Amazon EKS clusters.
+This section covers the Nexus Kubernetes Operator for deploying and managing NexusAI capabilities on Amazon EKS clusters.
 
 !!! tip "Download Complete Documentation"
-    **[Download PDF Guide](Totogi-Kubernetes-Operator-Guide.pdf)** - Complete documentation in a single PDF file for offline reading.
+    **[Download PDF Guide](NexusAI-Kubernetes-Operator-Guide.pdf)** - Complete documentation in a single PDF file for offline reading.
 
 ## Overview
 
-The Totogi Operator automates the full lifecycle of Totogi capabilities in Kubernetes. When you create a `TotogiCapability` custom resource, the operator:
+The Nexus Operator automates the full lifecycle of NexusAI capabilities in Kubernetes. When you create a `NexusAICapability` custom resource, the operator:
 
 1. Provisions AWS data services (DynamoDB, S3, Glue)
 2. Creates SSM Parameters and Secrets Manager secrets
@@ -38,9 +38,9 @@ The Totogi Operator automates the full lifecycle of Totogi capabilities in Kuber
 ┌────────────────────────────────────┼───────────────────────────┐
 │  EKS Cluster                       │                           │
 │                                    │                           │
-│  totogi-system namespace           │                           │
+│  nexus-system namespace           │                           │
 │  ┌────────────────────────┐        │                           │
-│  │    Totogi Operator     │        │                           │
+│  │    Nexus Operator     │        │                           │
 │  │  Watches CRs, provisions       │                           │
 │  │  AWS + K8s resources   │        │                           │
 │  └────────────────────────┘        │                           │
@@ -81,7 +81,7 @@ The Totogi Operator automates the full lifecycle of Totogi capabilities in Kuber
 | [Quick Start Guide](quick-start.md) | Get the operator running in minutes |
 | [AWS Prerequisites](aws-prerequisites.md) | IAM roles, permissions, and OIDC configuration |
 | [Architecture](architecture.md) | Detailed architecture and component overview |
-| [Custom Resource Reference](custom-resource.md) | Complete reference for TotogiCapability CRD |
+| [Custom Resource Reference](custom-resource.md) | Complete reference for NexusAICapability CRD |
 | [Deployment Guide](deployment.md) | Step-by-step deployment instructions |
 | [Operations](operations.md) | Day-to-day management and operational procedures |
 | [Troubleshooting](troubleshooting.md) | Common issues and solutions |
@@ -105,13 +105,13 @@ The `e2e-deploy.sh` script automates the full deployment lifecycle in 7 sequenti
 
 | Step | Name | Script / Command | What It Does | Skip Flag |
 |:----:|------|------------------|--------------|-----------|
-| 1 | **Cleanup** | `operator-starhub-test.sh delete --full` | Remove operator, IAM, ECR, ALB Controller. Refresh kubeconfig. | `--skip-clean` |
-| 2 | **Build Operator** | `build-and-push.sh` | Build `totogi-operator` image, push to ECR | -- |
-| 3 | **Build Apps** | `starhub-backend/build.sh` + `starhub-ui/build.sh` | Build `ai-job-engine` + `starhub-ui` images, push to ECR | `--skip-app-build` |
-| 4 | **Deploy Operator** | `operator-starhub-test.sh deploy` | Create namespace, apply CRD + RBAC + Deployment, install ALB Controller | -- |
-| 5 | **Apply Capability** | `kubectl apply -f capability.yaml` | Create namespace, apply TotogiCapability CR, trigger reconciliation | -- |
-| 6 | **Monitor & Wait** | `operator-starhub-test.sh monitor` | Watch AWS provisioning, wait for pods Ready, ALB DNS, HTTP response | -- |
-| 7 | **Verify** | `operator-starhub-test.sh verify-capability` | Validate AWS resources, K8s workloads, app health, IRSA connectivity | -- |
+| 1 | **Cleanup** | `operator-nexus-dev.sh delete --full` | Remove operator, IAM, ECR, ALB Controller. Refresh kubeconfig. | `--skip-clean` |
+| 2 | **Build Operator** | `build-and-push.sh` | Build `nexus-operator` image, push to ECR | -- |
+| 3 | **Build Apps** | `nexus-backend/build.sh` + `nexus-ui/build.sh` | Build `ai-job-engine` + `nexus-ui` images, push to ECR | `--skip-app-build` |
+| 4 | **Deploy Operator** | `operator-nexus-dev.sh deploy` | Create namespace, apply CRD + RBAC + Deployment, install ALB Controller | -- |
+| 5 | **Apply Capability** | `kubectl apply -f capability.yaml` | Create namespace, apply NexusAICapability CR, trigger reconciliation | -- |
+| 6 | **Monitor & Wait** | `operator-nexus-dev.sh monitor` | Watch AWS provisioning, wait for pods Ready, ALB DNS, HTTP response | -- |
+| 7 | **Verify** | `operator-nexus-dev.sh verify-capability` | Validate AWS resources, K8s workloads, app health, IRSA connectivity | -- |
 
 ### Detailed Deployment Sequence
 
@@ -122,33 +122,33 @@ The `e2e-deploy.sh` script automates the full deployment lifecycle in 7 sequenti
 ## Quick Start
 
 ```bash
-cd /opt/mycode/trilogy/starhub-deployer/kube-operator
+cd /opt/mycode/nexus/nexus-deployer/kube-operator
 
 # 1. Scan cluster readiness
-./operator-starhub-test.sh scan
+./operator-nexus-dev.sh scan
 
 # 2. Build and push operator image
 ./build-and-push.sh
 
 # 3. Deploy operator (auto-configures IRSA + ALB Controller)
-./operator-starhub-test.sh deploy
+./operator-nexus-dev.sh deploy
 
 # 4. Deploy a capability
-kubectl create namespace call-processing-prod
-kubectl apply -f examples/call-processing-complete.yaml
+kubectl create namespace nexus-ai-prod
+kubectl apply -f examples/nexus-ai-complete.yaml
 
 # 5. Monitor deployment progress
-./operator-starhub-test.sh monitor
+./operator-nexus-dev.sh monitor
 
 # 6. Verify everything
-./operator-starhub-test.sh verify-capability
+./operator-nexus-dev.sh verify-capability
 ```
 
 ---
 
 ## Management Commands
 
-All commands via `./operator-starhub-test.sh`:
+All commands via `./operator-nexus-dev.sh`:
 
 | Command | Description |
 |---------|-------------|
@@ -168,7 +168,7 @@ All commands via `./operator-starhub-test.sh`:
 
 ## Operator Reconciliation Flow
 
-When you apply a TotogiCapability, the operator executes these steps (visible via `monitor`):
+When you apply a NexusAICapability, the operator executes these steps (visible via `monitor`):
 
 | Step | Phase | What Happens |
 |------|-------|-------------|
@@ -193,8 +193,8 @@ Final status: `Running` (success) or `Failed` (with error message).
 ### Minimal Example
 
 ```yaml
-apiVersion: totogi.com/v1
-kind: TotogiCapability
+apiVersion: nexus.ai/v1
+kind: NexusAICapability
 metadata:
   name: myapp-dev
   namespace: myapp-dev
@@ -223,17 +223,17 @@ spec:
 ### Production Example with ALB Ingress
 
 ```yaml
-apiVersion: totogi.com/v1
-kind: TotogiCapability
+apiVersion: nexus.ai/v1
+kind: NexusAICapability
 metadata:
-  name: call-processing-prod
-  namespace: call-processing-prod
+  name: nexus-ai-prod
+  namespace: nexus-ai-prod
   labels:
-    app.kubernetes.io/name: call-processing
+    app.kubernetes.io/name: nexus-ai
     app.kubernetes.io/version: "2.5.0"
-    totogi.com/environment: prod
+    nexus.ai/environment: prod
 spec:
-  capabilityName: call-processing
+  capabilityName: nexus-ai
   version: "2.5.0"
   environment: prod
   region: ap-southeast-1
@@ -241,7 +241,7 @@ spec:
 
   frontend:
     replicas: 3
-    image: "764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/starhub-ui:latest"
+    image: "764119721991.dkr.ecr.ap-southeast-1.amazonaws.com/nexus-ui:latest"
 
   backend:
     replicas: 3
@@ -260,7 +260,7 @@ spec:
   deletionPolicy: Delete
 ```
 
-See `examples/call-processing-complete.yaml` for a complete working example.
+See `examples/nexus-ai-complete.yaml` for a complete working example.
 
 ---
 
@@ -270,17 +270,17 @@ All resources follow consistent naming patterns:
 
 | Resource | Pattern | Example |
 |----------|---------|---------|
-| DynamoDB Table | `{cap}-{env}-{purpose}` | `call-processing-prod-license` |
-| S3 Bucket | `{cap}-{env}-{purpose}` | `call-processing-prod-call-data` |
-| SSM Parameter | `/{cap}/{env}/{category}/{key}` | `/call-processing/prod/aws/region` |
-| Secret | `{cap}/{env}/{type}` | `call-processing/prod/api-keys` |
+| DynamoDB Table | `{cap}-{env}-{purpose}` | `nexus-ai-prod-license` |
+| S3 Bucket | `{cap}-{env}-{purpose}` | `nexus-ai-prod-call-data` |
+| SSM Parameter | `/{cap}/{env}/{category}/{key}` | `/nexus-ai/prod/aws/region` |
+| Secret | `{cap}/{env}/{type}` | `nexus-ai/prod/api-keys` |
 | Glue Database | `{cap}_{env}_db` | `call_processing_prod_db` |
-| IAM Role | `{cap}-{env}-app-role` | `call-processing-prod-app-role` |
-| K8s Namespace | `{cap}-{env}` | `call-processing-prod` |
-| K8s Deployment | `{cap}-{env}-{component}` | `call-processing-prod-backend` |
-| K8s Service | `{cap}-{env}-{component}-svc` | `call-processing-prod-frontend-svc` |
-| K8s Ingress | `{cap}-{env}-app-ingress` | `call-processing-prod-app-ingress` |
-| K8s ServiceAccount | `{cap}-{env}-app-sa` | `call-processing-prod-app-sa` |
+| IAM Role | `{cap}-{env}-app-role` | `nexus-ai-prod-app-role` |
+| K8s Namespace | `{cap}-{env}` | `nexus-ai-prod` |
+| K8s Deployment | `{cap}-{env}-{component}` | `nexus-ai-prod-backend` |
+| K8s Service | `{cap}-{env}-{component}-svc` | `nexus-ai-prod-frontend-svc` |
+| K8s Ingress | `{cap}-{env}-app-ingress` | `nexus-ai-prod-app-ingress` |
+| K8s ServiceAccount | `{cap}-{env}-app-sa` | `nexus-ai-prod-app-sa` |
 
 ---
 
@@ -301,7 +301,7 @@ All resources follow consistent naming patterns:
 |----------|-------------|---------|
 | `AWS_REGION` | AWS region for resources | `ap-southeast-1` |
 | `EKS_CLUSTER_NAME` | Cluster name for OIDC discovery | (auto-detected) |
-| `OPERATOR_NAMESPACE` | Namespace for operator | `totogi-system` |
+| `OPERATOR_NAMESPACE` | Namespace for operator | `nexus-system` |
 | `LOG_LEVEL` | Logging verbosity | `INFO` |
 
 ## Directory Structure
@@ -309,10 +309,10 @@ All resources follow consistent naming patterns:
 ```
 kube-operator/
   manifests/
-    crd.yaml              # TotogiCapability CRD
+    crd.yaml              # NexusAICapability CRD
     deployment.yaml       # Operator deployment manifest
     rbac.yaml             # ClusterRole and bindings
-  src/totogi_operator/
+  src/nexus_operator/
     main.py               # Kopf handlers (create/update/delete)
     resources/
       dynamodb.py         # DynamoDB provisioner
@@ -327,8 +327,8 @@ kube-operator/
       naming.py           # Resource naming conventions
       eks_utils.py        # OIDC provider discovery
   examples/
-    call-processing-complete.yaml  # Full working example
-  operator-starhub-test.sh        # Management script
+    nexus-ai-complete.yaml  # Full working example
+  operator-nexus-dev.sh        # Management script
   build-and-push.sh               # Build and push operator image
   build-and-deploy.sh             # Build + deploy in one command
   e2e-deploy.sh                   # Full 7-step E2E deployment

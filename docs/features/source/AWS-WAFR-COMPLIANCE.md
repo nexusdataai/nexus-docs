@@ -1,6 +1,6 @@
 # AWS Well-Architected Framework (WAFR) Compliance Document
 
-## Totogi Customer Toolkit - Business Capability Platform
+## NexusAI Toolkit - Business Capability Platform
 
 **Document Version:** 1.0  
 **Last Updated:** January 12, 2026  
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This document provides a comprehensive analysis of the Totogi Customer Toolkit (StarHub) platform against the AWS Well-Architected Framework's six pillars. The platform is an enterprise-grade management toolkit that enables customers to deploy modular business capabilities into their own AWS accounts, featuring a Progressive Web Application (PWA) frontend, containerized backend services, and comprehensive AWS infrastructure orchestration.
+This document provides a comprehensive analysis of the NexusAI Toolkit (NexusAI) platform against the AWS Well-Architected Framework's six pillars. The platform is an enterprise-grade management toolkit that enables customers to deploy modular business capabilities into their own AWS accounts, featuring a Progressive Web Application (PWA) frontend, containerized backend services, and comprehensive AWS infrastructure orchestration.
 
 ### Architecture Overview
 

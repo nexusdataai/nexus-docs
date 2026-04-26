@@ -1,6 +1,6 @@
 # Project Scope
 
-This section contains project scope definitions, release notes, and project metadata tracking the evolution of the Totogi CallSense Platform.
+This section contains project scope definitions, release notes, and project metadata tracking the evolution of the NexusAI Data Platform.
 
 ## Overview
 
@@ -45,7 +45,7 @@ Note: Project notes are maintained in the project-notes repository.
 
 ```mermaid
 gantt
-    title Totogi CallSense Platform Development Timeline
+    title NexusAI Data Platform Development Timeline
     dateFormat YYYY-MM
     section Phase 1
     Initial Development    :2023-01, 2023-06
@@ -82,23 +82,23 @@ gantt
 
 ## Project Repositories
 
-The Totogi CallSense Platform project consists of multiple repositories:
+The NexusAI Data Platform project consists of multiple repositories:
 
 | Repository | Purpose | Status |
 |------------|---------|--------|
-| **starhub-backend** | Backend services and API | ✅ Active |
-| **starhub-ui** | React frontend application | ✅ Active |
-| **starhub-deployer** | AWS deployment automation | ✅ Active |
-| **starhub-docs** | Documentation site | ✅ Active |
+| **nexus-backend** | Backend services and API | ✅ Active |
+| **nexus-ui** | React frontend application | ✅ Active |
+| **nexus-deployer** | AWS deployment automation | ✅ Active |
+| **nexus-docs** | Documentation site | ✅ Active |
 | **project-notes** | Project metadata and notes | ✅ Active |
 
 ## Related Projects
 
-The Totogi CallSense Platform is part of a broader portfolio:
+The NexusAI Data Platform is part of a broader portfolio:
 
-- **Econet** - Telecommunications platform
+- **Econet** - Enterprise integration
 - **Maxis** - Customer engagement platform
-- **Movistar** - Call center solutions
+- **Movistar** - Contact center integration
 - **Zain** - AI-powered analytics
 
 ---

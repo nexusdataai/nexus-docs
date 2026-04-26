@@ -1,6 +1,6 @@
 # Windows Installer Build Guide
 
-This guide explains how to build the Totogi Capability Installer Windows executable (.exe) for distribution to customers.
+This guide explains how to build the NexusAI Deployer Windows executable (.exe) for distribution to customers.
 
 ## Overview
 
@@ -38,7 +38,7 @@ pip install pyinstaller
 ## Project Structure
 
 ```
-starhub-deployer/
+nexus-deployer/
 ├── frontend/           # React application
 │   ├── dist/          # Built frontend (created during build)
 │   └── package.json
@@ -136,7 +136,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='totogi-backend',
+    name='nexus-backend',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -160,7 +160,7 @@ cd backend
 pyinstaller backend.spec --clean
 ```
 
-This creates `backend/dist/totogi-backend.exe`
+This creates `backend/dist/nexus-backend.exe`
 
 ### Step 2: Build the React Frontend
 
@@ -202,8 +202,8 @@ npm run build:win
 ```
 
 This creates two outputs in `electron/dist/`:
-- `Totogi Installer Setup x.x.x.exe` - NSIS installer
-- `Totogi Installer x.x.x.exe` - Portable executable
+- `NexusAI Installer Setup x.x.x.exe` - NSIS installer
+- `NexusAI Installer x.x.x.exe` - Portable executable
 
 ## Complete Build Script
 
@@ -214,7 +214,7 @@ Create `build-windows.ps1` in the project root:
 $ErrorActionPreference = "Stop"
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Totogi Capability Installer - Windows Build" -ForegroundColor Cyan
+Write-Host "NexusAI Deployer - Windows Build" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 # Set environment variable for electron-builder
@@ -236,8 +236,8 @@ pip install pyinstaller --quiet
 Write-Host "Running PyInstaller..."
 pyinstaller backend.spec --clean --noconfirm
 
-if (-not (Test-Path "dist/totogi-backend.exe")) {
-    Write-Error "Backend build failed - totogi-backend.exe not found"
+if (-not (Test-Path "dist/nexus-backend.exe")) {
+    Write-Error "Backend build failed - nexus-backend.exe not found"
     exit 1
 }
 Write-Host "Backend build complete!" -ForegroundColor Green
@@ -293,8 +293,8 @@ After a successful build, you'll find these files in `electron/dist/`:
 
 | File | Description | Use Case |
 |------|-------------|----------|
-| `Totogi Installer Setup x.x.x.exe` | NSIS installer | Standard installation with shortcuts |
-| `Totogi Installer x.x.x.exe` | Portable executable | No installation required |
+| `NexusAI Installer Setup x.x.x.exe` | NSIS installer | Standard installation with shortcuts |
+| `NexusAI Installer x.x.x.exe` | Portable executable | No installation required |
 
 ### NSIS Installer Features
 
@@ -331,7 +331,7 @@ datas=[
 
 **Solution**: Verify the backend executable exists before running electron-builder:
 ```powershell
-Test-Path "backend/dist/totogi-backend.exe"
+Test-Path "backend/dist/nexus-backend.exe"
 ```
 
 **Problem**: Build fails with signing errors

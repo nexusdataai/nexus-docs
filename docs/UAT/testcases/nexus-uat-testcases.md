@@ -1,7 +1,7 @@
-# CallSense - User Acceptance Testing (UAT) Test Cases
+# NexusAI - User Acceptance Testing (UAT) Test Cases
 
-**Project:** Starhub Enterprise Sales Call Analytics (CallSense)  
-**SOW Reference:** Skyvera, LLC / StarHub Ltd - Quote# T69449 (Signed 18-Dec-2025)  
+**Project:** NexusAI Enterprise Analytics  
+**SOW Reference:** Skyvera, LLC / NexusAI Ltd - Quote# T69449 (Signed 18-Dec-2025)  
 **Test Plan Version:** 1.0  
 **Document Date:** March 11, 2026  
 **Prepared By:** Skyvera Delivery Team
@@ -10,11 +10,11 @@
 
 ## 1. Overview
 
-This document defines the User Acceptance Testing (UAT) test cases for the CallSense platform delivered under the Starhub Enterprise Sales Call Analytics Capability SOW. Test cases are organized by SOW feature category and map directly to the deliverables defined in SOW Section 4 ("In Scope Capabilities") and the detailed dashboard functionality tables (SOW pages 9-14).
+This document defines the User Acceptance Testing (UAT) test cases for the NexusAI platform delivered under the NexusAI Platform SOW. Test cases are organized by SOW feature category and map directly to the deliverables defined in SOW Section 4 ("In Scope Capabilities") and the detailed dashboard functionality tables (SOW pages 9-14).
 
 **Descoped Items:**
 
-- **B-2 Lead Conversion** — Descoped per CR-001. CallSense creates Leads only; Lead-to-Opportunity conversion remains a manual action by StarHub Sales team.
+- **B-2 Lead Conversion** — Descoped per CR-001. NexusAI creates Leads only; Lead-to-Opportunity conversion remains a manual action by NexusAI Sales team.
 
 **Out of Scope (Future Phases):**
 
@@ -29,7 +29,7 @@ This document defines the User Acceptance Testing (UAT) test cases for the CallS
 
 | Requirement | Details |
 |-------------|---------|
-| Application Access | CallSense web application on StarHub-branded domain |
+| Application Access | NexusAI web application on NexusAI-branded domain |
 | User Accounts | One account per role: Admin, Executive, SalesManager, Rep |
 | Webex Integration | Active connection to Webex Contact Center (Production instance) with real or test call recordings |
 | Salesforce Access | Salesforce sandbox with valid credentials; Lead object and ContentVersion permissions |
@@ -48,7 +48,7 @@ SOW Reference: Page 15
 
 | Test ID | Test Case | Steps | Expected Result | Status |
 |---------|-----------|-------|-----------------|--------|
-| A-1.1 | Continuous Webex Monitoring | 1. Complete a call in Webex Contact Center. 2. Wait up to 10 minutes. 3. Open CallSense Call Analysis dashboard. | New call appears in the call list within 10 minutes of call end | |
+| A-1.1 | Continuous Webex Monitoring | 1. Complete a call in Webex Contact Center. 2. Wait up to 10 minutes. 3. Open NexusAI Call Analysis dashboard. | New call appears in the call list within 10 minutes of call end | |
 | A-1.2 | Webhook Trigger | 1. Complete a call in Webex. 2. Check Operations page for call processing activity. | Webhook triggers call processing pipeline automatically | |
 | A-2.1 | Call Metadata Retrieval | 1. Locate a newly processed call in Call Analysis. 2. Open the call detail. | Call metadata displayed: agent name, customer company, call date/time, duration, call type | |
 | A-2.2 | Audio Recording Available | 1. Open a processed call detail. 2. Navigate to the Recording/Audio tab. | Audio recording is available for playback with play/pause/volume controls | |
@@ -102,7 +102,7 @@ SOW Reference: Pages 15-16
 |---------|-----------|-------|-----------------|--------|
 | D-1.1 | Automatic Deal Value Calculation | 1. Process a call with identifiable products. 2. Open the Deal Analysis for this call. | Deal value automatically calculated: (number of products) x (CloudSense price) x (contract duration) | |
 | D-1.2 | Deal Value Accuracy | 1. Compare the calculated deal value against manually computed value using CloudSense prices. | Calculated deal value matches expected value based on product prices and contract terms | |
-| D-2.1 | Salesforce Value Synchronization | 1. Update a deal value in Salesforce. 2. Refresh the CallSense dashboard. | Updated value from Salesforce reflected in the CallSense UI | |
+| D-2.1 | Salesforce Value Synchronization | 1. Update a deal value in Salesforce. 2. Refresh the NexusAI dashboard. | Updated value from Salesforce reflected in the NexusAI UI | |
 | D-3.1 | Total Pipeline Value | 1. Open Executive Summary or Deal Analysis dashboard. 2. Check the pipeline value KPI. | Total pipeline value aggregated across all active deals and displayed correctly | |
 | D-4.1 | Coaching ROI Potential | 1. Open Executive Summary dashboard. 2. Check the Coaching ROI Potential card. | Coaching ROI potential calculation displayed based on rep performance data | |
 | D-5.1 | Monthly Revenue Projection | 1. Open Executive Summary dashboard. 2. Check the Monthly Revenue Projection card. | Monthly revenue projected based on current pipeline and deal probabilities | |
@@ -121,7 +121,7 @@ SOW Reference: Pages 5-6, 16
 | E-1.1 | Secure Call Storage | 1. Process a call. 2. Verify S3 bucket contents for the call. | Per-call outputs stored in S3: transcript, analysis metadata, Salesforce action records | |
 | E-2.1 | Data Organization | 1. Check S3 bucket structure for multiple calls across different dates. | Call data organized by call ID and date in S3 path: `call-detail/{task_id}/` | |
 | E-3.1 | Data Retention - Online Access | 1. Access a call processed within the last 6 months. 2. Open call details. | Call data fully accessible and available online within the 6-month window | |
-| E-4.1 | Data Residency Compliance | 1. Verify the AWS region of the S3 bucket and application infrastructure. | All data stored in AWS Singapore region (ap-southeast-1) within StarHub's jurisdiction | |
+| E-4.1 | Data Residency Compliance | 1. Verify the AWS region of the S3 bucket and application infrastructure. | All data stored in AWS Singapore region (ap-southeast-1) within NexusAI's jurisdiction | |
 
 ---
 
@@ -257,7 +257,7 @@ SOW Reference: Pages 5, 6, 8
 | J-1.3 | RBAC - SalesManager Role | 1. Log in as SalesManager. 2. Navigate through the application. | SalesManager has access to: Call Analysis (team calls), Rep Performance, Deal Analysis | |
 | J-1.4 | RBAC - Rep Role | 1. Log in as Rep. 2. Navigate through the application. | Rep redirected to Individual Dashboard; access limited to own calls via My Calls view | |
 | J-1.5 | RBAC - Unauthorized Access | 1. Log in as Rep. 2. Attempt to navigate to Executive Summary via URL. | Access denied; user redirected to their authorized dashboard | |
-| J-2.1 | SSO Login | 1. Navigate to the CallSense application URL. 2. Use StarHub SSO credentials to log in. | User authenticated via SSO and redirected to appropriate dashboard based on role | |
+| J-2.1 | SSO Login | 1. Navigate to the NexusAI application URL. 2. Use NexusAI SSO credentials to log in. | User authenticated via SSO and redirected to appropriate dashboard based on role | |
 | J-2.2 | Login - Cognito Direct | 1. Navigate to login page. 2. Enter valid email and password. | User authenticated and redirected to dashboard | |
 | J-2.3 | Login - Invalid Credentials | 1. Navigate to login page. 2. Enter invalid credentials. | Clear error message displayed; login denied | |
 | J-2.4 | Logout | 1. Log in to the application. 2. Click Logout from user menu. | User session terminated; redirected to login page | |
@@ -265,7 +265,7 @@ SOW Reference: Pages 5, 6, 8
 | J-2.6 | MFA Verification | 1. Log in with a user that has MFA enabled. 2. Enter TOTP code. | MFA challenge presented; valid code grants access | |
 | J-2.7 | Password Change | 1. Log in to the application. 2. Navigate to Settings > Profile. 3. Change password. | Password changed successfully; user can log in with new password | |
 | J-2.8 | Forced Password Change | 1. Create a new user (Admin). 2. Log in as the new user with temporary password. | User prompted to change password on first login | |
-| J-3.1 | Encrypted Connection | 1. Access the CallSense application URL. 2. Check browser security indicator. | Application served over HTTPS with valid SSL certificate | |
+| J-3.1 | Encrypted Connection | 1. Access the NexusAI application URL. 2. Check browser security indicator. | Application served over HTTPS with valid SSL certificate | |
 
 ---
 
@@ -275,8 +275,8 @@ SOW Reference: Pages 4, 5, 6, 13, 15, 16
 
 | Test ID | Test Case | Steps | Expected Result | Status |
 |---------|-----------|-------|-----------------|--------|
-| K-1.1 | Webex Contact Center Integration | 1. Complete a call in Webex Contact Center. 2. Verify call appears in CallSense. | Call recording and metadata (agent name, company name, call date/time) retrieved via Webex API | |
-| K-1.2 | Webex Metadata Accuracy | 1. Compare call metadata in CallSense with Webex records. | Agent name, company name, call date/time, and duration match Webex source data | |
+| K-1.1 | Webex Contact Center Integration | 1. Complete a call in Webex Contact Center. 2. Verify call appears in NexusAI. | Call recording and metadata (agent name, company name, call date/time) retrieved via Webex API | |
+| K-1.2 | Webex Metadata Accuracy | 1. Compare call metadata in NexusAI with Webex records. | Agent name, company name, call date/time, and duration match Webex source data | |
 | K-2.1 | Salesforce CRM - Lead Creation | 1. Process a call with valid mandatory data. 2. Check Salesforce sandbox. | Lead created automatically with correct field values | |
 | K-2.2 | Salesforce CRM - Transcript Attachment | 1. Process a call that creates a Lead. 2. Check the Lead record in Salesforce. | Call summary attached as ContentVersion to the Lead record | |
 | K-3.1 | CloudSense Product Catalog | 1. Process a call mentioning a known product. 2. Check Deal Analysis product details. | Product matched to CloudSense catalog (via Axway) with correct product codes and pricing | |
@@ -295,7 +295,7 @@ SOW Reference: Page 5
 | L-3.1 | Transcript Generation | 1. After audio retrieval, check for transcript output. | Speech-to-text conversion completes; transcript available in S3 and UI | |
 | L-4.1 | Call Analysis Engine | 1. After transcript generation, check for analysis output. | AI-based analysis of transcript completes; analysis.json, product-details.json generated | |
 | L-5.1 | Salesforce Connector | 1. After analysis completes, check Salesforce for CRM updates. | Salesforce Lead created/updated with call data via the Salesforce connector | |
-| L-6.1 | End-to-End Pipeline Timing | 1. Record the time a call ends in Webex. 2. Monitor when results appear in the CallSense dashboard. | Complete pipeline (call end to dashboard display) completes within 10 minutes (SOW Success Criteria #3) | |
+| L-6.1 | End-to-End Pipeline Timing | 1. Record the time a call ends in Webex. 2. Monitor when results appear in the NexusAI dashboard. | Complete pipeline (call end to dashboard display) completes within 10 minutes (SOW Success Criteria #3) | |
 
 ---
 
@@ -306,7 +306,7 @@ SOW Reference: Pages 5-6, 16-17
 | Test ID | Test Case | Steps | Expected Result | Status |
 |---------|-----------|-------|-----------------|--------|
 | M-1.1 | AWS Singapore Region | 1. Verify application hosting region. | Application and data hosted in AWS Singapore region (ap-southeast-1) for data residency compliance | |
-| M-2.1 | StarHub-Branded Domain | 1. Access the application via the configured domain. | Application accessible via StarHub-branded domain with valid SSL | |
+| M-2.1 | NexusAI-Branded Domain | 1. Access the application via the configured domain. | Application accessible via NexusAI-branded domain with valid SSL | |
 | M-3.1 | SSO Access | 1. Access the application. 2. Authenticate via SSO. | Single sign-on works for authorized users | |
 | M-5.1 | Backend Architecture | 1. Attempt to access backend API directly from public internet. | Backend not publicly accessible; reachable only over private network connectivity | |
 | M-8.1 | Application Health | 1. Access the application. 2. Check health endpoints. | Application health check returns healthy status; all services operational | |
@@ -334,9 +334,9 @@ SOW Reference: Page 19
 
 | Criteria ID | SOW Criteria | Test Method | Expected Result | Owner | Status |
 |-------------|-------------|-------------|-----------------|-------|--------|
-| SC-1 | Proven integration with StarHub Salesforce and CloudSense platforms | Execute test cases K-2.1, K-2.2, K-3.1; verify Lead creation, transcript attachment, and product/pricing retrieval | Leads created in Salesforce with correct data; products matched with CloudSense pricing | Skyvera | |
+| SC-1 | Proven integration with NexusAI Salesforce and CloudSense platforms | Execute test cases K-2.1, K-2.2, K-3.1; verify Lead creation, transcript attachment, and product/pricing retrieval | Leads created in Salesforce with correct data; products matched with CloudSense pricing | Skyvera | |
 | SC-2 | Proven integration with Webex for gathering call recordings and major call information | Execute test cases K-1.1, K-1.2; verify recording retrieval and metadata accuracy | Call recordings and metadata (agent name, company name, date/time) successfully retrieved from Webex | Joint | |
-| SC-3 | New calls analyzed and results reflected to UI within 10 minutes after call ends | Execute test case L-6.1; timestamp call end and verify dashboard appearance | Call analysis results visible in CallSense dashboard within 10 minutes of call completion | Skyvera | |
+| SC-3 | New calls analyzed and results reflected to UI within 10 minutes after call ends | Execute test case L-6.1; timestamp call end and verify dashboard appearance | Call analysis results visible in NexusAI dashboard within 10 minutes of call completion | Skyvera | |
 | SC-4 | Call Analysis, Representative Performance, and Deal Analysis Dashboards created with real calls | Execute test cases in sections G, H, and I using real call data | All three dashboards display data from real Webex calls with accurate analysis | Skyvera | |
 | SC-5 | New leads and opportunities created correctly with available information for real calls in Salesforce | Execute test cases B-1.1, B-1.2, B-3.1; verify Salesforce records against call data | Leads created in Salesforce with all available information from real call analysis | Skyvera | |
 
@@ -346,8 +346,8 @@ SOW Reference: Page 19
 
 | Limitation | Description | SOW Reference |
 |------------|-------------|---------------|
-| B-2 Lead Conversion | Descoped per CR-001. Lead conversion from Lead to Opportunity remains a manual StarHub Sales team action. | Page 15, CR-001 |
-| CloudSense Catalog Coverage | StarHub's CloudSense platform does not include all products. Product matches are limited to available catalog items. | Page 19 |
+| B-2 Lead Conversion | Descoped per CR-001. Lead conversion from Lead to Opportunity remains a manual NexusAI Sales team action. | Page 15, CR-001 |
+| CloudSense Catalog Coverage | NexusAI's CloudSense platform does not include all products. Product matches are limited to available catalog items. | Page 19 |
 | Product Recommendations Engine | Out of scope for current phase. Available for future activation. | Page 14 (Section 5) |
 | Automatic Quote Generation | Out of scope for current phase. Available for future activation. | Page 14 (Section 5) |
 | Office 365 Integration | Out of scope for current phase. Available for future activation. | Pages 14-15 (Section 5) |
@@ -383,7 +383,7 @@ SOW Reference: Page 19
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
 | Skyvera Project Lead | | | |
-| StarHub Project Lead | | | |
-| StarHub QA Lead | | | |
+| NexusAI Project Lead | | | |
+| NexusAI QA Lead | | | |
 
 ---

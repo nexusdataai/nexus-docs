@@ -4,7 +4,7 @@ Generated: January 14, 2026
 
 ## Summary
 
-**Root Cause**: MkDocs can only serve files within the `docs/` directory. All external references to `../starhub-deployer/` and `../starhub-backend/` result in 404 errors because these files are outside the MkDocs documentation root.
+**Root Cause**: MkDocs can only serve files within the `docs/` directory. All external references to `../nexus-deployer/` and `../nexus-backend/` result in 404 errors because these files are outside the MkDocs documentation root.
 
 **Total 404 Pages**: ~59+ pages (26 individual files + 33+ files in directories + category index links)
 
@@ -16,9 +16,9 @@ Generated: January 14, 2026
 
 | File | Path | Status | URL |
 |------|------|--------|-----|
-| Executive Summary | `../starhub-deployer/doc/business/executive-summary.md` | ✗ 404 | `/starhub-deployer/doc/business/executive-summary/` |
-| Business Requirements | `../starhub-deployer/doc/business/business-requirements.md` | ✗ 404 | `/starhub-deployer/doc/business/business-requirements/` |
-| Business Overview | `../starhub-deployer/doc/business/README.md` | ✗ 404 | `/starhub-deployer/doc/business/README/` |
+| Executive Summary | `../nexus-deployer/doc/business/executive-summary.md` | ✗ 404 | `/nexus-deployer/doc/business/executive-summary/` |
+| Business Requirements | `../nexus-deployer/doc/business/business-requirements.md` | ✗ 404 | `/nexus-deployer/doc/business/business-requirements/` |
+| Business Overview | `../nexus-deployer/doc/business/README.md` | ✗ 404 | `/nexus-deployer/doc/business/README/` |
 
 **Files Exist**: ✓ All files exist in filesystem  
 **Issue**: Outside MkDocs docs directory
@@ -29,9 +29,9 @@ Generated: January 14, 2026
 
 | File | Path | Status | URL |
 |------|------|--------|-----|
-| Design Specifications | `../starhub-deployer/doc/prd/design.md` | ✗ 404 | `/starhub-deployer/doc/prd/design/` |
-| Requirements | `../starhub-deployer/doc/prd/requirement.md` | ✗ 404 | `/starhub-deployer/doc/prd/requirement/` |
-| Tasks | `../starhub-deployer/doc/prd/task.md` | ✗ 404 | `/starhub-deployer/doc/prd/task/` |
+| Design Specifications | `../nexus-deployer/doc/prd/design.md` | ✗ 404 | `/nexus-deployer/doc/prd/design/` |
+| Requirements | `../nexus-deployer/doc/prd/requirement.md` | ✗ 404 | `/nexus-deployer/doc/prd/requirement/` |
+| Tasks | `../nexus-deployer/doc/prd/task.md` | ✗ 404 | `/nexus-deployer/doc/prd/task/` |
 
 **Files Exist**: ✓ All files exist in filesystem  
 **Issue**: Outside MkDocs docs directory
@@ -42,9 +42,9 @@ Generated: January 14, 2026
 
 | File | Path | Status | URL |
 |------|------|--------|-----|
-| Capability Architecture | `../starhub-deployer/doc/capability-arcitechture/capability-arcitechture.md` | ✗ 404 | `/starhub-deployer/doc/capability-arcitechture/capability-arcitechture/` |
-| Telco AI FAQ | `../starhub-deployer/doc/capability-arcitechture/telco-ai-capability-faq.md` | ✗ 404 | `/starhub-deployer/doc/capability-arcitechture/telco-ai-capability-faq/` |
-| AWS WAFR Compliance | `../starhub-deployer/doc/capability-arcitechture/AWS-WAFR-COMPLIANCE.md` | ✗ 404 | `/starhub-deployer/doc/capability-arcitechture/AWS-WAFR-COMPLIANCE/` |
+| Capability Architecture | `../nexus-deployer/doc/capability-arcitechture/capability-arcitechture.md` | ✗ 404 | `/nexus-deployer/doc/capability-arcitechture/capability-arcitechture/` |
+| Telco AI FAQ | `../nexus-deployer/doc/capability-arcitechture/telco-ai-capability-faq.md` | ✗ 404 | `/nexus-deployer/doc/capability-arcitechture/telco-ai-capability-faq/` |
+| AWS WAFR Compliance | `../nexus-deployer/doc/capability-arcitechture/AWS-WAFR-COMPLIANCE.md` | ✗ 404 | `/nexus-deployer/doc/capability-arcitechture/AWS-WAFR-COMPLIANCE/` |
 
 **Files Exist**: ✓ All files exist in filesystem  
 **Issue**: Outside MkDocs docs directory
@@ -55,7 +55,7 @@ Generated: January 14, 2026
 
 | Item | Path | Status | Files |
 |------|------|--------|-------|
-| Release Notes | `../starhub-deployer/doc/release-notes/` | ✗ 404 | 2 .md files |
+| Release Notes | `../nexus-deployer/doc/release-notes/` | ✗ 404 | 2 .md files |
 
 **Contents**:
 - v0.0.1.md
@@ -72,20 +72,20 @@ Generated: January 14, 2026
 
 | File | Path | Status |
 |------|------|--------|
-| Solution Architecture | `../starhub-deployer/doc/solution-architecture.md` | ✗ 404 |
-| Infrastructure Requirements | `../starhub-backend/doc/INFRASTRUCTURE_REQUIREMENTS.md` | ✗ 404 |
-| Webex Integration | `../starhub-backend/doc/integration/webex-integration.md` | ✗ 404 |
-| Implementation Questions | `../starhub-backend/doc/integration/webex-implementation-questions.md` | ✗ 404 |
-| Call Recording | `../starhub-backend/doc/integration/call-recording-pseudocode.md` | ✗ 404 |
+| Solution Architecture | `../nexus-deployer/doc/solution-architecture.md` | ✗ 404 |
+| Infrastructure Requirements | `../nexus-backend/doc/INFRASTRUCTURE_REQUIREMENTS.md` | ✗ 404 |
+| Webex Integration | `../nexus-backend/doc/integration/webex-integration.md` | ✗ 404 |
+| Implementation Questions | `../nexus-backend/doc/integration/webex-implementation-questions.md` | ✗ 404 |
+| Call Recording | `../nexus-backend/doc/integration/call-recording-pseudocode.md` | ✗ 404 |
 
 #### Directories (4 directories)
 
 | Directory | Path | Files | Status |
 |-----------|------|-------|--------|
-| Architecture | `../starhub-backend/doc/architecture/` | 1 .md file | ✗ 404 |
-| Call Processing | `../starhub-backend/doc/call-processing/` | 3 .md files | ✗ 404 |
-| Gateway | `../starhub-backend/doc/gateway/` | 1 .md file | ✗ 404 |
-| Database Design | `../starhub-backend/doc/dbdesign/` | 2 .md files | ✗ 404 |
+| Architecture | `../nexus-backend/doc/architecture/` | 1 .md file | ✗ 404 |
+| Call Processing | `../nexus-backend/doc/call-processing/` | 3 .md files | ✗ 404 |
+| Gateway | `../nexus-backend/doc/gateway/` | 1 .md file | ✗ 404 |
+| Database Design | `../nexus-backend/doc/dbdesign/` | 2 .md files | ✗ 404 |
 
 **Files Exist**: ✓ All files and directories exist  
 **Issue**: Outside MkDocs docs directory
@@ -96,16 +96,16 @@ Generated: January 14, 2026
 
 | File | Path | Status |
 |------|------|--------|
-| Overview | `../starhub-deployer/doc/user-guide/README.md` | ✗ 404 |
-| Getting Started | `../starhub-deployer/doc/user-guide/01-getting-started.md` | ✗ 404 |
-| Installation | `../starhub-deployer/doc/user-guide/02-installation.md` | ✗ 404 |
-| Deployment Wizard | `../starhub-deployer/doc/user-guide/03-deployment-wizard.md` | ✗ 404 |
-| AWS Configuration | `../starhub-deployer/doc/user-guide/04-aws-configuration.md` | ✗ 404 |
-| Managing Deployments | `../starhub-deployer/doc/user-guide/05-managing-deployments.md` | ✗ 404 |
-| Troubleshooting | `../starhub-deployer/doc/user-guide/06-troubleshooting.md` | ✗ 404 |
-| FAQ | `../starhub-deployer/doc/user-guide/07-faq.md` | ✗ 404 |
-| Build Guide | `../starhub-deployer/doc/user-guide/BUILD_GUIDE.md` | ✗ 404 |
-| Quick Reference | `../starhub-deployer/doc/user-guide/QUICK_REFERENCE.md` | ✗ 404 |
+| Overview | `../nexus-deployer/doc/user-guide/README.md` | ✗ 404 |
+| Getting Started | `../nexus-deployer/doc/user-guide/01-getting-started.md` | ✗ 404 |
+| Installation | `../nexus-deployer/doc/user-guide/02-installation.md` | ✗ 404 |
+| Deployment Wizard | `../nexus-deployer/doc/user-guide/03-deployment-wizard.md` | ✗ 404 |
+| AWS Configuration | `../nexus-deployer/doc/user-guide/04-aws-configuration.md` | ✗ 404 |
+| Managing Deployments | `../nexus-deployer/doc/user-guide/05-managing-deployments.md` | ✗ 404 |
+| Troubleshooting | `../nexus-deployer/doc/user-guide/06-troubleshooting.md` | ✗ 404 |
+| FAQ | `../nexus-deployer/doc/user-guide/07-faq.md` | ✗ 404 |
+| Build Guide | `../nexus-deployer/doc/user-guide/BUILD_GUIDE.md` | ✗ 404 |
+| Quick Reference | `../nexus-deployer/doc/user-guide/QUICK_REFERENCE.md` | ✗ 404 |
 
 **Files Exist**: ✓ All files exist in filesystem  
 **Issue**: Outside MkDocs docs directory
@@ -118,18 +118,18 @@ Generated: January 14, 2026
 
 | File | Path | Status |
 |------|------|--------|
-| Backend README | `../starhub-backend/README.md` | ✗ 404 |
-| LocalStack Setup | `../starhub-backend/doc/env-local-example.md` | ✗ 404 |
+| Backend README | `../nexus-backend/README.md` | ✗ 404 |
+| LocalStack Setup | `../nexus-backend/doc/env-local-example.md` | ✗ 404 |
 
 #### Directories (6 directories)
 
 | Directory | Path | Files | Status |
 |-----------|------|-------|--------|
-| Requirements | `../starhub-backend/doc/requirement/` | 1 .md file | ✗ 404 |
-| PRDs | `../starhub-backend/doc/prds/` | 0 .md files | ✗ 404 |
-| MCP Tools | `../starhub-backend/doc/mcp-tools/` | 4 .md files | ✗ 404 |
-| LocalStack | `../starhub-backend/doc/localstack/` | 3 .md files | ✗ 404 |
-| Claude | `../starhub-backend/doc/claude/` | 2 .md files | ✗ 404 |
+| Requirements | `../nexus-backend/doc/requirement/` | 1 .md file | ✗ 404 |
+| PRDs | `../nexus-backend/doc/prds/` | 0 .md files | ✗ 404 |
+| MCP Tools | `../nexus-backend/doc/mcp-tools/` | 4 .md files | ✗ 404 |
+| LocalStack | `../nexus-backend/doc/localstack/` | 3 .md files | ✗ 404 |
+| Claude | `../nexus-backend/doc/claude/` | 2 .md files | ✗ 404 |
 
 **Files Exist**: ✓ All directories and most files exist  
 **Issue**: Outside MkDocs docs directory  
@@ -165,13 +165,13 @@ MkDocs is a static site generator that:
 **Current Structure**:
 ```
 /opt/mycode/trilogy/
-├── starhub-docs/
+├── nexus-docs/
 │   └── docs/              ← MkDocs root (can only serve from here)
 │       └── index.md
-├── starhub-deployer/
+├── nexus-deployer/
 │   └── doc/               ← Files here CANNOT be served
 │       └── business/
-├── starhub-backend/
+├── nexus-backend/
 │   └── doc/               ← Files here CANNOT be served
 ```
 

@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The Totogi Customer Toolkit is an enterprise-grade management platform that enables customers to deploy modular business capabilities into their own cloud infrastructure (AWS/Azure/GCP/On-premise). The system provides a guided, license-controlled deployment experience with comprehensive operational tooling for monitoring, updates, and lifecycle management. The toolkit supports both Progressive Web Application (PWA) and Electron desktop application delivery models, with multi-factor authentication, role-based access control, and per-capability license validation.
+The NexusAI Toolkit is an enterprise-grade management platform that enables customers to deploy modular business capabilities into their own cloud infrastructure (AWS/Azure/GCP/On-premise). The system provides a guided, license-controlled deployment experience with comprehensive operational tooling for monitoring, updates, and lifecycle management. The toolkit supports both Progressive Web Application (PWA) and Electron desktop application delivery models, with multi-factor authentication, role-based access control, and per-capability license validation.
 
 ## Glossary
 
-- **Toolkit**: The Totogi Customer Toolkit application (PWA and Electron desktop app)
+- **Toolkit**: The NexusAI Toolkit application (PWA and Electron desktop app)
 - **Capability**: A modular business function that can be deployed independently
 - **License Key**: A cryptographic token that validates entitlement to deploy specific capabilities
 - **Deployment**: The process of provisioning a capability into customer infrastructure

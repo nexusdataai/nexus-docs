@@ -18,7 +18,7 @@ This directory contains complete documentation for creating and hardening EKS cl
 ### Create Hardened EKS Cluster
 
 ```bash
-cd /opt/mycode/trilogy/starhub-backend/deploy/eks
+cd /opt/mycode/nexus/nexus-backend/deploy/eks
 ./create-hardened-eks-cluster.sh [cluster-name]
 ```
 

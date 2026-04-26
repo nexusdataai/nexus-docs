@@ -4,7 +4,7 @@
 ## Executive Summary
 
 **Date:** January 20, 2026
-**Cluster:** starhub-test (EKS 1.34)
+**Cluster:** nexus-dev (EKS 1.34)
 **Nodes:** 2x c6a.large instances  
 **Base AMI:** ami-02b30c67eadda3b25 (EKS-optimized Amazon Linux 2023)
 

@@ -1,6 +1,6 @@
 # Operational Documentation
 
-This section contains deployment guides, AWS configuration, troubleshooting procedures, and operational documentation for running the Starhub Trilogy platform.
+This section contains deployment guides, AWS configuration, troubleshooting procedures, and operational documentation for running the NexusAI platform.
 
 ## Overview
 
@@ -87,7 +87,7 @@ Quick reference card for common operations and commands.
 ## Kubernetes Operator
 
 ### Kubernetes Operator Overview
-Deploy and manage Totogi capabilities on EKS clusters using Kubernetes Operator pattern.
+Deploy and manage NexusAI capabilities on EKS clusters using Kubernetes Operator pattern.
 
 📄 [View Kubernetes Operator Documentation](kubernetes-operator/index.md)
 
@@ -101,7 +101,7 @@ Get the operator running in minutes.
 ---
 
 ### Custom Resource Reference
-Complete reference for TotogiCapability CRD.
+Complete reference for NexusAICapability CRD.
 
 📄 [View CRD Reference](kubernetes-operator/custom-resource.md)
 
@@ -277,7 +277,7 @@ curl http://localhost:8000/health
 terraform apply
 
 # Check ECS service
-aws ecs describe-services --cluster call-processing-prod --services gateway-service
+aws ecs describe-services --cluster nexus-ai-prod --services gateway-service
 ```
 
 ---

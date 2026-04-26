@@ -4,13 +4,13 @@ Copy the configuration below to `.env.local` in the project root.
 
 ```bash
 # =============================================================================
-# Starhub Backend - Local Development Configuration
+# NexusAI Backend - Local Development Configuration
 # =============================================================================
 # This is the ONLY environment file needed for local development and LocalStack.
 # On ECS, configuration is loaded from SSM Parameter Store and Secrets Manager.
 #
-# Naming Convention: call-processing-{env}-{resource-name}
-# Example: call-processing-dev-transformation-system
+# Naming Convention: nexus-ai-{env}-{resource-name}
+# Example: nexus-ai-dev-transformation-system
 
 # =============================================================================
 # LOCALSTACK CONFIGURATION (Local AWS Emulation)
@@ -37,13 +37,13 @@ SESSION_DURATION=3600
 PRINT_CONSOLE_URL=true
 
 # For automatic role selection, uncomment one:
-# AWS_ROLE_ARN=arn:aws:iam::764119721991:role/RAM-AWS-Prod-TelcoDR-TotogiPS-Admin
+# AWS_ROLE_ARN=arn:aws:iam::764119721991:role/RAM-AWS-Prod-TelcoDR-NexusAIPS-Admin
 
 # =============================================================================
 # Environment Configuration
 # =============================================================================
 ENVIRONMENT=dev
-CAPABILITY_NAME=call-processing
+CAPABILITY_NAME=nexus-ai
 
 # AWS Region
 AWS_REGION=ap-southeast-1
@@ -63,29 +63,29 @@ WXCC_ORG_ID=your-wxcc-org-id
 WXCC_BASE_URL=https://api.wxcc-us1.cisco.com/v1
 
 # =============================================================================
-# DynamoDB Tables (call-processing-{env}-{table})
+# DynamoDB Tables (nexus-ai-{env}-{table})
 # =============================================================================
-DYNAMODB_TABLE=call-processing-dev-transformation-system
-LICENSE_TABLE=call-processing-dev-license
-DYNAMODB_TRACKING_TABLE=call-processing-dev-wxcc-task-tracking
+DYNAMODB_TABLE=nexus-ai-dev-transformation-system
+LICENSE_TABLE=nexus-ai-dev-license
+DYNAMODB_TRACKING_TABLE=nexus-ai-dev-wxcc-task-tracking
 TASK_TRACKING_TTL_DAYS=30
 
 # =============================================================================
-# S3 Buckets (call-processing-{env}-{bucket})
+# S3 Buckets (nexus-ai-{env}-{bucket})
 # =============================================================================
-S3_RECORDINGS_BUCKET=call-processing-dev-call-data
-S3_JOURNEY_LOGS_BUCKET=call-processing-dev-journey-logs
-S3_JOURNEY_REPORTS_BUCKET=call-processing-dev-journey-reports
-WXCC_SIMULATOR_BUCKET=call-processing-dev-wxcc-simulator
+S3_RECORDINGS_BUCKET=nexus-ai-dev-call-data
+S3_JOURNEY_LOGS_BUCKET=nexus-ai-dev-journey-logs
+S3_JOURNEY_REPORTS_BUCKET=nexus-ai-dev-journey-reports
+WXCC_SIMULATOR_BUCKET=nexus-ai-dev-wxcc-simulator
 
 # S3 prefixes
 S3_RECORDINGS_PREFIX=call-detail/
 S3_WXCC_DATA_PREFIX=call-data/
 
 # =============================================================================
-# AWS Glue Configuration (call-processing-{env}-{database})
+# AWS Glue Configuration (nexus-ai-{env}-{database})
 # =============================================================================
-GLUE_DATABASE_NAME=call-processing-dev-wxcc-analytics
+GLUE_DATABASE_NAME=nexus-ai-dev-wxcc-analytics
 GLUE_TABLE_NAME=calls
 
 # =============================================================================
@@ -128,7 +128,7 @@ MCP_REQUEST_TIMEOUT=300.0
 # =============================================================================
 # CloudWatch Configuration (Optional)
 # =============================================================================
-# CLOUDWATCH_LOG_GROUP=/aws/call-processing/dev
+# CLOUDWATCH_LOG_GROUP=/aws/nexus-ai/dev
 # CLOUDWATCH_LOG_STREAM_PREFIX=script
 ```
 

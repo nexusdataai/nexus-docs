@@ -1,6 +1,6 @@
 # Call Processing Capability - Infrastructure Requirements
 
-This document lists all environment variables, secrets, DynamoDB tables, and S3 buckets required for the **call-processing** capability (starhub-backend service + UI).
+This document lists all environment variables, secrets, DynamoDB tables, and S3 buckets required for the **nexus-ai** capability (nexus-backend service + UI).
 
 ---
 
@@ -11,20 +11,20 @@ All resources follow the `capability-env-name` naming convention.
 ### SSM Parameters & Secrets
 
 ```
-/call-processing/{env}/{category}/{resource}
+/nexus-ai/{env}/{category}/{resource}
 ```
 
 ### AWS Resources (DynamoDB, S3, etc.)
 
 ```
-call-processing-{env}-{resource-name}
+nexus-ai-{env}-{resource-name}
 ```
 
 ### Components
 
 | Component | Description | Values |
 |-----------|-------------|--------|
-| `call-processing` | Capability name (fixed) | `call-processing` |
+| `nexus-ai` | Capability name (fixed) | `nexus-ai` |
 | `{env}` | Environment | `dev`, `stage`, `test`, `prod` |
 | `{category}` | Resource category (SSM/Secrets) | `aws`, `server`, `cognito`, `wxcc`, `s3`, `glue`, `cloudwatch`, `license`, `ui-dev` |
 | `{resource-name}` | AWS resource name | e.g., `transformation-system`, `call-data`, `license` |
@@ -33,11 +33,11 @@ call-processing-{env}-{resource-name}
 
 | Resource Type | Pattern | Example (prod) |
 |---------------|---------|----------------|
-| SSM Parameter | `/call-processing/{env}/server/log-level` | `/call-processing/prod/server/log-level` |
-| Secret | `call-processing/{env}/api-keys` | `call-processing/prod/api-keys` |
-| DynamoDB Table | `call-processing-{env}-{name}` | `call-processing-prod-transformation-system` |
-| S3 Bucket | `call-processing-{env}-{name}` | `call-processing-prod-call-data` |
-| CloudWatch Log Group | `/aws/call-processing/{env}` | `/aws/call-processing/prod` |
+| SSM Parameter | `/nexus-ai/{env}/server/log-level` | `/nexus-ai/prod/server/log-level` |
+| Secret | `nexus-ai/{env}/api-keys` | `nexus-ai/prod/api-keys` |
+| DynamoDB Table | `nexus-ai-{env}-{name}` | `nexus-ai-prod-transformation-system` |
+| S3 Bucket | `nexus-ai-{env}-{name}` | `nexus-ai-prod-call-data` |
+| CloudWatch Log Group | `/aws/nexus-ai/{env}` | `/aws/nexus-ai/prod` |
 
 ### Environment Variable
 
@@ -47,17 +47,17 @@ The ECS task definition includes an `ENVIRONMENT` variable (e.g., `dev`, `stage`
 
 ## DynamoDB Tables
 
-Table names follow the `call-processing-{env}-{name}` convention:
+Table names follow the `nexus-ai-{env}-{name}` convention:
 
 | Table Name Pattern | Example (prod) | Purpose | Key Schema | GSIs |
 |--------------------|----------------|---------|------------|------|
-| `call-processing-{env}-transformation-system` | `call-processing-prod-transformation-system` | Journey/Stage/Job state management | PK (HASH), SK (RANGE) | GSI1 (GSI1PK, GSI1SK) |
-| `call-processing-{env}-license` | `call-processing-prod-license` | License records + audit logs | PK (HASH), SK (RANGE) | status-index, holder-index, license-index |
-| `call-processing-{env}-wxcc-task-tracking` | `call-processing-prod-wxcc-task-tracking` | WXCC task tracking | task_id (HASH) | - |
+| `nexus-ai-{env}-transformation-system` | `nexus-ai-prod-transformation-system` | Journey/Stage/Job state management | PK (HASH), SK (RANGE) | GSI1 (GSI1PK, GSI1SK) |
+| `nexus-ai-{env}-license` | `nexus-ai-prod-license` | License records + audit logs | PK (HASH), SK (RANGE) | status-index, holder-index, license-index |
+| `nexus-ai-{env}-wxcc-task-tracking` | `nexus-ai-prod-wxcc-task-tracking` | WXCC task tracking | task_id (HASH) | - |
 
 ### Table Schemas
 
-#### call-processing-{env}-transformation-system
+#### nexus-ai-{env}-transformation-system
 ```
 PK: "JOURNEY#<id>" | "JOB#<id>" | "STAGE#<id>"
 SK: "METADATA" | "STATUS" | "STAGE#<n>"
@@ -65,7 +65,7 @@ GSI1PK: For alternate access patterns
 GSI1SK: For sorting
 ```
 
-#### call-processing-{env}-license
+#### nexus-ai-{env}-license
 ```
 License Records:
   PK: "INSTANCE#<instance_id>"
@@ -80,21 +80,21 @@ Audit Logs:
 
 ## S3 Buckets
 
-Bucket names follow the `call-processing-{env}-{name}` convention:
+Bucket names follow the `nexus-ai-{env}-{name}` convention:
 
 | Bucket Name Pattern | Example (prod) | Purpose | Required | Env Variable |
 |---------------------|----------------|---------|----------|--------------|
-| `call-processing-{env}-call-data` | `call-processing-prod-call-data` | Processed call data for Glue tables | Yes | `S3_RECORDINGS_BUCKET` |
-| `call-processing-{env}-wxcc-simulator` | `call-processing-prod-wxcc-simulator` | WXCC simulator data | Yes | `WXCC_SIMULATOR_BUCKET` |
-| `call-processing-{env}-journey-logs` | `call-processing-prod-journey-logs` | Journey execution logs | Yes | `S3_JOURNEY_LOGS_BUCKET` |
-| `call-processing-{env}-journey-reports` | `call-processing-prod-journey-reports` | Journey reports and artifacts | Yes | `S3_JOURNEY_REPORTS_BUCKET` |
-| `call-processing-{env}-journey-specs` | `call-processing-prod-journey-specs` | Journey specifications (UI development) | Optional | `S3_JOURNEY_SPECS_BUCKET` |
+| `nexus-ai-{env}-call-data` | `nexus-ai-prod-call-data` | Processed call data for Glue tables | Yes | `S3_RECORDINGS_BUCKET` |
+| `nexus-ai-{env}-wxcc-simulator` | `nexus-ai-prod-wxcc-simulator` | WXCC simulator data | Yes | `WXCC_SIMULATOR_BUCKET` |
+| `nexus-ai-{env}-journey-logs` | `nexus-ai-prod-journey-logs` | Journey execution logs | Yes | `S3_JOURNEY_LOGS_BUCKET` |
+| `nexus-ai-{env}-journey-reports` | `nexus-ai-prod-journey-reports` | Journey reports and artifacts | Yes | `S3_JOURNEY_REPORTS_BUCKET` |
+| `nexus-ai-{env}-journey-specs` | `nexus-ai-prod-journey-specs` | Journey specifications (UI development) | Optional | `S3_JOURNEY_SPECS_BUCKET` |
 
 ### S3 Bucket Structure
 
-#### call-processing-{env}-call-data
+#### nexus-ai-{env}-call-data
 ```
-call-processing-{env}-call-data/
+nexus-ai-{env}-call-data/
 ├── call-data/                    # Glue table data (Parquet)
 │   └── year=YYYY/month=MM/day=DD/
 │       └── *.parquet
@@ -111,9 +111,9 @@ call-processing-{env}-call-data/
     └── *.csv
 ```
 
-#### call-processing-{env}-wxcc-simulator
+#### nexus-ai-{env}-wxcc-simulator
 ```
-call-processing-{env}-wxcc-simulator/
+nexus-ai-{env}-wxcc-simulator/
 ├── wxcc-simulator/
 │   ├── tasks/                    # Simulated WXCC tasks
 │   ├── recordings/               # Task recordings
@@ -163,7 +163,7 @@ The service uses boto3's default credential chain:
 | Variable | Description | Default Pattern | Store In |
 |----------|-------------|-----------------|----------|
 | `WXCC_SIMULATOR_ENABLED` | Enable/disable simulator | `true` | SSM Parameter |
-| `WXCC_SIMULATOR_BUCKET` | S3 bucket for simulator data | `call-processing-{env}-wxcc-simulator` | SSM Parameter |
+| `WXCC_SIMULATOR_BUCKET` | S3 bucket for simulator data | `nexus-ai-{env}-wxcc-simulator` | SSM Parameter |
 | `WXCC_SIMULATOR_PREFIX` | S3 prefix for simulator | `wxcc-simulator` | SSM Parameter |
 | `WXCC_SIMULATOR_BASE_URL` | Base URL for recordings | `http://localhost:8000` | SSM Parameter |
 | `WXCC_SIM_ORG_ID` | Simulated organization ID | `sim-org-001` | SSM Parameter |
@@ -173,14 +173,14 @@ The service uses boto3's default credential chain:
 
 | Variable | Description | Default Pattern | Store In |
 |----------|-------------|-----------------|----------|
-| `S3_RECORDINGS_BUCKET` | S3 bucket for call data & Glue tables | `call-processing-{env}-call-data` | SSM Parameter |
-| `S3_JOURNEY_LOGS_BUCKET` | S3 bucket for journey logs | `call-processing-{env}-journey-logs` | SSM Parameter |
-| `S3_JOURNEY_REPORTS_BUCKET` | S3 bucket for journey reports | `call-processing-{env}-journey-reports` | SSM Parameter |
-| `GLUE_DATABASE_NAME` | AWS Glue database name | `call-processing-{env}-analytics` | SSM Parameter |
+| `S3_RECORDINGS_BUCKET` | S3 bucket for call data & Glue tables | `nexus-ai-{env}-call-data` | SSM Parameter |
+| `S3_JOURNEY_LOGS_BUCKET` | S3 bucket for journey logs | `nexus-ai-{env}-journey-logs` | SSM Parameter |
+| `S3_JOURNEY_REPORTS_BUCKET` | S3 bucket for journey reports | `nexus-ai-{env}-journey-reports` | SSM Parameter |
+| `GLUE_DATABASE_NAME` | AWS Glue database name | `nexus-ai-{env}-analytics` | SSM Parameter |
 | `GLUE_TABLE_NAME` | AWS Glue table name | `wxcc_calls` | SSM Parameter |
-| `DYNAMODB_TABLE` | DynamoDB transformation system table | `call-processing-{env}-transformation-system` | SSM Parameter |
-| `LICENSE_TABLE` | DynamoDB license table | `call-processing-{env}-license` | SSM Parameter |
-| `WXCC_TASK_TABLE` | DynamoDB WXCC task tracking table | `call-processing-{env}-wxcc-task-tracking` | SSM Parameter |
+| `DYNAMODB_TABLE` | DynamoDB transformation system table | `nexus-ai-{env}-transformation-system` | SSM Parameter |
+| `LICENSE_TABLE` | DynamoDB license table | `nexus-ai-{env}-license` | SSM Parameter |
+| `WXCC_TASK_TABLE` | DynamoDB WXCC task tracking table | `nexus-ai-{env}-wxcc-task-tracking` | SSM Parameter |
 | `OPENAI_API_KEY` | OpenAI API key for transcription | - | Secrets Manager |
 
 ### 5. Cognito Authentication
@@ -204,7 +204,7 @@ The service uses boto3's default credential chain:
 
 | Variable | Description | Default | Store In |
 |----------|-------------|---------|----------|
-| `CLOUDWATCH_LOG_GROUP` | CloudWatch log group | `/aws/call-processing/default` | SSM Parameter |
+| `CLOUDWATCH_LOG_GROUP` | CloudWatch log group | `/aws/nexus-ai/default` | SSM Parameter |
 | `CLOUDWATCH_LOG_STREAM_PREFIX` | Log stream prefix | `script` | SSM Parameter |
 | `ENABLE_CLOUDWATCH_LOGS` | Force enable CloudWatch | `false` | SSM Parameter |
 | `ECS_CONTAINER_METADATA_URI` | ECS metadata (auto-set by ECS) | - | - |
@@ -268,12 +268,12 @@ Secret names follow the `capability/env/resource` convention:
 
 | Secret Name Pattern | Variables | Example (prod) |
 |---------------------|-----------|----------------|
-| `call-processing/{env}/api-keys` | `API_KEY` | `call-processing/prod/api-keys` |
-| `call-processing/{env}/wxcc` | `WXCC_SIM_TOKEN` | `call-processing/prod/wxcc` |
-| `call-processing/{env}/openai` | `OPENAI_API_KEY` | `call-processing/prod/openai` |
-| `call-processing/{env}/license` | `LICENSE_PUBLIC_KEY`, `LICENSE_PRIVATE_KEY` | `call-processing/prod/license` |
-| `call-processing/{env}/anthropic` | `CLAUDE_API_KEY`, `ANTHROPIC_API_KEY` | `call-processing/prod/anthropic` |
-| `call-processing/{env}/github` | `GITHUB_TOKEN` | `call-processing/prod/github` |
+| `nexus-ai/{env}/api-keys` | `API_KEY` | `nexus-ai/prod/api-keys` |
+| `nexus-ai/{env}/wxcc` | `WXCC_SIM_TOKEN` | `nexus-ai/prod/wxcc` |
+| `nexus-ai/{env}/openai` | `OPENAI_API_KEY` | `nexus-ai/prod/openai` |
+| `nexus-ai/{env}/license` | `LICENSE_PUBLIC_KEY`, `LICENSE_PRIVATE_KEY` | `nexus-ai/prod/license` |
+| `nexus-ai/{env}/anthropic` | `CLAUDE_API_KEY`, `ANTHROPIC_API_KEY` | `nexus-ai/prod/anthropic` |
+| `nexus-ai/{env}/github` | `GITHUB_TOKEN` | `nexus-ai/prod/github` |
 
 Where `{env}` is one of: `dev`, `stage`, `test`, `prod`
 
@@ -285,30 +285,30 @@ Parameter paths follow the `capability/env/resource` convention:
 
 | Parameter Path Pattern | Variables | Example (prod) |
 |------------------------|-----------|----------------|
-| `/call-processing/{env}/aws/region` | `AWS_REGION` | `/call-processing/prod/aws/region` |
-| `/call-processing/{env}/aws/role-arn` | `AWS_ROLE_ARN` | `/call-processing/prod/aws/role-arn` |
-| `/call-processing/{env}/server/environment` | `ENVIRONMENT` | `/call-processing/prod/server/environment` |
-| `/call-processing/{env}/server/log-level` | `LOG_LEVEL` | `/call-processing/prod/server/log-level` |
-| `/call-processing/{env}/server/min-workers` | `MIN_WORKERS` | `/call-processing/prod/server/min-workers` |
-| `/call-processing/{env}/server/max-workers` | `MAX_WORKERS` | `/call-processing/prod/server/max-workers` |
-| `/call-processing/{env}/server/timeout` | `MCP_REQUEST_TIMEOUT` | `/call-processing/prod/server/timeout` |
-| `/call-processing/{env}/cognito/region` | `COGNITO_REGION` | `/call-processing/prod/cognito/region` |
-| `/call-processing/{env}/cognito/user-pool-id` | `COGNITO_USER_POOL_ID` | `/call-processing/prod/cognito/user-pool-id` |
-| `/call-processing/{env}/cognito/app-client-id` | `COGNITO_APP_CLIENT_ID` | `/call-processing/prod/cognito/app-client-id` |
-| `/call-processing/{env}/wxcc/enabled` | `WXCC_SIMULATOR_ENABLED` | `/call-processing/prod/wxcc/enabled` |
-| `/call-processing/{env}/wxcc/bucket` | `WXCC_SIMULATOR_BUCKET` | `/call-processing/prod/wxcc/bucket` |
-| `/call-processing/{env}/wxcc/prefix` | `WXCC_SIMULATOR_PREFIX` | `/call-processing/prod/wxcc/prefix` |
-| `/call-processing/{env}/wxcc/org-id` | `WXCC_SIM_ORG_ID` | `/call-processing/prod/wxcc/org-id` |
-| `/call-processing/{env}/s3/recordings-bucket` | `S3_RECORDINGS_BUCKET` | `/call-processing/prod/s3/recordings-bucket` |
-| `/call-processing/{env}/s3/journey-logs-bucket` | `S3_JOURNEY_LOGS_BUCKET` | `/call-processing/prod/s3/journey-logs-bucket` |
-| `/call-processing/{env}/s3/journey-reports-bucket` | `S3_JOURNEY_REPORTS_BUCKET` | `/call-processing/prod/s3/journey-reports-bucket` |
-| `/call-processing/{env}/dynamodb/transformation-table` | `DYNAMODB_TABLE` | `/call-processing/prod/dynamodb/transformation-table` |
-| `/call-processing/{env}/dynamodb/license-table` | `LICENSE_TABLE` | `/call-processing/prod/dynamodb/license-table` |
-| `/call-processing/{env}/dynamodb/wxcc-task-table` | `WXCC_TASK_TABLE` | `/call-processing/prod/dynamodb/wxcc-task-table` |
-| `/call-processing/{env}/glue/database` | `GLUE_DATABASE_NAME` | `/call-processing/prod/glue/database` |
-| `/call-processing/{env}/glue/table` | `GLUE_TABLE_NAME` | `/call-processing/prod/glue/table` |
-| `/call-processing/{env}/cloudwatch/log-group` | `CLOUDWATCH_LOG_GROUP` | `/call-processing/prod/cloudwatch/log-group` |
-| `/call-processing/{env}/cloudwatch/stream-prefix` | `CLOUDWATCH_LOG_STREAM_PREFIX` | `/call-processing/prod/cloudwatch/stream-prefix` |
+| `/nexus-ai/{env}/aws/region` | `AWS_REGION` | `/nexus-ai/prod/aws/region` |
+| `/nexus-ai/{env}/aws/role-arn` | `AWS_ROLE_ARN` | `/nexus-ai/prod/aws/role-arn` |
+| `/nexus-ai/{env}/server/environment` | `ENVIRONMENT` | `/nexus-ai/prod/server/environment` |
+| `/nexus-ai/{env}/server/log-level` | `LOG_LEVEL` | `/nexus-ai/prod/server/log-level` |
+| `/nexus-ai/{env}/server/min-workers` | `MIN_WORKERS` | `/nexus-ai/prod/server/min-workers` |
+| `/nexus-ai/{env}/server/max-workers` | `MAX_WORKERS` | `/nexus-ai/prod/server/max-workers` |
+| `/nexus-ai/{env}/server/timeout` | `MCP_REQUEST_TIMEOUT` | `/nexus-ai/prod/server/timeout` |
+| `/nexus-ai/{env}/cognito/region` | `COGNITO_REGION` | `/nexus-ai/prod/cognito/region` |
+| `/nexus-ai/{env}/cognito/user-pool-id` | `COGNITO_USER_POOL_ID` | `/nexus-ai/prod/cognito/user-pool-id` |
+| `/nexus-ai/{env}/cognito/app-client-id` | `COGNITO_APP_CLIENT_ID` | `/nexus-ai/prod/cognito/app-client-id` |
+| `/nexus-ai/{env}/wxcc/enabled` | `WXCC_SIMULATOR_ENABLED` | `/nexus-ai/prod/wxcc/enabled` |
+| `/nexus-ai/{env}/wxcc/bucket` | `WXCC_SIMULATOR_BUCKET` | `/nexus-ai/prod/wxcc/bucket` |
+| `/nexus-ai/{env}/wxcc/prefix` | `WXCC_SIMULATOR_PREFIX` | `/nexus-ai/prod/wxcc/prefix` |
+| `/nexus-ai/{env}/wxcc/org-id` | `WXCC_SIM_ORG_ID` | `/nexus-ai/prod/wxcc/org-id` |
+| `/nexus-ai/{env}/s3/recordings-bucket` | `S3_RECORDINGS_BUCKET` | `/nexus-ai/prod/s3/recordings-bucket` |
+| `/nexus-ai/{env}/s3/journey-logs-bucket` | `S3_JOURNEY_LOGS_BUCKET` | `/nexus-ai/prod/s3/journey-logs-bucket` |
+| `/nexus-ai/{env}/s3/journey-reports-bucket` | `S3_JOURNEY_REPORTS_BUCKET` | `/nexus-ai/prod/s3/journey-reports-bucket` |
+| `/nexus-ai/{env}/dynamodb/transformation-table` | `DYNAMODB_TABLE` | `/nexus-ai/prod/dynamodb/transformation-table` |
+| `/nexus-ai/{env}/dynamodb/license-table` | `LICENSE_TABLE` | `/nexus-ai/prod/dynamodb/license-table` |
+| `/nexus-ai/{env}/dynamodb/wxcc-task-table` | `WXCC_TASK_TABLE` | `/nexus-ai/prod/dynamodb/wxcc-task-table` |
+| `/nexus-ai/{env}/glue/database` | `GLUE_DATABASE_NAME` | `/nexus-ai/prod/glue/database` |
+| `/nexus-ai/{env}/glue/table` | `GLUE_TABLE_NAME` | `/nexus-ai/prod/glue/table` |
+| `/nexus-ai/{env}/cloudwatch/log-group` | `CLOUDWATCH_LOG_GROUP` | `/nexus-ai/prod/cloudwatch/log-group` |
+| `/nexus-ai/{env}/cloudwatch/stream-prefix` | `CLOUDWATCH_LOG_STREAM_PREFIX` | `/nexus-ai/prod/cloudwatch/stream-prefix` |
 
 Where `{env}` is one of: `dev`, `stage`, `test`, `prod`
 
@@ -318,7 +318,7 @@ Where `{env}` is one of: `dev`, `stage`, `test`, `prod`
 
 ### DynamoDB
 
-Resources use pattern: `call-processing-{env}-*`
+Resources use pattern: `nexus-ai-{env}-*`
 
 ```json
 {
@@ -334,17 +334,17 @@ Resources use pattern: `call-processing-{env}-*`
     "dynamodb:DescribeTable"
   ],
   "Resource": [
-    "arn:aws:dynamodb:REGION:ACCOUNT:table/call-processing-*",
-    "arn:aws:dynamodb:REGION:ACCOUNT:table/call-processing-*/index/*"
+    "arn:aws:dynamodb:REGION:ACCOUNT:table/nexus-ai-*",
+    "arn:aws:dynamodb:REGION:ACCOUNT:table/nexus-ai-*/index/*"
   ]
 }
 ```
 
-> **Note**: Wildcard `call-processing-*` covers all environments and tables (e.g., `call-processing-prod-transformation-system`, `call-processing-dev-license`)
+> **Note**: Wildcard `nexus-ai-*` covers all environments and tables (e.g., `nexus-ai-prod-transformation-system`, `nexus-ai-dev-license`)
 
 ### S3
 
-Resources use pattern: `call-processing-{env}-*`
+Resources use pattern: `nexus-ai-{env}-*`
 
 ```json
 {
@@ -356,13 +356,13 @@ Resources use pattern: `call-processing-{env}-*`
     "s3:GetBucketLocation"
   ],
   "Resource": [
-    "arn:aws:s3:::call-processing-*",
-    "arn:aws:s3:::call-processing-*/*"
+    "arn:aws:s3:::nexus-ai-*",
+    "arn:aws:s3:::nexus-ai-*/*"
   ]
 }
 ```
 
-> **Note**: Wildcard `call-processing-*` covers all environments and buckets (e.g., `call-processing-prod-call-data`, `call-processing-dev-wxcc-simulator`)
+> **Note**: Wildcard `nexus-ai-*` covers all environments and buckets (e.g., `nexus-ai-prod-call-data`, `nexus-ai-dev-wxcc-simulator`)
 
 ### CloudWatch Logs
 ```json
@@ -373,7 +373,7 @@ Resources use pattern: `call-processing-{env}-*`
     "logs:PutLogEvents",
     "logs:DescribeLogStreams"
   ],
-  "Resource": "arn:aws:logs:REGION:ACCOUNT:log-group:/aws/call-processing/*"
+  "Resource": "arn:aws:logs:REGION:ACCOUNT:log-group:/aws/nexus-ai/*"
 }
 ```
 
@@ -385,11 +385,11 @@ Resources use pattern: `call-processing-{env}-*`
     "ssm:GetParameters",
     "ssm:GetParametersByPath"
   ],
-  "Resource": "arn:aws:ssm:REGION:ACCOUNT:parameter/call-processing/*"
+  "Resource": "arn:aws:ssm:REGION:ACCOUNT:parameter/nexus-ai/*"
 }
 ```
 
-> **Note**: The wildcard `*` covers all environments (`/call-processing/dev/*`, `/call-processing/prod/*`, etc.)
+> **Note**: The wildcard `*` covers all environments (`/nexus-ai/dev/*`, `/nexus-ai/prod/*`, etc.)
 
 ### Secrets Manager
 ```json
@@ -398,11 +398,11 @@ Resources use pattern: `call-processing-{env}-*`
     "secretsmanager:GetSecretValue",
     "secretsmanager:DescribeSecret"
   ],
-  "Resource": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:call-processing/*"
+  "Resource": "arn:aws:secretsmanager:REGION:ACCOUNT:secret:nexus-ai/*"
 }
 ```
 
-> **Note**: The wildcard `*` covers all environments (`call-processing/dev/*`, `call-processing/prod/*`, etc.)
+> **Note**: The wildcard `*` covers all environments (`nexus-ai/dev/*`, `nexus-ai/prod/*`, etc.)
 
 ### Glue/Athena (for Call Processing)
 ```json
@@ -435,53 +435,53 @@ ENVIRONMENT=prod  # or: dev, stage, test
 
 ```bash
 # AWS
-/call-processing/prod/aws/region=ap-southeast-1
+/nexus-ai/prod/aws/region=ap-southeast-1
 
 # Server
-/call-processing/prod/server/environment=production
-/call-processing/prod/server/log-level=INFO
+/nexus-ai/prod/server/environment=production
+/nexus-ai/prod/server/log-level=INFO
 
 # Cognito
-/call-processing/prod/cognito/region=ap-southeast-1
-/call-processing/prod/cognito/user-pool-id=<user-pool-id>
-/call-processing/prod/cognito/app-client-id=<app-client-id>
+/nexus-ai/prod/cognito/region=ap-southeast-1
+/nexus-ai/prod/cognito/user-pool-id=<user-pool-id>
+/nexus-ai/prod/cognito/app-client-id=<app-client-id>
 
 # S3 Buckets (values are the actual bucket names)
-/call-processing/prod/s3/recordings-bucket=call-processing-prod-call-data
-/call-processing/prod/s3/journey-logs-bucket=call-processing-prod-journey-logs
-/call-processing/prod/s3/journey-reports-bucket=call-processing-prod-journey-reports
+/nexus-ai/prod/s3/recordings-bucket=nexus-ai-prod-call-data
+/nexus-ai/prod/s3/journey-logs-bucket=nexus-ai-prod-journey-logs
+/nexus-ai/prod/s3/journey-reports-bucket=nexus-ai-prod-journey-reports
 
 # DynamoDB Tables (values are the actual table names)
-/call-processing/prod/dynamodb/transformation-table=call-processing-prod-transformation-system
-/call-processing/prod/dynamodb/license-table=call-processing-prod-license
-/call-processing/prod/dynamodb/wxcc-task-table=call-processing-prod-wxcc-task-tracking
+/nexus-ai/prod/dynamodb/transformation-table=nexus-ai-prod-transformation-system
+/nexus-ai/prod/dynamodb/license-table=nexus-ai-prod-license
+/nexus-ai/prod/dynamodb/wxcc-task-table=nexus-ai-prod-wxcc-task-tracking
 
 # Glue
-/call-processing/prod/glue/database=call-processing-prod-analytics
-/call-processing/prod/glue/table=wxcc_calls
+/nexus-ai/prod/glue/database=nexus-ai-prod-analytics
+/nexus-ai/prod/glue/table=wxcc_calls
 
 # WXCC Simulator
-/call-processing/prod/wxcc/bucket=call-processing-prod-wxcc-simulator
+/nexus-ai/prod/wxcc/bucket=nexus-ai-prod-wxcc-simulator
 ```
 
 ### Secrets to Create (for prod)
 
 ```bash
-call-processing/prod/api-keys     # Contains: API_KEY
-call-processing/prod/openai       # Contains: OPENAI_API_KEY
-call-processing/prod/license      # Contains: LICENSE_PUBLIC_KEY, LICENSE_PRIVATE_KEY
+nexus-ai/prod/api-keys     # Contains: API_KEY
+nexus-ai/prod/openai       # Contains: OPENAI_API_KEY
+nexus-ai/prod/license      # Contains: LICENSE_PUBLIC_KEY, LICENSE_PRIVATE_KEY
 ```
 
 ### DynamoDB Tables (Required for prod)
-- `call-processing-prod-transformation-system`
-- `call-processing-prod-license`
-- `call-processing-prod-wxcc-task-tracking`
+- `nexus-ai-prod-transformation-system`
+- `nexus-ai-prod-license`
+- `nexus-ai-prod-wxcc-task-tracking`
 
 ### S3 Buckets (Required for prod)
-- `call-processing-prod-call-data` (call data & Glue tables)
-- `call-processing-prod-wxcc-simulator` (simulator data)
-- `call-processing-prod-journey-logs`
-- `call-processing-prod-journey-reports`
+- `nexus-ai-prod-call-data` (call data & Glue tables)
+- `nexus-ai-prod-wxcc-simulator` (simulator data)
+- `nexus-ai-prod-journey-logs`
+- `nexus-ai-prod-journey-reports`
 
 ---
 

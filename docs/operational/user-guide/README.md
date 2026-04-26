@@ -1,9 +1,9 @@
-# Totogi Capability Installer - User Guide
+# NexusAI Deployer - User Guide
 
-Welcome to the Totogi Capability Installer! This comprehensive guide will help you deploy Totogi business capabilities to your AWS environment using our desktop application.
+Welcome to the NexusAI Deployer! This comprehensive guide will help you deploy NexusAI business capabilities to your AWS environment using our desktop application.
 
 !!! tip "Download Complete Documentation"
-    **[Download PDF Guide](Totogi-Toolkit-User-Guide.pdf)** - Complete documentation in a single PDF file for offline reading.
+    **[Download PDF Guide](NexusAI-Toolkit-User-Guide.pdf)** - Complete documentation in a single PDF file for offline reading.
 
 ---
 
@@ -28,7 +28,7 @@ Welcome to the Totogi Capability Installer! This comprehensive guide will help y
 
 ## Getting Started
 
-The Totogi Capability Installer is a desktop application that enables you to deploy Totogi's telco business capabilities directly into your own AWS environment. Before you begin, ensure you have:
+The NexusAI Deployer is a desktop application that enables you to deploy NexusAI capabilities directly into your own AWS environment. Before you begin, ensure you have:
 
 - An AWS account with administrative access or appropriate IAM permissions
 - AWS credentials (IAM Role ARN, Access Keys, CLI Profile, or ADFS)
@@ -49,7 +49,7 @@ The Totogi Capability Installer is a desktop application that enables you to dep
 
 ## Home Screen Overview
 
-When you launch the Totogi Capability Installer, you are greeted with the Welcome screen.
+When you launch the NexusAI Deployer, you are greeted with the Welcome screen.
 
 ![Home Screen](./screen-shots/home.png)
 
@@ -123,11 +123,11 @@ Choose your preferred deployment architecture for both frontend and backend comp
 
 #### EKS (Kubernetes) Deployment - NEW
 
-When you select **EKS (Kubernetes)** as your backend option, the Totogi Kubernetes Operator handles the deployment:
+When you select **EKS (Kubernetes)** as your backend option, the Nexus Kubernetes Operator handles the deployment:
 
 | Feature | Description |
 |---------|-------------|
-| **Operator Pattern** | Uses custom TotogiCapability resources for declarative deployments |
+| **Operator Pattern** | Uses custom NexusAICapability resources for declarative deployments |
 | **Auto-Provisioning** | Automatically creates DynamoDB, S3, Glue, and IAM resources |
 | **IRSA Integration** | Secure IAM Roles for Service Accounts |
 | **LoadBalancer Services** | Automatic service exposure via AWS Load Balancers |
@@ -442,7 +442,7 @@ For more detailed information, refer to these additional guides:
 | GCP | 🔜 Coming Soon |
 | On-Premise | 🔜 Coming Soon |
 
-**New in v1.1:** Kubernetes deployment is now fully supported via the Totogi Kubernetes Operator. Choose EKS (Kubernetes) in the Architecture Selection step to deploy using the operator pattern.
+**New in v1.1:** Kubernetes deployment is now fully supported via the Nexus Kubernetes Operator. Choose EKS (Kubernetes) in the Architecture Selection step to deploy using the operator pattern.
 
 ---
 
@@ -465,8 +465,8 @@ If you need assistance:
 | Resource | Details |
 |----------|---------|
 | Documentation | This user guide and linked resources |
-| Support Portal | [support.totogi.com](https://support.totogi.com) |
-| Email | support@totogi.com |
+| Support Portal | [support.nexus.ai](https://support.nexus.ai) |
+| Email | support@nexus.ai |
 
 When contacting support, please provide:
 - Deployment ID (from the installer)

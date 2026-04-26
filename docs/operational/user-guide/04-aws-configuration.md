@@ -1,6 +1,6 @@
 # AWS Configuration Guide
 
-This guide covers AWS setup, authentication methods, and IAM permissions required for the Totogi Capability Installer.
+This guide covers AWS setup, authentication methods, and IAM permissions required for the NexusAI Deployer.
 
 ---
 
@@ -29,7 +29,7 @@ The installer supports multiple authentication methods to accommodate different 
 
 #### Example Role ARN
 ```
-arn:aws:iam::123456789012:role/TotogiDeploymentRole
+arn:aws:iam::123456789012:role/NexusAIDeploymentRole
 ```
 
 #### Trust Policy (for cross-account)
@@ -429,7 +429,7 @@ The deployment process requires permissions across multiple AWS services.
 1. **Open IAM Console** in AWS
 2. **Go to Policies** → Create Policy
 3. **Select JSON tab** and paste the policy above
-4. **Name the policy** (e.g., `TotogiDeploymentPolicy`)
+4. **Name the policy** (e.g., `NexusAIDeploymentPolicy`)
 5. **Create the policy**
 
 ### Creating the IAM Role
@@ -439,7 +439,7 @@ The deployment process requires permissions across multiple AWS services.
    - For same account: AWS service → EC2 (or your use case)
    - For cross-account: Another AWS account → Enter account ID
 3. **Attach the policy** created above
-4. **Name the role** (e.g., `TotogiDeploymentRole`)
+4. **Name the role** (e.g., `NexusAIDeploymentRole`)
 5. **Create the role**
 
 ---
@@ -473,7 +473,7 @@ Cross-account deployment allows you to deploy from one AWS account (source) to a
       "Action": "sts:AssumeRole",
       "Condition": {
         "StringEquals": {
-          "sts:ExternalId": "totogi-deployment-12345"
+          "sts:ExternalId": "nexus-deployment-12345"
         }
       }
     }

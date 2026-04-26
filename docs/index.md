@@ -1,144 +1,99 @@
-# Totogi CallSense Platform
+# NexusAI Data Platform
 
-Welcome to the comprehensive documentation portal for the **Totogi CallSense Platform** - an enterprise-grade AI-powered call processing and analytics platform for Webex Contact Center.
+Welcome to the comprehensive documentation portal for the **NexusAI Data Platform** -- an enterprise-grade AI operating layer that connects your systems, builds semantic context, and deploys autonomous agents that reason and act across your organization.
+
+[![Backend](https://img.shields.io/badge/nexus--backend-repo-blue)](https://github.com/nexusdataai/nexus-backend)
+[![UI](https://img.shields.io/badge/nexus--ui-repo-blue)](https://github.com/nexusdataai/nexus-ui)
+[![Deployer](https://img.shields.io/badge/nexus--deployer-repo-blue)](https://github.com/nexusdataai/nexus-deployer)
+[![Docs](https://img.shields.io/badge/nexus--docs-repo-blue)](https://github.com/nexusdataai/nexus-docs)
 
 ---
 
 ## Executive Summary
 
-Totogi provides **two primary enterprise applications** designed to transform telecommunications operations:
+### What is NexusAI?
 
-### 1. **Totogi CallSense Platform** - AI-Powered Call Analytics
+NexusAI is **the Intelligent AI Operating Layer for the Enterprise**. Rather than replacing existing systems, NexusAI sits on top of your current technology stack -- CRMs, ERPs, data warehouses, and operational tools -- and unifies them into a single, AI-driven intelligence fabric. It transforms siloed enterprise data into connected, actionable knowledge that autonomous agents use to reason, decide, and execute.
 
-An enterprise-grade AI-powered call processing and analytics platform that delivers:
+### How It Works
 
-- **100% automated QA coverage** of all calls (vs. 30% manual coverage)
-- **Real-time AI insights** on sentiment, compliance, and performance
-- **12.5-15% conversion rate improvement** from current 8-10% baseline
-- **50% reduction** in manager time spent on manual QA
-- **Multi-million dollar revenue impact** with measurable ROI of 25-55x
+NexusAI operates through a four-stage pipeline that turns disconnected enterprise data into autonomous action:
 
-**Key Capabilities:**
-- AI transcription and diarization
-- Automated quality assurance and compliance monitoring
-- Real-time sentiment analysis and coaching recommendations
-- Product recommendation engine
-- Automatic quote generation
-- Salesforce and Office 365 integration
-
-### 2. **Totogi Toolkit** - Self-Service Deployment Platform
-
-An enterprise-grade self-service deployment toolkit that enables:
-
-- **One-click AWS infrastructure deployment** via guided wizard
-- **CloudFormation-based** infrastructure as code
-- **License-controlled capability deployment**
-- **Desktop (Electron), PWA, and web** deployment options
-- **Complete infrastructure provisioning** (VPC, ECS, S3, DynamoDB, CloudFront, Cognito)
-
-**Key Features:**
-- Wizard-driven deployment flow
-- AWS credential and permission validation
-- Multi-capability architecture selection
-- Post-deployment health verification
-- Installation history and management
-
-Together, these applications enable enterprises to rapidly deploy and operate AI-powered call analytics at scale.
+| Stage | Description |
+|-------|-------------|
+| **Connect** | Plug into existing enterprise systems -- CRM, ERP, data warehouses, SaaS tools -- via pre-built connectors and APIs. No data migration or system replacement required. |
+| **Map** | Build a semantic knowledge graph that captures entities, relationships, and business context across all connected systems. |
+| **Reason** | The AI Reasoning Engine applies structured reasoning (ReAct) across the connected knowledge graph to analyze situations, identify patterns, and determine optimal actions. |
+| **Execute** | Autonomous agents carry out end-to-end workflows -- updating records, triggering processes, escalating exceptions -- with full auditability and human-in-the-loop controls. |
 
 ---
 
-## Overview
+## Key Capabilities
 
-The Totogi CallSense Platform is a sophisticated platform that enables organizations to:
+!!! abstract "Enterprise Data Integration"
+    Pre-built connectors for CRM, ERP, data warehouses, and SaaS platforms. Unified data access layer with real-time and batch ingestion. Zero-migration architecture -- NexusAI connects to systems in place.
 
-- **Process Webex CC Calls** - Fetch, transcribe, and analyze calls from Webex Contact Center
-- **Manage Transformation Journeys** - Orchestrate multi-stage processing workflows
-- **Provide AI Analytics** - Leverage OpenAI for intelligent call analysis and insights
-- **Automate CRM Actions** - Create and manage Salesforce leads and opportunities based on call analysis
-- **Enable Real-time Monitoring** - Comprehensive logging, reporting, and dashboards
+!!! abstract "Semantic Intelligence Layer"
+    Automated knowledge graph construction from connected data sources. Entity resolution, relationship mapping, and contextual enrichment. A living semantic model that evolves as your data changes.
+
+!!! abstract "AI Reasoning Engine (ReAct)"
+    Structured Reasoning + Acting framework for multi-step decision-making. Cross-system analysis that no single tool can perform alone. Transparent reasoning traces for auditability and compliance.
+
+!!! abstract "Autonomous Execution"
+    AI agents that carry out complex, multi-step workflows end to end. Human-in-the-loop guardrails for high-stakes decisions. Full audit trail of every action taken and every decision made.
 
 ---
 
-For detailed architecture diagrams and technical design, see the [Platform Architecture](platform-architecture.md) page.
+## Business Impact
+
+| Metric | Impact |
+|--------|--------|
+| **Workflow Automation** | 40--60% of repetitive workflows automated across departments |
+| **Decision Speed** | 50% faster data-driven decisions through unified context |
+| **Operational Cost Reduction** | 30--40% reduction in operational overhead |
+| **System Replacement** | Zero -- NexusAI overlays existing infrastructure without migration |
 
 ---
 
-## Documentation Categories
+## Applications
 
-### 📊 [Business Documentation](business/)
+NexusAI delivers value across industries and functions:
+
+| Domain | Use Cases |
+|--------|-----------|
+| **Customer Operations** | Unified customer 360, intelligent case routing, proactive churn prevention |
+| **Revenue Operations** | Pipeline intelligence, quote-to-cash automation, forecast accuracy |
+| **Supply Chain** | Demand sensing, supplier risk monitoring, logistics optimization |
+| **Finance** | Automated reconciliation, anomaly detection, regulatory reporting |
+| **IT Operations** | Incident correlation, predictive capacity management, automated remediation |
+| **Healthcare** | Patient journey orchestration, clinical workflow automation, compliance monitoring |
+| **Retail** | Inventory optimization, personalized engagement, omnichannel orchestration |
+| **Telecommunications** | Network analytics, service assurance, customer experience management |
+
+---
+
+## Documentation
+
+### [Business Documentation](business/index.md)
 Executive summaries, business requirements, and business cases that define the strategic value and objectives of the platform.
 
-**Key Documents:**
-- Executive Summary
-- Business Requirements
-- Business Case Analysis
+### [AI Operating System](functional/index.md)
+Product requirements, functional specifications, and system design documents that describe how the AI operating layer is structured and behaves.
 
----
+### [Features & Capabilities](features/index.md)
+Detailed documentation on platform capabilities, connector architecture, reasoning engine configuration, and agent frameworks.
 
-### 📋 [Functional Specifications](functional/)
-Product requirements documents (PRD) and functional specifications that detail what the platform does and how it meets business needs.
+### [Technical Documentation](technical/index.md)
+Solution architecture, infrastructure requirements, integration guides, database design, and system internals.
 
-**Key Documents:**
-- Design Specifications
-- Functional Requirements
-- Task Definitions
+### [Operational Documentation](operational/index.md)
+Deployment guides, configuration management, monitoring, troubleshooting, and day-to-day operational procedures.
 
----
+### [Application Catalogue](project-scope/index.md)
+Application definitions, release notes, and metadata tracking the evolution of platform capabilities and deployed solutions.
 
-### 🚀 [Features & Capabilities](features/)
-Detailed documentation on platform capabilities, feature architecture, and telco AI capabilities.
-
-**Key Documents:**
-- Capability Architecture
-- Telco AI FAQ
-- AWS Well-Architected Framework Compliance
-
----
-
-### 📅 [Project Scope](project-scope/)
-Project scope definitions, release notes, and project metadata tracking the evolution of the platform.
-
-**Key Documents:**
-- Release Notes
-- Project Metadata
-- Scope Definitions
-
----
-
-### 🏗️ [Technical Documentation](technical/)
-In-depth technical documentation covering solution architecture, infrastructure requirements, integration guides, and system design.
-
-**Key Documents:**
-- Solution Architecture
-- Infrastructure Requirements
-- Webex Integration Guide
-- Database Design
-- Gateway Architecture
-
----
-
-### ⚙️ [Operational Documentation](operational/)
-Deployment guides, AWS configuration, troubleshooting, and operational procedures for running the platform.
-
-**Key Documents:**
-- Getting Started Guide
-- Installation Instructions
-- Deployment Wizard
-- AWS Configuration
-- Troubleshooting & FAQ
-- Quick Reference
-
----
-
-### 👨‍💻 [Developer Guide](developer/)
-Development guides, API documentation, testing procedures, and setup instructions for developers working on the platform.
-
-**Key Documents:**
-- Backend Development Guide
-- LocalStack Setup
-- API Documentation
-- MCP Tools
-- Testing Guides
+### [Developer Guide](developer/index.md)
+Development environment setup, API documentation, SDK references, testing procedures, and contribution guidelines.
 
 ---
 
@@ -146,57 +101,20 @@ Development guides, API documentation, testing procedures, and setup instruction
 
 | Category | Quick Access |
 |----------|-------------|
-| 🎯 **Get Started** | [Installation Guide](operational/index.md) → [Getting Started](operational/user-guide/01-getting-started.md) |
-| 🏗️ **Architecture** | [Solution Architecture](technical/solution-architecture.md) → [Technical Docs](technical/) |
-| 👨‍💻 **Developers** | [Backend README](developer/backend/README.md) → [Developer Guide](developer/) |
-| 📊 **Business** | [Executive Summary](business/source/executive-summary.md) → [Business Docs](business/) |
+| **Get Started** | [Installation Guide](operational/index.md) |
+| **Architecture** | [Solution Architecture](technical/solution-architecture.md) |
+| **Developers** | [Developer Guide](developer/index.md) |
+| **Business** | [Executive Summary](business/source/executive-summary.md) |
 
 ---
 
-## Repository Structure
+## Repositories
 
-The Totogi CallSense Platform consists of multiple repositories:
+The NexusAI Data Platform is maintained across four repositories under the [nexusdataai](https://github.com/nexusdataai) GitHub organization:
 
-- **starhub-backend** - Backend services and API
-- **starhub-ui** - React-based frontend application
-- **starhub-deployer** - AWS deployment automation
-- **starhub-docs** - This documentation site
-- **project-notes** - Project metadata and notes
-
----
-
-## Key Features
-
-✅ **Call Processing** - Automated processing of Webex CC call recordings  
-✅ **AI Transcription** - Speech-to-text powered by OpenAI  
-✅ **AI Analysis** - GPT-powered call analysis and insights  
-✅ **Salesforce CRM Integration** - Automated lead creation and opportunity management  
-✅ **Journey Management** - Multi-stage processing workflows  
-✅ **Real-time Analytics** - Performance metrics and comprehensive reporting  
-✅ **WXCC Simulator** - Built-in simulator for testing  
-✅ **MCP Integration** - Model Context Protocol tools  
-✅ **License Management** - Enterprise licensing and feature gating  
-
----
-
-## Technology Stack
-
-- **Backend**: Python 3.11+, FastAPI
-- **Frontend**: React, TypeScript
-- **Cloud**: AWS (ECS, DynamoDB, S3, Lambda, Glue)
-- **AI**: OpenAI GPT-4
-- **Infrastructure**: Terraform, Docker
-- **Development**: LocalStack for local testing
-
----
-
-## Getting Help
-
-- 📖 Browse the documentation categories above
-- 🔍 Use the search function to find specific topics
-- ❓ Check the [FAQ](operational/user-guide/07-faq.md)
-- 🐛 See [Troubleshooting](operational/user-guide/06-troubleshooting.md)
-
----
-
-**Version**: 0.0.1
+| Repository | Description |
+|------------|-------------|
+| [**nexus-backend**](https://github.com/nexusdataai/nexus-backend) | Core platform services, AI reasoning engine, connectors, and APIs |
+| [**nexus-ui**](https://github.com/nexusdataai/nexus-ui) | React-based management console and operational dashboards |
+| [**nexus-deployer**](https://github.com/nexusdataai/nexus-deployer) | Infrastructure-as-code, Kubernetes operator, and deployment automation |
+| [**nexus-docs**](https://github.com/nexusdataai/nexus-docs) | This documentation site |

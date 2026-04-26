@@ -1,6 +1,6 @@
-# CallSense KPI Definitions
+# NexusAI KPI Definitions
 
-**Project:** Starhub Enterprise Sales Call Analytics (CallSense)  
+**Project:** NexusAI Enterprise Analytics  
 **Document Version:** 1.0  
 **Date:** March 11, 2026
 
@@ -288,7 +288,7 @@ The four parts are added together and the result is capped at 1.0. A deal is cla
 
 ### Where Calculations Happen
 
-The CallSense architecture splits KPI computation between the backend aggregation service and the frontend dashboard components. Understanding which layer computes what is critical for debugging discrepancies.
+The NexusAI architecture splits KPI computation between the backend aggregation service and the frontend dashboard components. Understanding which layer computes what is critical for debugging discrepancies.
 
 **Backend** (`qa_aggregation_service.py`):
 
