@@ -1,10 +1,8 @@
-site_name: Totogi CallSense Platform
-site_url: https://nexus.ptrtechnology.com/docs/
-site_description: Comprehensive documentation for the Totogi CallSense Platform - Call Processing Capability and AI-powered call analytics platform
-site_author: Starhub Trilogy Team
-repo_url: https://github.com/yourusername/starhub-docs
-repo_name: starhub-docs
-use_directory_urls: true
+site_name: NexusAI Data Platform
+site_description: Comprehensive documentation for the NexusAI Data Platform - The Intelligent AI Operating Layer for the Enterprise
+site_author: NexusAI
+repo_url: https://github.com/nexusdataai/nexus-docs
+repo_name: nexus-docs
 
 theme:
   name: material
@@ -25,8 +23,8 @@ theme:
   font:
     text: Inter
     code: JetBrains Mono
-  logo: assets/totogi-logo-white.svg
-  favicon: assets/totogi-logo-white.svg
+  logo: assets/nexus-logo-white.svg
+  favicon: assets/nexus-logo-white.svg
   features:
     - navigation.tabs
     - navigation.sections
@@ -76,11 +74,20 @@ nav:
     - Platform Architecture: platform-architecture.md
   - Business Documentation:
     - Overview: business/index.md
-    - Totogi CallSense Executive Summary: business/source/executive-summary.md
-    - Totogi Toolkit Executive Summary: business/source/toolkit-executive-summary.md
+    - NexusAI Platform Executive Summary: business/source/executive-summary.md
+    - NexusAI Toolkit Executive Summary: business/source/toolkit-executive-summary.md
+    - AI Stack: business/ai-stack.md
     - Business Requirements: business/source/business-requirements.md
     - Business Overview: business/source/business-overview.md
-    - KPI Definitions: KPI/callsense-kpi-definitions.md
+    - KPI Definitions: KPI/nexus-kpi-definitions.md
+  - AI Operating System:
+    - Architecture: ai-os/architecture.md
+    - Total System Architecture: ai-os/Total-system-architecture.md
+    - Data Sources: ai-os/data-sources.md
+    - Semantic RAG: ai-os/semantic-rag.md
+    - ReAct Layer: ai-os/re-act-layer.md
+    - Implementation Guide: ai-os/implementation-guide.md
+    - Semantic RAG Pipeline: semantic-layer/semantic-rag-pipeline.md
   - Functional Specifications:
     - Overview: functional/index.md
     - Design Specifications: functional/source/design.md
@@ -89,18 +96,18 @@ nav:
   - Features & Capabilities:
     - Overview: features/index.md
     - Capability Architecture: features/source/capability-arcitecture.md
-    - Telco AI FAQ: features/source/telco-ai-capability-faq.md
+    - Enterprise AI FAQ: features/source/enterprise-ai-capability-faq.md
     - AWS WAFR Compliance: features/source/AWS-WAFR-COMPLIANCE.md
   - Project Scope:
     - Overview: project-scope/index.md
     - Release Notes:
       - Version 0.0.1: project-scope/releases/v0.0.1.md
       - Version 0.0.1 Test Plan: project-scope/releases/v0.0.1-test-plan.md
-  - Simulators:
+  - AI Simulation:
     - Overview: simulators/index.md
-    - WXCC Simulator:
+    - Contact Center Simulator:
       - Guide: simulators/wxcc/index.md
-    - SFDC Simulator:
+    - CRM Simulator:
       - Guide: simulators/sfdc/index.md
   - Technical Documentation:
     - Overview: technical/index.md
@@ -111,10 +118,10 @@ nav:
     - Integration:
       - Webex Integration: technical/integration/webex-integration.md
       - Implementation Questions: technical/integration/webex-implementation-questions.md
-      - Call Recording: technical/integration/call-recording-pseudocode.md
+      - Data Recording: technical/integration/call-recording-pseudocode.md
     - Architecture:
       - Job Execution Flow: technical/architecture/job-execution-flow.md
-    - Call Processing:
+    - Data Processing:
       - Algorithm: technical/call-processing/call-processing-algorithm.md
       - Developer Guide: technical/call-processing/developer-guide.md
       - SFDC Action: technical/call-processing/sfdcaction.md
@@ -125,7 +132,7 @@ nav:
       - Capability Data: technical/dbdesign/capability-data.md
   - Operational Documentation:
     - Overview: operational/index.md
-    - Totogi Toolkit User Guide:
+    - NexusAI Toolkit User Guide:
       - Overview: operational/user-guide/README.md
       - Getting Started: operational/user-guide/01-getting-started.md
       - Installation: operational/user-guide/02-installation.md
@@ -137,7 +144,7 @@ nav:
       - Kubernetes Deployment: operational/user-guide/08-kubernetes-deployment.md
       - Build Guide: operational/user-guide/BUILD_GUIDE.md
       - Quick Reference: operational/user-guide/QUICK_REFERENCE.md
-    - Totogi Capability K8s Operator:
+    - Nexus Capability K8s Operator:
       - Overview: operational/kubernetes-operator/index.md
       - Quick Start: operational/kubernetes-operator/quick-start.md
       - AWS Prerequisites: operational/kubernetes-operator/aws-prerequisites.md
@@ -205,8 +212,19 @@ nav:
       - Supply Chain & Pharmacy: app-catalogue/healthcare/supply-chain-pharmacy.md
       - Clinical Quality & Safety: app-catalogue/healthcare/clinical-quality.md
       - Regulatory Compliance: app-catalogue/healthcare/regulatory-compliance.md
+    - Customer Operations:
+      - Overview: app-catalogue/customer-ops/index.md
+      - Autonomous Issue Resolution: app-catalogue/customer-ops/autonomous-issue-resolution.md
+      - Proactive Agent Assist: app-catalogue/customer-ops/proactive-agent-assist.md
+      - Unified Operations Hub: app-catalogue/customer-ops/unified-operations-hub.md
+    - Revenue Operations:
+      - Overview: app-catalogue/rev-ops/index.md
+      - Deal Intelligence: app-catalogue/rev-ops/deal-intelligence.md
+      - Pipeline Risk Forecasting: app-catalogue/rev-ops/pipeline-risk-forecasting.md
+      - Revenue Orchestration: app-catalogue/rev-ops/revenue-orchestration.md
   - Test Documentation:
     - Overview: tests/index.md
+    - UAT Test Cases: UAT/testcases/nexus-uat-testcases.md
   - Developer Guide:
     - Overview: developer/index.md
     - Backend:
@@ -230,6 +248,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourusername/starhub-docs
+      link: https://github.com/nexusdataai/nexus-docs
   version:
     provider: mike
