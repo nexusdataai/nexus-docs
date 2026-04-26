@@ -71,7 +71,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -129,20 +129,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -673,10 +673,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#three-plane-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Three-Plane Architecture
       
     </span>
   </a>
@@ -684,10 +684,232 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#high-level-architecture" class="md-nav__link">
+  <a href="#data-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        High-Level Architecture
+        Data Plane
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Plane
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-apis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reasoning-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reasoning Plane
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reasoning Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReAct Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registered-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registered Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-apis_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solutions-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solutions Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions-catalogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solutions Catalogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Automation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Ops
       
     </span>
   </a>
@@ -695,10 +917,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#system-architecture" class="md-nav__link">
+  <a href="#technology-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        System Architecture
+        Technology Stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Architecture
       
     </span>
   </a>
@@ -713,423 +946,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Repository Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#repository-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository Mapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Components
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nexusai-ui-analytics-dashboard" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NexusAI UI (Analytics Dashboard)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nexusai-backend-call-processing-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NexusAI Backend (Call Processing Engine)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ecs-fargate-deployment-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ECS Fargate Deployment Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-flow-call-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Flow - Call Processing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-organization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Organization
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Data Organization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#s3-data-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        S3 Data Structure
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dynamodb-tables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DynamoDB Tables
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integration-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Integration Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api-integration-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Integration Points
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws-deployment-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AWS Deployment Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS Deployment Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vpc-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VPC Architecture
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compute-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compute Layer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storage-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Storage Layer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security-identity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security &amp; Identity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monitoring-analytics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring &amp; Analytics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#content-delivery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Content Delivery
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deployment Options
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Security Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#authentication-authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authentication &amp; Authorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Features
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuration-sources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration Sources
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Environment Variables
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring &amp; Operations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring &amp; Operations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#health-endpoints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Health Endpoints
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloudwatch-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CloudWatch Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-highlights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture Highlights
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Architecture Highlights">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scalability" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scalability
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monitoring-observability" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring &amp; Observability
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -7137,10 +6953,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#three-plane-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Three-Plane Architecture
       
     </span>
   </a>
@@ -7148,10 +6964,232 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#high-level-architecture" class="md-nav__link">
+  <a href="#data-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        High-Level Architecture
+        Data Plane
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Plane
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-apis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reasoning-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reasoning Plane
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reasoning Plane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReAct Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registered-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registered Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-apis_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solutions-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solutions Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solutions Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solutions-catalogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solutions Catalogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Automation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Ops
       
     </span>
   </a>
@@ -7159,10 +7197,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#system-architecture" class="md-nav__link">
+  <a href="#technology-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        System Architecture
+        Technology Stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Architecture
       
     </span>
   </a>
@@ -7177,423 +7226,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Repository Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#repository-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository Mapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Core Components
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nexusai-ui-analytics-dashboard" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NexusAI UI (Analytics Dashboard)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nexusai-backend-call-processing-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NexusAI Backend (Call Processing Engine)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ecs-fargate-deployment-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ECS Fargate Deployment Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-flow-call-processing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Flow - Call Processing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-organization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Data Organization
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Data Organization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#s3-data-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        S3 Data Structure
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dynamodb-tables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DynamoDB Tables
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integration-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Integration Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api-integration-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Integration Points
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws-deployment-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AWS Deployment Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS Deployment Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vpc-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VPC Architecture
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compute-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compute Layer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storage-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Storage Layer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security-identity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security &amp; Identity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monitoring-analytics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring &amp; Analytics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#content-delivery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Content Delivery
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deployment Options
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Architecture
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Security Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#authentication-authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authentication &amp; Authorization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Features
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuration-sources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration Sources
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Environment Variables
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring &amp; Operations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Monitoring &amp; Operations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#health-endpoints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Health Endpoints
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloudwatch-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CloudWatch Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-highlights" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture Highlights
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Architecture Highlights">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scalability" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scalability
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#monitoring-observability" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring &amp; Observability
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#security" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -7618,707 +7250,498 @@
 
 
 <h1 id="platform-architecture">Platform Architecture<a class="headerlink" href="#platform-architecture" title="Permanent link">&para;</a></h1>
-<p>This page provides a comprehensive overview of the NexusAI Data Platform architecture, including high-level system design, deployment architecture, and data flow patterns.</p>
+<p>The NexusAI Data Platform is a layered AI operating system built around three core planes: <strong>Data Plane</strong>, <strong>Control Plane</strong>, and <strong>Reasoning Plane</strong>. Each plane handles a distinct concern, and together they form an intelligent stack that connects enterprise data, builds semantic context, and enables autonomous AI reasoning.</p>
 <hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The NexusAI Data Platform is an enterprise-grade AI operating platform that delivers:</p>
-<ul>
-<li><strong>Modular AI capabilities</strong> deployed into customer-owned cloud infrastructure</li>
-<li><strong>Real-time AI insights</strong> on operational data, compliance, and performance</li>
-<li><strong>Multi-million dollar revenue impact</strong> with measurable ROI</li>
-<li><strong>Automated quality assurance</strong> and compliance monitoring</li>
-<li><strong>AI-powered analytics</strong> with actionable recommendations</li>
-<li><strong>Enterprise system integration</strong> (Salesforce, Office 365, Webex, and more)</li>
-</ul>
-<hr />
-<h2 id="high-level-architecture">High-Level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">&para;</a></h2>
-<div style="min-height: 1200px; width: 100%; margin: 3em auto;">
-
-<pre class="mermaid"><code>graph TD
-    A[NexusAI Data Platform] --&gt; B[Backend Services]
-    A --&gt; C[UI Application]
-    A --&gt; D[Deployment Tools]
-
-    B --&gt; E[Call Processing]
-    B --&gt; F[AI Analysis]
-    B --&gt; G[Journey Management]
-    B --&gt; H[CRM Actions]
-
-    C --&gt; I[React Frontend]
-    C --&gt; J[User Dashboard]
-
-    D --&gt; K[AWS Deployment]
-    D --&gt; L[Infrastructure]
-
-    H --&gt; M[Salesforce Integration]</code></pre>
-
-</div>
-
-<hr />
-<h2 id="system-architecture">System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">&para;</a></h2>
-<div style="min-height: 1400px; width: 100%; margin: 3em auto;">
-
+<h2 id="three-plane-architecture">Three-Plane Architecture<a class="headerlink" href="#three-plane-architecture" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
-    subgraph UI["USER INTERFACES"]
-        UI1[NexusAI UI&lt;br/&gt;Analytics Dashboard&lt;br/&gt;React + TypeScript&lt;br/&gt;Port: 5173]
-        UI2[NexusAI Deployer&lt;br/&gt;Wizard Frontend&lt;br/&gt;React + TypeScript&lt;br/&gt;Port: 5173]
-        UI3[Electron App&lt;br/&gt;Desktop Application&lt;br/&gt;Cross-platform]
+    subgraph Solutions["SOLUTIONS LAYER"]
+        S1["Solutions Catalogue&lt;br/&gt;Enterprise Applications"]
+        S2["AI Automation&lt;br/&gt;Journey Workflows"]
     end
 
-    subgraph Backend["BACKEND SERVICES"]
-        BE1[NexusAI Backend&lt;br/&gt;Call Processing&lt;br/&gt;Python 3.11+ FastAPI&lt;br/&gt;MCP HTTP Gateway&lt;br/&gt;Port: 8000]
-        BE2[Deployer Backend&lt;br/&gt;AWS Orchestration&lt;br/&gt;Python + FastAPI&lt;br/&gt;CloudFormation&lt;br/&gt;Port: 8001]
+    subgraph Reasoning["REASONING PLANE"]
+        R1["AI Copilot&lt;br/&gt;Natural Language Interface"]
+        R2["ReAct Tools&lt;br/&gt;Registered Tool Actions"]
+        R3["Planning Playground&lt;br/&gt;RAG Validation"]
     end
 
-    subgraph AWS["AWS INFRASTRUCTURE"]
-        DB[(DynamoDB&lt;br/&gt;Tables)]
-        S3[(S3&lt;br/&gt;Buckets)]
-        ATH[Athena&lt;br/&gt;Queries]
-        GLUE[Glue&lt;br/&gt;Catalog]
-        CW[CloudWatch&lt;br/&gt;Logs/Metrics]
-        COG[Cognito&lt;br/&gt;Auth]
-        ECS[ECS&lt;br/&gt;Fargate]
-        CF[CloudFront&lt;br/&gt;CDN]
-        SM[Secrets&lt;br/&gt;Manager]
-        SSM[SSM&lt;br/&gt;Parameters]
+    subgraph Control["CONTROL PLANE"]
+        C1["Ontology&lt;br/&gt;Schemas &amp; Policies"]
+        C2["Knowledge Graph&lt;br/&gt;Apache AGE"]
+        C3["Semantic Index&lt;br/&gt;pgvector Embeddings"]
+        C4["Workflows&lt;br/&gt;&amp; Integrations"]
     end
 
-    subgraph EXT["EXTERNAL INTEGRATIONS"]
-        WX[Webex CC&lt;br/&gt;Contact Center]
-        SF[Salesforce&lt;br/&gt;CRM]
-        O365[Office 365&lt;br/&gt;Integration]
-        AI[OpenAI&lt;br/&gt;GPT Analysis]
+    subgraph Data["DATA PLANE"]
+        D1["FDW Connectors&lt;br/&gt;Salesforce, Oracle, SAP"]
+        D2["File Uploads&lt;br/&gt;CSV, PDF, Docs"]
+        D3["Simulators&lt;br/&gt;WXCC, SFDC, Oracle"]
+        D4["Virtual Entities&lt;br/&gt;Unified Data Layer"]
     end
 
-    UI1 --&gt; BE1
-    UI2 --&gt; BE2
-    UI3 --&gt; BE1
-    UI3 --&gt; BE2
-
-    BE1 --&gt; DB
-    BE1 --&gt; S3
-    BE1 --&gt; ATH
-    BE1 --&gt; GLUE
-    BE1 --&gt; CW
-    BE1 --&gt; COG
-    BE1 --&gt; ECS
-    BE1 --&gt; SM
-    BE1 --&gt; SSM
-
-    BE2 --&gt; CF
-    BE2 --&gt; S3
-
-    BE1 --&gt; WX
-    BE1 --&gt; SF
-    BE1 --&gt; O365
-    BE1 --&gt; AI
-
-    style UI fill:#e3f2fd
-    style Backend fill:#fff3e0
-    style AWS fill:#f3e5f5
-    style EXT fill:#e8f5e9</code></pre>
-
-</div>
-
-<hr />
-<h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
-<p>The platform consists of three primary repositories:</p>
-<table>
-<thead>
-<tr>
-<th>Repository</th>
-<th>Application</th>
-<th>Purpose</th>
-<th>Technology Stack</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>nexus-ui</strong></td>
-<td>NexusAI</td>
-<td>Analytics Dashboard &amp; Visualization</td>
-<td>React 18, TypeScript, Vite, Tailwind CSS, Recharts</td>
-</tr>
-<tr>
-<td><strong>nexus-backend</strong></td>
-<td>NexusAI</td>
-<td>Call Processing &amp; MCP Server</td>
-<td>Python 3.11+, FastAPI, boto3, MCP Protocol</td>
-</tr>
-<tr>
-<td><strong>nexus-deployer</strong></td>
-<td>NexusAI Toolkit</td>
-<td>Deployment Wizard &amp; AWS Orchestration</td>
-<td>React + Python FastAPI + Electron</td>
-</tr>
-</tbody>
-</table>
-<h3 id="repository-mapping">Repository Mapping<a class="headerlink" href="#repository-mapping" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Application 1: NexusAI
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── nexus-ui (Frontend)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   └── React-based analytics dashboard
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>└── nexus-backend (Backend)
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    └── Python-based call processing engine
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Application 2: NexusAI Toolkit
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>└── nexus-deployer (Complete Application)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    ├── Frontend (React wizard)
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ├── Backend (Python orchestrator)
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    └── Desktop (Electron wrapper)
-</code></pre></div>
-<hr />
-<h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
-<h3 id="nexusai-ui-analytics-dashboard">NexusAI UI (Analytics Dashboard)<a class="headerlink" href="#nexusai-ui-analytics-dashboard" title="Permanent link">&para;</a></h3>
-<p><strong>Technology Stack:</strong>
-- <strong>Frontend</strong>: React 18, TypeScript, Vite
-- <strong>UI Components</strong>: Radix UI, shadcn/ui, Tailwind CSS
-- <strong>Charts</strong>: Recharts, Mapbox GL
-- <strong>State Management</strong>: React Query, Context API
-- <strong>Authentication</strong>: AWS Amplify, Cognito</p>
-<p><strong>Key Features:</strong>
-- Call Analytics Dashboard with real-time metrics
-- Journey Management and visualization
-- WXCC Simulator interface
-- AI Workspace for insights
-- Tools Catalogue (Webex, Salesforce, O365 connectors)
-- Processed Calls View with transcripts and analysis</p>
-<p><strong>Component Structure:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nexus-ui/src/
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── components/
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── dashboards/          # Analytics dashboards
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── journeys/            # Journey management UI
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── processed-calls/     # Call analysis views
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   ├── wxcc-simulator/      # Simulator interface
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── settings/            # Configuration panels
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   └── ui/                  # Reusable UI components
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>├── services/
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   ├── callProcessingJourneyService.ts
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   ├── transformationJourneyService.ts
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── wxccSimulatorService.ts
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   ├── licenseService.ts
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│   └── webexConnectorService.ts
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>├── context/
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   ├── AuthContext.tsx
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   ├── DashboardContext.tsx
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>│   └── EnterpriseAuthContext.tsx
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>└── types/
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    ├── transformationJourney.ts
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    ├── processedCalls.ts
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    └── license.ts
-</code></pre></div></p>
-<hr />
-<h3 id="nexusai-backend-call-processing-engine">NexusAI Backend (Call Processing Engine)<a class="headerlink" href="#nexusai-backend-call-processing-engine" title="Permanent link">&para;</a></h3>
-<p><strong>Technology Stack:</strong>
-- <strong>Framework</strong>: Python 3.11+, FastAPI
-- <strong>Protocol</strong>: Model Context Protocol (MCP) with HTTP Gateway
-- <strong>AWS SDK</strong>: boto3 for AWS service integration
-- <strong>AI</strong>: OpenAI GPT for transcription and analysis</p>
-<p><strong>MCP Tools:</strong>
-| Tool | Description |
-|------|-------------|
-| <code>journeys_tool</code> | Journey, stage, and job management |
-| <code>logs_and_reports_tool</code> | Logs and report generation |
-| <code>wxcc_simulator_tool</code> | WXCC simulator operations |
-| <code>license_tool</code> | License activation and validation |</p>
-<p><strong>REST APIs:</strong>
-| Endpoint | Description |
-|----------|-------------|
-| <code>/api/v1/journeys/*</code> | Journey management |
-| <code>/api/v1/license/*</code> | License management |
-| <code>/api/v1/simulator/*</code> | WXCC Simulator APIs |
-| <code>/api/v1/analytics/*</code> | Analytics and metrics |
-| <code>/api/v1/calls/*</code> | Processed calls data |
-| <code>/health</code> | Health check |</p>
-<p><strong>Call Processing Stages:</strong>
-1. <strong>Fetch Tasks</strong> - Retrieve tasks from Webex CC
-2. <strong>Deduplication</strong> - Check for already-processed tasks
-3. <strong>Process Recordings</strong> - Download, transcribe, upload
-4. <strong>Register Metadata</strong> - Create metadata and Glue partitions
-5. <strong>AI Analysis</strong> - GPT-powered call analysis</p>
-<hr />
-<h2 id="ecs-fargate-deployment-architecture">ECS Fargate Deployment Architecture<a class="headerlink" href="#ecs-fargate-deployment-architecture" title="Permanent link">&para;</a></h2>
-<div style="min-height: 1300px; width: 100%; margin: 3em auto;">
-
-<pre class="mermaid"><code>graph TB
-    APP[Application&lt;br/&gt;ALB Load Balancer]
-    EB[EventBridge&lt;br/&gt;Event Triggers]
-
-    subgraph FARGATE["ECS FARGATE"]
-        subgraph CONN["CONNECTORS"]
-            WC[Webex&lt;br/&gt;Connector]
-            CSC[CloudSense&lt;br/&gt;Connector]
-        end
-
-        subgraph BATCH["BATCHES"]
-            TG[Transcript&lt;br/&gt;Generator]
-            CA[Call&lt;br/&gt;Analysis]
-            CD[Call&lt;br/&gt;Diarization]
-            SY[Synthesizer]
-        end
-
-        subgraph MCP["MCP TOOLS"]
-            REP[Reporter]
-            MON[Monitoring]
-            DIAG[Diagnostics]
-        end
-
-        BS[Backend&lt;br/&gt;Services]
+    subgraph Ops["AI OPS"]
+        O1["Simulators"]
+        O2["Diagnostics"]
+        O3["Health"]
     end
 
-    DB[(DynamoDB&lt;br/&gt;Tables)]
-    ATH[Athena/S3&lt;br/&gt;Analytics]
-    CW[CloudWatch&lt;br/&gt;Logs/Metrics]
-    GLUE[Glue&lt;br/&gt;Catalog]
-
-    APP --&gt; EB
-    EB --&gt; BS
-
-    BS --&gt; WC
-    BS --&gt; CSC
-    BS --&gt; TG
-    BS --&gt; CA
-    BS --&gt; CD
-    BS --&gt; SY
-    BS --&gt; REP
-    BS --&gt; MON
-    BS --&gt; DIAG
-
-    BS --&gt; DB
-    BS --&gt; ATH
-    BS --&gt; CW
-    BS --&gt; GLUE
-
-    style FARGATE fill:#ff9800,color:#fff
-    style CONN fill:#e3f2fd
-    style BATCH fill:#fff3e0
-    style MCP fill:#fce4ec
-    style APP fill:#4caf50,color:#fff
-    style EB fill:#9c27b0,color:#fff</code></pre>
-
-</div>
-
+    Solutions --&gt; Reasoning
+    Reasoning --&gt; Control
+    Control --&gt; Data
+    Ops -.- Reasoning
+    Ops -.- Data</code></pre>
 <hr />
-<h2 id="data-flow-call-processing">Data Flow - Call Processing<a class="headerlink" href="#data-flow-call-processing" title="Permanent link">&para;</a></h2>
-<div style="min-height: 1400px; width: 100%; margin: 3em auto;">
-
-<pre class="mermaid"><code>graph TD
-    WH[WEBHOOK: New Call&lt;br/&gt;Trigger]
-    WP[Webex Platform]
-    WC[Webex Connector]
-    AR[(Audio Recordings&lt;br/&gt;S3 Storage)]
-    TG[Transcript Generator&lt;br/&gt;OpenAI Whisper]
-    TR[(Transcripts&lt;br/&gt;S3 Storage)]
-    CA[Call Analysis&lt;br/&gt;GPT-4 AI]
-    SFC[Salesforce&lt;br/&gt;Connector]
-    AD[(Analysis Data&lt;br/&gt;S3 Storage)]
-    REP[(Report&lt;br/&gt;S3 Storage)]
-    CRM[SFDC/CloudSense&lt;br/&gt;CRM]
-    DASH[Analytics&lt;br/&gt;Dashboard]
-
-    WP --&gt;|Call Completed| WH
-    WH --&gt;|Trigger| WC
-    WC --&gt;|Pull| WP
-    WC --&gt;|Process Audio| AR
-    AR --&gt;|Speech to Text| TG
-    TG --&gt; TR
-    TR --&gt; CA
-    CA --&gt;|Structured Data| SFC
-    CA --&gt;|Structured Data| AD
-    CA --&gt;|Structured Data| REP
-    SFC --&gt; CRM
-    AD --&gt; DASH
-    REP --&gt; DASH
-    CRM --&gt;|Display| DASH
-
-    style WH fill:#c8e6c9
-    style WP fill:#81d4fa
-    style WC fill:#fff59d
-    style AR fill:#f8bbd0
-    style TG fill:#fff59d
-    style TR fill:#f8bbd0
-    style CA fill:#ce93d8
-    style SFC fill:#fff59d
-    style AD fill:#f8bbd0
-    style REP fill:#f8bbd0
-    style CRM fill:#e1bee7
-    style DASH fill:#e1bee7</code></pre>
-
-</div>
-
-<hr />
-<h2 id="data-organization">Data Organization<a class="headerlink" href="#data-organization" title="Permanent link">&para;</a></h2>
-<h3 id="s3-data-structure">S3 Data Structure<a class="headerlink" href="#s3-data-structure" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>s3://nexus-ai-{env}-call-data/
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── audio/
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   └── year=YYYY/month=MM/day=DD/
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│       └── {call-id}-audio.wav
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── transcripts/
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   └── year=YYYY/month=MM/day=DD/
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│       └── {call-id}-transcript.json
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>├── analysis/
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│   └── year=YYYY/month=MM/day=DD/
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│       └── {call-id}-analysis.json
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>├── diarized/
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│   └── year=YYYY/month=MM/day=DD/
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│       └── {call-id}-diarized.json
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>└── sfdcaction/
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    └── year=YYYY/month=MM/day=DD/
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        └── {call-id}-sfdcaction.json
-</code></pre></div>
-<h3 id="dynamodb-tables">DynamoDB Tables<a class="headerlink" href="#dynamodb-tables" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Table</th>
-<th>Purpose</th>
-<th>Key Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>nexus-ai-{env}-transformation-system</code></td>
-<td>Journey/Stage/Job tracking</td>
-<td>PK: journey_id, SK: entity_type</td>
-</tr>
-<tr>
-<td><code>nexus-ai-{env}-license</code></td>
-<td>License management</td>
-<td>PK: license_key</td>
-</tr>
-<tr>
-<td><code>nexus-ai-{env}-wxcc-tracking</code></td>
-<td>WXCC task tracking</td>
-<td>PK: task_id</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="integration-architecture">Integration Architecture<a class="headerlink" href="#integration-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="api-integration-points">API Integration Points<a class="headerlink" href="#api-integration-points" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Source</th>
-<th>Target</th>
-<th>Protocol</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NexusAI UI</td>
-<td>NexusAI Backend</td>
-<td>HTTP/REST</td>
-<td>Call analytics, journey management</td>
-</tr>
-<tr>
-<td>NexusAI UI</td>
-<td>NexusAI Deployer</td>
-<td>HTTP/REST</td>
-<td>Deployment status, capability info</td>
-</tr>
-<tr>
-<td>NexusAI Backend</td>
-<td>AWS Services</td>
-<td>boto3 SDK</td>
-<td>DynamoDB, S3, Glue, CloudWatch</td>
-</tr>
-<tr>
-<td>NexusAI Backend</td>
-<td>Webex CC</td>
-<td>REST API</td>
-<td>Call recordings, task data</td>
-</tr>
-<tr>
-<td>NexusAI Backend</td>
-<td>OpenAI</td>
-<td>REST API</td>
-<td>Transcription, AI analysis</td>
-</tr>
-<tr>
-<td>NexusAI Deployer</td>
-<td>AWS CloudFormation</td>
-<td>boto3 SDK</td>
-<td>Stack provisioning</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="aws-deployment-architecture">AWS Deployment Architecture<a class="headerlink" href="#aws-deployment-architecture" title="Permanent link">&para;</a></h2>
-<p>The complete infrastructure deployed by NexusAI Deployer:</p>
-<h3 id="vpc-architecture">VPC Architecture<a class="headerlink" href="#vpc-architecture" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>VPC CIDR</strong>: 10.0.0.0/16</li>
-<li><strong>Public Subnet</strong>: ALB, NAT Gateway</li>
-<li><strong>Private Subnet</strong>: ECS Fargate, RDS (optional)</li>
-</ul>
-<h3 id="compute-layer">Compute Layer<a class="headerlink" href="#compute-layer" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ALB</strong>: Application Load Balancer for traffic distribution</li>
-<li><strong>ECS Fargate</strong>: Serverless container execution</li>
-<li><strong>EventBridge</strong>: Event-driven automation</li>
-</ul>
-<h3 id="storage-layer">Storage Layer<a class="headerlink" href="#storage-layer" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>S3 Buckets</strong>: call-data, wxcc-simulator, deployment artifacts</li>
-<li><strong>DynamoDB</strong>: Transformation system, license, tracking tables</li>
-</ul>
-<h3 id="security-identity">Security &amp; Identity<a class="headerlink" href="#security-identity" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Cognito</strong>: User authentication and authorization</li>
-<li><strong>Secrets Manager</strong>: API keys and credentials</li>
-<li><strong>SSM Parameter Store</strong>: Configuration management</li>
-</ul>
-<h3 id="monitoring-analytics">Monitoring &amp; Analytics<a class="headerlink" href="#monitoring-analytics" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>CloudWatch</strong>: Logs, metrics, alarms, dashboards</li>
-<li><strong>Athena</strong>: SQL analytics on S3 data</li>
-<li><strong>Glue</strong>: Data catalog and ETL</li>
-</ul>
-<h3 id="content-delivery">Content Delivery<a class="headerlink" href="#content-delivery" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>CloudFront</strong>: CDN for frontend distribution</li>
-<li><strong>S3 Static Hosting</strong>: Frontend assets</li>
-</ul>
-<h3 id="deployment-options">Deployment Options<a class="headerlink" href="#deployment-options" title="Permanent link">&para;</a></h3>
+<h2 id="data-plane">Data Plane<a class="headerlink" href="#data-plane" title="Permanent link">&para;</a></h2>
+<p>The Data Plane provides a <strong>virtual data layer</strong> that connects to enterprise systems without replacing them. It uses PostgreSQL Foreign Data Wrappers (FDW) to create live, read-time connections to external databases and APIs.</p>
+<h3 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Component</th>
-<th>Option 1</th>
-<th>Option 2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Frontend</strong></td>
-<td>CloudFront + S3</td>
-<td>AWS Amplify</td>
-</tr>
-<tr>
-<td><strong>Backend</strong></td>
-<td>ECS Fargate</td>
-<td>EKS (Kubernetes)</td>
-</tr>
-<tr>
-<td><strong>Database</strong></td>
-<td>DynamoDB</td>
-<td>RDS PostgreSQL</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="security-architecture">Security Architecture<a class="headerlink" href="#security-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="authentication-authorization">Authentication &amp; Authorization<a class="headerlink" href="#authentication-authorization" title="Permanent link">&para;</a></h3>
-<p><strong>Authentication Layer:</strong>
-- <strong>Cognito User Pool</strong>: Primary identity provider
-- <strong>MFA</strong>: TOTP/SMS multi-factor authentication
-- <strong>SSO</strong>: SAML/OIDC integration
-- <strong>License Validation</strong>: Cryptographic validation</p>
-<p><strong>Authorization Layer:</strong>
-- <strong>Role-Based Access Control (RBAC)</strong>
-  - Administrator: Full access
-  - Operator: Deploy and manage
-  - Viewer: Read-only access</p>
-<p><strong>Data Protection:</strong>
-- <strong>Encryption at Rest</strong>: AES-256 (S3, DynamoDB)
-- <strong>Encryption in Transit</strong>: TLS 1.2+
-- <strong>Secrets Management</strong>: AWS Secrets Manager
-- <strong>IAM Roles</strong>: Least privilege principle
-- <strong>Audit Logging</strong>: CloudWatch Logs + CloudTrail</p>
-<h3 id="security-features">Security Features<a class="headerlink" href="#security-features" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Implementation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Authentication</strong></td>
-<td>AWS Cognito with MFA support</td>
-</tr>
-<tr>
-<td><strong>API Security</strong></td>
-<td>API Key + JWT tokens</td>
-</tr>
-<tr>
-<td><strong>Encryption at Rest</strong></td>
-<td>AES-256 (S3, DynamoDB)</td>
-</tr>
-<tr>
-<td><strong>Encryption in Transit</strong></td>
-<td>TLS 1.2+</td>
-</tr>
-<tr>
-<td><strong>Secrets Management</strong></td>
-<td>AWS Secrets Manager</td>
-</tr>
-<tr>
-<td><strong>Audit Logging</strong></td>
-<td>CloudWatch Logs + CloudTrail</td>
-</tr>
-<tr>
-<td><strong>License Enforcement</strong></td>
-<td>Cryptographic validation</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="environment-configuration">Environment Configuration<a class="headerlink" href="#environment-configuration" title="Permanent link">&para;</a></h2>
-<h3 id="configuration-sources">Configuration Sources<a class="headerlink" href="#configuration-sources" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Environment</th>
-<th>Config Source</th>
-<th>Resource Pattern</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>ECS/AWS</strong></td>
-<td>SSM Parameter Store + Secrets Manager</td>
-<td><code>nexus-ai-prod-*</code></td>
-</tr>
-<tr>
-<td><strong>Local AWS</strong></td>
-<td>Environment variables</td>
-<td><code>nexus-ai-dev-*</code></td>
-</tr>
-<tr>
-<td><strong>LocalStack</strong></td>
-<td><code>.env.local</code> file</td>
-<td><code>nexus-ai-local-*</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="key-environment-variables">Key Environment Variables<a class="headerlink" href="#key-environment-variables" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ENVIRONMENT</code></td>
-<td>Environment name</td>
-<td><code>dev</code></td>
-</tr>
-<tr>
-<td><code>AWS_REGION</code></td>
-<td>AWS region</td>
-<td><code>ap-southeast-1</code></td>
-</tr>
-<tr>
-<td><code>USE_LOCALSTACK</code></td>
-<td>Enable LocalStack mode</td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code>GATEWAY_PORT</code></td>
-<td>HTTP gateway port</td>
-<td><code>8000</code></td>
-</tr>
-<tr>
-<td><code>API_KEY</code></td>
-<td>Gateway API key</td>
-<td>(secure)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="monitoring-operations">Monitoring &amp; Operations<a class="headerlink" href="#monitoring-operations" title="Permanent link">&para;</a></h2>
-<h3 id="health-endpoints">Health Endpoints<a class="headerlink" href="#health-endpoints" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th>Endpoint</th>
+<th>Technology</th>
 <th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>NexusAI Backend</td>
-<td><code>/health</code></td>
-<td>Service health</td>
+<td>FDW Connections</td>
+<td>PostgreSQL FDW</td>
+<td>Live connections to Oracle, Salesforce, SAP, MySQL, external APIs</td>
 </tr>
 <tr>
-<td>NexusAI Backend</td>
-<td><code>/ready</code></td>
-<td>Readiness probe</td>
+<td>File Uploads</td>
+<td>S3 + extraction pipeline</td>
+<td>Ingest CSV, PDF, documents into the data layer</td>
 </tr>
 <tr>
-<td>NexusAI Backend</td>
-<td><code>/live</code></td>
-<td>Liveness probe</td>
+<td>Simulators</td>
+<td>Mock data generators</td>
+<td>WXCC (contact center), SFDC (CRM), Oracle ERP, SAP test data</td>
 </tr>
 <tr>
-<td>NexusAI Deployer</td>
-<td><code>/</code></td>
-<td>Root health check</td>
-</tr>
-<tr>
-<td>NexusAI Deployer</td>
-<td><code>/api/health</code></td>
-<td>Detailed health</td>
+<td>Virtual Entities</td>
+<td>FDW discovery + mapping</td>
+<td>Unified entity view across all connected data sources</td>
 </tr>
 </tbody>
 </table>
-<h3 id="cloudwatch-integration">CloudWatch Integration<a class="headerlink" href="#cloudwatch-integration" title="Permanent link">&para;</a></h3>
+<h3 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph LR
+    subgraph Sources["Enterprise Systems"]
+        SF["Salesforce"]
+        OR["Oracle ERP"]
+        SAP["SAP"]
+        GD["Google Drive"]
+        Files["File Uploads"]
+    end
+
+    subgraph DataPlane["Data Plane"]
+        FDW["FDW Gateway"]
+        VDL["Virtual Data Layer"]
+        DS["Data Source Registry"]
+    end
+
+    SF --&gt; FDW
+    OR --&gt; FDW
+    SAP --&gt; FDW
+    GD --&gt; FDW
+    Files --&gt; VDL
+    FDW --&gt; VDL
+    VDL --&gt; DS</code></pre>
+<h3 id="key-metrics">Key Metrics<a class="headerlink" href="#key-metrics" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Logs</strong>: Application logs streamed to CloudWatch Logs</li>
-<li><strong>Metrics</strong>: Custom metrics for data processing and AI analysis</li>
-<li><strong>Alarms</strong>: Automated alerts for failures</li>
-<li><strong>Dashboards</strong>: Real-time monitoring dashboards</li>
+<li><strong>Data Sources</strong> -- Number of connected enterprise systems (Salesforce, Oracle, SAP, etc.)</li>
+<li><strong>Entities</strong> -- Virtual entities discovered across all data sources</li>
+<li><strong>Mapped</strong> -- Entities mapped to the ontology schema in the Control Plane</li>
+<li><strong>Mapping Rules</strong> -- Active rules that define how source entities map to ontology objects</li>
+</ul>
+<h3 id="backend-apis">Backend APIs<a class="headerlink" href="#backend-apis" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Plane API</td>
+<td><code>/api/v1/data-plane/</code></td>
+<td>Manage data sources, connections, virtual entities</td>
+</tr>
+<tr>
+<td>FDW API</td>
+<td><code>/api/v1/fdw/</code></td>
+<td>Foreign Data Wrapper connection management</td>
+</tr>
+<tr>
+<td>Mapping Rules API</td>
+<td><code>/api/v1/mapping-rules/</code></td>
+<td>Define entity-to-ontology mappings</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="control-plane">Control Plane<a class="headerlink" href="#control-plane" title="Permanent link">&para;</a></h2>
+<p>The Control Plane builds a <strong>semantic understanding</strong> of the enterprise by combining an ontology layer, a knowledge graph (Apache AGE), and a vector embedding index (pgvector). It is the brain that gives AI the context to reason about business data.</p>
+<h3 id="capabilities_1">Capabilities<a class="headerlink" href="#capabilities_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ontology Schemas</td>
+<td>YAML-defined</td>
+<td>Business entity definitions (customers, orders, assets, contracts)</td>
+</tr>
+<tr>
+<td>Policies</td>
+<td>Rule engine</td>
+<td>Business rules, guardrails, compliance constraints</td>
+</tr>
+<tr>
+<td>Workflows</td>
+<td>Orchestration</td>
+<td>Multi-step business process definitions</td>
+</tr>
+<tr>
+<td>Integrations</td>
+<td>Connector config</td>
+<td>System-to-system integration mappings</td>
+</tr>
+<tr>
+<td>Knowledge Graph</td>
+<td>Apache AGE (PostgreSQL)</td>
+<td>Entity relationships, graph traversal, connected reasoning</td>
+</tr>
+<tr>
+<td>Semantic Index</td>
+<td>pgvector (PostgreSQL)</td>
+<td>Vector embeddings for hybrid search (semantic + graph)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TB
+    subgraph Ontology["Ontology Bundle"]
+        Schemas["Schemas&lt;br/&gt;Entity definitions"]
+        Policies["Policies&lt;br/&gt;Business rules"]
+        Workflows["Workflows&lt;br/&gt;Process definitions"]
+        Integrations["Integrations&lt;br/&gt;System mappings"]
+    end
+
+    subgraph Storage["Storage Layer"]
+        AGE["Apache AGE&lt;br/&gt;Knowledge Graph"]
+        PGV["pgvector&lt;br/&gt;Semantic Embeddings"]
+    end
+
+    subgraph Query["Query Layer"]
+        Hybrid["Hybrid Search&lt;br/&gt;Vector + Graph"]
+        Explorer["Entity Explorer"]
+        Editor["Knowledge Editor"]
+    end
+
+    Ontology --&gt; AGE
+    Ontology --&gt; PGV
+    AGE --&gt; Hybrid
+    PGV --&gt; Hybrid
+    Hybrid --&gt; Explorer
+    Hybrid --&gt; Editor</code></pre>
+<h3 id="key-metrics_1">Key Metrics<a class="headerlink" href="#key-metrics_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Schemas</strong> -- Ontology entity schemas loaded (e.g., Customer, Order, Product, Contract)</li>
+<li><strong>Policies</strong> -- Business rule policies active</li>
+<li><strong>Workflows</strong> -- Defined workflow templates</li>
+<li><strong>Integrations</strong> -- Integration connector configurations</li>
+<li><strong>Graph Nodes</strong> -- Entities in the Apache AGE knowledge graph</li>
+<li><strong>Embeddings</strong> -- Vector embeddings in the pgvector semantic index</li>
+</ul>
+<h3 id="backend-apis_1">Backend APIs<a class="headerlink" href="#backend-apis_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control Plane API</td>
+<td><code>/api/v1/control-plane/</code></td>
+<td>Stats, entity counts, graph overview</td>
+</tr>
+<tr>
+<td>Ontology API</td>
+<td><code>/api/v1/onto/</code></td>
+<td>Schema, policy, workflow, integration management</td>
+</tr>
+<tr>
+<td>Ontology Data API</td>
+<td><code>/api/v1/onto-data/</code></td>
+<td>Entity data CRUD via ontology layer</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reasoning-plane">Reasoning Plane<a class="headerlink" href="#reasoning-plane" title="Permanent link">&para;</a></h2>
+<p>The Reasoning Plane is where AI <strong>reasons and acts</strong> on enterprise data. It uses a ReAct (Reason + Act) agent loop powered by LLMs, with registered tools that can query data, execute workflows, and interact with external systems -- all under policy guardrails.</p>
+<h3 id="capabilities_2">Capabilities<a class="headerlink" href="#capabilities_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI Copilot</td>
+<td>Natural language interface for querying data, running analysis, and executing actions</td>
+</tr>
+<tr>
+<td>ReAct Tools</td>
+<td>Registered tool functions the AI can call (data queries, journey execution, log analysis, simulator control)</td>
+</tr>
+<tr>
+<td>Planning Playground</td>
+<td>RAG validation and testing environment for reasoning chains</td>
+</tr>
+<tr>
+<td>Policy Guardrails</td>
+<td>Pre-execution policy checks before any tool action is executed</td>
+</tr>
+<tr>
+<td>Multi-system Orchestration</td>
+<td>Coordinate actions across multiple enterprise systems in a single reasoning chain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="react-loop">ReAct Loop<a class="headerlink" href="#react-loop" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph LR
+    User["User Query"] --&gt; Copilot["AI Copilot"]
+    Copilot --&gt; Reason["LLM Reasoning"]
+    Reason --&gt; Plan["Plan Actions"]
+    Plan --&gt; Policy["Policy Check"]
+    Policy --&gt; Execute["Execute Tool"]
+    Execute --&gt; Observe["Observe Result"]
+    Observe --&gt; Reason
+    Execute --&gt; Systems["Enterprise Systems"]</code></pre>
+<h3 id="registered-tools">Registered Tools<a class="headerlink" href="#registered-tools" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Journey Tool</td>
+<td>Execute and manage data processing journeys</td>
+</tr>
+<tr>
+<td>Logs &amp; Reports Tool</td>
+<td>Query execution logs, generate reports</td>
+</tr>
+<tr>
+<td>WXCC Simulator Tool</td>
+<td>Control contact center test data simulation</td>
+</tr>
+<tr>
+<td>Data Plane Queries</td>
+<td>Query virtual entities across connected systems</td>
+</tr>
+<tr>
+<td>Ontology Queries</td>
+<td>Search knowledge graph and semantic index</td>
+</tr>
+</tbody>
+</table>
+<h3 id="backend-apis_2">Backend APIs<a class="headerlink" href="#backend-apis_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copilot Journey API</td>
+<td><code>/api/v1/copilot/</code></td>
+<td>AI copilot interactions and journey execution</td>
+</tr>
+<tr>
+<td>Tools API</td>
+<td><code>/api/v1/tools/</code></td>
+<td>Registered ReAct tools management</td>
+</tr>
+<tr>
+<td>Prompts API</td>
+<td><code>/api/v1/prompts/</code></td>
+<td>Prompt template management</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="solutions-layer">Solutions Layer<a class="headerlink" href="#solutions-layer" title="Permanent link">&para;</a></h2>
+<p>The Solutions layer sits on top of the three planes, providing <strong>pre-built enterprise applications</strong> and <strong>AI automation workflows</strong>.</p>
+<h3 id="solutions-catalogue">Solutions Catalogue<a class="headerlink" href="#solutions-catalogue" title="Permanent link">&para;</a></h3>
+<p>Pre-built applications organized by industry vertical:</p>
+<ul>
+<li><strong>Supply Chain</strong> -- Demand forecasting, inventory optimization, procurement analytics</li>
+<li><strong>Finance &amp; Banking</strong> -- Credit risk, fraud detection, regulatory compliance</li>
+<li><strong>Telecommunications</strong> -- Customer 360, network performance, revenue assurance</li>
+<li><strong>Retail</strong> -- Personalization, price optimization, store operations</li>
+<li><strong>Healthcare</strong> -- Patient 360, clinical decision support, revenue cycle</li>
+<li><strong>Customer Operations</strong> -- Autonomous issue resolution, proactive agent assist</li>
+<li><strong>Revenue Operations</strong> -- Deal intelligence, pipeline risk, revenue orchestration</li>
+</ul>
+<h3 id="ai-automation">AI Automation<a class="headerlink" href="#ai-automation" title="Permanent link">&para;</a></h3>
+<p>Journey-based workflow engine for multi-step AI operations:</p>
+<ul>
+<li>Journey Builder -- Visual workflow definition</li>
+<li>Stage execution -- Multi-stage data processing pipelines</li>
+<li>Schedule management -- Cron-based automated execution</li>
+<li>Audit trail -- Full execution logging and reporting</li>
 </ul>
 <hr />
-<h2 id="architecture-highlights">Architecture Highlights<a class="headerlink" href="#architecture-highlights" title="Permanent link">&para;</a></h2>
-<h3 id="scalability">Scalability<a class="headerlink" href="#scalability" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ECS Fargate</strong> for auto-scaling containerized workloads</li>
-<li><strong>DynamoDB</strong> for high-performance NoSQL data storage</li>
-<li><strong>S3</strong> for scalable object storage</li>
-<li><strong>CloudFront</strong> for global content delivery</li>
-<li><strong>Event-driven architecture</strong> with EventBridge</li>
-</ul>
-<h3 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Webex Contact Center</strong> for call data and recordings</li>
-<li><strong>Salesforce</strong> for CRM automation</li>
-<li><strong>OpenAI</strong> for AI-powered transcription and analysis</li>
-<li><strong>Office 365</strong> for email integration</li>
-</ul>
-<h3 id="monitoring-observability">Monitoring &amp; Observability<a class="headerlink" href="#monitoring-observability" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>CloudWatch</strong> for logs, metrics, and alarms</li>
-<li><strong>Athena</strong> for ad-hoc analytics</li>
-<li><strong>Glue</strong> for data cataloging</li>
-<li><strong>X-Ray</strong> for distributed tracing (optional)</li>
-</ul>
-<h3 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Cognito</strong> for authentication and authorization</li>
-<li><strong>Secrets Manager</strong> for secure credential storage</li>
-<li><strong>IAM</strong> for fine-grained access control</li>
-<li><strong>CloudTrail</strong> for audit logging</li>
-<li><strong>VPC</strong> for network isolation### High Availability</li>
-<li><strong>Multi-AZ deployment</strong> for resilience</li>
-<li><strong>Auto-scaling</strong> for compute resources</li>
-<li><strong>Load balancing</strong> for traffic distribution</li>
-<li><strong>S3 replication</strong> for data durability</li>
-<li><strong>DynamoDB global tables</strong> (optional)---## Version Information| Application | Component | Version | Status |
-|-------------|-----------|---------|--------|
-| <strong>NexusAI</strong> | NexusAI UI | 1.0.0 | Production Ready |
-| <strong>NexusAI</strong> | NexusAI Backend | 2.0.0 | Production Ready |
-| <strong>NexusAI Toolkit</strong> | NexusAI Deployer | 1.0.0 | Production Ready |---<em>Last Updated: January 2026</em><br />
-<em>Document Version: 2.0</em></li>
-</ul>
+<h2 id="ai-ops">AI Ops<a class="headerlink" href="#ai-ops" title="Permanent link">&para;</a></h2>
+<p>Cross-cutting operational capabilities that monitor and test the platform:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simulators</td>
+<td>Generate test data for WXCC (contact center), SFDC (CRM), Oracle ERP, SAP</td>
+</tr>
+<tr>
+<td>Diagnostics</td>
+<td>System health checks, FDW connection testing, API diagnostics</td>
+</tr>
+<tr>
+<td>Health</td>
+<td>Pod status, service health, infrastructure monitoring</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technologies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>React + TypeScript, Vite, Tailwind CSS, shadcn/ui</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Python 3.11+, FastAPI, MCP HTTP Gateway</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>PostgreSQL with Apache AGE (graph) + pgvector (embeddings)</td>
+</tr>
+<tr>
+<td>Data Integration</td>
+<td>PostgreSQL FDW (Foreign Data Wrappers)</td>
+</tr>
+<tr>
+<td>AI/LLM</td>
+<td>OpenAI / Anthropic via ReAct agent loop</td>
+</tr>
+<tr>
+<td>Infrastructure</td>
+<td>AWS EKS, ECR, S3, CloudWatch, Cognito</td>
+</tr>
+<tr>
+<td>Orchestration</td>
+<td>Nexus Kubernetes Operator (NexusCapability CRD)</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions, Docker, Helm</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="deployment-architecture">Deployment Architecture<a class="headerlink" href="#deployment-architecture" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TB
+    subgraph EKS["AWS EKS Cluster"]
+        subgraph NexusNS["nexus-ai-{env} Namespace"]
+            FE["Frontend Pods&lt;br/&gt;nginx + React SPA + MkDocs"]
+            BE["Backend Pods&lt;br/&gt;FastAPI + MCP Gateway"]
+            BM["BSSMagic&lt;br/&gt;CRM Connector"]
+        end
+        subgraph System["nexus-system Namespace"]
+            OP["Nexus Operator&lt;br/&gt;Lifecycle Management"]
+        end
+    end
+
+    subgraph AWS["AWS Services"]
+        S3["S3 Buckets"]
+        CW["CloudWatch"]
+        ECR["ECR Images"]
+        COG["Cognito Auth"]
+    end
+
+    subgraph DB["Database"]
+        PG["PostgreSQL&lt;br/&gt;AGE + pgvector + FDW"]
+    end
+
+    ALB["Application Load Balancer"] --&gt; FE
+    FE --&gt;|"/api/"| BE
+    FE --&gt;|"/docs/"| FE
+    BE --&gt; PG
+    BE --&gt; S3
+    BE --&gt; CW
+    OP --&gt; NexusNS</code></pre>
+<hr />
+<h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/nexusdataai/nexus-ui">nexus-ui</a></td>
+<td>React frontend -- dashboard, planes UI, solutions catalogue</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nexusdataai/nexus-backend">nexus-backend</a></td>
+<td>Python backend -- APIs, services, ReAct tools, FDW, ontology</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nexusdataai/nexus-deployer">nexus-deployer</a></td>
+<td>Kubernetes operator, deployment scripts, infrastructure</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nexusdataai/nexus-docs">nexus-docs</a></td>
+<td>MkDocs documentation (this site)</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -8341,7 +7764,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 11:02:42 UTC">April 26, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 12:23:40 UTC">April 26, 2026</span>
   </span>
 
     
