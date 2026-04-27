@@ -1,5 +1,7 @@
 # NexusAI Data Platform
 
+![NexusAI Enterprise Reasoning Platform](assets/nexusai-architecture.jpg)
+
 Welcome to the comprehensive documentation portal for the **NexusAI Data Platform** -- an enterprise-grade AI operating layer that connects your systems, builds semantic context, and deploys autonomous agents that reason and act across your organization.
 
 [![Backend](https://img.shields.io/badge/nexus--backend-repo-blue)](https://github.com/nexusdataai/nexus-backend)
@@ -16,6 +18,8 @@ Welcome to the comprehensive documentation portal for the **NexusAI Data Platfor
 NexusAI is **the Intelligent AI Operating Layer for the Enterprise**. Rather than replacing existing systems, NexusAI sits on top of your current technology stack -- CRMs, ERPs, data warehouses, and operational tools -- and unifies them into a single, AI-driven intelligence fabric. It transforms siloed enterprise data into connected, actionable knowledge that autonomous agents use to reason, decide, and execute.
 
 ### How It Works
+
+![NexusAI Platform](assets/nexusai-platform-ui.png)
 
 NexusAI operates through a four-stage pipeline that turns disconnected enterprise data into autonomous action:
 

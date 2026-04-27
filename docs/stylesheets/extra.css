@@ -72,8 +72,15 @@
 .md-header {
   background-color: #1e1b4b;
 }
+.md-header__inner {
+  justify-content: flex-start;
+}
 .md-header__title {
   font-weight: 700;
+  flex-grow: 1;
+}
+.md-search {
+  margin-left: auto;
 }
 
 /* --- Navigation Tabs --- */

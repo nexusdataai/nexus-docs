@@ -1,8 +1,6 @@
 site_name: NexusAI Data Platform
 site_description: Comprehensive documentation for the NexusAI Data Platform - The Intelligent AI Operating Layer for the Enterprise
 site_author: NexusAI
-repo_url: https://github.com/nexusdataai/nexus-docs
-repo_name: nexus-docs
 
 theme:
   name: material
@@ -34,8 +32,6 @@ theme:
     - search.share
     - toc.follow
     - content.code.copy
-  icon:
-    repo: fontawesome/brands/github
 
 extra_css:
   - stylesheets/extra.css
