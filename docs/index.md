@@ -19,7 +19,7 @@ NexusAI is **the Intelligent AI Operating Layer for the Enterprise**. Rather tha
 
 ### How It Works
 
-![NexusAI Platform](assets/nexusai-platform-ui.png)
+![NexusAI Platform](assets/nexusai-platform.jpeg)
 
 NexusAI operates through a four-stage pipeline that turns disconnected enterprise data into autonomous action:
 
