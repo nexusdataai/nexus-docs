@@ -4,49 +4,9 @@ The NexusAI Data Platform is a layered AI operating system built around three co
 
 ---
 
-## Three-Plane Architecture
+## Architecture
 
-```mermaid
-graph TB
-    subgraph Solutions["SOLUTIONS LAYER"]
-        S1["Solutions Catalogue<br/>Enterprise Applications"]
-        S2["AI Automation<br/>Journey Workflows"]
-    end
-
-    subgraph Reasoning["REASONING PLANE"]
-        R1["AI Copilot<br/>Natural Language Interface"]
-        R2["ReAct Tools<br/>Registered Tool Actions"]
-        R3["Planning Playground<br/>RAG Validation"]
-    end
-
-    subgraph Control["CONTROL PLANE"]
-        C1["Ontology<br/>Schemas & Policies"]
-        C2["Knowledge Graph<br/>Apache AGE"]
-        C3["Semantic Index<br/>pgvector Embeddings"]
-        C4["Workflows<br/>& Integrations"]
-    end
-
-    subgraph Data["DATA PLANE"]
-        D1["FDW Connectors<br/>Salesforce, Oracle, SAP"]
-        D2["File Uploads<br/>CSV, PDF, Docs"]
-        D3["Simulators<br/>WXCC, SFDC, Oracle"]
-        D4["Virtual Entities<br/>Unified Data Layer"]
-    end
-
-    subgraph Ops["AI OPS"]
-        O1["Simulators"]
-        O2["Diagnostics"]
-        O3["Health"]
-    end
-
-    Solutions --> Reasoning
-    Reasoning --> Control
-    Control --> Data
-    Ops -.- Reasoning
-    Ops -.- Data
-```
-
----
+![NexusAI Architecture](assets/nexusai-platform-stack.png)
 
 ## Data Plane
 
