@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1960" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-labelledby="svgTitle svgDesc">
+  <title id="svgTitle">NexusAI Total System Architecture</title>
+  <desc id="svgDesc">Layered architecture: User Interface flows through Identity and Intent analysis into the ReAct Planning Engine, the AI Control Plane (semantic intelligence with Graph DB and Vector DB), and the AI Data Plane (CDC, ETL, FDW paths) hydrating from Enterprise Source Systems.</desc>
+
+  <defs>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669"/>
+    </marker>
+    <filter id="soft" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="1960" fill="#f8fafc"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">NexusAI Total System Architecture</text>
+  <text x="640" y="66" text-anchor="middle" font-size="13" fill="#64748b">User Interface &#183; ReAct Planning Engine &#183; AI Control Plane &#183; AI Data Plane</text>
+
+  <!-- TOP STACK: User Interface -> Identity -> Intent -->
+  <g filter="url(#soft)">
+    <rect x="490" y="100" width="300" height="60" rx="8" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+    <rect x="490" y="190" width="300" height="60" rx="8" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+    <rect x="470" y="280" width="340" height="84" rx="8" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+  </g>
+
+  <text x="640" y="125" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">User Interface</text>
+  <text x="640" y="145" text-anchor="middle" font-size="12" fill="#475569">UI &#183; Chat &#183; API &#183; Copilot</text>
+
+  <text x="640" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Identity &amp; RBAC Layer</text>
+  <text x="640" y="235" text-anchor="middle" font-size="12" fill="#475569">SSO &#183; OAuth &#183; SCIM</text>
+
+  <text x="640" y="305" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">Intent + Risk Analyzer</text>
+  <text x="640" y="325" text-anchor="middle" font-size="12" fill="#475569">Classifies: read-only &#183; low-risk write</text>
+  <text x="640" y="343" text-anchor="middle" font-size="12" fill="#475569">high-risk write &#183; cross-system</text>
+
+  <line x1="640" y1="160" x2="640" y2="186" stroke="#475569" stroke-width="2" marker-end="url(#arrow-slate)"/>
+  <line x1="640" y1="250" x2="640" y2="276" stroke="#475569" stroke-width="2" marker-end="url(#arrow-slate)"/>
+  <line x1="640" y1="364" x2="640" y2="408" stroke="#475569" stroke-width="2" marker-end="url(#arrow-slate)"/>
+
+  <!-- REACT PLANNING ENGINE -->
+  <rect x="60" y="410" width="1160" height="340" rx="14" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <path d="M 74 410 L 1206 410 A 14 14 0 0 1 1220 424 L 1220 454 L 60 454 L 60 424 A 14 14 0 0 1 74 410 Z" fill="#4f46e5"/>
+  <text x="640" y="440" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">ReAct Planning Engine &#8212; LLM Agent Loop</text>
+  <text x="640" y="478" text-anchor="middle" font-size="13" font-weight="700" fill="#3730a3">PLAN &#8594; EXECUTE &#8594; OBSERVE &#8594; REPLAN &#8594; EXECUTE &#8594; OBSERVE</text>
+  <text x="640" y="498" text-anchor="middle" font-size="11" fill="#4f46e5">Receive intent + risk &#183; Query RAG &#183; Reason &#183; Select tool &#183; Validate via Policy &#183; Observe &#183; Loop until goal / step limit</text>
+
+  <!-- AI Applications -->
+  <g filter="url(#soft)">
+    <rect x="90" y="520" width="360" height="210" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  </g>
+  <text x="270" y="548" text-anchor="middle" font-size="14" font-weight="700" fill="#1e1b4b">AI Applications</text>
+  <text x="270" y="566" text-anchor="middle" font-size="11" fill="#64748b">powered by this loop</text>
+  <text x="115" y="598" font-size="12" fill="#1e293b">&#8226; Fraud AI Assistant</text>
+  <text x="115" y="622" font-size="12" fill="#1e293b">&#8226; AML Investigator Copilot</text>
+  <text x="115" y="646" font-size="12" fill="#1e293b">&#8226; Risk Analytics Dashboard</text>
+  <text x="115" y="670" font-size="12" fill="#1e293b">&#8226; Enterprise System Orchestrator</text>
+
+  <!-- Policy & Guardrail Core -->
+  <g filter="url(#soft)">
+    <rect x="460" y="520" width="360" height="210" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  </g>
+  <text x="640" y="548" text-anchor="middle" font-size="14" font-weight="700" fill="#1e1b4b">Policy &amp; Guardrail Core</text>
+  <text x="640" y="566" text-anchor="middle" font-size="11" fill="#64748b">OPA / Custom Engine</text>
+  <text x="485" y="598" font-size="12" fill="#1e293b">&#8226; Approval thresholds</text>
+  <text x="485" y="622" font-size="12" fill="#1e293b">&#8226; Field-level access</text>
+  <text x="485" y="646" font-size="12" fill="#1e293b">&#8226; Risk-based routing</text>
+  <text x="485" y="670" font-size="12" fill="#1e293b">&#8226; Max step limits</text>
+  <text x="660" y="598" font-size="12" fill="#1e293b">&#8226; Close windows</text>
+  <text x="660" y="622" font-size="12" fill="#1e293b">&#8226; Cross-system checks</text>
+  <text x="660" y="646" font-size="12" fill="#1e293b">&#8226; Dry-run mode</text>
+  <text x="660" y="670" font-size="12" fill="#1e293b">&#8226; Audit logging</text>
+
+  <!-- Tool Abstraction Layer -->
+  <g filter="url(#soft)">
+    <rect x="830" y="520" width="360" height="210" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  </g>
+  <text x="1010" y="548" text-anchor="middle" font-size="14" font-weight="700" fill="#1e1b4b">Tool Abstraction Layer</text>
+  <text x="1010" y="566" text-anchor="middle" font-size="11" fill="#64748b">Controlled APIs</text>
+  <text x="855" y="598" font-size="12" fill="#1e293b">&#8226; get_account()</text>
+  <text x="855" y="622" font-size="12" fill="#1e293b">&#8226; get_ar_balance()</text>
+  <text x="855" y="646" font-size="12" fill="#1e293b">&#8226; create_customer()</text>
+  <text x="855" y="670" font-size="12" fill="#1e293b">&#8226; propose_credit_change()</text>
+  <text x="855" y="694" font-size="12" fill="#1e293b">&#8226; submit_gl_adjustment()</text>
+  <text x="855" y="718" font-size="12" fill="#1e293b">&#8226; trigger_workflow()</text>
+
+  <!-- BRIDGE: ReAct <-> Control Plane (RAG feedback loop) -->
+  <line x1="540" y1="750" x2="540" y2="800" stroke="#475569" stroke-width="2" marker-end="url(#arrow-slate)"/>
+  <line x1="740" y1="800" x2="740" y2="752" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-purple)"/>
+  <text x="640" y="780" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">RAG feedback loop</text>
+
+  <!-- AI CONTROL PLANE -->
+  <rect x="60" y="800" width="1160" height="450" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+  <path d="M 74 800 L 1206 800 A 14 14 0 0 1 1220 814 L 1220 844 L 60 844 L 60 814 A 14 14 0 0 1 74 800 Z" fill="#7c3aed"/>
+  <text x="640" y="830" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">AI Control Plane &#8212; Semantic Intelligence &amp; Reasoning</text>
+
+  <!-- Enterprise RAG Layer -->
+  <g filter="url(#soft)">
+    <rect x="140" y="864" width="1000" height="116" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+  </g>
+  <text x="640" y="890" text-anchor="middle" font-size="14" font-weight="700" fill="#3b0764">Enterprise RAG Layer</text>
+  <text x="640" y="908" text-anchor="middle" font-size="11" fill="#64748b">Semantic Retrieval for LLM Context</text>
+  <text x="640" y="936" text-anchor="middle" font-size="12" fill="#1e293b">Schema &amp; field definitions &#183; Business policies &#183; Workflow dependencies &#183; API specs &#183; Cross-system awareness</text>
+  <text x="640" y="958" text-anchor="middle" font-size="11" font-style="italic" fill="#64748b">Semantic retrieval, not relational querying.</text>
+
+  <!-- Three query boxes -->
+  <g filter="url(#soft)">
+    <rect x="180" y="1010" width="240" height="64" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+    <rect x="520" y="1010" width="240" height="64" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+    <rect x="860" y="1010" width="240" height="64" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+  </g>
+  <text x="300" y="1036" text-anchor="middle" font-size="13" font-weight="700" fill="#3b0764">Graph Query</text>
+  <text x="300" y="1055" text-anchor="middle" font-size="12" fill="#64748b">+ Reasoner</text>
+  <text x="640" y="1036" text-anchor="middle" font-size="13" font-weight="700" fill="#3b0764">Vector Search</text>
+  <text x="640" y="1055" text-anchor="middle" font-size="12" fill="#64748b">Similarity</text>
+  <text x="980" y="1036" text-anchor="middle" font-size="13" font-weight="700" fill="#3b0764">ML Scoring Engine</text>
+  <text x="980" y="1055" text-anchor="middle" font-size="12" fill="#64748b">Risk &#183; Anomaly</text>
+
+  <!-- Arrows: RAG -> 3 queries -->
+  <line x1="300" y1="980" x2="300" y2="1006" stroke="#7c3aed" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+  <line x1="640" y1="980" x2="640" y2="1006" stroke="#7c3aed" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+  <line x1="980" y1="980" x2="980" y2="1006" stroke="#7c3aed" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+
+  <!-- Graph DB cylinder -->
+  <g filter="url(#soft)">
+    <path d="M 220 1118 L 220 1218 A 160 14 0 0 0 540 1218 L 540 1118" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+    <ellipse cx="380" cy="1118" rx="160" ry="14" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+  </g>
+  <text x="380" y="1146" text-anchor="middle" font-size="13" font-weight="700" fill="#3b0764">Graph DB &#183; Apache AGE</text>
+  <text x="380" y="1166" text-anchor="middle" font-size="11" fill="#64748b">Ontology + RDF</text>
+  <text x="380" y="1188" text-anchor="middle" font-size="11" fill="#1e293b">Accounts &#183; Transactions &#183; Customers</text>
+  <text x="380" y="1206" text-anchor="middle" font-size="11" fill="#1e293b">Risk Rules &#183; Relationships &#183; Ontology</text>
+
+  <!-- Vector DB cylinder -->
+  <g filter="url(#soft)">
+    <path d="M 740 1118 L 740 1218 A 160 14 0 0 0 1060 1218 L 1060 1118" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+    <ellipse cx="900" cy="1118" rx="160" ry="14" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+  </g>
+  <text x="900" y="1146" text-anchor="middle" font-size="13" font-weight="700" fill="#3b0764">Vector DB &#183; pgvector</text>
+  <text x="900" y="1166" text-anchor="middle" font-size="11" fill="#64748b">Embeddings Store</text>
+  <text x="900" y="1188" text-anchor="middle" font-size="11" fill="#1e293b">Schema &#183; Policy &#183; Workflow &#183; API spec</text>
+  <text x="900" y="1206" text-anchor="middle" font-size="11" fill="#1e293b">Process rule &#183; Fraud case &#183; Customer</text>
+
+  <!-- Arrows: queries -> DBs -->
+  <line x1="300" y1="1074" x2="340" y2="1112" stroke="#7c3aed" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+  <line x1="640" y1="1074" x2="430" y2="1112" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="3,3"/>
+  <line x1="640" y1="1074" x2="850" y2="1112" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="3,3"/>
+  <line x1="980" y1="1074" x2="940" y2="1112" stroke="#7c3aed" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+
+  <!-- BRIDGE: Control Plane -> Data Plane -->
+  <line x1="380" y1="1250" x2="380" y2="1296" stroke="#475569" stroke-width="2" marker-end="url(#arrow-slate)"/>
+  <line x1="900" y1="1250" x2="900" y2="1296" stroke="#475569" stroke-width="2" marker-end="url(#arrow-slate)"/>
+  <text x="640" y="1280" text-anchor="middle" font-size="11" font-style="italic" fill="#64748b">hydrated by</text>
+
+  <!-- AI DATA PLANE -->
+  <rect x="60" y="1300" width="1160" height="630" rx="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <path d="M 74 1300 L 1206 1300 A 14 14 0 0 1 1220 1314 L 1220 1344 L 60 1344 L 60 1314 A 14 14 0 0 1 74 1300 Z" fill="#059669"/>
+  <text x="640" y="1330" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">AI Data Plane &#8212; Data Ingestion &amp; Transformation</text>
+
+  <!-- Path labels -->
+  <text x="240" y="1372" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">CDC Path</text>
+  <text x="640" y="1372" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">ETL Path</text>
+  <text x="1040" y="1372" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">FDW Path</text>
+
+  <!-- CDC: RDF Stream Processor -->
+  <g filter="url(#soft)">
+    <rect x="120" y="1390" width="240" height="86" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.4"/>
+  </g>
+  <text x="240" y="1418" text-anchor="middle" font-size="13" font-weight="700" fill="#064e3b">RDF Stream Processor</text>
+  <text x="240" y="1438" text-anchor="middle" font-size="11" fill="#64748b">CDC &#8594; Ontology Mapper</text>
+
+  <line x1="240" y1="1476" x2="240" y2="1502" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <g filter="url(#soft)">
+    <rect x="120" y="1506" width="240" height="60" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.4"/>
+  </g>
+  <text x="240" y="1542" text-anchor="middle" font-size="14" font-weight="700" fill="#064e3b">Kafka</text>
+
+  <line x1="240" y1="1566" x2="240" y2="1592" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <g filter="url(#soft)">
+    <rect x="120" y="1596" width="240" height="74" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.4"/>
+  </g>
+  <text x="240" y="1624" text-anchor="middle" font-size="13" font-weight="700" fill="#064e3b">CDC Engine</text>
+  <text x="240" y="1644" text-anchor="middle" font-size="11" fill="#64748b">Debezium</text>
+
+  <!-- ETL: RDF Batch Transformer -->
+  <g filter="url(#soft)">
+    <rect x="520" y="1390" width="240" height="86" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.4"/>
+  </g>
+  <text x="640" y="1418" text-anchor="middle" font-size="13" font-weight="700" fill="#064e3b">RDF Batch Transformer</text>
+  <text x="640" y="1438" text-anchor="middle" font-size="11" fill="#64748b">R2RML / Batch</text>
+
+  <line x1="640" y1="1476" x2="640" y2="1502" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <g filter="url(#soft)">
+    <rect x="520" y="1506" width="240" height="86" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.4"/>
+  </g>
+  <text x="640" y="1534" text-anchor="middle" font-size="13" font-weight="700" fill="#064e3b">ETL Engine</text>
+  <text x="640" y="1554" text-anchor="middle" font-size="11" fill="#64748b">Spark &#183; Airflow &#183; Custom</text>
+
+  <!-- FDW Wrapper -->
+  <g filter="url(#soft)">
+    <rect x="920" y="1390" width="240" height="130" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.4"/>
+  </g>
+  <text x="1040" y="1420" text-anchor="middle" font-size="13" font-weight="700" fill="#064e3b">FDW Wrapper</text>
+  <text x="1040" y="1440" text-anchor="middle" font-size="11" fill="#64748b">Virtual Access</text>
+  <text x="1040" y="1472" text-anchor="middle" font-size="11" fill="#1e293b">Postgres FDW</text>
+  <text x="1040" y="1492" text-anchor="middle" font-size="11" fill="#1e293b">Trino &#183; Presto</text>
+
+  <!-- Arrows down to Sources -->
+  <line x1="240" y1="1670" x2="240" y2="1730" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+  <line x1="640" y1="1592" x2="640" y2="1730" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+  <line x1="1040" y1="1520" x2="1040" y2="1730" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <!-- Enterprise Source Systems -->
+  <rect x="100" y="1730" width="1080" height="180" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="640" y="1758" text-anchor="middle" font-size="14" font-weight="700" fill="#7c2d12">Enterprise Source Systems</text>
+
+  <g filter="url(#soft)">
+    <rect x="140" y="1776" width="230" height="76" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+    <rect x="390" y="1776" width="230" height="76" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+    <rect x="640" y="1776" width="230" height="76" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+    <rect x="890" y="1776" width="230" height="76" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+  </g>
+  <text x="255" y="1804" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">Core Banking</text>
+  <text x="255" y="1824" text-anchor="middle" font-size="11" fill="#64748b">Temenos &#183; Finacle</text>
+  <text x="505" y="1804" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">ERP / GL</text>
+  <text x="505" y="1824" text-anchor="middle" font-size="11" fill="#64748b">SAP &#183; Oracle</text>
+  <text x="755" y="1804" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">CRM</text>
+  <text x="755" y="1824" text-anchor="middle" font-size="11" fill="#64748b">Salesforce &#183; Custom</text>
+  <text x="1005" y="1804" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">Legacy / Files</text>
+  <text x="1005" y="1824" text-anchor="middle" font-size="11" fill="#64748b">Mainframe &#183; Flat files</text>
+
+  <text x="640" y="1882" text-anchor="middle" font-size="11" fill="#7c2d12"><tspan font-weight="700">CDC</tspan> real-time event streams &#183; <tspan font-weight="700">ETL</tspan> batch historical / analytical / master data &#183; <tspan font-weight="700">FDW</tspan> virtual access for low-volume / governance-restricted data</text>
+</svg>

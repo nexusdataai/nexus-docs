@@ -234,3 +234,17 @@
   display: block;
   margin: 0 auto;
 }
+
+/* ==========================================================================
+   Hero images — fill the content column cleanly without breaking out
+   Pair with `hide: [toc]` front matter to give the column maximum width
+   ========================================================================== */
+
+.md-typeset img.hero-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25em auto;
+  border-radius: 8px;
+}

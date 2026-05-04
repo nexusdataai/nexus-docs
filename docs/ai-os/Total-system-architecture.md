@@ -1,9 +1,14 @@
 # Total System Architecture
 
+![Total System Architecture](../assets/total-system-architecture.svg)
+
+### ASCII reference
+
+```text
                          ┌────────────────────────────┐
-                         │       User Interface         │
-                         │  (Chat / API / Copilot)      │
-                         └──────────────┬───────────────┘
+                         │       User Interface       │
+                         │  (UI/CLI/Chat/API/Copilot) │
+                         └──────────────┬─────────────┘
                                         │
                                         ▼
                          ┌────────────────────────────┐
@@ -158,3 +163,4 @@
   │ └─────────────────────────────────────────────────────────────────┘  │
   │                                                                      │
   └──────────────────────────────────────────────────────────────────────┘
+```

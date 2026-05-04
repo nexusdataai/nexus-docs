@@ -1,8 +1,20 @@
+---
+hide:
+  - toc
+---
+
 # NexusAI Data Platform
 
-![NexusAI Enterprise Reasoning Platform](assets/nexusai-architecture.jpg)
-
 Welcome to the comprehensive documentation portal for the **NexusAI Data Platform** -- an enterprise-grade AI operating layer that connects your systems, builds semantic context, and deploys autonomous agents that reason and act across your organization.
+
+<picture>
+  <source
+    type="image/webp"
+    srcset="assets/nexus-data-ai-1024.webp 1024w, assets/nexus-data-ai.webp 1667w"
+    sizes="(max-width: 1024px) 96vw, min(96vw, 1600px)">
+  <img src="assets/nexus-data-ai.png" alt="NexusAI Enterprise Reasoning Platform" class="hero-img" loading="lazy" decoding="async" width="1667" height="943">
+</picture>
+
 
 [![Backend](https://img.shields.io/badge/nexus--backend-repo-blue)](https://github.com/nexusdataai/nexus-backend)
 [![UI](https://img.shields.io/badge/nexus--ui-repo-blue)](https://github.com/nexusdataai/nexus-ui)
@@ -111,14 +123,3 @@ Development environment setup, API documentation, SDK references, testing proced
 | **Business** | [Executive Summary](business/source/executive-summary.md) |
 
 ---
-
-## Repositories
-
-The NexusAI Data Platform is maintained across four repositories under the [nexusdataai](https://github.com/nexusdataai) GitHub organization:
-
-| Repository | Description |
-|------------|-------------|
-| [**nexus-backend**](https://github.com/nexusdataai/nexus-backend) | Core platform services, AI reasoning engine, connectors, and APIs |
-| [**nexus-ui**](https://github.com/nexusdataai/nexus-ui) | React-based management console and operational dashboards |
-| [**nexus-deployer**](https://github.com/nexusdataai/nexus-deployer) | Infrastructure-as-code, Kubernetes operator, and deployment automation |
-| [**nexus-docs**](https://github.com/nexusdataai/nexus-docs) | This documentation site |
