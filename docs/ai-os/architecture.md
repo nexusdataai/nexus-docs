@@ -1,252 +1,47 @@
- # Broad Level System
- 
-                         ┌─────────────────────────┐
-                         │       User Interface     │
-                         │  (Chat / API / Copilot)  │
-                         └────────────┬────────────┘
-                                      ↓
-                         ┌─────────────────────────┐
-                         │ Identity & RBAC Layer   │
-                         │ (SSO, OAuth, SCIM)      │
-                         └────────────┬────────────┘
-                                      ↓
-                         ┌─────────────────────────┐
-                         │ Intent + Risk Analyzer  │
-                         │ (LLM or small model)    │
-                         └────────────┬────────────┘
-                                      ↓
-                         ┌─────────────────────────┐
-                         │ Enterprise RAG Layer    │
-                         │ (Metadata + Policies)   │
-                         └────────────┬────────────┘
-                                      ↓
-                         ┌─────────────────────────┐
-                         │ ReAct Planning Engine   │
-                         │ (LLM Agent Loop)        │
-                         └────────────┬────────────┘
-                                      ↓
-                         ┌─────────────────────────┐
-                         │ Policy & Guardrail Core │
-                         │ (OPA / Custom Engine)   │
-                         └────────────┬────────────┘
-                                      ↓
-                         ┌─────────────────────────┐
-                         │ Tool Abstraction Layer  │
-                         │ (Controlled APIs)       │
-                         └────────────┬────────────┘
-                                      ↓
-         ┌──────────────────────┬────────────────────────┐
-         ↓                      ↓                        ↓
-┌────────────────┐     ┌────────────────┐        ┌────────────────┐
-│ Salesforce API │     │ Oracle ERP API │        │ Other Systems  │
-└────────────────┘     └────────────────┘        └────────────────┘
+---
+hide:
+  - toc
+---
 
-# Overall Flow
+# AI Operating System -- Architecture
 
-┌──────────────────────┐
-│     User Interface    │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│ Intent + Risk Class. │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│ Enterprise RAG Layer │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│  ReAct LLM Planner   │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│ Tool Control Layer   │
-│ (Guardrails + Policy)│
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│ System Adapters      │
-│ SF | Oracle | SAP    │
-└──────────────────────┘
+The NexusAI Data-AI Platform is built as a layered AI Operating System: the **Data Plane** hydrates a Virtual Data Layer from any enterprise system, the **Control Plane** turns that data into semantic context, and the **Reasoning Plane** runs ReAct agents under policy. The Console (AI Analytics + AI Automation) and the Solutions catalogue sit on top.
 
-# Total System Architecture
+For the full screen-by-screen tour, see [Platform Architecture](../platform-architecture.md). This page summarises the architectural shape and links into the deeper plane-specific docs.
 
-                         ┌────────────────────────────┐
-                         │       User Interface         │
-                         │  (Chat / API / Copilot)      │
-                         └──────────────┬───────────────┘
-                                        │
-                                        ▼
-                         ┌────────────────────────────┐
-                         │  Identity & RBAC Layer      │
-                         │  (SSO, OAuth, SCIM)         │
-                         └──────────────┬───────────────┘
-                                        │
-                                        ▼
-                         ┌────────────────────────────┐
-                         │  Intent + Risk Analyzer     │
-                         │  (Classifies: read-only,    │
-                         │   low-risk write, high-risk │
-                         │   write, cross-system)      │
-                         └──────────────┬───────────────┘
-                                        │
-                                        ▼
-         ┌───────────────────────────────────────────────────────────────┐
-         │              ReAct Planning Engine (LLM Agent Loop)           │
-         │                                                               │
-         │  PLAN → EXECUTE → OBSERVE → REPLAN → EXECUTE → OBSERVE       │
-         │                                                               │
-         │  1. Receives user intent + risk classification                │
-         │  2. Queries Enterprise RAG for context ──────────────┐       │
-         │  3. Reasons about next action                         │       │
-         │  4. Selects tool from Tool Abstraction Layer          │       │
-         │  5. Policy Engine validates before execution          │       │
-         │  6. Observes result, replans if needed                │       │
-         │  7. Loops until goal achieved or step limit reached   │       │
-         │                                                       │       │
-         │  ┌────────────────────────────────────────────────┐   │       │
-         │  │  AI Applications (powered by this loop)        │   │       │
-         │  │  - Fraud AI Assistant                          │   │       │
-         │  │  - AML Investigator Copilot                    │   │       │
-         │  │  - Risk Analytics Dashboard                    │   │       │
-         │  │  - Enterprise System Orchestrator              │   │       │
-         │  └────────────────────────────────────────────────┘   │       │
-         │                                                       │       │
-         │  ┌────────────────────────────────────────────────┐   │       │
-         │  │  Policy & Guardrail Core                       │   │       │
-         │  │  (OPA / Custom Engine)                         │   │       │
-         │  │  - Approval thresholds  - Close windows        │   │       │
-         │  │  - Field-level access   - Cross-system checks  │   │       │
-         │  │  - Risk-based routing   - Dry-run mode         │   │       │
-         │  │  - Max step limits      - Audit logging        │   │       │
-         │  └────────────────────────────────────────────────┘   │       │
-         │                                                       │       │
-         │  ┌────────────────────────────────────────────────┐   │       │
-         │  │  Tool Abstraction Layer (Controlled APIs)      │   │       │
-         │  │  - get_account()      - propose_credit_change()│   │       │
-         │  │  - get_ar_balance()   - submit_gl_adjustment() │   │       │
-         │  │  - create_customer()  - trigger_workflow()     │   │       │
-         │  │  LLM never calls raw APIs — only safe tools    │   │       │
-         │  └────────────────────────────────────────────────┘   │       │
-         └──────────────────────┬─────────────────────────────────┘──────┘
-                                │                  ▲
-                                │          (RAG feedback loop)
-                                ▼                  │
-  ┌──────────────────────────────────────────────────────────────────────────┐
-  │                                                                          │
-  │                         AI-CONTROL-PLANE                                 │
-  │            (Semantic Intelligence & Reasoning Layer)                      │
-  │                                                                          │
-  │  ┌───────────────────────────────────────────────────────────────┐       │
-  │  │              Enterprise RAG Layer                             │       │
-  │  │         (Semantic Retrieval for LLM Context)                  │       │
-  │  │                                                               │       │
-  │  │  Retrieves from Vector DB + Graph DB to provide:              │       │
-  │  │  - Schema & field definitions                                 │       │
-  │  │  - Business policies & approval rules                         │       │
-  │  │  - Workflow dependencies & process rules                      │       │
-  │  │  - API specs & integration mappings                           │       │
-  │  │  - Cross-system dependency awareness                          │       │
-  │  │                                                               │       │
-  │  │  Answers: "Which object stores credit risk?"                  │       │
-  │  │           "What triggers approval workflow?"                  │       │
-  │  │           "What fields are required for customer creation?"   │       │
-  │  │           "What is the ERP sync dependency?"                  │       │
-  │  │                                                               │       │
-  │  │  This is semantic retrieval, not relational querying.         │       │
-  │  └──────────────────────┬────────────────────────────────────────┘       │
-  │                         │                                                │
-  │              ┌──────────┼──────────────────────┐                         │
-  │              │          │                      │                         │
-  │      ┌──────────────┐ ┌──────────────┐  ┌──────────────┐                │
-  │      │  Graph Query │ │ Vector Search│  │  ML Scoring  │                │
-  │      │  + Reasoner  │ │ (Similarity) │  │  Engine      │                │
-  │      └──────┬───────┘ └──────┬───────┘  └──────┬───────┘                │
-  │             │                │                  │                        │
-  │  ┌───────────────────────────────────────────────────────────────┐       │
-  │  │                 Intelligence Layer                            │       │
-  │  │                                                               │       │
-  │  │  ┌──────────────────┐     ┌────────────────────────────┐     │       │
-  │  │  │   Graph DB       │     │       Vector DB            │     │       │
-  │  │  │ (Ontology + RDF) │     │ (Embeddings Store)         │     │       │
-  │  │  │                  │     │                            │     │       │
-  │  │  │ Structural       │     │ Semantic Knowledge:        │     │       │
-  │  │  │ Knowledge:       │     │  - Schema embeddings       │     │       │
-  │  │  │  - Accounts      │     │  - Policy embeddings       │     │       │
-  │  │  │  - Transactions  │     │  - Workflow embeddings     │     │       │
-  │  │  │  - Customers     │     │  - API spec embeddings     │     │       │
-  │  │  │  - Risk Rules    │     │  - Process rule embeddings │     │       │
-  │  │  │  - Relationships │     │  - Fraud case embeddings   │     │       │
-  │  │  │  - Ontology      │     │  - Customer embeddings     │     │       │
-  │  │  │                  │     │                            │     │       │
-  │  │  └────────┬─────────┘     └──────────┬─────────────────┘     │       │
-  │  └───────────┼────────────────────────────┼───────────────────────┘       │
-  │              │                            │                              │
-  └──────────────┼────────────────────────────┼──────────────────────────────┘
-                 │                            │
-  ┌──────────────────┼────────────────────────────────┼───────────────────┐
-  │                  │                                │                   │
-  │                  │     AI-DATA-PLANE              │                   │
-  │                  │     (Data Ingestion & Transformation)              │
-  │                  │                                │                   │
-  │     ┌────────────┴──────────┬─────────────────────┴────────────┐     │
-  │     │                       │                                  │     │
-  │     │  CDC Path             │  ETL Path              FDW Path  │     │
-  │     │                       │                                  │     │
-  │     ▼                       ▼                                  ▼     │
-  │ ┌──────────────┐     ┌───────────────────┐      ┌───────────────────┐│
-  │ │ RDF Stream   │     │ RDF Batch         │      │ FDW Wrapper       ││
-  │ │ Processor    │     │ Transformer       │      │ (Virtual Access)  ││
-  │ │ (CDC→Ontology│     │ (R2RML / Batch)   │      │                   ││
-  │ │  Mapper)     │     │                   │      │ Postgres FDW /    ││
-  │ └──────┬───────┘     └────────┬──────────┘      │ Trino / Presto    ││
-  │        │                      │                  └────────┬──────────┘│
-  │        ▼                      ▼                           │          │
-  │ ┌──────────────┐     ┌───────────────────┐                │          │
-  │ │ Kafka        │     │ ETL Engine        │                │          │
-  │ │              │     │ (Spark / Airflow  │                │          │
-  │ └──────┬───────┘     │  / Custom)        │                │          │
-  │        │             └────────┬──────────┘                │          │
-  │        ▼                      │                           │          │
-  │ ┌──────────────┐              │                           │          │
-  │ │ CDC Engine   │              │                           │          │
-  │ │ (Debezium)   │              │                           │          │
-  │ └──────┬───────┘              │                           │          │
-  │        │                      │                           │          │
-  │        ▼                      ▼                           ▼          │
-  │ ┌─────────────────────────────────────────────────────────────────┐  │
-  │ │                     Enterprise Source Systems                    │  │
-  │ │                                                                 │  │
-  │ │  ┌──────────────┐  ┌──────────────┐  ┌──────────┐ ┌──────────┐│  │
-  │ │  │ Core Banking │  │  ERP / GL    │  │  CRM     │ │  Legacy  ││  │
-  │ │  │ (Temenos /   │  │ (SAP /       │  │(Salesforce│ │ Systems  ││  │
-  │ │  │  Finacle)    │  │  Oracle)     │  │ / Custom)│ │ / Files  ││  │
-  │ │  └──────────────┘  └──────────────┘  └──────────┘ └──────────┘│  │
-  │ │                                                                 │  │
-  │ │  CDC: Real-time event streams from transaction-heavy systems    │  │
-  │ │  ETL: Batch extraction for historical, analytical & master data │  │
-  │ │  FDW: Virtual access for low-volume / governance-restricted data│  │
-  │ └─────────────────────────────────────────────────────────────────┘  │
-  │                                                                      │
-  └──────────────────────────────────────────────────────────────────────┘
+## Reference layer stack
 
-# System adapters
+| Layer | Responsibility |
+|---|---|
+| **User Interface** | Chat, REST API, AI Copilot, Solution Apps. |
+| **Identity & RBAC** | SSO (Cognito / OIDC), session management, role-based access across every surface. |
+| **Intent + Risk Analyzer** | Classifies each query into `read_only` / `low_risk_write` / `high_risk_write` / `cross_system`; routes risk to the appropriate tool subset. |
+| **Reasoning Plane (ReAct loop)** | LLM agent loop -- PLAN -> EXECUTE -> OBSERVE -> REPLAN -- with bounded steps and tool-only execution. |
+| **Policy & Guardrail Core** | Pre-execution validation (approval thresholds, close windows, field-level access, cross-system checks, dry-run mode, max step limits, audit logging). |
+| **Tool Abstraction Layer** | The LLM never calls raw APIs -- only registered, typed tools (`get_account`, `query_table`, `submit_credit_change`, ...). |
+| **Control Plane** | Enterprise RAG (Knowledge Graph + Vector store), ontology bundle, semantic retrieval. |
+| **Data Plane** | Virtual Data Layer hydrated via FDW (live), ETL (batch), CDC (streaming). |
+| **Enterprise Source Systems** | ERP (SAP / Oracle), CRM (Salesforce), data lakes, legacy systems, files. |
 
-                +----------------------+
-                |  AI & Analytics      |
-                +----------------------+
-                           ↑
-                +----------------------+
-                |  TMF API + Reasoner  |
-                +----------------------+
-                           ↑
-                +----------------------+
-                |  Semantic Layer      |
-                |  (Graph DB / RDF)    |
-                +----------------------+
-                   ↑                ↑
-             ETL Path          CDC Path
-                   ↑                ↑
-        R2RML / Batch        Debezium / Kafka
-                   ↑                ↑
-           Finance Systems (ERP / GL / AP / AR)
+## Plane drill-downs
+
+| Plane | What it does | Drill-down |
+|---|---|---|
+| **Data Plane** | Hydrates the VDL via FDW / ETL / CDC; exposes a single query API regardless of source. | [Data Plane](../planes/data-plane.md) |
+| **Control Plane** | Builds and maintains the Knowledge Graph + vector index; runs the Knowledge Pipeline that ingests schemas, policies, workflows, integrations. | [Control Plane](../planes/control-plane.md) |
+| **Reasoning Plane** | Runs the ReAct loop with the registered tool registry, the policy engine, and the AI Copilot. | [Reasoning Plane](../planes/reasoning-plane.md) |
+
+## Cross-plane principles
+
+- **LLM plans, backend enforces.** The LLM never executes write actions directly; every action is a registered tool whose execution the policy engine gates.
+- **Hybrid retrieval.** Every reasoning step queries both the Knowledge Graph (structural truth) and the vector store (semantic similarity).
+- **Versioned context.** The Control Plane re-indexes on schema or policy change; agent context is always pinned to the current version.
+- **Audit by default.** Every agent step, tool call, policy violation, and write operation is recorded in the audit store.
+
+## Related references
+
+- [Total System Architecture](Total-system-architecture.md) -- the unified data-flow diagram (Data Plane -> Control Plane -> Reasoning Plane -> Console).
+- [Data Sources](data-sources.md) -- when to choose FDW vs ETL vs CDC for each source system.
+- [Implementation Guide](implementation-guide.md) -- the production code paths (`nexus-backend`, `nexus-ui`, BSSMagic) that realise this architecture.
+- [ReAct Layer](re-act-layer.md) -- how the agent loop reasons, plans, and acts.
+- [Semantic RAG](semantic-rag.md) -- what the retrieval bundle must contain to enable safe orchestration.

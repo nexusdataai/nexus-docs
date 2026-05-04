@@ -1,357 +1,25 @@
+# Semantic RAG
 
-# How sematic rag should behave 
+The Reasoning Plane is only as safe as the retrieval bundle the Control Plane gives it. **Semantic RAG** in the NexusAI Data-AI Platform is not "embed a PDF, return chunks" -- it is the structured engineering of an enterprise knowledge model that exposes objects, fields, policies, workflows, and cross-system dependencies as retrievable units.
 
-For Oracle ERP + Salesforce RAG, each test should verify:
+## What good retrieval looks like
 
-1. Correct object identification
-2. Correct field-level mapping
-3. Correct policy retrieval
-4. Correct workflow dependency retrieval
-5. Correct cross-system linkage awareness
-6. Correct risk/approval thresholds
-7. Correct environment restrictions
-8. Correct version awareness
+For any agent question, the bundle returned to the LLM must surface six dimensions:
 
----
+| Dimension | Example |
+|---|---|
+| **Object / Schema** | `Salesforce.Account.Credit_Limit__c` |
+| **Field metadata** | type `Currency(18,2)`, max value `1,000,000` |
+| **Policy** | "Increases above 10% require Finance Manager approval" |
+| **Workflow dependency** | "Triggers Credit Approval Flow on update" |
+| **Integration dependency** | "Syncs to `Oracle_AR_Customer.credit_limit`" |
+| **Version / environment** | `v3.2`, `prod`, `close_window=false` |
 
-# 🧪 10 Black-Box Test Scenarios
+If any dimension is missing, the agent's plan is unsafe. The Control Plane's retrieval pipeline is designed so every query exercises all six.
 
-Each test below contains:
+## Canonical knowledge document
 
-* User Question
-* Expected RAG Retrieval (What must be surfaced)
-* What Failure Looks Like
-
----
-
-# ✅ Test 1 — Field Ownership & Source of Truth
-
-### Question:
-
-> Which system is the source of truth for customer credit limit?
-
-### Expected Retrieval:
-
-* Salesforce Account.Credit_Limit__c field
-* Policy document stating Salesforce owns credit limit
-* Integration mapping showing sync to Oracle AR
-* Dependency rule: "Oracle AR balance cannot override credit limit"
-
-### Failure:
-
-* Says Oracle is source of truth
-* Doesn’t mention integration mapping
-* Misses policy constraints
-
----
-
-# ✅ Test 2 — Approval Threshold Logic
-
-### Question:
-
-> What happens if I increase a customer's credit limit by more than 15%?
-
-### Expected Retrieval:
-
-* Business rule: >10% requires approval
-* Workflow: Credit Limit Approval Flow
-* Required approver role
-* SLA for approval
-* ERP sync condition after approval
-
-### Failure:
-
-* Only retrieves field definition
-* Misses approval threshold
-* Misses workflow dependency
-
----
-
-# ✅ Test 3 — Cross-System Dependency Awareness
-
-### Question:
-
-> If I deactivate a customer in Salesforce, what is impacted in Oracle ERP?
-
-### Expected Retrieval:
-
-* Salesforce Account.Status field
-* Integration mapping to Oracle AR customer status
-* Policy: "Deactivation requires AR balance check"
-* Dependency: Cannot deactivate if open invoices exist
-
-### Failure:
-
-* Only retrieves Salesforce field
-* Doesn’t mention AR or invoice dependency
-
----
-
-# ✅ Test 4 — Financial Close Restriction
-
-### Question:
-
-> Can customer credit limits be modified during financial close?
-
-### Expected Retrieval:
-
-* Close window policy document
-* ERP restriction rule
-* Environment flag: close_period_active
-* Compliance rule: SOX constraint
-
-### Failure:
-
-* Says “Yes” without policy context
-* Does not retrieve close window restriction
-
----
-
-# ✅ Test 5 — Field Validation Constraint
-
-### Question:
-
-> What validations apply to the credit limit field?
-
-### Expected Retrieval:
-
-* Field type (currency)
-* Max allowed value
-* Required justification field
-* Approval rule threshold
-* Dependency: Risk tier must be evaluated
-
-### Failure:
-
-* Only retrieves field type
-* Misses validation and policy constraints
-
----
-
-# ✅ Test 6 — Workflow Trigger Discovery
-
-### Question:
-
-> What workflows are triggered when a new enterprise customer is created?
-
-### Expected Retrieval:
-
-* Salesforce Account creation workflow
-* Risk assessment process
-* Oracle ERP customer provisioning
-* Credit review process
-* Required data enrichment step
-
-### Failure:
-
-* Only retrieves object schema
-* Misses workflow chain
-
----
-
-# ✅ Test 7 — Risk Tier Dependency
-
-### Question:
-
-> How is customer risk tier determined and where is it used?
-
-### Expected Retrieval:
-
-* Field: Risk_Tier__c (Salesforce)
-* Risk scoring process documentation
-* Policy linking risk tier to credit approval threshold
-* ERP AR collection priority rule
-
-### Failure:
-
-* Only retrieves field location
-* Misses downstream usage in approval logic
-
----
-
-# ✅ Test 8 — Schema Drift Awareness
-
-### Question:
-
-> What changed in customer schema in the last release?
-
-### Expected Retrieval:
-
-* Versioned schema metadata
-* Newly added fields
-* Deprecated fields
-* Policy updates referencing new fields
-
-### Failure:
-
-* Returns outdated schema
-* No version awareness
-
----
-
-# ✅ Test 9 — Permission Constraint Awareness
-
-### Question:
-
-> Who is authorized to override customer credit block?
-
-### Expected Retrieval:
-
-* Role definition (Finance Manager)
-* Policy override rule
-* Audit logging requirement
-* Required justification documentation
-
-### Failure:
-
-* Does not retrieve RBAC mapping
-* Misses override logging requirement
-
----
-
-# ✅ Test 10 — Multi-System Transaction Awareness
-
-### Question:
-
-> What steps are required to fully onboard a new B2B customer across systems?
-
-### Expected Retrieval:
-
-* Salesforce account creation schema
-* Required fields list
-* Oracle ERP customer creation process
-* Credit assessment workflow
-* Integration dependency mapping
-* Sequence constraints
-* Failure rollback rule
-
-### Failure:
-
-* Only retrieves Salesforce object
-* Misses Oracle provisioning
-* Misses process order
-
----
-
-# 📊 How to Score Black-Box Tests
-
-Each question should be evaluated on:
-
-| Dimension                     | Score |
-| ----------------------------- | ----- |
-| Correct Object Identified     | 1     |
-| Correct Fields Retrieved      | 1     |
-| Policy Retrieved              | 1     |
-| Workflow Dependency Retrieved | 1     |
-| Cross-System Impact Retrieved | 1     |
-| Version Correct               | 1     |
-
-Max per test: 6
-Production readiness target: ≥ 5 average
-
----
-
-# 🔎 Advanced Black-Box Test (Edge Case)
-
-### Question:
-
-> Increase ACME's credit limit to 2 million.
-
-RAG must retrieve:
-
-* Current credit limit
-* Risk tier
-* Approval threshold
-* Max allowed limit
-* ERP impact
-* Financial close restriction
-
-If it only retrieves field name and value — your RAG is shallow.
-
----
-
-# 🚨 Red Flags in Testing
-
-Your RAG is not enterprise-grade if:
-
-* It retrieves only schema but not policy
-* It ignores workflow documentation
-* It doesn’t surface cross-system dependencies
-* It misses versioned updates
-* It retrieves irrelevant objects frequently
-* It retrieves too much noise
-
----
-
-# 🏁 What Good Enterprise Semantic RAG Looks Like
-
-When a question is asked, the retrieval bundle should look like:
-
-## Retrieval bundle
-```
-Primary Object: Salesforce.Account
-Relevant Fields: Credit_Limit__c, Risk_Tier__c
-Policies: Credit Increase Approval Rule v3.2
-Workflow: Credit Approval Flow
-ERP Dependency: AR_Customer_Sync
-Close Window Restriction: Enabled
-```
-
-If retrieval lacks one of these dimensions — planning will be unsafe.
-
----
-
-# 🧠 Final Insight
-
-Semantic RAG in enterprise is not about answering questions.
-
-It is about enabling safe orchestration decisions.
-
-If retrieval does not surface:
-
-* Constraints
-* Dependencies
-* Ownership
-* Approval requirements
-
-Then your ReAct agent becomes dangerous.
-
-
-I’ll show you:
-
-1. What to extract
-2. How to normalize it
-3. How to chunk it
-4. How to embed it
-5. How to store it
-6. How to enable safe retrieval
-7. A concrete example
-
----
-
-# 🎯 Goal
-
-Turn this:
-
-* Salesforce metadata
-* Oracle ERP configuration
-* Policy documents
-* Workflow definitions
-* Integration mappings
-
-Into structured semantic retrieval units that support safe planning.
-
----
-
-# 1️⃣ Step 1 — Define Canonical Knowledge Model
-
-Before indexing anything, define a unified metadata schema.
-
-This is critical.
-
-We do NOT dump raw JSON.
-
-We normalize into a canonical document model:
+The Control Plane indexes a normalised model -- never raw JSON dumps:
 
 ```json
 {
@@ -362,354 +30,95 @@ We normalize into a canonical document model:
   "field_name": "Credit_Limit__c",
   "version": "3.2",
   "environment": "prod",
-  "category": "Schema | Policy | Workflow | Integration",
+  "category": "Schema",
   "risk_level": "Medium",
-  "content": "... natural language enriched description ...",
+  "content": "<enriched natural-language description with constraints + dependencies>",
   "structured_metadata": {
-      "data_type": "Currency",
-      "max_value": 1000000,
-      "approval_threshold_percent": 10,
-      "sync_target": "Oracle_AR_Customer"
+    "data_type": "Currency",
+    "max_value": 1000000,
+    "approval_threshold_percent": 10,
+    "sync_target": "Oracle_AR_Customer"
   }
 }
 ```
 
-This is what gets embedded.
+`content` is what gets embedded; `structured_metadata` enables hybrid filtered retrieval.
 
----
+## Indexing pipeline
 
-# 2️⃣ Step 2 — Extract Metadata From Systems
-
-### A. Salesforce
-
-Use:
-
-* Metadata API
-* Tooling API
-
-Extract:
-
-* Object definitions
-* Field metadata
-* Validation rules
-* Workflow rules
-* Apex triggers
-* Flow definitions
-
----
-
-### B. Oracle ERP
-
-Extract:
-
-* Table schema
-* Business rule configuration
-* Approval hierarchies
-* GL rules
-* AR/AP dependencies
-* Customizations
-
----
-
-### C. Enterprise Policy Docs
-
-Parse:
-
-* PDF policies
-* Confluence docs
-* Compliance documentation
-* SOPs
-
-Use document parser → structured text.
-
----
-
-# 3️⃣ Step 3 — Semantic Enrichment
-
-Raw metadata is not enough.
-
-We enrich it.
-
-Example:
-
-Raw:
-
-```
-Field: Credit_Limit__c
-Type: Currency(18,2)
-Validation Rule: value <= 1000000
+```mermaid
+graph LR
+    Sources[Source systems<br/>SF / ERP / docs] --> Extract[Metadata extraction]
+    Extract --> Normalise[Normalise to<br/>canonical model]
+    Normalise --> Enrich[Semantic enrichment<br/>add constraints + deps]
+    Enrich --> Chunk[Chunk by<br/>semantic unit]
+    Chunk --> Embed[Embed]
+    Embed --> Store[(pgvector +<br/>Apache AGE)]
 ```
 
-Enriched document:
+- **Extract** -- Salesforce Metadata API + Tooling API; Oracle ERP table schema + AP/AR config; PDF / Confluence policy documents.
+- **Normalise** -- everything maps into the canonical model above.
+- **Enrich** -- raw `Field: Credit_Limit__c, Type: Currency(18,2)` becomes a paragraph naming the constraint, the threshold, the sync target, the close-window restriction, and the dependent workflows.
+- **Chunk** -- by semantic unit, never by token count: one object + its fields, one policy rule, one workflow, one integration mapping.
+- **Embed** -- OpenAI `text-embedding-3-small` (1,536 dims) or compatible.
+- **Store** -- vector store (pgvector) for similarity + Apache AGE for graph traversal of dependencies.
 
-```
-The Credit Limit field on the Salesforce Account object 
-defines the maximum allowable credit exposure for a customer.
+## Hybrid retrieval
 
-Business Rules:
-- Maximum allowed value is 1,000,000 USD.
-- Increases above 10% require Finance Manager approval.
-- Field syncs to Oracle AR_Customer.credit_limit.
-- Cannot be modified during financial close window.
-- Requires Risk_Tier__c evaluation before update.
-
-Dependent Workflows:
-- Credit Approval Flow
-- AR Sync Process
-```
-
-Now the embedding captures meaning and dependencies.
-
-This is critical.
-
----
-
-# 4️⃣ Step 4 — Intelligent Chunking Strategy
-
-Never chunk randomly by tokens.
-
-Chunk by semantic unit:
-
-### Good Chunk Types:
-
-* One object + its fields
-* One policy rule
-* One workflow definition
-* One integration mapping
-
-Each chunk should answer:
-
-* What is this?
-* What are its constraints?
-* What are its dependencies?
-* What system owns it?
-
----
-
-# 5️⃣ Step 5 — Embedding Strategy
-
-For each chunk:
-
-```
-embedding = embed(content)
+```mermaid
+graph LR
+    Query[Agent query] --> Expand[Query expansion]
+    Expand --> Vector[Vector similarity<br/>pgvector]
+    Expand --> Graph[Graph traversal<br/>Apache AGE]
+    Vector --> Merge[Merge + rerank]
+    Graph --> Merge
+    Merge --> Filter[Metadata filter<br/>system / version / env / risk]
+    Filter --> Bundle[Retrieval bundle]
 ```
 
-Store:
+- **Vector** finds semantically-similar chunks regardless of vocabulary.
+- **Graph** expands dependencies (`triggers`, `syncs_to`, `constrained_by`, `owned_by`) so a query about `credit limit` returns not just the field but the policy, the workflow, and the ERP sync mapping.
+- **Filter** scopes to the right system, version, and environment so the agent doesn't see sandbox or deprecated entries.
 
-```
-vector
-+ metadata filters
-```
+## Black-box validation
 
-Example metadata columns:
+The Control Plane ships a **Planning Playground** with a built-in **Retrieval Quality Score** that scores each retrieval bundle on six dimensions: Object/Schema, Policy, Workflow Dependency, Cross-System Graph, Version Awareness, Integration. A bundle scoring below 5/6 is below threshold and the test fails, forcing the engineer to improve the indexed knowledge before promoting the change.
 
-| Column      | Purpose                   |
-| ----------- | ------------------------- |
-| system      | Salesforce / Oracle       |
-| entity_type | Field / Policy / Workflow |
-| object_name | Account                   |
-| version     | 3.2                       |
-| environment | prod/sandbox              |
-| risk_level  | high/medium/low           |
-| category    | schema/policy/integration |
+Representative test scenarios used to validate the pipeline:
 
-This enables hybrid filtering.
+| # | Question | The bundle must surface |
+|---|---|---|
+| 1 | Which system is the source of truth for customer credit limit? | `Account.Credit_Limit__c` field; ownership policy; sync mapping to `Oracle_AR`; "AR balance cannot override credit limit" rule |
+| 2 | What happens if I increase credit limit by more than 15%? | `>10% requires approval` rule; Credit Approval Flow; required approver role; SLA; ERP sync condition |
+| 3 | If I deactivate a customer in Salesforce, what is impacted in Oracle ERP? | `Account.Status` field; AR-customer sync; "deactivation requires AR balance check"; "cannot deactivate with open invoices" |
+| 4 | Can credit limits be modified during financial close? | Close-window policy; ERP restriction; `close_period_active` env flag; SOX compliance rule |
+| 5 | What workflows fire when a new enterprise customer is created? | SF account creation workflow; risk assessment; ERP provisioning; credit review; data enrichment |
 
----
+A complete suite ships with the platform; engineers add domain-specific tests as new ontologies onboard.
 
-# 6️⃣ Step 6 — Storage Example (Postgres + pgvector)
+## Common failure modes
 
-Example table:
+- **Embedding raw JSON** -- captures shape but not meaning.
+- **Chunking by token count** -- breaks an object across two chunks; the dependency information ends up in a different vector.
+- **No metadata filters** -- the bundle mixes prod and sandbox or stale and current versions.
+- **No graph expansion** -- you retrieve the field but miss the policy and the integration mapping.
+- **Indexing transactional data** -- the Control Plane indexes *meaning*, not transactional rows; the latter live in the Data Plane VDL.
 
-```sql
-CREATE TABLE enterprise_rag_index (
-    id TEXT PRIMARY KEY,
-    system TEXT,
-    entity_type TEXT,
-    object_name TEXT,
-    field_name TEXT,
-    category TEXT,
-    version TEXT,
-    environment TEXT,
-    risk_level TEXT,
-    content TEXT,
-    embedding VECTOR(1536)
-);
-```
+## Versioning
 
-Index:
+When source metadata changes (a Salesforce custom field is added, a policy document is revised):
 
-```sql
-CREATE INDEX ON enterprise_rag_index
-USING ivfflat (embedding vector_cosine_ops);
-```
+1. Detect the change (webhook / scheduled sync).
+2. Rebuild the enriched chunk.
+3. Increment `version`.
+4. Soft-delete the old version (do not overwrite blindly).
+5. Re-embed and reinsert.
 
----
+The Knowledge Pipeline tab in the Control Plane runs this on demand or schedule; an engineer can always force a re-index from the console.
 
-# 7️⃣ Step 7 — Retrieval Mechanism
+## Related references
 
-When user asks:
-
-> Increase credit limit for ACME
-
-Pipeline:
-
-### 1️⃣ Intent Detection
-
-Detect: credit limit change
-
-### 2️⃣ Query Expansion
-
-Expand query:
-
-```
-credit limit approval rules validation threshold workflow dependency Oracle sync
-```
-
-### 3️⃣ Hybrid Query
-
-```sql
-SELECT *
-FROM enterprise_rag_index
-WHERE system IN ('Salesforce', 'Oracle')
-AND category IN ('Schema', 'Policy', 'Workflow', 'Integration')
-ORDER BY embedding <-> query_embedding
-LIMIT 10;
-```
-
-### 4️⃣ Rerank Results
-
-Optional: cross-encoder reranker
-
----
-
-# 8️⃣ Example End-to-End
-
-Let’s walk a full example.
-
----
-
-## Input:
-
-> What happens if I increase credit limit by 20%?
-
----
-
-## Retrieved Chunks:
-
-1️⃣ Salesforce Account.Credit_Limit__c field definition
-2️⃣ Policy: >10% requires approval
-3️⃣ Workflow: Credit Approval Flow
-4️⃣ Integration: Sync to Oracle AR
-5️⃣ Close window restriction
-
----
-
-## Final RAG Context Given to LLM:
-
-```
-Field: Credit_Limit__c (Salesforce Account)
-- Max value: 1,000,000
-- Approval threshold: >10%
-
-Policy:
-- Increases above 10% require Finance Manager approval.
-
-Workflow:
-- Credit Approval Flow triggered on update.
-
-Integration:
-- Syncs to Oracle AR_Customer.credit_limit.
-
-Restriction:
-- Modifications blocked during financial close window.
-```
-
-Now the agent can safely plan.
-
----
-
-# 9️⃣ Versioning Mechanism
-
-When Salesforce metadata changes:
-
-1. Detect change (webhook / scheduled sync)
-2. Rebuild enriched chunk
-3. Increment version
-4. Soft-delete old version
-5. Re-embed
-
-Never overwrite blindly.
-
----
-
-# 🔟 Automation Pipeline
-
-Production indexing pipeline looks like:
-
-```
-Salesforce Metadata Pull
-        ↓
-Normalization
-        ↓
-Semantic Enrichment
-        ↓
-Chunking
-        ↓
-Embedding
-        ↓
-Vector DB Insert
-        ↓
-Index Refresh
-```
-
-Run:
-
-* On deployment
-* Nightly
-* On metadata change
-
----
-
-# 1️⃣1️⃣ Common Mistakes
-
-❌ Embedding raw JSON
-❌ Chunking by token size
-❌ No metadata filters
-❌ No versioning
-❌ Mixing production + sandbox
-❌ Indexing transactional data
-
----
-
-# 1️⃣2️⃣ Advanced Enhancement (Very Powerful)
-
-Add structured relationships:
-
-```
-Account.Credit_Limit__c
-   → triggers → Credit Approval Flow
-   → syncs_to → Oracle_AR_Customer.credit_limit
-   → constrained_by → Close_Window_Policy
-```
-
-Store relationships in graph DB.
-
-Then combine:
-
-* Vector search for semantic match
-* Graph traversal for dependency expansion
-
-This gives enterprise-grade reasoning.
-
----
-
-# 🔐 Production Rule
-
-Semantic RAG must retrieve:
-
-* Object
-* Field
-* Policy
-* Workflow
-* Integration dependency
+- [Platform Architecture > Control Plane](../platform-architecture.md#control-plane) -- console walkthrough (Knowledge Pipeline, Knowledge Index, Knowledge Graph, Policy Builder, Workflows, Integration Rules).
+- [Control Plane drill-down](../planes/control-plane.md) -- when published, the dedicated page for the plane.
+- [Semantic RAG Pipeline](../semantic-layer/semantic-rag-pipeline.md) -- the production pipeline implementation.
+- [Implementation Guide](implementation-guide.md) -- code locations (`schema_indexer.py`, `vector_store.py`, `embedding_service.py`, `rag_service.py`).
