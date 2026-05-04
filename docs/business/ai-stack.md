@@ -1,86 +1,72 @@
-# NexusAI
+---
+hide:
+  - toc
+---
 
-An intelligent AI operating layer for enterprise systems
+# NexusAI Data-AI Platform
 
-## What We Do
+The intelligent AI operating layer for enterprise systems.
 
-We transform enterprise data into reasoning AI that actively runs business operations.
+## What we do
 
-## Why NexusAI?
+We turn enterprise data into reasoning AI that **runs operations** -- not just generates insight. NexusAI sits on top of existing systems (ERP, CRM, data warehouses, SaaS) and unifies them into a single AI-driven intelligence fabric, then deploys autonomous agents that reason and act under policy.
 
-NexusAI introduces an intelligent operating layer that brings structure, context, and orchestration:
+## Why
 
-**Without NexusAI:** Prompt + Model + P2P connectors --> Disconnected, brittle agents
-
-**With NexusAI:** Prompt + AI Operating Layer + Model --> Coordinated, context-aware business agility with Human-AI
-
-## How It Works
-
-NexusAI sits on top of existing systems, enabling AI to understand business context, reason across siloed data, and autonomously execute workflows -- without requiring system replacement.
-
-## What the AI Operating Layer Contains
-
-- Vector Management + Graph Management + Ontology Bundle + ReAct Tools
-- (Policy + Workflow + Integration) Rule Engine
-- AI Automation + AI Ops + AI Capabilities + AI Simulation
-
-## Who It's For
-
-Enterprises looking to deploy operational AI across their existing stack without disruption, while unlocking new revenue streams from their data.
-
-## Business Impact (ROI)
-
-- 20-40% reduction in operational costs through AI-driven automation
-- Faster decision cycles via real-time, cross-system reasoning
-- 5-15% revenue uplift by unlocking value from enterprise data
-
-## Business Model
-
-**AI Stack** -- Open Source GPL - Free
-**Each Capability** -- Open Source GPL - Free
-
-**Enterprise Support:** 300k - Enterprise support + Security updates + Operational tools + 5000 FP Change Request (1 FDE + 1 PM) for a year.
-
-- 10% Upfront Onboarding
-- 25% Spread across three quarters
-
-## Alternative Products in Market
-
-Palantir / Dust / Dataiku / Glean / Hebbia / Writer / LangFlow / Crew AI / n8n
-
-## How NexusAI Is Different
-
-Enterprise Readiness / Adoption / Reliability / Onus / Learnability / Simplicity / Flexibility / Cost / Connectivity
-
-| Differentiator | Description |
+| Without NexusAI | With NexusAI |
 |---|---|
-| **Enterprise Readiness** | Hybrid Search and Planning with a Graph + Vector Combo |
-| **Adoption** | 1-click total stack install, no discrete apps |
-| **Reliability** | AI-Ops at every layer |
-| **Onus** | Human-Centric AI Automation - Onus driven |
-| **Learnability** | Domain-driven simple business capabilities, same look and feel |
-| **Simplicity** | AI-driven accurate business automation framework |
-| **Flexibility** | K8s anywhere - cloud / on-prem - 1 click, whole stack |
-| **Cost** | GPL, Free, Enterprise Support and SOW-based changes |
-| **Data Connectivity** | Connect with data layer in all possible ways - FDW / ETL / CDC |
+| Prompt + Model + point-to-point connectors | Prompt + **AI Operating Layer** + Model |
+| Disconnected, brittle agents | Coordinated, context-aware agents with human oversight |
+| Failed AI pilots | Production-grade AI-Ops at every layer |
+| Vendor lock-in | Open-source GPL core; customer-controlled infrastructure |
 
-## Enterprise Readiness
+## How it works
 
-1. Ontology -- Impact
-2. AI Governance
-3. Agentic AI
-4. Human AI
+A layered Data-AI operating system: three planes plus a Solutions catalogue and a Console.
 
-## Operational AI
+- **Data Plane** -- Hydrates a Virtual Data Layer from any enterprise system via FDW, ETL, or CDC. No migration.
+- **Control Plane** -- Builds the semantic understanding (Ontology + Knowledge Graph on Apache AGE + vector index on pgvector).
+- **Reasoning Plane** -- ReAct agent runtime with policy guardrails, registered-tool registry, human-in-the-loop.
+- **Console** -- AI Analytics (Dashboards, Views, AI Query Builder) and AI Automation (Journeys, Journey Builder, Journey Studio).
+- **Solutions** -- 7 vertical-aligned app catalogues (Supply Chain, Finance, Telco, Retail, Healthcare, Customer Ops, Rev Ops).
 
-1. AI-Ops
-2. Data Management
-3. Reliability
-4. Cost Effectiveness
+For the architectural diagram and screen-by-screen tour, see [Platform Architecture](../platform-architecture.md).
 
-## Business Agility
+## Who it's for
 
-1. Solution Catalogue
-2. Solution Builder
-3. Simulations
-4. ReAct Tools
+Enterprises operationalising AI across their existing stack -- without replacement -- and unlocking new revenue from the data they already have.
+
+## Business impact
+
+- **40-60%** of repetitive workflows automated.
+- **50%** faster decision cycles via cross-system reasoning.
+- **30-40%** operational cost reduction.
+- **5-15%** revenue uplift from previously-stranded data.
+
+## Commercial model
+
+- **AI Stack** + **Solution Catalogues** -- Open-source GPL. Free.
+- **Enterprise Support** -- $300K / year (security updates, AI-Ops tooling, dedicated FDE + PM, 5,000 FP change-request capacity, SLA support).
+- **Onboarding** -- 10% upfront, 25% across three quarters.
+
+## How NexusAI is different
+
+| Differentiator | What it means |
+|---|---|
+| **Hybrid reasoning** | Knowledge Graph (Apache AGE) + vector embeddings (pgvector); the platform reasons structurally and semantically together. |
+| **Compounded ontology moat** | Each customer's ontology grows more valuable over time; AI accuracy improves as the graph deepens. |
+| **AI-Ops at every layer** | Governance, observability, policy guardrails, audit trail built in -- not bolted on. |
+| **Kubernetes-native** | Single Operator deploys the whole stack to any cloud or on-premise cluster. |
+| **Vertical Solutions** | 7 industry catalogues ship with ontologies, KPIs, journeys, and dashboards out of the box. |
+| **Open-source core** | GPL licence drives adoption; enterprise support drives revenue; no lock-in for customers. |
+| **All three data paths** | Live (FDW), batch (ETL), and streaming (CDC) -- one VDL, one query API. |
+
+## Pillars
+
+- **Enterprise Readiness** -- Ontology-driven impact, AI Governance, Agentic AI, Human-in-the-loop AI.
+- **Operational AI** -- AI-Ops, Data Management, Reliability, Cost Effectiveness.
+- **Business Agility** -- Solution Catalogue, Solution Builder, Simulators, ReAct Tools.
+
+## Alternatives in the market
+
+Palantir / Dataiku / Glean / Hebbia / Writer / LangFlow / CrewAI / n8n. NexusAI's combination of operational ReAct agents, hybrid Graph + Vector reasoning, vertical Solution catalogues, and customer-controlled Kubernetes deployment is unique.

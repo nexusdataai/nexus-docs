@@ -1,71 +1,29 @@
+---
+hide:
+  - toc
+---
+
 # Business Documentation
 
-This section contains executive summaries, business requirements, and business cases that define the strategic value and objectives of the NexusAI platform.
+Strategic value, target market, ROI, and commercial model for the **NexusAI Data-AI Platform** -- the intelligent AI operating layer for the enterprise.
 
-## Overview
+## In this section
 
-The business documentation provides comprehensive insights into:
+| Page | What it covers | Audience |
+|---|---|---|
+| [Executive Summary](source/executive-summary.md) | The opportunity, the platform, ROI, market size, commercial model | C-level, Board, Investors |
+| [Business Overview](source/business-overview.md) | Directory + role-based reading guide | All stakeholders |
+| [Business Requirements](source/business-requirements.md) | Functional + non-functional requirements, use cases, GTM | Product, Sales, Customer Success |
+| [AI Stack](ai-stack.md) | Platform pitch in one page (what we do, why, how, ROI) | Sales, Partners, Field |
+| [KPI Definitions](../KPI/nexus-kpi-definitions.md) | Standard KPIs measured by every Solution app | Operations, Analytics |
 
-- **Strategic Value** - How the platform delivers business value
-- **Business Requirements** - What the business needs from the platform
-- **Executive Summaries** - High-level overviews for stakeholders
-- **Business Cases** - ROI and justification for the platform
+## At a glance
 
-## Available Documents
+- **Category** -- Enterprise AI operating layer (Data-AI Platform).
+- **Position** -- Sits on top of existing systems; no rip-and-replace, no data migration.
+- **How** -- Ontology-driven Virtual Data Layer + Hybrid Graph + Vector reasoning + ReAct agent runtime.
+- **Impact** -- 40-60% workflow automation, 50% faster decisions, 30-40% ops cost reduction.
+- **Commercial** -- Open-source GPL core; enterprise support subscription from $300K / year.
+- **Deployment** -- Kubernetes-native via the [Nexus Capability Operator](../operational/kubernetes-operator/index.md); cloud or on-premise.
 
-### NexusAI Executive Summary
-Comprehensive executive summary for **NexusAI** - The Intelligent AI Operating Layer for the Enterprise.
-
-**Focus:** Enterprise reasoning platform, workflow automation, decision acceleration, ROI  
-**Document:** Version 2.0 | January 2026
-
-[View NexusAI Executive Summary](source/executive-summary.md)
-
----
-
-### NexusAI Toolkit Executive Summary
-Complete executive summary for **NexusAI Toolkit** - the self-service deployment platform that enables 30-minute infrastructure provisioning.
-
-**Focus:** Deployment automation, cost savings, operational efficiency  
-**Document:** Version 1.0 | January 2026
-
-[View Toolkit Executive Summary](source/toolkit-executive-summary.md)
-
----
-
-### Business Requirements
-Detailed business requirements that drive the platform development and feature priorities.
-
-[View Business Requirements](source/business-requirements.md)
-
----
-
-### Business Overview
-Comprehensive overview of the business context, stakeholders, and organizational alignment.
-
-[View Business Overview](source/business-overview.md)
-
----
-
-## Key Stakeholders
-
-The NexusAI platform serves multiple stakeholder groups:
-
-- **CIOs / CTOs** - Enterprise AI strategy and infrastructure alignment
-- **Operations Leaders** - Workflow automation and process optimization
-- **Business Analysts** - Cross-system reasoning and data-driven decision making
-- **Executive Leadership** - Strategic oversight, ROI tracking, and competitive positioning
-
-## Business Value Proposition
-
-The platform delivers value through:
-
-- **Workflow Automation** - 40-60% of repetitive enterprise workflows automated via autonomous agents
-- **Decision Acceleration** - 50% faster decisions through semantic knowledge graphs and cross-system reasoning
-- **Ops Cost Reduction** - 30-40% reduction in operational costs through AI-driven automation
-- **Enterprise Integration** - Connects siloed systems into a unified intelligent operating layer
-- **Scalability** - Kubernetes-native architecture deploys on-prem or in any cloud
-
----
-
-[← Back to Home](../index.md) | [Next: Functional Specifications →](../functional/)
+For the architectural and product surface that this business case rests on, see [Platform Architecture](../platform-architecture.md).
