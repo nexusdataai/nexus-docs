@@ -1,179 +1,105 @@
-# Enterprise AI Capability FAQ
+# Enterprise AI Solution FAQ
 
-## What is an Enterprise AI Capability?
+Frequently-asked questions about how the NexusAI Data-AI Platform packages, ships, and operates **Enterprise AI Solutions**.
 
-An **Enterprise AI Capability** is a complete, deployable business solution that leverages artificial intelligence to solve specific enterprise challenges. Think of it as a self-contained AI-powered application that can be deployed independently to deliver immediate business value.
+## What is an Enterprise AI Solution?
 
-**Examples of Enterprise AI Capabilities:**
-- **Contact Center Intelligence**: AI-powered call analytics, quality assurance, transcription, and agent coaching
-- **Operations Optimization**: Intelligent incident management, automated troubleshooting, and predictive maintenance
-- **Enhanced Customer Engagement**: AI-powered conversational interfaces for customer support, personalized recommendations, and proactive service management
-- **Fraud Detection & Prevention**: Real-time anomaly detection and automated fraud prevention across enterprise systems
-- **Revenue Assurance**: AI-driven billing analysis and revenue leakage detection
+An **Enterprise AI Solution** is a complete, vertical-aligned business application that runs on the NexusAI Data-AI Platform. Each Solution bundles the ontology, KPIs, dashboards, journeys, and tools needed to operate one slice of the business end-to-end.
 
-Each capability represents a **complete, production-ready solution** that addresses a specific business need with minimal integration effort.
+**Examples** (from the catalogue): Order-to-Cash Monitor, Demand Forecasting Engine, Inventory Optimisation, Procurement & Spend Analytics, Production & Quality Copilot, Supply Chain Risk Radar, Customer 360 & Revenue Growth, ESG & Sustainability Tracker, Credit Risk & Early Warning, Fraud Detection & AML, Patient 360, Network Performance, etc.
 
----
+For the full catalogue, see [Solutions Catalogue](../../console/solutions-catalogue.md).
 
-## What Should an Enterprise AI Capability Include at Minimum?
+## What does every Solution ship with?
 
-Every Enterprise AI Capability must include these **two core components** to be considered deployment-ready:
+Every Solution opens into the same three-group workspace shell, parameterised by its ontology entities, KPI targets, and journeys.
 
-### 1. AI-Native User Interface
-- **Modern, Conversational UI**: Natural language interactions where appropriate (chat, voice, visual)
-- **Real-Time Dashboards**: Live metrics, alerts, and actionable insights
-- **Role-Based Access**: Different views for executives, operators, and analysts
+### Analytics
 
-### 2. Backend Service Platform
-A comprehensive backend that includes:
+- **Business Insights** -- Solution home with KPI targets, capability cards, and an entity strip.
+- **Process Analytics** -- live KPIs against the VDL with composition charts and drill-down tables.
+- **Workflow Actions** -- counters and an action-log feed for every automated remediation the Solution has fired.
+- **Reports** -- alert digest and severity counters.
 
-#### a. AI Engine
-- **Machine Learning Models**: Pre-trained, domain-specific models
-- **Model Orchestration**: Dynamic model selection and inference management
-- **Continuous Learning**: Feedback loops for model improvement
-- **Explainable AI**: Transparency in AI decision-making
+### Views (four-views framework)
 
-#### b. RESTful APIs
-- **Standardized Endpoints**: Consistent API design across all capabilities
-- **OpenAPI/Swagger Documentation**: Auto-generated, always up-to-date
-- **Authentication & Authorization**: JWT-based security with RBAC
-- **Rate Limiting & Throttling**: Production-grade API management
+Auto-seeded Views that become the Solution's left navigation:
 
-#### c. MCP Tools (Model Context Protocol)
-- **Tool Registry**: Discoverable AI agent tools and functions
-- **Capability Extensions**: Pluggable tools for specialized tasks
-- **Inter-Capability Communication**: Secure tool invocation across capabilities
-- **Standardized Interfaces**: Consistent tool signatures and behaviors
+- **Outcomes** -- live KPIs and active alerts.
+- **Predict** -- forward-looking forecasts.
+- **Diagnose** -- cohort breakdown and dimension x metric heatmaps.
+- **Act & Outcomes** -- action ledger and impact tracking.
 
-#### d. Ontology Support
-- **Domain Knowledge Graphs**: Structured representation of domain concepts
-- **Semantic Understanding**: Context-aware reasoning and inference
-- **Data Integration**: Map diverse data sources to unified ontology
-- **Query Capabilities**: SPARQL or graph query support for complex relationships
+### Workspace
 
-**Architecture Principle**: Each capability is **self-contained** yet **composable**, meaning it can operate independently but also integrate with other capabilities when needed.
+- **Agent Builder** -- author Custom Tools (YAML), Journey Templates, Agent Profiles, Test Harness.
+- **Tools Catalogue** -- app-curated tool registry grounded in the Solution's ontology entities (e.g. for O2C: *Order Match Verifier*, *Order Anomaly Scorer*, *AR Cash Flow Projector*, *O2C Alert Generator*, *Dunning Notice Composer*, *DSO Optimizer*).
 
----
+For the canonical example, see [Solutions Catalogue > Order-to-Cash Monitor](../../console/solutions-catalogue.md#solution-app-example----order-to-cash-monitor).
 
-## What is a Provisioner/Deployer?
+## What's "the platform" underneath?
 
-The **Provisioner** (also called **Deployer** or **NexusAI Toolkit**) is an enterprise-grade, self-service platform that enables customers to deploy Enterprise AI Capabilities to their own cloud infrastructure **in under 30 minutes with zero cloud expertise required**.
+The platform is the AI Operating System: three planes plus a Console, all powered by ontology-driven semantic understanding of enterprise data.
 
-### What Problem Does It Solve?
+- **Data Plane** -- hydrates a Virtual Data Layer from any enterprise system via FDW (live), ETL (batch), or CDC (streaming).
+- **Control Plane** -- builds the Knowledge Graph (Apache AGE) and vector index (pgvector) over the platform's ontology bundle.
+- **Reasoning Plane** -- ReAct agent loop with a registered tool registry, policy gating, and human-in-the-loop.
+- **Console** -- AI Analytics (Dashboards, Views, Dashboard Builder) + AI Automation (Journeys, Journey Builder, Journey Studio).
 
-**Traditional Challenge:**
-- Deploying enterprise capabilities requires 3-6 months
-- Professional services costs: $100K-$500K per deployment
-- Requires specialized cloud architects and DevOps teams
-- Complex configuration and integration work
-- Vendor lock-in and dependency
+A Solution is the curated face of all four for one specific business problem.
 
-**Provisioner Solution:**
-- Deploy in **15-30 minutes** with a guided wizard
-- **Zero professional services** required
-- No cloud expertise needed - just follow the wizard
-- Complete **customer control** - deploys into customer's own cloud account
-- Self-service updates and lifecycle management
+## How do Solutions compose with the Console?
 
----
+- The Solution defines its **ontology entities** -- those become rows in the Data Plane VDL and nodes in the Control Plane Knowledge Graph.
+- The Solution's **Views** are mapped via [AI Analytics > Solution Mapping](../../console/ai-analytics.md#solution-mapping) to become the Solution's left navigation.
+- The Solution's **Journeys** run on the [AI Automation](../../console/ai-automation.md) runtime and surface in the Solution's Workflow Actions tab.
+- The Solution's **Agent Builder** authors agents that use the Reasoning Plane's [registered tools](../../planes/reasoning-plane.md), augmented by app-curated tools.
 
-## How Does the Provisioner/Deployer Work?
+Authoring a new Solution is mostly ontology + Views + Journeys + tool registration; the platform does the rest.
 
-### Core Functions
+## How is the platform deployed?
 
-#### 1. Multi-Cloud Deployment
-Deploys capabilities to any infrastructure:
-- **AWS** (fully supported)
-- **Azure** (coming soon)
-- **Google Cloud Platform (GCP)** (coming soon)
-- **On-Premise Kubernetes** (coming soon)
-- **Hybrid Cloud** configurations
+The platform is Kubernetes-native: the **Nexus Capability Operator** reconciles `NexusCapability` custom resources on any EKS or compatible cluster. Deployment is the same for cloud or on-premise.
 
-#### 2. Infrastructure-as-Code Generation
-- Automatically generates cloud infrastructure templates (CloudFormation, Terraform, ARM templates)
-- Provisions all required services: compute, storage, databases, networking, security
-- Configures load balancers, auto-scaling, monitoring, and logging
-- Sets up IAM roles, security groups, and encryption
+For details, see [Operations > Kubernetes Operator](../../operational/kubernetes-operator/index.md).
 
-#### 3. Guided Wizard Interface
-- **Step 1**: License validation and capability selection
-- **Step 2**: Cloud provider credentials (one-time setup)
-- **Step 3**: Deployment configuration (region, environment, sizing)
-- **Step 4**: Review and confirm
-- **Step 5**: Automated deployment with real-time progress tracking
+## What does the platform deploy?
 
-#### 4. Lifecycle Management
-- **Monitor**: Real-time health checks, performance metrics, cost tracking
-- **Update**: Self-service patching and version upgrades
-- **Scale**: Adjust resources based on usage patterns
-- **Backup**: Automated backups with point-in-time recovery
-- **Delete**: Clean teardown with resource cleanup verification
+- **Frontend pods** -- nginx + the React SPA (Console, Solution apps, AI Copilot, Workspace) + the docs site.
+- **Backend pods** -- FastAPI + MCP HTTP Gateway + Control Plane services + Data Plane FDW services.
+- **Database** -- PostgreSQL with Apache AGE (Knowledge Graph) + pgvector (embeddings) + Multicorn FDW.
+- **AWS dependencies** (in the AWS reference deployment) -- EKS, ECR, S3, CloudWatch, Cognito, Secrets Manager, DynamoDB.
+- **Identity** -- SSO via Cognito with role-based access at every Plane.
 
----
+For the production code map, see [Implementation Guide](../../ai-os/implementation-guide.md).
 
-## What Gets Deployed?
+## How is governance built in?
 
-When you deploy an Enterprise AI Capability using the Provisioner, it creates a **complete, production-ready environment**:
+- **Policy engine** -- OPA-compatible; gates every write action with approval thresholds, close-window restrictions, field-level access, cross-system checks, dry-run mode, and max-step limits.
+- **Audit trail** -- every agent step (intent, retrieved context, tool call, result, policy violation) is recorded in the audit store.
+- **Human-in-the-loop** -- high-risk actions block on explicit approval before execution.
+- **Hybrid retrieval guard** -- the Reasoning Plane never sees a retrieval bundle without both Knowledge Graph and vector results, so it can't ignore deterministic constraints.
 
-### Frontend Infrastructure
-- **Content Delivery Network (CDN)**: Global distribution with edge caching
-- **Static Hosting**: Secure, encrypted storage for UI assets
-- **SSL/TLS Certificates**: Automatic certificate management and renewal
-- **DNS Configuration**: Custom domains with health-based routing
-- **Web Application Firewall (WAF)**: Protection against attacks
+## Why this architecture?
 
-### Backend Infrastructure
-- **Container Orchestration**: Serverless containers (ECS Fargate) or Kubernetes (EKS)
-- **Application Load Balancers**: HTTPS termination, health checks, auto-failover
-- **Auto-Scaling Groups**: Dynamic scaling based on CPU, memory, and custom metrics
-- **Private Networking**: VPC with public/private subnets, security groups, NAT gateways
-- **Databases**: Managed database services with automated backups and high availability
+- **Standardisation** -- the same shell, the same governance, the same retrieval contract across every Solution, regardless of vertical.
+- **Portability** -- Kubernetes-native; the same artefacts deploy to any cloud or on-premise cluster.
+- **Composability** -- Solutions plug into the Planes / Console rather than being separate apps. Adding a new Solution is mostly authoring an ontology and a few Journeys.
+- **Customer control** -- deploys in customer infrastructure; data never leaves the perimeter; open-source GPL core.
 
-### AI & Data Services
-- **AI/ML Services**: Integration with cloud AI services (SageMaker, Azure ML, Vertex AI)
-- **Object Storage**: Scalable storage for models, data lakes, and artifacts
-- **Secrets Management**: Encrypted storage for credentials and API keys
-- **Configuration Management**: Centralized parameter store for application settings
+## Key takeaways
 
-### Observability & Security
-- **Monitoring**: CloudWatch, Azure Monitor, or Google Cloud Monitoring
-- **Logging**: Centralized log aggregation and analysis
-- **Tracing**: Distributed tracing for performance debugging
-- **Audit Trails**: Complete history of all actions and changes
-- **Security Scanning**: Automated vulnerability detection and compliance checks
+- An **Enterprise AI Solution** is a complete vertical app on the platform, not a separate product.
+- Every Solution ships with the same three-group shell (Analytics + Views + Workspace), parameterised by its ontology and journeys.
+- The Solution composes with the platform's Planes and Console; nothing is bolted on.
+- Deployment is Kubernetes-native via the [Nexus Capability Operator](../../operational/kubernetes-operator/index.md).
+- Governance (policy, audit, human-in-the-loop) is built into the platform, not added per Solution.
 
----
+## Related references
 
-## Why is This Architecture Important?
-
-### For Customers
-- **Speed**: From months to minutes for deployment
-- **Cost**: 68% reduction in total cost of ownership
-- **Control**: Complete ownership of infrastructure and data
-- **Flexibility**: Deploy anywhere, move anytime, no vendor lock-in
-- **Compliance**: Data residency and regulatory requirements met
-
-### For Capabilities
-- **Standardization**: Consistent architecture across all capabilities
-- **Portability**: Deploy the same capability to any cloud provider
-- **Scalability**: Auto-scaling from zero to enterprise scale
-- **Maintainability**: Simplified updates and troubleshooting
-- **Composability**: Easily combine multiple capabilities
-
-### For the Business
-- **Reduced Time-to-Value**: 94% faster deployment = faster ROI
-- **Lower Barrier to Entry**: Self-service = broader market reach
-- **Higher Margins**: 79% profit margins vs. 52% for traditional models
-- **Customer Satisfaction**: 191% first-year ROI for customers
-- **Competitive Advantage**: Modern, cloud-native architecture
-
----
-
-## Key Takeaways
-
-1. **Enterprise AI Capabilities** are complete, self-contained AI-powered solutions for specific business problems
-2. **Minimum Components**: AI-Native UI + Backend (AI Engine + APIs + MCP Tools + Ontology)
-3. **Provisioner/Deployer** is the self-service platform that deploys capabilities to any cloud in minutes
-4. **Architecture Benefits**: Speed, cost efficiency, customer control, and vendor independence
-5. **Production-Ready**: Every deployment includes security, monitoring, auto-scaling, and compliance
-
+- [Platform Architecture](../../platform-architecture.md)
+- [Solutions Catalogue](../../console/solutions-catalogue.md)
+- [AI Analytics](../../console/ai-analytics.md)
+- [AI Automation](../../console/ai-automation.md)
+- [AI Operating System](../../ai-os/architecture.md)
+- [Implementation Guide](../../ai-os/implementation-guide.md)

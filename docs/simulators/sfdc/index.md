@@ -1,14 +1,10 @@
 # Enterprise Data Simulator - CRM (Salesforce)
 
-!!! info "Screenshots"
-    To capture additional screenshots of the simulator UI, run the Playwright script:
-    `python3 docs/simulators/capture-simulator-screenshots.py`
-
----
-
 ## Overview
 
 The **SFDC (Salesforce) Simulator** replaces the live PostgreSQL Foreign Data Wrapper (FDW) connection to Salesforce with an in-memory data store backed by S3 dumps. This allows the NexusAI platform to query Salesforce CRM data (Accounts, Leads, Opportunities, Contacts, and custom objects) during development and testing without a live Salesforce org or a PostgreSQL FDW extension.
+
+For the simulator overview and mode-toggle mechanics, see [Simulators](../index.md). For the underlying production code path, see [Implementation Guide > Data Plane](../../ai-os/implementation-guide.md#data-plane).
 
 **Key capabilities:**
 

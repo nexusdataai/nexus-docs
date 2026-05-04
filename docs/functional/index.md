@@ -1,72 +1,42 @@
+---
+hide:
+  - toc
+---
+
 # Functional Specifications
 
-This section contains Product Requirements Documents (PRD) and functional specifications that detail what the platform does and how it meets business needs.
+The functional surface of the NexusAI Data-AI Platform is documented as a screen-by-screen tour in [Platform Architecture](../platform-architecture.md) and as a structured business / functional / non-functional requirements catalogue in [Business Requirements](../business/source/business-requirements.md).
 
-## Overview
+## Where to find each kind of spec
 
-The functional specifications define:
+| What you're looking for | Page |
+|---|---|
+| End-to-end product surface (every screen in every Plane and Solution app) | [Platform Architecture](../platform-architecture.md) |
+| Functional + non-functional requirements organised by Plane / Console / Solutions / Operations | [Business Requirements](../business/source/business-requirements.md) |
+| Per-Plane functional drill-downs | [Data Plane](../planes/data-plane.md), [Control Plane](../planes/control-plane.md), [Reasoning Plane](../planes/reasoning-plane.md) |
+| Per-Console drill-downs (Catalogue, AI Analytics, AI Automation) | [Console](../console/solutions-catalogue.md) |
+| Per-Solution app shell (Business Insights, Process Analytics, Workflow Actions, Reports, Views, Workspace) | [Solutions Catalogue](../console/solutions-catalogue.md) (Order-to-Cash example) |
+| Reference architecture and data flow | [AI Operating System](../ai-os/architecture.md) and [Total System Architecture](../ai-os/Total-system-architecture.md) |
+| Production code that realises each requirement | [Implementation Guide](../ai-os/implementation-guide.md) |
 
-- **Product Requirements** - What features and capabilities are required
-- **Design Specifications** - How the platform is designed to work
-- **Functional Flows** - Step-by-step process descriptions
-- **Task Definitions** - Specific tasks and their implementations
+## Functional areas at a glance
 
-## Available Documents
+- **Data Plane** -- VDL, hydration via FDW / ETL / CDC, Entity Explorer, Mapping Rules, Data Pipelines, Connectors. See [Data Plane](../planes/data-plane.md).
+- **Control Plane** -- ontology bundle, Knowledge Pipeline, Knowledge Index, Knowledge Graph, Policy Builder, Workflows, Integration Rules. See [Control Plane](../planes/control-plane.md).
+- **Reasoning Plane** -- AI Copilot, Planning Playground, ReAct Tools, Tool Builder, the agent loop with policy gating. See [Reasoning Plane](../planes/reasoning-plane.md).
+- **AI Analytics** -- Dashboards, Views, Solution Mapping, Dashboard Builder with the AI Query Builder. See [AI Analytics](../console/ai-analytics.md).
+- **AI Automation** -- Journeys, AI Copilot Journey, Journey Builder, Journey Studio. See [AI Automation](../console/ai-automation.md).
+- **Solutions** -- Catalogue, per-Solution app shell (Analytics + Views + Workspace + Tools Catalogue). See [Solutions Catalogue](../console/solutions-catalogue.md).
 
-### Design Specifications
-Comprehensive design specifications covering the platform architecture, user interface design, and system interactions.
+## Non-functional shape
 
-📄 [View Design Specifications](source/design.md)
+| Area | Target |
+|---|---|
+| Performance | Knowledge Graph query < 2s; agent latency < 5s; dashboard render < 2s; up to 10 TB customer data |
+| Scalability | 50-5,000 users per customer; horizontal auto-scaling; 99.9% uptime SLA |
+| Security | SOC 2 Type II; AES-256 at rest, TLS 1.2+ in transit; deploys in customer infrastructure |
+| Compliance | GDPR, CCPA; per-vertical regulatory ontologies (HIPAA, SOX, Basel) |
+| Auditability | Every agent step + journey step logged with full reasoning trace |
+| Governance | Policy engine (OPA-compatible) gates every write; human-in-the-loop on high-risk actions |
 
----
-
-### Requirements Document
-Detailed functional requirements covering all platform capabilities, features, and user stories.
-
-📄 [View Requirements](source/requirement.md)
-
----
-
-### Task Definitions
-Specific task definitions and implementation details for development teams.
-
-📄 [View Task Definitions](source/task.md)
-
----
-
-## Key Functional Areas
-
-### Call Processing
-- Automated fetching of Webex CC calls
-- Call recording download and storage
-- Transcription using AI/ML
-- Metadata extraction and tagging
-
-### AI Analysis
-- Transcript generation
-- Sentiment analysis
-- Topic extraction
-- Quality scoring
-- Compliance checking
-
-### Journey Management
-- Multi-stage workflow orchestration
-- Job scheduling and execution
-- Progress tracking and reporting
-- Error handling and retry logic
-
-### User Interface
-- Dashboard for monitoring
-- Call search and filtering
-- Report generation
-- Configuration management
-
-### Integration
-- Webex Contact Center API
-- AWS services integration
-- OpenAI API integration
-- Third-party system connectors
-
----
-
-[← Back to Home](../index.md) | [← Previous: Business Documentation](../business/) | [Next: Features & Capabilities →](../features/)
+For the full functional + non-functional requirements catalogue, see [Business Requirements](../business/source/business-requirements.md).

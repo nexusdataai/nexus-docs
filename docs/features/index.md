@@ -1,116 +1,39 @@
+---
+hide:
+  - toc
+---
+
 # Features & Capabilities
 
-This section provides detailed documentation on platform capabilities, feature architecture, and enterprise AI capabilities.
+The platform's capabilities are documented end-to-end in [Platform Architecture](../platform-architecture.md). This page is the index to deeper conceptual and FAQ-style reading.
 
-## Overview
+## In this section
 
-The features and capabilities documentation covers:
+| Page | What it covers |
+|---|---|
+| [Enterprise AI Capability FAQ](source/enterprise-ai-capability-faq.md) | What an Enterprise AI Solution is, what it ships with, how Solutions compose with the Planes and the Console |
 
-- **Platform Capabilities** - What the platform can do
-- **Feature Architecture** - How features are designed and implemented
-- **Enterprise AI Capabilities** - AI-specific features for enterprise operations
-- **AWS Compliance** - Well-Architected Framework compliance
+## Headline capabilities
 
-## Available Documents
+| Plane / Layer | What it brings |
+|---|---|
+| **Data Plane** | Virtual Data Layer hydrated via FDW / ETL / CDC; one query API across every connected enterprise system |
+| **Control Plane** | Ontology + Knowledge Graph (Apache AGE) + vector embeddings (pgvector); Knowledge Pipeline that re-indexes on schema or policy change |
+| **Reasoning Plane** | ReAct agent loop with policy-gated tool registry; AI Copilot; Planning Playground with Retrieval Quality Score |
+| **AI Analytics** | Dashboards + Views (four-views framework); Solution Mapping; Dashboard Builder with the AI Query Builder |
+| **AI Automation** | Journeys engine with templates per Solution; AI Copilot Journey planner; visual Journey Builder; per-journey Journey Studio |
+| **Solutions** | 7 vertical-aligned app catalogues (Supply Chain, Finance & Banking, Telco, Retail, Healthcare, Customer Ops, Rev Ops) |
+| **Operations** | Kubernetes-native via the Nexus Capability Operator (`NexusCapability` CRD); cloud or on-premise |
 
-### Capability Architecture
-Comprehensive architecture documentation covering all platform capabilities, their interactions, and implementation details.
+## Cross-cutting
 
-📄 [View Capability Architecture](source/capability-arcitecture.md)
+- **AI-Ops at every layer** -- audit trail of every agent step and journey step; policy engine pre-execution validation; loop detection; field-level access; dry-run mode.
+- **Hybrid retrieval** -- Knowledge Graph (structural truth) + vector store (semantic similarity); the agent never sees one without the other.
+- **Open-source GPL core** -- enterprise support subscription; deploys in customer infrastructure; no data leaves the perimeter.
 
----
+## Related references
 
-### Enterprise AI FAQ
-Frequently asked questions about the Enterprise AI capabilities, including use cases, limitations, and best practices.
-
-📄 [View Enterprise AI FAQ](source/enterprise-ai-capability-faq.md)
-
----
-
-### AWS Well-Architected Framework Compliance
-Documentation of how the platform aligns with AWS Well-Architected Framework principles across all five pillars.
-
-📄 [View AWS WAFR Compliance](source/AWS-WAFR-COMPLIANCE.md)
-
----
-
-## Core Capabilities
-
-### 📞 Call Processing Capability
-End-to-end call processing including:
-- Call recording retrieval from Webex CC
-- Audio file storage and management
-- Transcription using OpenAI Whisper
-- Metadata generation and cataloging
-
-### 🧠 AI Analysis Capability
-Intelligent analysis of call data:
-- Sentiment analysis
-- Topic extraction
-- Quality scoring
-- Compliance checking
-- Actionable insights generation
-
-### 🚀 Journey Management Capability
-Workflow orchestration system:
-- Multi-stage processing pipelines
-- Job scheduling and execution
-- Progress tracking
-- Error handling and recovery
-
-### 📊 Analytics & Reporting Capability
-Real-time analytics and insights:
-- Performance metrics
-- Call volume analytics
-- Quality trends
-- Custom report generation
-
-### 🔄 WXCC Simulator Capability
-Testing and development support:
-- Simulated call data generation
-- Test scenario creation
-- Development environment support
-- Integration testing
-
-### 🔐 License Management Capability
-Enterprise licensing system:
-- License key validation
-- Feature gating
-- Usage tracking
-- Subscription management
-
-### 🛠️ MCP Tools Capability
-Model Context Protocol integration:
-- AI agent integration
-- Tool-based interactions
-- Automated workflows
-- Claude integration
-
----
-
-## Architecture Diagrams
-
-The capability architecture documentation includes detailed diagrams showing:
-
-- Application architecture (`app-arcitechture.png`)
-- Backend service architecture (`backend-service.png`)
-- Backend deployment architecture (`backend-deployment.png`)
-- UI deployment architecture (`ui-deployment.png`)
-- Total solution overview (`Total-solution.png`)
-
----
-
-## AWS Services Utilized
-
-The platform leverages various AWS services:
-
-- **Compute**: ECS Fargate, Lambda
-- **Storage**: S3, DynamoDB
-- **Analytics**: AWS Glue, Athena
-- **Security**: Secrets Manager, IAM
-- **Networking**: VPC, ALB
-- **Monitoring**: CloudWatch
-
----
-
-[← Back to Home](../index.md) | [← Previous: Functional Specifications](../functional/) | [Next: Project Scope →](../project-scope/)
+- [Platform Architecture](../platform-architecture.md) -- screen-by-screen tour of every capability.
+- [Business Requirements](../business/source/business-requirements.md) -- functional + non-functional requirements catalogue.
+- [AI Operating System](../ai-os/architecture.md) -- conceptual reference for the layer stack.
+- [Implementation Guide](../ai-os/implementation-guide.md) -- production code paths.

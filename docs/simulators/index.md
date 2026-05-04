@@ -1,87 +1,57 @@
+---
+hide:
+  - toc
+---
+
 # Enterprise Data Simulators
 
----
+The platform ships built-in simulators that let development and QA teams test the full Data Plane and Reasoning Plane without connecting to live external systems. The currently shipped simulator targets the **CRM** path; additional source simulators (event streams, ERP) can be added as journey-specific test fixtures.
 
-## Overview
+## In this section
 
-The NexusAI platform includes two built-in simulators that allow development and QA teams to test the full data-processing and analytics pipeline without connecting to live external systems. Both simulators can be managed through the **Simulators** page in the application UI (accessible at `/operations/simulators`) or via REST APIs and CLI scripts.
+- [SFDC / CRM Simulator](sfdc/index.md) -- in-memory data store backed by S3 dumps that replaces the live PostgreSQL FDW connection to Salesforce. Same `FDWDiscoveryService` / `FDWQueryService` interface as the real FDW so consuming code is unchanged.
 
-| Aspect | WXCC Simulator | SFDC Simulator |
-|--------|---------------|----------------|
-| **Purpose** | Mock the Webex Contact Center (WXCC) API for tasks and recordings | Mock the Salesforce Foreign Data Wrapper (FDW) for CRM table data |
-| **Replaces** | Real Webex CC Graph API (OAuth-based) | Real PostgreSQL FDW connected to Salesforce |
-| **Storage** | S3 bucket (`nexus-ai-{env}-wxcc-simulator`) | S3 bucket (`nexus-ai-{env}-sfdc-simulator`) |
-| **Data Format** | `data.json` (tasks/recordings metadata) + audio files in S3 | JSON dumps per table: `servers.json`, `tables.json`, `columns/`, `data/` |
-| **Data Source** | Seeded synthetically (random tasks) with real or generated audio | Dumped from a live FDW runtime connected to a real Salesforce org |
-| **In-Memory Cache** | LRU cache for sample recordings (50 MB, 20 files max) | Full table data loaded into Python dicts |
-| **Mode Switch** | Global via SSM or per-journey (`simulator` / `real` / `inherit_global`) | Global via SSM + Config API (`/api/v1/config/sfdc-mode`) |
-| **Key Env Var** | `WXCC_SIMULATOR_ENABLED` | `SFDC_SIMULATOR_ENABLED` |
-| **UI Tab** | "WXCC Simulator" | "Salesforce Simulator" |
+## Architecture
 
----
-
-## High-Level Architecture
-
-When a simulator is **enabled**, the backend transparently routes API calls to the in-process simulator service instead of the real external system. No code changes are needed in consuming services -- the swap happens at the service-provider level.
+When the simulator is enabled, the backend transparently routes Data Plane queries to the in-process simulator service instead of the real source system. No code changes are needed in consuming services -- the swap happens at the service-provider level.
 
 ```mermaid
 flowchart LR
     subgraph app [NexusAI Backend]
-        Router[API Router]
-        SimSwitch{Simulator\nEnabled?}
-        RealWXCC[Webex CC API\nOAuth]
-        SimWXCC[WXCC Simulator\nService]
-        RealFDW[PostgreSQL FDW\nSalesforce]
-        SimFDW[SFDC Simulator\nService]
+        Router[FDW API Router]
+        Switch{Simulator<br/>enabled?}
+        Real[PostgreSQL FDW]
+        Sim[SFDC Simulator<br/>Service]
     end
 
-    S3_WXCC[(S3: wxcc-simulator)]
-    S3_SFDC[(S3: sfdc-simulator)]
-    WebexAPI[Webex Contact Center]
-    SalesforceAPI[Salesforce API]
+    S3[(S3<br/>sfdc-simulator)]
+    SFDC[Salesforce API]
 
-    Router --> SimSwitch
-    SimSwitch -->|Yes| SimWXCC
-    SimSwitch -->|Yes| SimFDW
-    SimSwitch -->|No| RealWXCC
-    SimSwitch -->|No| RealFDW
-
-    SimWXCC --> S3_WXCC
-    SimFDW --> S3_SFDC
-    RealWXCC --> WebexAPI
-    RealFDW --> SalesforceAPI
+    Router --> Switch
+    Switch -->|yes| Sim
+    Switch -->|no| Real
+    Sim --> S3
+    Real --> SFDC
 ```
 
----
+## When to use
 
-## Accessing the Simulators
+- **Local development** -- run the full agent loop and Solution apps without touching production CRM data.
+- **CI / E2E testing** -- spin up a deterministic dataset, run BDD scenarios, tear down.
+- **Demo / sales** -- show the Solutions Catalogue (e.g. Order-to-Cash Monitor) with a representative dataset, no Salesforce connection required.
+- **Schema rehearsal** -- dump a current Salesforce snapshot, point the platform at it, validate the Knowledge Pipeline and ontology before flipping to production.
 
-1. Log in to the NexusAI application as an admin user.
-2. Navigate to **Operations > Simulators** in the sidebar (or go directly to `/operations/simulators`).
-3. The page shows two tabs: **WXCC Simulator** and **Salesforce Simulator**.
+## Mode toggle
 
----
+Two ways to switch between simulator and real mode:
 
-## Guides
+- **UI** -- *Operations -> Simulators -> Salesforce Simulator -> Switch to Real / Switch to Simulator*.
+- **API** -- `PUT /api/v1/config/sfdc-mode` with `{"enabled": true|false}`.
 
-- [Contact Center Simulator (WXCC)](wxcc/index.md) -- Webex Contact Center task and recording simulation
-- [CRM Simulator (Salesforce)](sfdc/index.md) -- Salesforce FDW data simulation
+The mode is persisted in AWS SSM (`/nexus-ai/{env}/sfdc/enabled`) and applies on the next FDW query.
 
----
+## Related references
 
-## Capturing Screenshots
-
-A Playwright-based script is provided to automatically capture screenshots of both simulator tabs for documentation purposes:
-
-```bash
-cd nexus-docs/docs/simulators
-python3 capture-simulator-screenshots.py
-
-# With custom credentials
-python3 capture-simulator-screenshots.py \
-  --url https://your-env.elb.amazonaws.com \
-  --email admin@nexus.ai \
-  --password YourPassword
-```
-
-Screenshots are saved to `wxcc/images/` and `sfdc/images/`.
+- [SFDC / CRM Simulator](sfdc/index.md) -- detailed guide.
+- [Data Plane](../planes/data-plane.md) -- the layer the simulator sits behind.
+- [Implementation Guide](../ai-os/implementation-guide.md) -- production code mapping for the FDW path.

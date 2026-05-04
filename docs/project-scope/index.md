@@ -1,106 +1,56 @@
+---
+hide:
+  - toc
+---
+
 # Project Scope
 
-This section contains project scope definitions, release notes, and project metadata tracking the evolution of the NexusAI Data Platform.
+Scope, releases, and roadmap for the **NexusAI Data-AI Platform**.
 
-## Overview
+## In this section
 
-The project scope documentation provides:
+- [Release notes v0.1.0](releases/v0.1.0.md) -- first release of the Data-AI Platform after the rebrand from the legacy CallSense Toolkit.
 
-- **Release Notes** - Version history and changes
-- **Project Metadata** - Project information and tracking
-- **Scope Definitions** - What's included in each release
-- **Roadmap** - Future development plans
+## Current version
 
-## Available Documents
+**v0.1.0** -- Data-AI Platform GA. Three-plane architecture (Data / Control / Reasoning), Console (AI Analytics + AI Automation), 7 vertical Solution catalogues, Kubernetes-native deployment via the Nexus Capability Operator.
 
-### Release Notes
-Comprehensive release notes documenting all versions, features, bug fixes, and changes.
+## Repositories
 
-📄 [View Release Notes](releases/)
+| Repo | Purpose |
+|---|---|
+| `nexus-backend` | FastAPI services, MCP gateway, FDW + Control Plane + Reasoning Plane code |
+| `nexus-ui` | React SPA -- Console, Solution apps, AI Copilot, Workspace |
+| `nexus-deployer` | Helm + Nexus Capability Operator (`NexusCapability` CRD) |
+| `nexus-docs` | This documentation site (mkdocs-material) |
 
----
+## In scope (v0.1.0)
 
-### Project Metadata
-Detailed project information including timelines, milestones, and stakeholder information.
+- Data Plane -- Virtual Data Layer with FDW + ETL + CDC hydration; Mapping Rules; Connectors catalogue.
+- Control Plane -- Ontology + Knowledge Graph (Apache AGE) + vector index (pgvector); Knowledge Pipeline; Policy / Workflow / Integration editors.
+- Reasoning Plane -- ReAct agent loop with policy gating; AI Copilot; Planning Playground; registered Tool Registry.
+- AI Analytics -- Dashboards, Views, Solution Mapping, Dashboard Builder with the AI Query Builder.
+- AI Automation -- Journeys, AI Copilot Journey, Journey Builder, Journey Studio.
+- 7 vertical Solution catalogues -- Supply Chain, Finance & Banking, Telco, Retail, Healthcare, Customer Operations, Revenue Operations.
+- Kubernetes-native deployment via the [Nexus Capability Operator](../operational/kubernetes-operator/index.md).
+- Cognito SSO with role-based access; SOC 2 Type II posture; GDPR + CCPA support.
+- SFDC simulator for offline development and testing.
 
-Note: Project notes are maintained in the project-notes repository.
+## Roadmap (post-v0.1.0)
 
----
+- **CDC Path** -- Debezium / Kafka pipeline (currently planned in [Implementation Guide](../ai-os/implementation-guide.md)).
+- **ETL Path engine** -- Spark / Airflow native batch runtime.
+- **Apache AGE rollout** -- replace the planned Graph DB stub with the production AGE deployment.
+- **Tool Builder** -- the Reasoning Plane's Tool Builder console (currently `coming soon`).
+- **Per-Solution app drill-downs** -- documentation and screenshots for additional Solutions beyond the canonical Order-to-Cash Monitor example.
+- **Solution-tool wiring** -- the `Try Tool` button on app-curated Tools Catalogue cards is currently a no-op; wire to journey draft / direct invocation.
 
-## Current Version
+## Migration
 
-**Version**: 0.0.1
+Customers coming from the legacy **CallSense Toolkit** product (Webex CC capture, call processing pipeline, Toolkit Deployer wizard) -- see [Migration from CallSense Toolkit](../migration/from-callsense-toolkit.md) for where the retired surfaces now live.
 
-## Version History
+## Related references
 
-### Version 0.0.1 (Current)
-- Initial production release
-- Desktop application installer
-- Call processing capability
-- Webex CC integration
-- AWS deployment automation
-- Basic analytics features
-
-## Project Timeline
-
-```mermaid
-gantt
-    title NexusAI Data Platform Development Timeline
-    dateFormat YYYY-MM
-    section Phase 1
-    Initial Development    :2023-01, 2023-06
-    Webex Integration     :2023-03, 2023-07
-    section Phase 2
-    AI Capabilities       :2023-06, 2023-12
-    Platform Enhancement  :2023-09, 2024-03
-    section Phase 3
-    Production Release    :2024-01, 2024-06
-    Enterprise Features   :2024-03, 2024-09
-    section Phase 4
-    Platform 2.0          :2024-06, 2024-12
-    Advanced Analytics    :2024-09, 2025-03
-```
-
-## Scope Boundaries
-
-### In Scope
-- ✅ Webex Contact Center integration
-- ✅ AI-powered call transcription
-- ✅ Call analysis and insights
-- ✅ Multi-stage journey processing
-- ✅ Real-time analytics and reporting
-- ✅ AWS cloud deployment
-- ✅ Enterprise license management
-- ✅ MCP tools integration
-
-### Out of Scope
-- ❌ Real-time call interception
-- ❌ Outbound calling
-- ❌ CRM integration (future release)
-- ❌ Multi-tenant support (future release)
-- ❌ Mobile applications (future release)
-
-## Project Repositories
-
-The NexusAI Data Platform project consists of multiple repositories:
-
-| Repository | Purpose | Status |
-|------------|---------|--------|
-| **nexus-backend** | Backend services and API | ✅ Active |
-| **nexus-ui** | React frontend application | ✅ Active |
-| **nexus-deployer** | AWS deployment automation | ✅ Active |
-| **nexus-docs** | Documentation site | ✅ Active |
-| **project-notes** | Project metadata and notes | ✅ Active |
-
-## Related Projects
-
-The NexusAI Data Platform is part of a broader portfolio:
-
-- **Econet** - Enterprise integration
-- **Maxis** - Customer engagement platform
-- **Movistar** - Contact center integration
-- **Zain** - AI-powered analytics
-
----
-
-[← Back to Home](../index.md) | [← Previous: Features & Capabilities](../features/index.md) | [Next: Technical Documentation →](../technical/index.md)
+- [Platform Architecture](../platform-architecture.md) -- end-to-end product surface.
+- [Business Executive Summary](../business/source/executive-summary.md) -- positioning, market opportunity, commercial model.
+- [Business Requirements](../business/source/business-requirements.md) -- full functional + non-functional requirements catalogue.
