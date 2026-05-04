@@ -65,88 +65,29 @@ nav:
   - Home:
     - Overview: index.md
     - Platform Architecture: platform-architecture.md
-  - Business Documentation:
-    - Overview: business/index.md
-    - NexusAI Platform Executive Summary: business/source/executive-summary.md
-    - NexusAI Toolkit Executive Summary: business/source/toolkit-executive-summary.md
+  - Foundations:
     - AI Stack: business/ai-stack.md
-    - Business Requirements: business/source/business-requirements.md
-    - Business Overview: business/source/business-overview.md
-    - KPI Definitions: KPI/nexus-kpi-definitions.md
-  - AI Operating System:
-    - Architecture: ai-os/architecture.md
-    - Total System Architecture: ai-os/Total-system-architecture.md
-    - Data Sources: ai-os/data-sources.md
-    - Semantic RAG: ai-os/semantic-rag.md
-    - ReAct Layer: ai-os/re-act-layer.md
-    - Implementation Guide: ai-os/implementation-guide.md
-    - Semantic RAG Pipeline: semantic-layer/semantic-rag-pipeline.md
-  - Functional Specifications:
-    - Overview: functional/index.md
-    - Design Specifications: functional/source/design.md
-    - Requirements: functional/source/requirement.md
-    - Tasks: functional/source/task.md
-  - Features & Capabilities:
-    - Overview: features/index.md
-    - Capability Architecture: features/source/capability-arcitecture.md
-    - Enterprise AI FAQ: features/source/enterprise-ai-capability-faq.md
-    - AWS WAFR Compliance: features/source/AWS-WAFR-COMPLIANCE.md
-  - Project Scope:
-    - Overview: project-scope/index.md
-    - Release Notes:
-      - Version 0.0.1: project-scope/releases/v0.0.1.md
-      - Version 0.0.1 Test Plan: project-scope/releases/v0.0.1-test-plan.md
-  - AI Simulation:
-    - Overview: simulators/index.md
-    - Contact Center Simulator:
-      - Guide: simulators/wxcc/index.md
-    - CRM Simulator:
-      - Guide: simulators/sfdc/index.md
-  - Technical Documentation:
-    - Overview: technical/index.md
-    - Solution Architecture: technical/solution-architecture.md
-    - Infrastructure Requirements: technical/INFRASTRUCTURE_REQUIREMENTS.md
-    - DynamoDB Operations Analysis: technical/dynamodb-operations-analysis.md
-    - CloudWatch Logs Analysis: technical/cloudwatch-logs-analysis.md
-    - Integration:
-      - Webex Integration: technical/integration/webex-integration.md
-      - Implementation Questions: technical/integration/webex-implementation-questions.md
-      - Data Recording: technical/integration/call-recording-pseudocode.md
-    - Architecture:
-      - Job Execution Flow: technical/architecture/job-execution-flow.md
-    - Data Processing:
-      - Algorithm: technical/call-processing/call-processing-algorithm.md
-      - Developer Guide: technical/call-processing/developer-guide.md
-      - SFDC Action: technical/call-processing/sfdcaction.md
-    - Gateway:
-      - Unified Gateway Guide: technical/gateway/UNIFIED_GATEWAY_GUIDE.md
-    - Database Design:
-      - Journey Data: technical/dbdesign/journey-data.md
-      - Capability Data: technical/dbdesign/capability-data.md
-  - Operational Documentation:
-    - Overview: operational/index.md
-    - NexusAI Toolkit User Guide:
-      - Overview: operational/user-guide/README.md
-      - Getting Started: operational/user-guide/01-getting-started.md
-      - Installation: operational/user-guide/02-installation.md
-      - Deployment Wizard: operational/user-guide/03-deployment-wizard.md
-      - AWS Configuration: operational/user-guide/04-aws-configuration.md
-      - Managing Deployments: operational/user-guide/05-managing-deployments.md
-      - Troubleshooting: operational/user-guide/06-troubleshooting.md
-      - FAQ: operational/user-guide/07-faq.md
-      - Kubernetes Deployment: operational/user-guide/08-kubernetes-deployment.md
-      - Build Guide: operational/user-guide/BUILD_GUIDE.md
-      - Quick Reference: operational/user-guide/QUICK_REFERENCE.md
-    - Nexus Capability K8s Operator:
-      - Overview: operational/kubernetes-operator/index.md
-      - Quick Start: operational/kubernetes-operator/quick-start.md
-      - AWS Prerequisites: operational/kubernetes-operator/aws-prerequisites.md
-      - Architecture: operational/kubernetes-operator/architecture.md
-      - Custom Resource Reference: operational/kubernetes-operator/custom-resource.md
-      - Deployment Guide: operational/kubernetes-operator/deployment.md
-      - Operations: operational/kubernetes-operator/operations.md
-      - Troubleshooting: operational/kubernetes-operator/troubleshooting.md
-  - Application Catalogue:
+    - AI Operating System:
+      - Architecture: ai-os/architecture.md
+      - Total System Architecture: ai-os/Total-system-architecture.md
+      - Data Sources: ai-os/data-sources.md
+      - ReAct Layer: ai-os/re-act-layer.md
+      - Implementation Guide: ai-os/implementation-guide.md
+    - Semantic RAG:
+      - Overview: ai-os/semantic-rag.md
+      - Pipeline: semantic-layer/semantic-rag-pipeline.md
+    - Simulators:
+      - Overview: simulators/index.md
+      - SFDC / CRM Simulator: simulators/sfdc/index.md
+  - Planes:
+    - Data Plane: planes/data-plane.md
+    - Control Plane: planes/control-plane.md
+    - Reasoning Plane: planes/reasoning-plane.md
+  - Console:
+    - Solutions Catalogue: console/solutions-catalogue.md
+    - AI Analytics: console/ai-analytics.md
+    - AI Automation: console/ai-automation.md
+  - Solutions:
     - Supply Chain:
       - Overview: app-catalogue/supply-chain/index.md
       - Demand Forecasting & Planning: app-catalogue/supply-chain/demand-forecasting.md
@@ -175,6 +116,14 @@ nav:
       - Loan Lifecycle: app-catalogue/finance-banking/loan-lifecycle.md
       - Revenue & Product Reco: app-catalogue/finance-banking/revenue-optimization.md
       - Operational Risk: app-catalogue/finance-banking/operational-risk.md
+      - Ontology Layer:
+        - Overview: app-catalogue/finance-banking/ontology/index.md
+        - Schema Reference: app-catalogue/finance-banking/ontology/schema-reference.md
+        - Workflows: app-catalogue/finance-banking/ontology/workflows.md
+        - Policies: app-catalogue/finance-banking/ontology/policies.md
+        - Integrations: app-catalogue/finance-banking/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/finance-banking/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/finance-banking/ontology/mapping-architecture.md
     - Telecommunications:
       - Overview: app-catalogue/telco/index.md
       - Customer 360 & Churn: app-catalogue/telco/customer-360.md
@@ -185,6 +134,14 @@ nav:
       - Dynamic Pricing: app-catalogue/telco/dynamic-pricing.md
       - Field Operations: app-catalogue/telco/field-operations.md
       - Regulatory Compliance: app-catalogue/telco/regulatory-compliance.md
+      - Ontology Layer:
+        - Overview: app-catalogue/telco/ontology/index.md
+        - Schema Reference: app-catalogue/telco/ontology/schema-reference.md
+        - Workflows: app-catalogue/telco/ontology/workflows.md
+        - Policies: app-catalogue/telco/ontology/policies.md
+        - Integrations: app-catalogue/telco/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/telco/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/telco/ontology/mapping-architecture.md
     - Retail:
       - Overview: app-catalogue/retail/index.md
       - Customer 360 & Loyalty: app-catalogue/retail/customer-360.md
@@ -195,6 +152,14 @@ nav:
       - Store Operations: app-catalogue/retail/store-operations.md
       - Supplier & Merchandising: app-catalogue/retail/supplier-merchandising.md
       - Sustainability: app-catalogue/retail/sustainability-compliance.md
+      - Ontology Layer:
+        - Overview: app-catalogue/retail/ontology/index.md
+        - Schema Reference: app-catalogue/retail/ontology/schema-reference.md
+        - Workflows: app-catalogue/retail/ontology/workflows.md
+        - Policies: app-catalogue/retail/ontology/policies.md
+        - Integrations: app-catalogue/retail/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/retail/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/retail/ontology/mapping-architecture.md
     - Healthcare:
       - Overview: app-catalogue/healthcare/index.md
       - Patient 360: app-catalogue/healthcare/patient-360.md
@@ -205,26 +170,85 @@ nav:
       - Supply Chain & Pharmacy: app-catalogue/healthcare/supply-chain-pharmacy.md
       - Clinical Quality & Safety: app-catalogue/healthcare/clinical-quality.md
       - Regulatory Compliance: app-catalogue/healthcare/regulatory-compliance.md
+      - Ontology Layer:
+        - Overview: app-catalogue/healthcare/ontology/index.md
+        - Schema Reference: app-catalogue/healthcare/ontology/schema-reference.md
+        - Workflows: app-catalogue/healthcare/ontology/workflows.md
+        - Policies: app-catalogue/healthcare/ontology/policies.md
+        - Integrations: app-catalogue/healthcare/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/healthcare/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/healthcare/ontology/mapping-architecture.md
     - Customer Operations:
       - Overview: app-catalogue/customer-ops/index.md
       - Autonomous Issue Resolution: app-catalogue/customer-ops/autonomous-issue-resolution.md
       - Proactive Agent Assist: app-catalogue/customer-ops/proactive-agent-assist.md
       - Unified Operations Hub: app-catalogue/customer-ops/unified-operations-hub.md
+      - Ontology Layer:
+        - Overview: app-catalogue/customer-ops/ontology/index.md
+        - Schema Reference: app-catalogue/customer-ops/ontology/schema-reference.md
+        - Workflows: app-catalogue/customer-ops/ontology/workflows.md
+        - Policies: app-catalogue/customer-ops/ontology/policies.md
+        - Integrations: app-catalogue/customer-ops/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/customer-ops/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/customer-ops/ontology/mapping-architecture.md
     - Revenue Operations:
       - Overview: app-catalogue/rev-ops/index.md
       - Deal Intelligence: app-catalogue/rev-ops/deal-intelligence.md
       - Pipeline Risk Forecasting: app-catalogue/rev-ops/pipeline-risk-forecasting.md
       - Revenue Orchestration: app-catalogue/rev-ops/revenue-orchestration.md
-  - Test Documentation:
-    - Overview: tests/index.md
-    - UAT Test Cases: UAT/testcases/nexus-uat-testcases.md
-  - Developer Guide:
+      - Ontology Layer:
+        - Overview: app-catalogue/rev-ops/ontology/index.md
+        - Schema Reference: app-catalogue/rev-ops/ontology/schema-reference.md
+        - Workflows: app-catalogue/rev-ops/ontology/workflows.md
+        - Policies: app-catalogue/rev-ops/ontology/policies.md
+        - Integrations: app-catalogue/rev-ops/ontology/integrations.md
+        - App-Object Mapping: app-catalogue/rev-ops/ontology/app-object-mapping.md
+        - Mapping Architecture: app-catalogue/rev-ops/ontology/mapping-architecture.md
+  - Business:
+    - Overview: business/index.md
+    - Executive Summary: business/source/executive-summary.md
+    - Business Overview: business/source/business-overview.md
+    - Business Requirements: business/source/business-requirements.md
+    - KPI Definitions: KPI/nexus-kpi-definitions.md
+  - Operations:
+    - Overview: operational/index.md
+    - Kubernetes Operator:
+      - Overview: operational/kubernetes-operator/index.md
+      - Quick Start: operational/kubernetes-operator/quick-start.md
+      - AWS Prerequisites: operational/kubernetes-operator/aws-prerequisites.md
+      - Architecture: operational/kubernetes-operator/architecture.md
+      - Custom Resource Reference: operational/kubernetes-operator/custom-resource.md
+      - Deployment Guide: operational/kubernetes-operator/deployment.md
+      - Operations: operational/kubernetes-operator/operations.md
+      - Troubleshooting: operational/kubernetes-operator/troubleshooting.md
+  - Technical:
+    - Overview: technical/index.md
+    - Solution Architecture: technical/solution-architecture.md
+    - Infrastructure Requirements: technical/INFRASTRUCTURE_REQUIREMENTS.md
+    - Gateway: technical/gateway/UNIFIED_GATEWAY_GUIDE.md
+    - Job Execution Flow: technical/architecture/job-execution-flow.md
+    - Database Design:
+      - Journey Data: technical/dbdesign/journey-data.md
+      - Capability Data: technical/dbdesign/capability-data.md
+    - Observability:
+      - DynamoDB Operations: technical/dynamodb-operations-analysis.md
+      - CloudWatch Logs: technical/cloudwatch-logs-analysis.md
+    - EKS Hardening:
+      - Overview: technical/eks-hardening/README.md
+      - Index: technical/eks-hardening/INDEX.md
+      - Quick Start: technical/eks-hardening/QUICK-START.md
+      - Solution Summary: technical/eks-hardening/SOLUTION-SUMMARY.md
+      - Hardened Nodes Solution: technical/eks-hardening/eks-hardened-nodes-solution.md
+      - Verification Report: technical/eks-hardening/FINAL-VERIFICATION-REPORT.md
+      - CIS Compliance Report: technical/eks-hardening/CIS-COMPLIANCE-FINAL-REPORT.md
+      - CIS Scanner Results: technical/eks-hardening/CIS-SCANNER-RESULTS.md
+      - CIS Level 2 Roadmap: technical/eks-hardening/CIS-LEVEL-2-ROADMAP.md
+  - Developer:
     - Overview: developer/index.md
     - Backend:
       - Overview: developer/backend/README.md
       - LocalStack Setup: developer/backend/env-local-example.md
-    - Requirements:
-      - Business Requirements: developer/requirements/bussiness-req.md
+    - Requirements: developer/requirements/bussiness-req.md
     - MCP Tools:
       - Journeys Tool: developer/mcp-tools/journeys-tool.md
       - Logs and Reports Tool: developer/mcp-tools/logs-and-reports-tool.md
@@ -234,9 +258,20 @@ nav:
       - Quick Start: developer/localstack/QUICKSTART_LOCALSTACK.md
       - Local Setup: developer/localstack/LOCAL_SETUP_LOCALSTACK.md
       - Reference: developer/localstack/LOCALSTACK_REFERENCE.md
-    - Claude:
+    - Claude Plugin:
       - User Guide: developer/claude/user-guide.md
       - Quick Reference: developer/claude/quick-ref.md
+  - Releases:
+    - Project Scope: project-scope/index.md
+    - v0.1.0: project-scope/releases/v0.1.0.md
+  - QA & Reference:
+    - Tests Overview: tests/index.md
+    - UAT Test Cases: UAT/testcases/nexus-uat-testcases.md
+    - Functional Specifications: functional/index.md
+    - Features Overview: features/index.md
+    - Enterprise AI Capability FAQ: features/source/enterprise-ai-capability-faq.md
+  - Migration:
+    - From CallSense Toolkit: migration/from-callsense-toolkit.md
 
 extra:
   social:

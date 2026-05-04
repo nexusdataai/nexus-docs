@@ -472,9 +472,11 @@ The four auto-seeded Views (`outcomes` / `predict` / `diagnose` / `monitor` from
 
 **Workspace -- Tools Catalogue**
 
-![Tools Catalogue -- per-Solution tool registry](assets/solutions/order-to-cash/o2c-10-tools-catalogue.png)
+![Tools Catalogue -- O2C-curated tool registry](assets/solutions/order-to-cash/o2c-10-tools-catalogue.png)
 
-- Tool-type tabs (e.g. Analysis, Enhancement); each tool card shows Inputs, Outputs, availability (`Available` / `Coming Soon`), and a `Try Tool` action.
+- **App-curated** -- the catalogue surfaces only tools relevant to this Solution, grounded in its ontology entities (for O2C: *Order Match Verifier*, *Order Anomaly Scorer*, *AR Cash Flow Projector*, *O2C Alert Generator*, *Dunning Notice Composer*, *DSO Optimizer*).
+- **Tool-type tabs** are derived from the populated tools (Analysis, Automation, Enhancement here).
+- Each card surfaces typed **Inputs / Outputs** (e.g. `Opportunity`, `Oracle_AR_Invoice` -> `match_status`, `discrepancy_amount`), availability (`Available` / `Coming Soon`), and a `Try Tool` action.
 
 ---
 
