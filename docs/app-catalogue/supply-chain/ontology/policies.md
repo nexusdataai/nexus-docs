@@ -12,7 +12,7 @@
 | 2 | [Procurement Policy](#2-procurement-policy) | POL-PROC-001 | Source | High | Procurement Department | Vendor_Master, Oracle_Purchase_Order, Purchase_Requisition |
 | 3 | [Quality Policy](#3-quality-policy) | POL-QA-001 | Make | Critical | Quality Assurance | Quality_Inspection_Lot, Quality_Test_Result, Batch_Master |
 | 4 | [Supply Chain Risk Policy](#4-supply-chain-risk-policy) | POL-SCR-001 | Source/Enable | High | SC Risk Management | Vendor_Master, Source_List, Market_Signal |
-| 5 | [Pricing & Discount Policy](#5-pricing--discount-policy) | POL-PRICE-001 | Deliver | High | Commercial / Revenue Mgmt | Account, Opportunity, Campaign |
+| 5 | [Pricing & Discount Policy](#5-pricing-discount-policy) | POL-PRICE-001 | Deliver | High | Commercial / Revenue Mgmt | Account, Opportunity, Campaign |
 | 6 | [Sustainability Policy](#6-sustainability-policy) | POL-ESG-001 | Enable | Medium | Sustainability & Corp Affairs | Plant_Master, Material_Master, Shipment |
 | 7 | [Data Freshness Policy](#7-data-freshness-policy) | POL-DATA-001 | Enable | Medium | Data Engineering / IT Ops | All integration feeds |
 | 8 | [Order Fulfillment Policy](#8-order-fulfillment-policy) | POL-OFC-001 | Deliver | High | Order Mgmt / SC Operations | Delivery_Document, Oracle_AR_Invoice, Return_Order |

@@ -12,7 +12,7 @@
 | 2 | [SF-WXCC Interaction Sync](#2-salesforce-to-wxcc-interaction-sync) | WXCC | Salesforce | Unidirectional | Near real-time (<30 sec) |
 | 3 | [SF-SAP Service Sync](#3-salesforce-to-sap-service-sync) | Salesforce | SAP | Bidirectional | Near real-time (<5 min) |
 | 4 | [Unstructured Extraction](#4-unstructured-data-extraction) | Google Drive / File Uploads | Ontology Layer | Unidirectional | On-upload + daily scan |
-| 5 | [Social Listening & Feedback Feed](#5-social-listening--feedback-feed) | Social Listening APIs / Surveys | Ontology Layer | Unidirectional | 4-hour cycle (critical immediate) |
+| 5 | [Social Listening & Feedback Feed](#5-social-listening-feedback-feed) | Social Listening APIs / Surveys | Ontology Layer | Unidirectional | 4-hour cycle (critical immediate) |
 
 ---
 

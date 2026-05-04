@@ -9,11 +9,11 @@
 | # | Policy | ID | Regulatory | Risk | Owner | Constrains |
 |---|--------|----|-----------|------|-------|------------|
 | 1 | [Clinical Safety Policy](#1-clinical-safety-policy) | POL-CLIN-001 | FHIR / TJC | Critical | CMO (Chief Medical Officer) | Medication_Order, Clinical_Order, Lab_Result, Drug_Interaction |
-| 2 | [HIPAA Privacy & Security Policy](#2-hipaa-privacy--security-policy) | POL-HIPAA-001 | HIPAA | Critical | Privacy Officer / CISO | PHI_Access_Log, Patient_Consent, Patient_Master |
+| 2 | [HIPAA Privacy & Security Policy](#2-hipaa-privacy-security-policy) | POL-HIPAA-001 | HIPAA | Critical | Privacy Officer / CISO | PHI_Access_Log, Patient_Consent, Patient_Master |
 | 3 | [Revenue Cycle Policy](#3-revenue-cycle-policy) | POL-REV-001 | CMS / CPT | High | CFO / Revenue Cycle Director | Claim, Denial, Charge, Prior_Authorization |
-| 4 | [Bed Management & Capacity Policy](#4-bed-management--capacity-policy) | POL-BED-001 | CMS CoP | High | COO / VP Operations | Bed_Census, OR_Schedule, ED_Arrival, Staffing |
+| 4 | [Bed Management & Capacity Policy](#4-bed-management-capacity-policy) | POL-BED-001 | CMS CoP | High | COO / VP Operations | Bed_Census, OR_Schedule, ED_Arrival, Staffing |
 | 5 | [Quality Measure Policy](#5-quality-measure-policy) | POL-QUAL-001 | CMS / TJC / HEDIS | High | CMO / Chief Quality Officer | Quality_Measure, Adverse_Event, Infection_Indicator, Safety_Assessment |
-| 6 | [Pharmacy & Formulary Policy](#6-pharmacy--formulary-policy) | POL-PHARM-001 | FDA / P&T | High | Chief Pharmacy Officer | Medication_Order, Pharmacy_Inventory, Controlled_Substance_Log, Supply_Inventory |
+| 6 | [Pharmacy & Formulary Policy](#6-pharmacy-formulary-policy) | POL-PHARM-001 | FDA / P&T | High | Chief Pharmacy Officer | Medication_Order, Pharmacy_Inventory, Controlled_Substance_Log, Supply_Inventory |
 | 7 | [Data Freshness Policy](#7-data-freshness-policy) | POL-DATA-001 | FHIR / Interop | Medium | CMIO / Chief Data Officer | All integration feeds |
 | 8 | [Regulatory Reporting Policy](#8-regulatory-reporting-policy) | POL-REG-001 | CMS / State / TJC | High | Chief Compliance Officer | Regulatory_Return, Accreditation_Standard, Regulatory_Publication |
 

@@ -11,9 +11,9 @@
 | 1 | [Deal Qualification Policy](#1-deal-qualification-policy) | POL-DEAL-001 | MEDDPICC | High | VP Sales / CRO | Deal_Opportunity, Stage_History, Stakeholder_Map, Forecast_Submission |
 | 2 | [Revenue Recognition Policy](#2-revenue-recognition-policy) | POL-REV-001 | ASC 606 / IFRS 15 | Critical | CFO / Controller | Revenue_Schedule, Contract_Record, Billing_Schedule, Subscription |
 | 3 | [Forecast Governance Policy](#3-forecast-governance-policy) | POL-FCST-001 | SaaS Metrics | High | CRO / VP RevOps | Forecast_Submission, Deal_Opportunity, Pipeline_Snapshot |
-| 4 | [Pricing & Discount Policy](#4-pricing--discount-policy) | POL-PRICE-001 | SaaS Metrics | High | CFO / VP RevOps | Quote, Deal_Opportunity, Opportunity_Line_Item, Product_Catalog |
+| 4 | [Pricing & Discount Policy](#4-pricing-discount-policy) | POL-PRICE-001 | SaaS Metrics | High | CFO / VP RevOps | Quote, Deal_Opportunity, Opportunity_Line_Item, Product_Catalog |
 | 5 | [Data Freshness Policy](#5-data-freshness-policy) | POL-DATA-001 | SaaS Metrics | Medium | VP RevOps / CDO | All integration feeds |
-| 6 | [Commission & Compensation Policy](#6-commission--compensation-policy) | POL-COMP-001 | SaaS Metrics | High | VP RevOps / CFO | Commission_Record, Quota, Deal_Opportunity, Subscription |
+| 6 | [Commission & Compensation Policy](#6-commission-compensation-policy) | POL-COMP-001 | SaaS Metrics | High | VP RevOps / CFO | Commission_Record, Quota, Deal_Opportunity, Subscription |
 
 ---
 

@@ -8,13 +8,13 @@
 
 | # | Workflow | Standard | Trigger | Primary App |
 |---|---------|----------|---------|-------------|
-| 1 | [Deal Intelligence & Scoring](#1-deal-intelligence--scoring) | MEDDPICC | New call recording or daily batch | Deal Intelligence |
+| 1 | [Deal Intelligence & Scoring](#1-deal-intelligence-scoring) | MEDDPICC | New call recording or daily batch | Deal Intelligence |
 | 2 | [Pipeline Risk Assessment](#2-pipeline-risk-assessment) | MEDDPICC/ASC 606 | Weekly snapshot or deal stage change | Pipeline Risk |
-| 3 | [Renewal & Expansion Prediction](#3-renewal--expansion-prediction) | ASC 606/SaaS Metrics | 120 days before renewal or usage decline | Pipeline Risk |
+| 3 | [Renewal & Expansion Prediction](#3-renewal-expansion-prediction) | ASC 606/SaaS Metrics | 120 days before renewal or usage decline | Pipeline Risk |
 | 4 | [Quote-to-Cash Orchestration](#4-quote-to-cash-orchestration) | ASC 606 | Opportunity reaches Closed_Won | Revenue Orchestration |
 | 5 | [Revenue Leakage Detection](#5-revenue-leakage-detection) | ASC 606 | Monthly reconciliation or variance detected | Revenue Orchestration |
-| 6 | [Conversation & Email NLP](#6-conversation--email-nlp) | MEDDPICC | New call recording or email thread updated | Deal Intelligence |
-| 7 | [Commission & Compensation](#7-commission--compensation) | — | Deal closed-won or monthly payout cycle | Revenue Orchestration |
+| 6 | [Conversation & Email NLP](#6-conversation-email-nlp) | MEDDPICC | New call recording or email thread updated | Deal Intelligence |
+| 7 | [Commission & Compensation](#7-commission-compensation) | — | Deal closed-won or monthly payout cycle | Revenue Orchestration |
 | 8 | [Competitive Win/Loss Analysis](#8-competitive-winloss-analysis) | MEDDPICC | Deal closed (won or lost) or quarterly batch | Deal Intelligence, Pipeline Risk |
 
 ---

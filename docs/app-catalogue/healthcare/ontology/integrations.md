@@ -10,10 +10,10 @@
 |---|------------|--------|--------|------|-----------|
 | 1 | [EHR to Revenue Cycle Sync](#1-ehr-to-revenue-cycle-sync) | EHR | Revenue Cycle Management | Bidirectional | 15-min interval |
 | 2 | [EHR to HIS Sync](#2-ehr-to-his-sync) | EHR | Hospital Information System | Bidirectional | Real-time ADT, 15-min other |
-| 3 | [Lab & Imaging Feed](#3-lab--imaging-feed) | LIS / PACS | Ontology Layer | Unidirectional | Real-time results |
+| 3 | [Lab & Imaging Feed](#3-lab-imaging-feed) | LIS / PACS | Ontology Layer | Unidirectional | Real-time results |
 | 4 | [Clinical Notes NLP Pipeline](#4-clinical-notes-nlp-pipeline) | Clinical Documentation | Ontology Layer | Unidirectional | <60 min from dictation |
-| 5 | [Population & External Data Feed](#5-population--external-data-feed) | Payers / Public Health | Ontology Layer | Unidirectional | Monthly batch + event-driven |
-| 6 | [Regulatory & Quality Feed](#6-regulatory--quality-feed) | CMS / TJC / State | Ontology Layer | Unidirectional | Daily scan |
+| 5 | [Population & External Data Feed](#5-population-external-data-feed) | Payers / Public Health | Ontology Layer | Unidirectional | Monthly batch + event-driven |
+| 6 | [Regulatory & Quality Feed](#6-regulatory-quality-feed) | CMS / TJC / State | Ontology Layer | Unidirectional | Daily scan |
 
 ---
 

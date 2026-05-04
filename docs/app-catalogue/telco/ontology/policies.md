@@ -11,9 +11,9 @@
 | 1 | [Network SLA Policy](#1-network-sla-policy) | POL-SLA-001 | TMF638 / eTOM: Assurance | Critical | CTO / VP Network Ops | Alarm, Fault_Ticket, Correlation_Group, SLA_Metric, KQI |
 | 2 | [Revenue Assurance Policy](#2-revenue-assurance-policy) | POL-RA-001 | TMF678 / eTOM: Billing | Critical | CFO / VP Revenue Assurance | CDR_Record, Billing_Record, Revenue_Leakage, Prepay_Balance |
 | 3 | [Customer Retention Policy](#3-customer-retention-policy) | POL-RET-001 | TMF629 / eTOM: Customer Relations | High | VP Customer / CMO | Subscriber_Master, Churn_Event, Campaign, NPS_Survey |
-| 4 | [Spectrum & Regulatory Policy](#4-spectrum--regulatory-policy) | POL-SPEC-001 | TMF639 / Regulatory | Critical | VP Regulatory Affairs | Spectrum_License, Spectrum_Utilization, Interference_Event, QoS_Report |
+| 4 | [Spectrum & Regulatory Policy](#4-spectrum-regulatory-policy) | POL-SPEC-001 | TMF639 / Regulatory | Critical | VP Regulatory Affairs | Spectrum_License, Spectrum_Utilization, Interference_Event, QoS_Report |
 | 5 | [Network Capacity Policy](#5-network-capacity-policy) | POL-CAP-001 | TMF639 / eTOM: Infrastructure | High | CTO / VP Network Planning | Cell_Site, Sector, Performance_Counter, Spectrum_Utilization |
-| 6 | [Data Privacy & Consent Policy](#6-data-privacy--consent-policy) | POL-PRIV-001 | GDPR / Local Regulator | Critical | DPO / Chief Privacy Officer | Subscriber_Master, Consent_Record, CDR_Record, Interaction_Record |
+| 6 | [Data Privacy & Consent Policy](#6-data-privacy-consent-policy) | POL-PRIV-001 | GDPR / Local Regulator | Critical | DPO / Chief Privacy Officer | Subscriber_Master, Consent_Record, CDR_Record, Interaction_Record |
 | 7 | [Data Freshness Policy](#7-data-freshness-policy) | POL-DATA-001 | TMF / eTOM | Medium | Chief Data Officer | All integration feeds |
 | 8 | [Field Operations Policy](#8-field-operations-policy) | POL-FIELD-001 | TMF621 / eTOM: Operations | High | VP Field Operations | Work_Order, Technician, Equipment_Telemetry, Site_Survey |
 

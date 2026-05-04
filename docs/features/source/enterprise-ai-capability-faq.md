@@ -35,7 +35,7 @@ Auto-seeded Views that become the Solution's left navigation:
 - **Agent Builder** -- author Custom Tools (YAML), Journey Templates, Agent Profiles, Test Harness.
 - **Tools Catalogue** -- app-curated tool registry grounded in the Solution's ontology entities (e.g. for O2C: *Order Match Verifier*, *Order Anomaly Scorer*, *AR Cash Flow Projector*, *O2C Alert Generator*, *Dunning Notice Composer*, *DSO Optimizer*).
 
-For the canonical example, see [Solutions Catalogue > Order-to-Cash Monitor](../../console/solutions-catalogue.md#solution-app-example----order-to-cash-monitor).
+For the canonical example, see [Solutions Catalogue](../../console/solutions-catalogue.md) (Order-to-Cash Monitor).
 
 ## What's "the platform" underneath?
 

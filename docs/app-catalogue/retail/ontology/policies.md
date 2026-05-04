@@ -8,11 +8,11 @@
 
 | # | Policy | ID | Standard | Risk | Owner | Constrains |
 |---|--------|----|----------|------|-------|------------|
-| 1 | [Pricing & Promotion Policy](#1-pricing--promotion-policy) | POL-PRICE-001 | NRF: Merchandising | High | Chief Merchandising Officer | Product_Master, Promotion, Price_Record, Markdown_Schedule |
-| 2 | [Inventory & Fulfillment Policy](#2-inventory--fulfillment-policy) | POL-INV-001 | GS1 | High | VP Supply Chain | Inventory_Position, Warehouse, Shipment, Stock_Movement |
-| 3 | [Customer Data & Privacy Policy](#3-customer-data--privacy-policy) | POL-CUST-001 | GDPR/CCPA | Critical | Chief Privacy Officer | Customer_Profile, Loyalty_Account, Browsing_Session, Customer_Segment |
+| 1 | [Pricing & Promotion Policy](#1-pricing-promotion-policy) | POL-PRICE-001 | NRF: Merchandising | High | Chief Merchandising Officer | Product_Master, Promotion, Price_Record, Markdown_Schedule |
+| 2 | [Inventory & Fulfillment Policy](#2-inventory-fulfillment-policy) | POL-INV-001 | GS1 | High | VP Supply Chain | Inventory_Position, Warehouse, Shipment, Stock_Movement |
+| 3 | [Customer Data & Privacy Policy](#3-customer-data-privacy-policy) | POL-CUST-001 | GDPR/CCPA | Critical | Chief Privacy Officer | Customer_Profile, Loyalty_Account, Browsing_Session, Customer_Segment |
 | 4 | [Store Operations Policy](#4-store-operations-policy) | POL-STORE-001 | NRF | Medium | VP Store Operations | Store_Master, Store_Traffic, Labor_Schedule, Shelf_Condition |
-| 5 | [Supplier & Procurement Policy](#5-supplier--procurement-policy) | POL-SUPP-001 | GS1 | High | Head of Procurement | Vendor_Master, Purchase_Order, Goods_Receipt, Product_Master |
+| 5 | [Supplier & Procurement Policy](#5-supplier-procurement-policy) | POL-SUPP-001 | GS1 | High | Head of Procurement | Vendor_Master, Purchase_Order, Goods_Receipt, Product_Master |
 | 6 | [Sustainability Policy](#6-sustainability-policy) | POL-SUST-001 | GRI/SASB | Medium | Chief Sustainability Officer | Product_Origin, Carbon_Footprint, Waste_Record, Packaging |
 | 7 | [Data Freshness Policy](#7-data-freshness-policy) | POL-DATA-001 | NRF/GS1 | Medium | Chief Data Officer | All integration feeds |
 | 8 | [Loss Prevention Policy](#8-loss-prevention-policy) | POL-LP-001 | NRF | High | Director of Loss Prevention | Transaction, Register, Inventory_Position, Store_Master |

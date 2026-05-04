@@ -8,16 +8,16 @@
 
 | # | Workflow | Standard | Trigger | Primary App |
 |---|---------|----------|---------|-------------|
-| 1 | [Patient Matching & Profile Assembly](#1-patient-matching--profile-assembly) | FHIR: Patient | New patient registration or encounter | Patient 360 |
-| 2 | [Care Gap Detection & Outreach](#2-care-gap-detection--outreach) | HEDIS/USPSTF | Monthly schedule or new clinical data update | Patient 360, Population Health |
+| 1 | [Patient Matching & Profile Assembly](#1-patient-matching-profile-assembly) | FHIR: Patient | New patient registration or encounter | Patient 360 |
+| 2 | [Care Gap Detection & Outreach](#2-care-gap-detection-outreach) | HEDIS/USPSTF | Monthly schedule or new clinical data update | Patient 360, Population Health |
 | 3 | [Clinical Decision Support](#3-clinical-decision-support) | FHIR: MedicationRequest | New medication order or clinical order in CPOE | Clinical Decision Support |
 | 4 | [Critical Result Management](#4-critical-result-management) | FHIR: Observation | Lab or imaging result with Critical_Flag = true | Clinical Decision Support |
-| 5 | [Claim Denial Prediction & Prevention](#5-claim-denial-prediction--prevention) | CPT/ICD-10 | Pre-submission claim review or denial received | Revenue Cycle |
-| 6 | [Bed Management & Patient Flow](#6-bed-management--patient-flow) | FHIR: Encounter/Location | Hourly schedule or ED boarding >2 hours | Operational Efficiency |
+| 5 | [Claim Denial Prediction & Prevention](#5-claim-denial-prediction-prevention) | CPT/ICD-10 | Pre-submission claim review or denial received | Revenue Cycle |
+| 6 | [Bed Management & Patient Flow](#6-bed-management-patient-flow) | FHIR: Encounter/Location | Hourly schedule or ED boarding >2 hours | Operational Efficiency |
 | 7 | [Population Risk Stratification](#7-population-risk-stratification) | HCC/HEDIS | Monthly schedule or new claims data load | Population Health |
-| 8 | [HAI Surveillance & Quality Monitoring](#8-hai-surveillance--quality-monitoring) | CMS/TJC | Positive culture result or daily surveillance scan | Clinical Quality |
+| 8 | [HAI Surveillance & Quality Monitoring](#8-hai-surveillance-quality-monitoring) | CMS/TJC | Positive culture result or daily surveillance scan | Clinical Quality |
 | 9 | [Supply Demand Forecasting](#9-supply-demand-forecasting) | Internal | Daily schedule or stockout risk detected | Supply Chain & Pharmacy |
-| 10 | [Regulatory Reporting & HIPAA Monitoring](#10-regulatory-reporting--hipaa-monitoring) | HIPAA/CMS | Reporting deadline approach or PHI access anomaly | Regulatory Compliance |
+| 10 | [Regulatory Reporting & HIPAA Monitoring](#10-regulatory-reporting-hipaa-monitoring) | HIPAA/CMS | Reporting deadline approach or PHI access anomaly | Regulatory Compliance |
 
 ---
 

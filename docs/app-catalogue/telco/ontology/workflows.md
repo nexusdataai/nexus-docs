@@ -8,16 +8,16 @@
 
 | # | Workflow | TMF/eTOM | Trigger | Primary App |
 |---|---------|----------|---------|-------------|
-| 1 | [Subscriber 360 & Churn Prediction](#1-subscriber-360--churn-prediction) | TMF629 / Customer Relations | Monthly or usage collapse >50% | Customer 360 |
-| 2 | [Network Anomaly Detection & RCA](#2-network-anomaly-detection--rca) | TMF642 / Assurance | Real-time alarm or performance counter deviation | Network Performance |
-| 3 | [Revenue Reconciliation & Fraud Detection](#3-revenue-reconciliation--fraud-detection) | TMF678 / Billing & Revenue | Daily or CDR volume drop >10% | Revenue Assurance |
-| 4 | [Customer Experience & pNPS](#4-customer-experience--pnps) | TMF629 / Customer Relations | Qualifying experience failure or monthly batch | Customer Experience |
+| 1 | [Subscriber 360 & Churn Prediction](#1-subscriber-360-churn-prediction) | TMF629 / Customer Relations | Monthly or usage collapse >50% | Customer 360 |
+| 2 | [Network Anomaly Detection & RCA](#2-network-anomaly-detection-rca) | TMF642 / Assurance | Real-time alarm or performance counter deviation | Network Performance |
+| 3 | [Revenue Reconciliation & Fraud Detection](#3-revenue-reconciliation-fraud-detection) | TMF678 / Billing & Revenue | Daily or CDR volume drop >10% | Revenue Assurance |
+| 4 | [Customer Experience & pNPS](#4-customer-experience-pnps) | TMF629 / Customer Relations | Qualifying experience failure or monthly batch | Customer Experience |
 | 5 | [Network Capacity Forecasting](#5-network-capacity-forecasting) | TMF639 / Infrastructure Lifecycle | Monthly or congestion threshold approach | Network Capacity |
-| 6 | [Dynamic Pricing & Offer Engine](#6-dynamic-pricing--offer-engine) | TMF622 / Product Lifecycle | Real-time subscriber event | Dynamic Pricing |
-| 7 | [Field Dispatch & Predictive Maintenance](#7-field-dispatch--predictive-maintenance) | TMF621 / Operations Support | New work order or equipment health score <30 | Field Operations |
-| 8 | [Spectrum & QoS Compliance](#8-spectrum--qos-compliance) | TMF639 / Regulatory | Filing deadline or spectrum parameter deviation | Regulatory Compliance |
-| 9 | [Campaign & Retention Orchestration](#9-campaign--retention-orchestration) | TMF629 / Customer Relations | Campaign launch or churn risk threshold exceeded | Customer 360, Dynamic Pricing |
-| 10 | [SLA Monitoring & Breach Prevention](#10-sla-monitoring--breach-prevention) | TMF638 / Assurance | Continuous or SLA metric approaching 80% of threshold | Network Performance, Customer Experience |
+| 6 | [Dynamic Pricing & Offer Engine](#6-dynamic-pricing-offer-engine) | TMF622 / Product Lifecycle | Real-time subscriber event | Dynamic Pricing |
+| 7 | [Field Dispatch & Predictive Maintenance](#7-field-dispatch-predictive-maintenance) | TMF621 / Operations Support | New work order or equipment health score <30 | Field Operations |
+| 8 | [Spectrum & QoS Compliance](#8-spectrum-qos-compliance) | TMF639 / Regulatory | Filing deadline or spectrum parameter deviation | Regulatory Compliance |
+| 9 | [Campaign & Retention Orchestration](#9-campaign-retention-orchestration) | TMF629 / Customer Relations | Campaign launch or churn risk threshold exceeded | Customer 360, Dynamic Pricing |
+| 10 | [SLA Monitoring & Breach Prevention](#10-sla-monitoring-breach-prevention) | TMF638 / Assurance | Continuous or SLA metric approaching 80% of threshold | Network Performance, Customer Experience |
 
 ---
 

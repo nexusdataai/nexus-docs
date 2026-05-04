@@ -8,7 +8,7 @@
 
 | # | Workflow | TMF/ITIL | Trigger | Primary App |
 |---|---------|----------|---------|-------------|
-| 1 | [Case Triage & Routing](#1-case-triage--routing) | TMF621 / Incident Mgmt | New case created or inbound interaction | Autonomous Issue Resolution |
+| 1 | [Case Triage & Routing](#1-case-triage-routing) | TMF621 / Incident Mgmt | New case created or inbound interaction | Autonomous Issue Resolution |
 | 2 | [Automated Remediation](#2-automated-remediation) | TMF621 / Service Request | Known issue pattern matched with >0.8 confidence | Autonomous Issue Resolution |
 | 3 | [Billing Dispute Resolution](#3-billing-dispute-resolution) | TMF678 / Financial Mgmt | Billing dispute opened or case type = Billing | Autonomous Issue Resolution, Operations Hub |
 | 4 | [Cross-System State Sync](#4-cross-system-state-sync) | TMF683 / Interaction | Any state change in Salesforce, Oracle, SAP, or WXCC | Unified Operations Hub |

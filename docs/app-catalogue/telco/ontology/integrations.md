@@ -10,10 +10,10 @@
 |---|------------|--------|--------|------|-----------|
 | 1 | [BSS-CRM Sync](#1-bss-crm-sync) | BSS / Billing | Salesforce CRM | Bidirectional | 15-min + real-time events |
 | 2 | [CDR/Mediation Feed](#2-cdrmediation-feed) | CDR / Mediation | Ontology Layer | Unidirectional | Near real-time (<15 min) |
-| 3 | [OSS Alarm & Performance Feed](#3-oss-alarm--performance-feed) | OSS / NMS | Ontology Layer | Unidirectional | Real-time alarms, 15-min counters |
-| 4 | [Field & Equipment Telemetry Feed](#4-field--equipment-telemetry-feed) | Field Systems | Ontology Layer | Unidirectional | Real-time telemetry, daily WO sync |
+| 3 | [OSS Alarm & Performance Feed](#3-oss-alarm-performance-feed) | OSS / NMS | Ontology Layer | Unidirectional | Real-time alarms, 15-min counters |
+| 4 | [Field & Equipment Telemetry Feed](#4-field-equipment-telemetry-feed) | Field Systems | Ontology Layer | Unidirectional | Real-time telemetry, daily WO sync |
 | 5 | [Customer Interaction Feed](#5-customer-interaction-feed) | Contact Center | Ontology Layer | Unidirectional | Near real-time |
-| 6 | [External & Regulatory Feed](#6-external--regulatory-feed) | External Sources | Ontology Layer | Unidirectional | Daily scan |
+| 6 | [External & Regulatory Feed](#6-external-regulatory-feed) | External Sources | Ontology Layer | Unidirectional | Daily scan |
 
 ---
 

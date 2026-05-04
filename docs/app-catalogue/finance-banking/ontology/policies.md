@@ -9,11 +9,11 @@
 | # | Policy | ID | Basel/Regulatory | Risk | Owner | Constrains |
 |---|--------|----|-----------------|------|-------|------------|
 | 1 | [Credit Risk Policy](#1-credit-risk-policy) | POL-CR-001 | Pillar 1 (IRB) / IFRS 9 | Critical | Chief Risk Officer | Loan_Account, Credit_Score, ECL_Staging, Risk_Rating |
-| 2 | [AML & KYC Policy](#2-aml--kyc-policy) | POL-AML-001 | FATF / FinCEN | Critical | MLRO (Money Laundering Reporting Officer) | Customer_Master, AML_Alert, SAR_Filing, KYC_Document |
+| 2 | [AML & KYC Policy](#2-aml-kyc-policy) | POL-AML-001 | FATF / FinCEN | Critical | MLRO (Money Laundering Reporting Officer) | Customer_Master, AML_Alert, SAR_Filing, KYC_Document |
 | 3 | [Capital Adequacy Policy](#3-capital-adequacy-policy) | POL-CAP-001 | Basel III/IV Pillar 1 | Critical | CFO / CRO | Capital_Component, RWA_Calculation, Regulatory_Return |
 | 4 | [Lending Policy](#4-lending-policy) | POL-LEND-001 | Pillar 1 (Credit) | High | Head of Credit | Loan_Application, Loan_Account, Collateral, Guarantor |
-| 5 | [Collections & Recovery Policy](#5-collections--recovery-policy) | POL-COLL-001 | Pillar 1 (Credit) | High | Head of Collections | Loan_Account, Repayment_Schedule, Collateral |
-| 6 | [Treasury & Liquidity Policy](#6-treasury--liquidity-policy) | POL-TREAS-001 | Basel Liquidity (LCR/NSFR) | High | Treasurer / ALCO | Investment_Holding, Liquidity_Position, FTP_Rate |
+| 5 | [Collections & Recovery Policy](#5-collections-recovery-policy) | POL-COLL-001 | Pillar 1 (Credit) | High | Head of Collections | Loan_Account, Repayment_Schedule, Collateral |
+| 6 | [Treasury & Liquidity Policy](#6-treasury-liquidity-policy) | POL-TREAS-001 | Basel Liquidity (LCR/NSFR) | High | Treasurer / ALCO | Investment_Holding, Liquidity_Position, FTP_Rate |
 | 7 | [Data Freshness Policy](#7-data-freshness-policy) | POL-DATA-001 | BCBS 239 | Medium | Chief Data Officer | All integration feeds |
 | 8 | [Operational Risk Policy](#8-operational-risk-policy) | POL-OPRISK-001 | Basel Pillar 1 (OpRisk) | High | Head of Operational Risk | Loss_Event, Control_Test, Incident_Record |
 

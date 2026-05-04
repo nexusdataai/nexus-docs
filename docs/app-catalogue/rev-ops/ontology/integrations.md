@@ -8,12 +8,12 @@
 
 | # | Integration | Source | Target | Type | Frequency |
 |---|------------|--------|--------|------|-----------|
-| 1 | [Salesforce CRM - Oracle Finance Sync](#1-salesforce-crm---oracle-finance-sync) | Salesforce CRM / Oracle Finance | Bidirectional | Bidirectional | 15-min + real-time on close |
-| 2 | [Gong / Conversation Intelligence Feed](#2-gong--conversation-intelligence-feed) | Gong | Ontology Layer | Unidirectional | <4 hours from call |
-| 3 | [Email & Calendar Sync](#3-email--calendar-sync) | Email / Calendar | Ontology Layer | Unidirectional | Real-time |
-| 4 | [Product & Usage Feed](#4-product--usage-feed) | Product Platform | Ontology Layer | Unidirectional | Daily aggregation |
+| 1 | [Salesforce CRM - Oracle Finance Sync](#1-salesforce-crm-oracle-finance-sync) | Salesforce CRM / Oracle Finance | Bidirectional | Bidirectional | 15-min + real-time on close |
+| 2 | [Gong / Conversation Intelligence Feed](#2-gong-conversation-intelligence-feed) | Gong | Ontology Layer | Unidirectional | <4 hours from call |
+| 3 | [Email & Calendar Sync](#3-email-calendar-sync) | Email / Calendar | Ontology Layer | Unidirectional | Real-time |
+| 4 | [Product & Usage Feed](#4-product-usage-feed) | Product Platform | Ontology Layer | Unidirectional | Daily aggregation |
 | 5 | [Market Intelligence Feed](#5-market-intelligence-feed) | Bombora / 6sense / ZoomInfo | Ontology Layer | Unidirectional | Daily |
-| 6 | [Document Management / CLM Feed](#6-document-management--clm-feed) | CLM / DMS | Ontology Layer | Unidirectional | On-upload + NLP |
+| 6 | [Document Management / CLM Feed](#6-document-management-clm-feed) | CLM / DMS | Ontology Layer | Unidirectional | On-upload + NLP |
 
 ---
 

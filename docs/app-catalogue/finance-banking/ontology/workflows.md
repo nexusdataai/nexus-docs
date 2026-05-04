@@ -8,16 +8,16 @@
 
 | # | Workflow | Basel/IFRS | Trigger | Primary App |
 |---|---------|------------|---------|-------------|
-| 1 | [Credit Score Enhancement & EWS](#1-credit-score-enhancement--ews) | Pillar 1 (IRB) | Monthly schedule or EWS signal detected | Credit Risk |
-| 2 | [ECL Calculation & Stage Migration](#2-ecl-calculation--stage-migration) | IFRS 9 | Quarterly or DPD change or rating downgrade | Credit Risk, Regulatory Compliance |
+| 1 | [Credit Score Enhancement & EWS](#1-credit-score-enhancement-ews) | Pillar 1 (IRB) | Monthly schedule or EWS signal detected | Credit Risk |
+| 2 | [ECL Calculation & Stage Migration](#2-ecl-calculation-stage-migration) | IFRS 9 | Quarterly or DPD change or rating downgrade | Credit Risk, Regulatory Compliance |
 | 3 | [Transaction Anomaly Detection](#3-transaction-anomaly-detection) | FATF | Real-time on every transaction | Fraud & AML |
-| 4 | [SAR Generation & Filing](#4-sar-generation--filing) | FATF | AML Alert escalated to True Positive | Fraud & AML |
+| 4 | [SAR Generation & Filing](#4-sar-generation-filing) | FATF | AML Alert escalated to True Positive | Fraud & AML |
 | 5 | [Capital Adequacy Calculation](#5-capital-adequacy-calculation) | Pillar 1 | Monthly or material portfolio change | Regulatory Compliance |
 | 6 | [Regulatory Return Generation](#6-regulatory-return-generation) | Pillar 3 / BCBS 239 | Filing deadline approach or ad-hoc request | Regulatory Compliance |
-| 7 | [Cash Flow Forecasting & ALM](#7-cash-flow-forecasting--alm) | Liquidity (LCR/NSFR) | Daily schedule or large unexpected flow | Treasury & Liquidity |
+| 7 | [Cash Flow Forecasting & ALM](#7-cash-flow-forecasting-alm) | Liquidity (LCR/NSFR) | Daily schedule or large unexpected flow | Treasury & Liquidity |
 | 8 | [Loan Origination Processing](#8-loan-origination-processing) | Pillar 1 (Credit) | New loan application submitted | Loan Lifecycle |
 | 9 | [Collections Prioritization](#9-collections-prioritization) | Pillar 1 (Credit) | Daily schedule or new delinquency event | Loan Lifecycle |
-| 10 | [Customer 360 & NBA](#10-customer-360--next-best-action) | Pillar 3 (Conduct) | Customer interaction or monthly batch | Customer 360, Revenue |
+| 10 | [Customer 360 & NBA](#10-customer-360-next-best-action) | Pillar 3 (Conduct) | Customer interaction or monthly batch | Customer 360, Revenue |
 
 ---
 

@@ -13,7 +13,7 @@
 | 3 | [SAP-Oracle Finance Sync](#3-sap-to-oracle-finance-sync) | SAP | Oracle ERP | Bidirectional | 15-min interval |
 | 4 | [SAP Inventory Feed](#4-sap-inventory-feed) | SAP | Ontology Layer | Unidirectional | Daily full + real-time delta |
 | 5 | [Unstructured Extraction](#5-unstructured-data-extraction) | Google Drive / File Uploads | Ontology Layer | Unidirectional | On-upload + daily scan |
-| 6 | [Social Listening Feed](#6-social-listening--market-data-feed) | Social Listening APIs | Ontology Layer | Unidirectional | 4-hour cycle (critical immediate) |
+| 6 | [Social Listening Feed](#6-social-listening-market-data-feed) | Social Listening APIs | Ontology Layer | Unidirectional | 4-hour cycle (critical immediate) |
 
 ---
 

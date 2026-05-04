@@ -8,16 +8,16 @@
 
 | # | Workflow | GS1/NRF | Trigger | Primary App |
 |---|---------|---------|---------|-------------|
-| 1 | [Customer Identity Resolution & CLV](#1-customer-identity-resolution--clv) | Customer | New transaction or monthly batch | Customer 360 |
+| 1 | [Customer Identity Resolution & CLV](#1-customer-identity-resolution-clv) | Customer | New transaction or monthly batch | Customer 360 |
 | 2 | [Demand Forecast Generation](#2-demand-forecast-generation) | Merchandising | Weekly or >10% volume change | Demand Forecasting |
-| 3 | [Personalization & Recommendations](#3-personalization--recommendations) | Digital Commerce | Customer interaction (web/email/store) | Personalization |
-| 4 | [Price & Promotion Optimization](#4-price--promotion-optimization) | Merchandising | Weekly or promotion launch/end | Price Optimization |
-| 5 | [Inventory Rebalancing & Fulfillment](#5-inventory-rebalancing--fulfillment) | Logistics (GS1) | Hourly or stockout risk | Inventory & Fulfillment |
+| 3 | [Personalization & Recommendations](#3-personalization-recommendations) | Digital Commerce | Customer interaction (web/email/store) | Personalization |
+| 4 | [Price & Promotion Optimization](#4-price-promotion-optimization) | Merchandising | Weekly or promotion launch/end | Price Optimization |
+| 5 | [Inventory Rebalancing & Fulfillment](#5-inventory-rebalancing-fulfillment) | Logistics (GS1) | Hourly or stockout risk | Inventory & Fulfillment |
 | 6 | [Store Operations Intelligence](#6-store-operations-intelligence) | Store Ops | Daily or shift change | Store Operations |
-| 7 | [Supplier Performance & Assortment](#7-supplier-performance--assortment) | Merchandising | Monthly or vendor delivery event | Supplier & Merchandising |
-| 8 | [Sustainability & Traceability](#8-sustainability--traceability) | Traceability (GS1) | Quarterly or recall/excursion event | Sustainability & Compliance |
-| 9 | [Campaign & Engagement Orchestration](#9-campaign--engagement-orchestration) | Customer | Campaign launch or lifecycle event | Customer 360, Personalization |
-| 10 | [Omnichannel Fraud & Loss Prevention](#10-omnichannel-fraud--loss-prevention) | Store Ops | Real-time POS event or inventory discrepancy | Store Operations |
+| 7 | [Supplier Performance & Assortment](#7-supplier-performance-assortment) | Merchandising | Monthly or vendor delivery event | Supplier & Merchandising |
+| 8 | [Sustainability & Traceability](#8-sustainability-traceability) | Traceability (GS1) | Quarterly or recall/excursion event | Sustainability & Compliance |
+| 9 | [Campaign & Engagement Orchestration](#9-campaign-engagement-orchestration) | Customer | Campaign launch or lifecycle event | Customer 360, Personalization |
+| 10 | [Omnichannel Fraud & Loss Prevention](#10-omnichannel-fraud-loss-prevention) | Store Ops | Real-time POS event or inventory discrepancy | Store Operations |
 
 ---
 

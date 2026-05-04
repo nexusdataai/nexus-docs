@@ -10,10 +10,10 @@
 |---|------------|--------|--------|------|-----------|
 | 1 | [POS-ERP Sync](#1-pos-erp-sync) | POS | ERP | Bidirectional | 15-min + real-time transactions |
 | 2 | [CRM/CDP-POS Sync](#2-crmcdp-pos-sync) | CRM/CDP | POS | Bidirectional | Real-time |
-| 3 | [E-commerce & Digital Feed](#3-e-commerce--digital-feed) | E-commerce / Digital Analytics | Ontology Layer | Unidirectional | Real-time streaming |
+| 3 | [E-commerce & Digital Feed](#3-e-commerce-digital-feed) | E-commerce / Digital Analytics | Ontology Layer | Unidirectional | Real-time streaming |
 | 4 | [ERP-WMS Inventory Feed](#4-erp-wms-inventory-feed) | WMS | ERP | Bidirectional | Daily + real-time delta |
-| 5 | [Social & Market Intelligence Feed](#5-social--market-intelligence-feed) | Social / Review / Competitor APIs | Ontology Layer | Unidirectional | 4-hour cycle |
-| 6 | [IoT & Sensor Feed](#6-iot--sensor-feed) | In-Store IoT | Ontology Layer | Unidirectional | Real-time |
+| 5 | [Social & Market Intelligence Feed](#5-social-market-intelligence-feed) | Social / Review / Competitor APIs | Ontology Layer | Unidirectional | 4-hour cycle |
+| 6 | [IoT & Sensor Feed](#6-iot-sensor-feed) | In-Store IoT | Ontology Layer | Unidirectional | Real-time |
 
 ---
 
