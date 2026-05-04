@@ -2,9 +2,6 @@
 
 This section covers the Nexus Kubernetes Operator for deploying and managing NexusAI capabilities on Amazon EKS clusters.
 
-!!! tip "Download Complete Documentation"
-    **[Download PDF Guide](NexusAI-Kubernetes-Operator-Guide.pdf)** - Complete documentation in a single PDF file for offline reading.
-
 ## Overview
 
 The Nexus Operator automates the full lifecycle of NexusAI capabilities in Kubernetes. When you create a `NexusAICapability` custom resource, the operator:

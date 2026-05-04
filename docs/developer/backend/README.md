@@ -1,425 +1,142 @@
-# NexusAI Platform - Backend
+# NexusAI Backend (`nexus-backend`)
 
-**Enterprise-grade AI-powered analytics and data processing platform**
+The Python / FastAPI service that runs the **Data Plane**, **Control Plane**, and **Reasoning Plane** of the NexusAI Data-AI Platform. Lives at `/opt/mycode/nexus/nexus-backend`.
 
-This repository contains the backend service for the NexusAI platform, providing AI-powered data processing, transcription, analysis, and reporting capabilities.
+For the production code-to-architecture mapping, see [Implementation Guide](../../ai-os/implementation-guide.md).
 
-## 🎯 Overview
+## Responsibilities
 
-### Core Purpose
+- **Data Plane** -- FDW discovery and queries (Multicorn / PostgreSQL FDW), Mapping Rule resolution, Data Pipeline runtime.
+- **Control Plane** -- Knowledge Pipeline (extracts schemas, mappings, policies, workflows, integrations -> Apache AGE + pgvector), Policy / Workflow / Integration editors backend, semantic + graph retrieval.
+- **Reasoning Plane** -- ReAct agent loop (`agent_executor.py`), Intent + Risk Analyzer, Tool Registry, Policy Engine, Audit Logger.
+- **Console APIs** -- `/api/v1/control-plane/*`, `/api/fdw/*`, `/api/v1/journeys/*`, `/api/v1/sfdc-simulator/*`, `/api/v1/config/*`, `/health`.
+- **MCP HTTP Gateway** -- the unified MCP entry-point used by external agents and the Reasoning Plane.
 
-The **Call Processing Capability** is an enterprise call analytics platform that:
+## High-level shape
 
-1. **Processes Webex CC Calls** - Fetches, transcribes, and analyzes calls from Webex Contact Center
-2. **Manages Transformation Journeys** - Orchestrates multi-stage processing workflows
-3. **Provides AI Analytics** - Leverages OpenAI for intelligent call analysis and insights
-4. **Enables Real-time Monitoring** - Comprehensive logging, reporting, and dashboards
-
-### Key Features
-
-- **📞 Call Processing**: Automated processing of Webex CC call recordings
-- **🎙️ Transcription**: AI-powered speech-to-text transcription
-- **🧠 AI Analysis**: GPT-powered call analysis and insights
-- **🚀 Journey Management**: Create and manage multi-stage processing workflows
-- **📊 Real-time Analytics**: Performance metrics and comprehensive reporting
-- **🔄 WXCC Simulator**: Built-in simulator for testing without live Webex CC
-- **🛠️ MCP Integration**: Model Context Protocol tools for AI agent integration
-- **📋 License Management**: Enterprise licensing and feature gating
-
-## 🏗️ Architecture
-
-### System Components
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                   Call Processing Capability                     │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌────────────────┐ │
-│  │   MCP Tools      │  │  REST APIs       │  │  Config        │ │
-│  │  - journeys      │  │  - /api/v1/...   │  │   Provider     │ │
-│  │  - simulator     │  │  - journey API   │  │  - SSM Params  │ │
-│  │  - license       │  │  - license API   │  │  - Secrets Mgr │ │
-│  └────────┬─────────┘  └────────┬─────────┘  └───────┬────────┘ │
-│           │                      │                    │          │
-│  ┌────────▼──────────────────────▼────────────────────▼────────┐│
-│  │              Transformation Stages                           ││
-│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐    ││
-│  │  │call-process │ │raw-analysis │ │  ui-development     │    ││
-│  │  │- Fetch Tasks│ │- Schema     │ │  - Claude AI        │    ││
-│  │  │- Transcribe │ │  Analysis   │ │  - Code Generation  │    ││
-│  │  │- AI Analyze │ │- Complexity │ │                     │    ││
-│  │  └─────────────┘ └─────────────┘ └─────────────────────┘    ││
-│  └──────────────────────────────────────────────────────────────┘│
-│                                                                   │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌────────────────┐ │
-│  │  DynamoDB        │  │   S3 Buckets     │  │   AWS Glue     │ │
-│  │  - transformation│  │  - call-data     │  │  - Analytics   │ │
-│  │  - license       │  │  - journey-logs  │  │    Database    │ │
-│  │  - wxcc-tracking │  │  - wxcc-simulator│  │  - Call Tables │ │
-│  └──────────────────┘  └──────────────────┘  └────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    UI[nexus-ui] --> APIs[FastAPI / MCP gateway]
+    APIs --> Reasoning[Reasoning Plane<br/>ReAct + Tools + Policy]
+    APIs --> Control[Control Plane<br/>RAG + KG + Vector]
+    APIs --> Data[Data Plane<br/>FDW + Pipelines]
+    Control --> PG[(PostgreSQL<br/>AGE + pgvector)]
+    Data --> PG
+    Data --> Sources[Salesforce / Oracle / SAP / Files]
+    Reasoning --> DDB[(DynamoDB<br/>Audit + Journeys)]
+    Reasoning --> S3[(S3<br/>Logs)]
+    Reasoning --> LLM[OpenAI / Anthropic]
 ```
 
-### Call Processing Stages
-
-1. **Fetch Tasks** - Retrieve tasks from Webex CC for configured time period
-2. **Deduplication** - Check for already-processed tasks
-3. **Process Recordings** - Download, transcribe, and upload recordings
-4. **Register Metadata** - Create metadata and register Glue partitions
-5. **AI Analysis** - Run comprehensive GPT analysis on transcripts
-
-## 🚀 Quick Start
+## Quick start
 
 ### Prerequisites
 
 - Python 3.11+
-- AWS Account (or LocalStack for local development)
 - Docker (for LocalStack)
+- AWS account (or LocalStack for local dev)
 
-### Configuration System
+### Configuration system
 
-The service uses a centralized configuration provider that supports multiple environments:
+Centralised provider supports three modes:
 
-| Environment | Config Source | Resource Pattern |
-|-------------|---------------|------------------|
-| **ECS/AWS** | SSM Parameter Store + Secrets Manager | `nexus-ai-prod-*` |
-| **Local AWS** | Environment variables | `nexus-ai-dev-*` |
-| **LocalStack** | `.env.local` file | `nexus-ai-local-*` |
+| Environment | Config source | Resource pattern |
+|---|---|---|
+| ECS / EKS | SSM Parameter Store + Secrets Manager | `nexus-ai-prod-*` |
+| Local AWS | environment variables | `nexus-ai-dev-*` |
+| LocalStack | `.env.local` file | `nexus-ai-local-*` |
 
-### Running the Gateway
+### Running the gateway
 
-The gateway can be run in two modes: **LocalStack** (local development) or **Real AWS** (production/staging).
-
-#### Using gateway.sh (Recommended)
-
-The `gateway.sh` script provides a unified interface for managing the gateway:
+`gateway.sh` provides a unified interface:
 
 ```bash
-# Available commands
-./gateway.sh start    # Start the gateway
-./gateway.sh stop     # Stop the gateway
-./gateway.sh restart  # Restart the gateway
-./gateway.sh status   # Check gateway status
-./gateway.sh logs     # Tail gateway logs (Ctrl+C to exit)
-./gateway.sh test     # Run comprehensive gateway tests
-```
-
-#### Mode 1: LocalStack (Local Development)
-
-Use LocalStack for local development without AWS costs or credentials.
-
-```bash
-# 1. Start LocalStack
-docker-compose -f docker-compose-localstack.yml up -d
-
-# 2. Configure environment for LocalStack
-cp .env.localstack.example .env.local
-
-# 3. Set LocalStack environment variables
-export USE_LOCALSTACK=true
-export LOCALSTACK_HOST=localhost
-export LOCALSTACK_PORT=4566
-export AWS_DEFAULT_REGION=us-east-1
-export AWS_ACCESS_KEY_ID=test
-export AWS_SECRET_ACCESS_KEY=test
-
-# 4. Initialize LocalStack resources (creates tables and buckets)
-python -m tests.localstack_automation.run_automation --setup
-
-# 5. Start the gateway
-./gateway.sh start
-
-# 6. Verify
-./gateway.sh test
-# or
-curl http://localhost:8000/health
-```
-
-**LocalStack Environment Variables:**
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `USE_LOCALSTACK` | Enable LocalStack mode | `false` |
-| `LOCALSTACK_HOST` | LocalStack hostname | `localhost` |
-| `LOCALSTACK_PORT` | LocalStack port | `4566` |
-| `AWS_ACCESS_KEY_ID` | Dummy AWS key (any value) | `test` |
-| `AWS_SECRET_ACCESS_KEY` | Dummy AWS secret (any value) | `test` |
-
-#### Mode 2: Real AWS (Production/Staging)
-
-Use real AWS services for production or staging environments.
-
-```bash
-# 1. Ensure AWS credentials are configured
-# Option A: Use AWS CLI profile
-export AWS_PROFILE=your-profile-name
-
-# Option B: Use environment variables
-export AWS_ACCESS_KEY_ID=your-access-key
-export AWS_SECRET_ACCESS_KEY=your-secret-key
-export AWS_DEFAULT_REGION=ap-southeast-1
-
-# Option C: Use IAM role (ECS/EC2)
-# No credentials needed - uses instance role
-
-# 2. Ensure LocalStack is DISABLED
-export USE_LOCALSTACK=false
-# or simply don't set USE_LOCALSTACK at all
-
-# 3. Set environment name
-export ENVIRONMENT=prod  # or dev, staging
-
-# 4. Start the gateway
-./gateway.sh start
-
-# 5. Verify
-./gateway.sh test
-# or
-curl http://localhost:8000/health
-```
-
-**Real AWS Environment Variables:**
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `USE_LOCALSTACK` | Must be `false` or unset | `false` |
-| `ENVIRONMENT` | Environment name (dev/staging/prod) | `dev` |
-| `AWS_REGION` | AWS region | `ap-southeast-1` |
-| `AWS_PROFILE` | AWS CLI profile name | - |
-| `AWS_ACCESS_KEY_ID` | AWS access key (if not using profile/role) | - |
-| `AWS_SECRET_ACCESS_KEY` | AWS secret key (if not using profile/role) | - |
-
-#### Gateway Configuration Options
-
-Both modes support these common configuration options:
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `GATEWAY_PORT` | HTTP gateway port | `8000` |
-| `MIN_WORKERS` | Minimum worker processes | `2` |
-| `MAX_WORKERS` | Maximum worker processes | `8` |
-| `API_KEY` | Gateway API authentication key | `super-secret` |
-| `LOG_LEVEL` | Logging verbosity (DEBUG/INFO/WARNING/ERROR) | `INFO` |
-| `MCP_REQUEST_TIMEOUT` | Request timeout in seconds | `60.0` |
-
-#### Quick Reference
-
-```bash
-# LocalStack mode (one-liner)
-USE_LOCALSTACK=true ./gateway.sh start
-
-# Real AWS mode with profile (one-liner)
-AWS_PROFILE=myprofile ENVIRONMENT=prod ./gateway.sh start
-
-# Check which mode is active
+./gateway.sh start    # start
+./gateway.sh stop
+./gateway.sh restart
 ./gateway.sh status
+./gateway.sh logs
+./gateway.sh test     # smoke test
 ```
 
-### Environment Variables
-
-#### Core Configuration
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `ENVIRONMENT` | Environment name | `dev` |
-| `AWS_REGION` | AWS region | `ap-southeast-1` |
-| `LOG_LEVEL` | Logging verbosity | `INFO` |
-| `GATEWAY_PORT` | HTTP gateway port | `8000` |
-| `API_KEY` | Gateway API key | `super-secret` |
-
-#### Resource Names (Auto-generated from environment)
-
-| Variable | Pattern | Example (prod) |
-|----------|---------|----------------|
-| `DYNAMODB_TABLE` | `nexus-ai-{env}-transformation-system` | `nexus-ai-prod-transformation-system` |
-| `LICENSE_TABLE` | `nexus-ai-{env}-license` | `nexus-ai-prod-license` |
-| `S3_RECORDINGS_BUCKET` | `nexus-ai-{env}-call-data` | `nexus-ai-prod-call-data` |
-| `WXCC_SIMULATOR_BUCKET` | `nexus-ai-{env}-wxcc-simulator` | `nexus-ai-prod-wxcc-simulator` |
-
-#### LocalStack Configuration
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `USE_LOCALSTACK` | Enable LocalStack mode | `false` |
-| `LOCALSTACK_HOST` | LocalStack hostname | `localhost` |
-| `LOCALSTACK_PORT` | LocalStack port | `4566` |
-
-For comprehensive configuration details, see [INFRASTRUCTURE_REQUIREMENTS.md](doc/INFRASTRUCTURE_REQUIREMENTS.md).
-
-## 🐳 Docker Deployment
-
-### Build and Run
+### LocalStack mode (recommended for development)
 
 ```bash
-# Build Docker image
-docker build -t nexus-ai-backend:latest .
-
-# Run with docker-compose
-docker-compose up
-
-# Run standalone (ECS-style)
-docker run -p 8000:8000 \
-  -e ENVIRONMENT=prod \
-  -e AWS_REGION=ap-southeast-1 \
-  nexus-ai-backend:latest
+docker-compose -f docker-compose-localstack.yml up -d
+cp .env.localstack.example .env.local
+export USE_LOCALSTACK=true LOCALSTACK_HOST=localhost LOCALSTACK_PORT=4566
+pip install -r requirements.txt
+python -m tests.localstack_automation.run_automation --setup
+./gateway.sh start
+./gateway.sh test
 ```
 
-### ECS Deployment
+See [LocalStack > Quick Start](../localstack/QUICKSTART_LOCALSTACK.md) for the full LocalStack walkthrough.
 
-The service is designed to run on AWS ECS with:
-- IAM task role for AWS access (no credentials needed)
-- SSM Parameter Store for configuration
-- Secrets Manager for sensitive values
+### Real AWS mode
 
 ```bash
-# ECS task definition sets ENVIRONMENT variable
-ENVIRONMENT=prod
-
-# Service automatically loads config from:
-# - SSM: /nexus-ai/prod/...
-# - Secrets: nexus-ai/prod/...
+aws configure                      # or `export AWS_PROFILE=...`
+export ENVIRONMENT=dev
+export AWS_REGION=ap-southeast-1
+pip install -r requirements.txt
+./gateway.sh start
 ```
 
-## 📚 API Reference
+For env-var details, see [LocalStack Setup](env-local-example.md).
 
-### REST APIs
+## Directory layout (selected)
 
-| Endpoint | Description |
-|----------|-------------|
-| `/api/v1/journeys/*` | Journey management |
-| `/api/v1/license/*` | License management |
-| `/api/v1/simulator/*` | WXCC Simulator APIs |
-| `/api/v1/analytics/*` | Analytics and metrics |
-| `/health` | Health check |
+| Path | Purpose |
+|---|---|
+| `src/apis/` | FastAPI routers (Control Plane, FDW, Journeys, Simulator, Config, Health) |
+| `src/services/control_plane/` | RAG, vector store, schema indexer, agent executor, policy engine, audit logger, intent analyzer, tool registry |
+| `src/services/control_plane/tools/` | Registered ReAct tools (FDW tools, RAG tools, CRM tools) |
+| `src/services/fdw_*` | Foreign Data Wrapper services |
+| `src/services/sfdc_simulator_service.py` | In-memory SFDC simulator (replaces live FDW for testing) |
+| `src/stages/` | Journey stage implementations (subclass `BaseStage`) |
+| `src/models/` | Pydantic models for every API surface |
+| `tests/` | Unit / property / integration / BDD / endurance / E2E tests |
+| `mcp_http_gateway.py` | MCP HTTP server entry-point |
 
-### MCP Tools
+## Adding things
 
-| Tool | Description |
-|------|-------------|
-| `journeys_tool` | Journey, stage, and job management |
-| `logs_and_reports_tool` | Logs and report generation |
-| `wxcc_simulator_tool` | WXCC simulator operations |
-| `license_tool` | License activation and validation |
+| Adding a... | Where | Tests in |
+|---|---|---|
+| REST endpoint | `src/apis/` | `tests/integration/python/api/` |
+| MCP tool | `src/services/control_plane/tools/` (register in `tool_registry.py`) | `tests/unit/` + `tests/bdd/features/` |
+| Journey stage | `src/stages/` (subclass `BaseStage`) | `tests/unit/` |
+| Policy rule | `src/services/control_plane/policy_engine.py` | `tests/unit/` |
+| Connector | `src/services/connectors/` + UI side in `nexus-ui/src/components/` | `tests/integration/` |
 
-### Example: Create a Journey
+## Common tasks
 
 ```bash
-curl -X POST http://localhost:8000/api/v1/journeys \
-  -H "X-API-Key: super-secret" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Call Processing Journey",
-    "description": "Process Webex CC calls",
-    "stages": [
-      {"id": "call_process", "name": "Call Processing", "order": 0}
-    ]
-  }'
+# Health
+curl http://localhost:8000/health
+
+# List FDW foreign servers
+curl http://localhost:8000/api/fdw/servers
+
+# Trigger Knowledge Pipeline (re-index Control Plane)
+curl -X POST http://localhost:8000/api/v1/control-plane/index
+
+# Run an agent query
+curl -X POST http://localhost:8000/api/v1/control-plane/agent \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"Show me the first 5 Leads with their name and company"}'
+
+# Run all unit tests
+./tests/run_tests.sh unit
+
+# Run integration tests against a remote server
+./tests/run_tests.sh integration --server https://my-host:8000
 ```
 
-### Example: Seed WXCC Simulator
+## Related references
 
-```bash
-curl -X POST http://localhost:8000/api/v1/simulator/admin/seed \
-  -H "X-API-Key: super-secret" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "numTasks": 5,
-    "hoursBack": 24
-  }'
-```
-
-## 🧪 Testing
-
-### Unit Tests
-```bash
-pytest tests/unit/ -v
-```
-
-### Integration Tests
-```bash
-# With LocalStack
-USE_LOCALSTACK=true pytest tests/integration/ -v
-```
-
-### BDD Tests
-```bash
-pytest tests/bdd/ -v --gherkin-terminal-reporter
-```
-
-### E2E Tests
-```bash
-pytest tests/e2e/ -v
-```
-
-## 🏗️ Project Structure
-
-```
-nexus-backend/
-├── src/
-│   ├── apis/                 # REST API endpoints
-│   │   ├── journey_api.py
-│   │   ├── license_api.py
-│   │   └── wxcc_simulator_api.py
-│   ├── config/               # Configuration management
-│   │   ├── config_provider.py    # Central config provider
-│   │   ├── ssm_loader.py         # SSM Parameter Store
-│   │   ├── secrets_loader.py     # Secrets Manager
-│   │   └── localstack_config.py  # LocalStack support
-│   ├── license/              # License management
-│   ├── models/               # Data models
-│   ├── services/             # Business logic
-│   ├── stages/               # Transformation stages
-│   │   ├── base_stage.py
-│   │   ├── call-process/     # Call processing stage
-│   │   ├── raw-analysis/
-│   │   └── ui-development/
-│   ├── tools/                # MCP tools
-│   └── utils/                # Utilities
-├── scripts/
-│   ├── call-scripts/         # Call processing scripts
-│   └── wxcc-simulator/       # Simulator utilities
-├── tests/
-│   ├── unit/
-│   ├── integration/
-│   ├── bdd/
-│   └── e2e/
-├── doc/
-│   └── INFRASTRUCTURE_REQUIREMENTS.md
-├── mcp_http_gateway.py       # Main gateway server
-├── docker-compose.yml
-├── Dockerfile
-└── README.md
-```
-
-## 🔒 Security
-
-- **API Authentication**: X-API-Key header required
-- **AWS IAM**: Role-based access via ECS task roles
-- **Secrets Management**: AWS Secrets Manager for sensitive data
-- **License Validation**: Enterprise license key verification
-- **Cognito Integration**: Optional user authentication
-
-## 📖 Documentation
-
-- [Infrastructure Requirements](doc/INFRASTRUCTURE_REQUIREMENTS.md) - AWS resources and configuration
-- [LocalStack Quick Start](doc/localstack/QUICKSTART_LOCALSTACK.md) - Local development setup
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is proprietary and confidential.
-
----
-
-**Version**: 2.0.0  
-**Capability**: nexus-ai  
-**Last Updated**: December 2024  
-**Status**: Production Ready
+- [Implementation Guide](../../ai-os/implementation-guide.md) -- the production code-to-architecture mapping for every plane.
+- [Platform Architecture](../../platform-architecture.md) -- the user-facing surfaces this backend powers.
+- [MCP Tools](../mcp-tools/journeys-tool.md) -- the journey / job / log MCP tool reference.
+- [Tests](../../tests/index.md) -- the layered test infrastructure.
+- [Operations](../../operational/index.md) -- how this backend is deployed.

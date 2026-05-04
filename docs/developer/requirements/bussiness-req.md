@@ -1,40 +1,28 @@
-1. Project Overview
+---
+hide:
+  - toc
+---
 
-We would like to develop a AI-powered solution for inside sales team that integrates with Webex Contact Center and Salesforce, providing call recording, transcription, analysis, and insights to enhance sales operations.
+# Developer Requirements
 
-2. Current Customer Environment
-Webex Contact Center for telephony
-Manual logging of call data in Salesforce
-Need for automated call data and transcript integration with Salesforce
-Requirement for a separate analytics dashboard
-3. Key Project Milestones
+The platform's authoritative business and functional requirements live elsewhere. This page is a pointer for engineers who land here from the developer nav.
 
-Phase 1: Technical Foundation 
+## Where to find requirements
 
-Webex Integration
-Salesforce Integration
-Research call metadata correlation with Salesforce entities 
-Develop Salesforce connector for storing call metadata and transcripts
+| For... | See |
+|---|---|
+| Business case, target market, ROI, commercial model | [Business > Executive Summary](../../business/source/executive-summary.md) |
+| Functional + non-functional requirements catalogue (per Plane / Console / Solution / Operations) | [Business > Business Requirements](../../business/source/business-requirements.md) |
+| Functional surface (screen-by-screen) | [Platform Architecture](../../platform-architecture.md) |
+| Per-Plane drill-downs | [Data Plane](../../planes/data-plane.md), [Control Plane](../../planes/control-plane.md), [Reasoning Plane](../../planes/reasoning-plane.md) |
+| Per-Console drill-downs | [Solutions Catalogue](../../console/solutions-catalogue.md), [AI Analytics](../../console/ai-analytics.md), [AI Automation](../../console/ai-automation.md) |
+| Per-Solution catalogues | [Application Catalogue](../../app-catalogue/supply-chain/index.md) (and the 6 sibling verticals) |
+| KPI definitions (platform + per-Solution) | [KPI Definitions](../../KPI/nexus-kpi-definitions.md) |
 
-Phase 2: Solution Development 
+## When you're adding a new requirement
 
-Analyze generated transcripts to identify gaps and opportunities for differentiation
-Define dashboard requirements based on customer needs
-Develop initial analytics dashboard prototype
-Prepare demo environment with sample data
-
-Phase 3: 
-Integrate BSS magic for Call processing
-Integrate customer webex / salesforce environment
-Present initial POC results and gather feedback
-Implement refinements based on customer feedback
-Develop plan for scaling to production environment
-
-Differentiation Strategy ("WOW Effect")
-
-Create customized industry-specific analytics tailored to telco sales scenarios
-Develop visualization of sales opportunity indicators from call transcripts
-Implement real-time coaching suggestions based on detected customer objections
-Design executive dashboard highlighting key metrics like conversion rates and customer satisfaction scores
-
-
+- If it changes the user-facing product surface, update [Platform Architecture](../../platform-architecture.md) and the relevant Plane / Console drill-down.
+- If it changes the platform's KPIs or success metrics, update [KPI Definitions](../../KPI/nexus-kpi-definitions.md).
+- If it changes the business case (pricing, ROI, target market), update [Business Requirements](../../business/source/business-requirements.md) and [Executive Summary](../../business/source/executive-summary.md).
+- If it changes a Solution's ontology or KPIs, update the per-Solution page in the [Application Catalogue](../../app-catalogue/supply-chain/index.md).
+- For UAT acceptance criteria, update [UAT Test Cases](../../UAT/testcases/nexus-uat-testcases.md).

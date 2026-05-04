@@ -116,4 +116,4 @@ curl http://localhost:4566/_localstack/health
 
 - [Full Setup Guide](LOCAL_SETUP_LOCALSTACK.md) - Detailed instructions
 - [Reference Guide](LOCALSTACK_REFERENCE.md) - Command reference
-- [API Documentation](../api/README.md) - API endpoints
+- [Backend Overview](../backend/README.md) - REST + MCP surface

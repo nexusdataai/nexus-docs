@@ -549,4 +549,4 @@ services:
 - [LocalStack Documentation](https://docs.localstack.cloud/)
 - [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/reference/)
 - [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
-- [nexus-backend API Documentation](../api/README.md)
+- [nexus-backend Overview](../backend/README.md)

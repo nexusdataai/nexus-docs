@@ -241,4 +241,4 @@ claude docs devops-assistant              # Documentation
 ```
 
 ---
-*Keep this handy for quick reference! Full docs: [USER_GUIDE.md](USER_GUIDE.md)*
+*Keep this handy for quick reference! Full docs: [user-guide.md](user-guide.md)*

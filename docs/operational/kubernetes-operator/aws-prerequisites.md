@@ -57,7 +57,7 @@ cd /path/to/nexus-deployer/kube-operator
 ./operator-nexus-dev.sh fix-irsa
 ```
 
-**Verify:** The cluster has an OIDC issuer and the provider exists in IAM (see [Pre-Deployment Verification](#pre-deployment-verification) for a full check script).
+**Verify:** The cluster has an OIDC issuer and the provider exists in IAM (see [Pre-Deployment Verification](#7-pre-deployment-verification) for a full check script).
 
 ### Step 2: Grant IAM Permissions to the Deployer
 
