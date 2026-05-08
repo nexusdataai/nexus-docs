@@ -18,9 +18,9 @@ Minimum required ontology objects per application, with relationship details and
 | `Escalation_Rule` | Salesforce | Escalation path when SLA breached | — |
 | `Call_Record` | WXCC | Interaction context and sentiment | depends_on -> Account |
 | `Chat_Transcript` | WXCC | Digital interaction context | depends_on -> Account |
-| `Oracle_AR_Customer` | Oracle | Billing status, AR balance | syncs_to -> Account |
-| `Oracle_AR_Invoice` | Oracle | Invoice details for billing cases | depends_on -> Oracle_AR_Customer |
-| `Billing_Dispute` | Oracle | Dispute record for billing cases | depends_on -> Oracle_AR_Invoice, Case |
+| `AR_Customer` | Oracle | Billing status, AR balance | syncs_to -> Account |
+| `AR_Invoice` | Oracle | Invoice details for billing cases | depends_on -> AR_Customer |
+| `Billing_Dispute` | Oracle | Dispute record for billing cases | depends_on -> AR_Invoice, Case |
 | `Service_Order` | SAP | Service order for fulfillment cases | depends_on -> Case, Account |
 | `Knowledge_Article` | Salesforce/GDrive | Resolution matching | — |
 | `Resolution_Template` | Internal | Automation-eligible resolution patterns | triggers -> automated-remediation |
@@ -39,11 +39,11 @@ Minimum required ontology objects per application, with relationship details and
 |--------|--------|-------------|-----------------|
 | `Case` | Salesforce | Case state tracking across systems | depends_on -> Account |
 | `Account` | Salesforce | Customer master for entity resolution | — |
-| `Oracle_AR_Customer` | Oracle | Billing state for cross-system sync | syncs_to -> Account |
-| `Oracle_AR_Invoice` | Oracle | Invoice state for billing-service correlation | depends_on -> Oracle_AR_Customer |
-| `Oracle_AR_Payment` | Oracle | Payment state tracking | depends_on -> Oracle_AR_Invoice |
-| `Oracle_AR_Credit_Note` | Oracle | Credit note state for reconciliation | depends_on -> Billing_Dispute |
-| `Billing_Dispute` | Oracle | Dispute state for billing-case linking | depends_on -> Oracle_AR_Invoice |
+| `AR_Customer` | Oracle | Billing state for cross-system sync | syncs_to -> Account |
+| `AR_Invoice` | Oracle | Invoice state for billing-service correlation | depends_on -> AR_Customer |
+| `AR_Payment` | Oracle | Payment state tracking | depends_on -> AR_Invoice |
+| `AR_Credit_Note` | Oracle | Credit note state for reconciliation | depends_on -> Billing_Dispute |
+| `Billing_Dispute` | Oracle | Dispute state for billing-case linking | depends_on -> AR_Invoice |
 | `Call_Record` | WXCC | Interaction state for handoff context | depends_on -> Account |
 | `Chat_Transcript` | WXCC | Chat state for handoff context | depends_on -> Account |
 | `Agent_State` | WXCC | Agent availability for routing | — |
@@ -71,8 +71,8 @@ Minimum required ontology objects per application, with relationship details and
 | `Call_Record` | WXCC | Live interaction for real-time assist | depends_on -> Account, Agent_State |
 | `Chat_Transcript` | WXCC | Live chat for real-time assist | depends_on -> Account |
 | `Agent_State` | WXCC | Agent skills and availability | — |
-| `Oracle_AR_Customer` | Oracle | Billing context for recommendations | syncs_to -> Account |
-| `Oracle_AR_Invoice` | Oracle | Invoice context for billing inquiries | depends_on -> Oracle_AR_Customer |
+| `AR_Customer` | Oracle | Billing context for recommendations | syncs_to -> Account |
+| `AR_Invoice` | Oracle | Invoice context for billing inquiries | depends_on -> AR_Customer |
 | `Knowledge_Article` | Salesforce/GDrive | Knowledge delivery to agent | — |
 | `Resolution_Template` | Internal | Resolution suggestions ranked by success | — |
 | `NPS_Response` | Social Listening | Churn signal and sentiment context | depends_on -> Account |
@@ -94,10 +94,10 @@ Shows which entities are shared across applications (checkmark = required by tha
 | **Account** | x | x | x |
 | **Case** | x | x | x |
 | **Call_Record** | x | x | x |
-| **Oracle_AR_Customer** | x | x | x |
+| **AR_Customer** | x | x | x |
 | **Knowledge_Article** | x | x | x |
 | **Chat_Transcript** | x | x | x |
-| **Oracle_AR_Invoice** | x | x | x |
+| **AR_Invoice** | x | x | x |
 | **Billing_Dispute** | x | x | — |
 | **Service_Order** | x | x | — |
 | **Contact** | x | — | x |
@@ -105,8 +105,8 @@ Shows which entities are shared across applications (checkmark = required by tha
 | **Escalation_Rule** | x | — | — |
 | **Case_Comment** | x | — | — |
 | **Resolution_Template** | x | — | x |
-| **Oracle_AR_Payment** | — | x | — |
-| **Oracle_AR_Credit_Note** | — | x | — |
+| **AR_Payment** | — | x | — |
+| **AR_Credit_Note** | — | x | — |
 | **Agent_State** | — | x | x |
 | **Field_Dispatch** | — | x | — |
 | **SLA_Record** | — | x | — |

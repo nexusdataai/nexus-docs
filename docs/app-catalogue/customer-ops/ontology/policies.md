@@ -10,7 +10,7 @@
 |---|--------|----|----------|------|-------|------------|
 | 1 | [Case Handling Policy](#1-case-handling-policy) | POL-CASE-001 | TMF621 / Incident Mgmt | High | Customer Operations | Case, Escalation_Rule, Problem_Record |
 | 2 | [SLA Policy](#2-sla-policy) | POL-SLA-001 | TMF623 / SLA Mgmt | Critical | Service Delivery | SLA_Record, Entitlement, Service_Order |
-| 3 | [Billing Dispute Policy](#3-billing-dispute-policy) | POL-BILL-001 | TMF678 / Financial Mgmt | High | Finance / Revenue Assurance | Billing_Dispute, Oracle_AR_Credit_Note, Oracle_AR_Invoice |
+| 3 | [Billing Dispute Policy](#3-billing-dispute-policy) | POL-BILL-001 | TMF678 / Financial Mgmt | High | Finance / Revenue Assurance | Billing_Dispute, AR_Credit_Note, AR_Invoice |
 | 4 | [Customer Tier Policy](#4-customer-tier-policy) | POL-TIER-001 | TMF629 / Customer Mgmt | High | Customer Success | Account, Case, Entitlement |
 | 5 | [Agent Quality Policy](#5-agent-quality-policy) | POL-AQ-001 | TMF683 / Workforce Mgmt | Medium | Contact Center Operations | Quality_Score, Agent_Metrics, Call_Record |
 | 6 | [Customer Experience Policy](#6-customer-experience-policy) | POL-CX-001 | TMF629 / CX Management | Medium | Customer Experience | NPS_Response, Customer_Feedback, Brand_Sentiment |

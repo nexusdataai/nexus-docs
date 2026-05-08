@@ -18,7 +18,7 @@ Complete reference for the customer operations semantic schema — 10 domains, ~
 
 **Key Relationships:**
 
-- `Account` --syncs_to--> `Oracle_AR_Customer` (via sf-oracle-custops-sync)
+- `Account` --syncs_to--> `AR_Customer` (via sf-oracle-custops-sync)
 - `Account` --triggers--> Customer Churn Intervention workflow
 - `Account` --constrained_by--> customer-tier-policy
 - `Contact` --depends_on--> `Account`
@@ -76,19 +76,19 @@ Complete reference for the customer operations semantic schema — 10 domains, ~
 
 | Table | Semantic | Risk | Key Fields |
 |-------|----------|------|------------|
-| `Oracle_AR_Customer` | Accounts Receivable customer record | high | Customer_ID (maps to SF Account), Customer_Name, Credit_Limit, AR_Balance, Collection_Priority (Priority/Standard/Monitored/Basic), Payment_Terms, Currency, Status |
-| `Oracle_AR_Invoice` | Customer invoice for services | high | Invoice_ID, Customer_ID, Invoice_Date, Due_Date, Total_Amount, Tax_Amount, Status (Open/Partially_Paid/Paid/Overdue/Disputed/Written_Off), Linked_Service_Order_ID |
-| `Oracle_AR_Payment` | Payment received against invoice | high | Payment_ID, Invoice_ID, Customer_ID, Amount, Payment_Date, Payment_Method (Bank_Transfer/Credit_Card/ACH/Check), Applied_Flag |
-| `Oracle_AR_Credit_Note` | Credit memo for disputes/adjustments | high | Credit_Note_ID, Customer_ID, Invoice_ID, Amount, Reason (Billing_Error/Service_Failure/Goodwill/Dispute_Resolution/Promotional_Credit), Status, Approval_Status |
+| `AR_Customer` | Accounts Receivable customer record | high | Customer_ID (maps to SF Account), Customer_Name, Credit_Limit, AR_Balance, Collection_Priority (Priority/Standard/Monitored/Basic), Payment_Terms, Currency, Status |
+| `AR_Invoice` | Customer invoice for services | high | Invoice_ID, Customer_ID, Invoice_Date, Due_Date, Total_Amount, Tax_Amount, Status (Open/Partially_Paid/Paid/Overdue/Disputed/Written_Off), Linked_Service_Order_ID |
+| `AR_Payment` | Payment received against invoice | high | Payment_ID, Invoice_ID, Customer_ID, Amount, Payment_Date, Payment_Method (Bank_Transfer/Credit_Card/ACH/Check), Applied_Flag |
+| `AR_Credit_Note` | Credit memo for disputes/adjustments | high | Credit_Note_ID, Customer_ID, Invoice_ID, Amount, Reason (Billing_Error/Service_Failure/Goodwill/Dispute_Resolution/Promotional_Credit), Status, Approval_Status |
 | `Billing_Dispute` | Customer billing dispute record | high | Dispute_ID, Customer_ID, Invoice_ID, Case_ID (maps to SF Case), Dispute_Type (Overcharge/Double_Billing/Service_Not_Received/Rate_Disagreement/Late_Fee), Dispute_Amount, Status (Open/Under_Review/Approved/Rejected/Partially_Approved), Resolution_Amount, Resolved_Date |
 
 **Key Relationships:**
 
-- `Oracle_AR_Customer` --syncs_to--> `Account` (bidirectional via sf-oracle-custops-sync)
-- `Oracle_AR_Invoice` --triggers--> Billing Dispute Resolution workflow (when disputed)
+- `AR_Customer` --syncs_to--> `Account` (bidirectional via sf-oracle-custops-sync)
+- `AR_Invoice` --triggers--> Billing Dispute Resolution workflow (when disputed)
 - `Billing_Dispute` --constrained_by--> billing-dispute-policy
-- `Oracle_AR_Credit_Note` --depends_on--> `Billing_Dispute`
-- `Billing_Dispute` --depends_on--> `Oracle_AR_Invoice`, `Case`
+- `AR_Credit_Note` --depends_on--> `Billing_Dispute`
+- `Billing_Dispute` --depends_on--> `AR_Invoice`, `Case`
 
 ---
 

@@ -36,7 +36,7 @@ flowchart LR
 
 Salesforce is source of truth for customer and case data. Oracle is source of truth for billing and financial transactions.
 
-### Customer Sync (Account -> Oracle_AR_Customer)
+### Customer Sync (Account -> AR_Customer)
 
 | Salesforce Field | Oracle Field | Direction | Transformation / Constraint |
 |-----------------|-------------|-----------|---------------------------|
@@ -55,7 +55,7 @@ Salesforce is source of truth for customer and case data. Oracle is source of tr
 | Case.Account_ID | Billing_Dispute.Customer_ID | SF -> Oracle | Via account mapping |
 | Case.Description | Billing_Dispute.Description | SF -> Oracle | NLP-extracted dispute details |
 | Billing_Dispute.Status | Case.Billing_Dispute_Status__c | Oracle -> SF | Read-only |
-| Oracle_AR_Credit_Note.Amount | Case.Credit_Amount__c | Oracle -> SF | Read-only; visible to agent |
+| AR_Credit_Note.Amount | Case.Credit_Amount__c | Oracle -> SF | Read-only; visible to agent |
 
 **Conflict Resolution:** Salesforce wins for customer/case data; Oracle wins for billing/financial data
 

@@ -41,7 +41,7 @@ flowchart TD
 | Status | Meaning | Count | Example |
 |--------|---------|-------|---------|
 | **Mapped** | Live FDW foreign table exists; entity is queryable via `query_table` tool | ~6 | Account, Opportunity, Contact |
-| **Virtual** | Entity data flows via integration sync; not directly queryable via FDW | ~37 | Material_Master, Oracle_AR_Invoice, Market_Signal |
+| **Virtual** | Entity data flows via integration sync; not directly queryable via FDW | ~37 | Material_Master, AR_Invoice, Market_Signal |
 | **Unmapped** | Schema defines the entity but no FDW table or integration connected yet | ~2 | Forecast_Override, Campaign (pending FDW config) |
 
 ---

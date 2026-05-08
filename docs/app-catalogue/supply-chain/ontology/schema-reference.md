@@ -18,7 +18,7 @@ Complete reference for the supply chain semantic schema — 12 domains, ~45 tabl
 
 **Key Relationships:**
 
-- `Account` --syncs_to--> `Oracle_AR_Customer` (via sf-oracle-supply-chain-sync)
+- `Account` --syncs_to--> `AR_Customer` (via sf-oracle-supply-chain-sync)
 - `Account` --triggers--> Customer Churn Prediction workflow
 - `Account` --constrained_by--> pricing-discount-policy
 - `Campaign` --triggers--> Demand Forecast Generation workflow
@@ -125,7 +125,7 @@ Complete reference for the supply chain semantic schema — 12 domains, ~45 tabl
 - `Vendor_Master` --triggers--> Supplier Risk Scoring workflow
 - `Vendor_Master` --constrained_by--> procurement-policy, supply-chain-risk-policy
 - `Source_List` --constrained_by--> supply-chain-risk-policy (single-source prohibition)
-- `Goods_Receipt` --validates--> `Oracle_AP_Invoice` (three-way match)
+- `Goods_Receipt` --validates--> `AP_Invoice` (three-way match)
 
 ---
 
@@ -141,8 +141,8 @@ Complete reference for the supply chain semantic schema — 12 domains, ~45 tabl
 
 **Key Relationships:**
 
-- `Delivery_Document` --syncs_to--> `Oracle_AR_Invoice` (triggers billing)
-- `Return_Order` --syncs_to--> `Oracle_AR_Credit_Note`
+- `Delivery_Document` --syncs_to--> `AR_Invoice` (triggers billing)
+- `Return_Order` --syncs_to--> `AR_Credit_Note`
 - `Delivery_Document` --constrained_by--> order-fulfillment-policy
 - `Shipment` --constrained_by--> sustainability-policy (route emissions)
 
@@ -154,18 +154,18 @@ Complete reference for the supply chain semantic schema — 12 domains, ~45 tabl
 
 | Table | Semantic | Risk | Key Fields |
 |-------|----------|------|------------|
-| `Oracle_AR_Customer` | Accounts Receivable customer record | high | Customer_ID (maps to SF Account), Customer_Name, Credit_Limit, AR_Balance, Collection_Priority, Payment_Terms, Currency, Status |
-| `Oracle_AR_Invoice` | Customer invoice for goods delivered | high | Invoice_ID, Customer_ID, Invoice_Date, Due_Date, Total_Amount, Tax_Amount, Status (Open/Partially_Paid/Paid/Overdue/Disputed/Written_Off), Linked_Delivery_ID |
-| `Oracle_AR_Payment` | Payment received against invoice | high | Payment_ID, Invoice_ID, Customer_ID, Amount, Payment_Date, Payment_Method, Applied_Flag |
-| `Oracle_AR_Credit_Note` | Credit memo for returns/disputes | high | Credit_Note_ID, Customer_ID, Invoice_ID, Amount, Reason (Return/Price_Adjustment/Dispute_Resolution/Damaged_Goods/Promotional_Credit), Status, Approval_Status |
-| `Oracle_GL_Journal` | General ledger journal entries | high | Journal_ID, Period_Name, Journal_Status (Posted/Unposted/Reversed), Debit_Amount, Credit_Amount, Account_Code, Description, Source_Module |
-| `Oracle_GL_Period` | Accounting period open/close status | high | Period_ID, Period_Name, Year, Status (Open/Closed/Permanently_Closed), Close_Date |
+| `AR_Customer` | Accounts Receivable customer record | high | Customer_ID (maps to SF Account), Customer_Name, Credit_Limit, AR_Balance, Collection_Priority, Payment_Terms, Currency, Status |
+| `AR_Invoice` | Customer invoice for goods delivered | high | Invoice_ID, Customer_ID, Invoice_Date, Due_Date, Total_Amount, Tax_Amount, Status (Open/Partially_Paid/Paid/Overdue/Disputed/Written_Off), Linked_Delivery_ID |
+| `AR_Payment` | Payment received against invoice | high | Payment_ID, Invoice_ID, Customer_ID, Amount, Payment_Date, Payment_Method, Applied_Flag |
+| `AR_Credit_Note` | Credit memo for returns/disputes | high | Credit_Note_ID, Customer_ID, Invoice_ID, Amount, Reason (Return/Price_Adjustment/Dispute_Resolution/Damaged_Goods/Promotional_Credit), Status, Approval_Status |
+| `GL_Journal` | General ledger journal entries | high | Journal_ID, Period_Name, Journal_Status (Posted/Unposted/Reversed), Debit_Amount, Credit_Amount, Account_Code, Description, Source_Module |
+| `GL_Period` | Accounting period open/close status | high | Period_ID, Period_Name, Year, Status (Open/Closed/Permanently_Closed), Close_Date |
 
 **Key Relationships:**
 
-- `Oracle_AR_Customer` --syncs_to--> `Account` (bidirectional via sf-oracle-supply-chain-sync)
-- `Oracle_GL_Journal` --constrained_by--> close-window-policy
-- `Oracle_AR_Invoice` --depends_on--> `Delivery_Document`
+- `AR_Customer` --syncs_to--> `Account` (bidirectional via sf-oracle-supply-chain-sync)
+- `GL_Journal` --constrained_by--> close-window-policy
+- `AR_Invoice` --depends_on--> `Delivery_Document`
 
 ---
 
@@ -175,19 +175,19 @@ Complete reference for the supply chain semantic schema — 12 domains, ~45 tabl
 
 | Table | Semantic | Risk | Key Fields |
 |-------|----------|------|------------|
-| `Oracle_AP_Invoice` | Vendor invoice for goods/services | high | Invoice_ID, Vendor_ID, PO_ID, Invoice_Date, Due_Date, Total_Amount, Tax_Amount, Status (Pending/Validated/Approved/Paid/On_Hold/Disputed), Three_Way_Match_Status (Matched/Qty_Mismatch/Price_Mismatch/GRN_Missing/Under_Review) |
-| `Oracle_AP_Payment` | Payment issued to vendor | high | Payment_ID, Invoice_ID, Vendor_ID, Amount, Payment_Date, Payment_Method (Bank_Transfer/Check/Wire/ACH), Check_Number, Bank_Account |
-| `Oracle_Purchase_Order` | Formal procurement order to vendor | high | PO_ID, Vendor_ID, Material_ID, Qty, Unit_Price, Total_Amount, Delivery_Date, Plant_ID, Status (Draft/Approved/Sent/Partially_Received/Fully_Received/Closed), Contract_ID |
-| `Oracle_Cost_Accounting` | Product and production cost tracking | high | Cost_ID, Material_ID, Cost_Type (Standard/Actual), Material_Cost, Labor_Cost, Overhead_Cost, Freight_Cost, Total_Unit_Cost, Period, Plant_ID |
-| `Oracle_Fixed_Asset` | Plant equipment and capital assets | medium | Asset_ID, Name, Category (Production_Line/Warehouse_Equipment/Vehicle/Refrigeration/IT_Systems), Plant_ID, Acquisition_Date, Acquisition_Cost, Depreciation_Method, Net_Book_Value, Status (In_Service/Under_Maintenance/Retired/Disposed) |
-| `Oracle_Budget` | Operating and capital budget | medium | Budget_ID, Cost_Center, Period, Category (OPEX/CAPEX), Planned_Amount, Actual_Amount, Variance_Amount, Variance_Pct |
+| `AP_Invoice` | Vendor invoice for goods/services | high | Invoice_ID, Vendor_ID, PO_ID, Invoice_Date, Due_Date, Total_Amount, Tax_Amount, Status (Pending/Validated/Approved/Paid/On_Hold/Disputed), Three_Way_Match_Status (Matched/Qty_Mismatch/Price_Mismatch/GRN_Missing/Under_Review) |
+| `AP_Payment` | Payment issued to vendor | high | Payment_ID, Invoice_ID, Vendor_ID, Amount, Payment_Date, Payment_Method (Bank_Transfer/Check/Wire/ACH), Check_Number, Bank_Account |
+| `Purchase_Order` | Formal procurement order to vendor | high | PO_ID, Vendor_ID, Material_ID, Qty, Unit_Price, Total_Amount, Delivery_Date, Plant_ID, Status (Draft/Approved/Sent/Partially_Received/Fully_Received/Closed), Contract_ID |
+| `Cost_Accounting` | Product and production cost tracking | high | Cost_ID, Material_ID, Cost_Type (Standard/Actual), Material_Cost, Labor_Cost, Overhead_Cost, Freight_Cost, Total_Unit_Cost, Period, Plant_ID |
+| `Fixed_Asset` | Plant equipment and capital assets | medium | Asset_ID, Name, Category (Production_Line/Warehouse_Equipment/Vehicle/Refrigeration/IT_Systems), Plant_ID, Acquisition_Date, Acquisition_Cost, Depreciation_Method, Net_Book_Value, Status (In_Service/Under_Maintenance/Retired/Disposed) |
+| `Budget` | Operating and capital budget | medium | Budget_ID, Cost_Center, Period, Category (OPEX/CAPEX), Planned_Amount, Actual_Amount, Variance_Amount, Variance_Pct |
 
 **Key Relationships:**
 
-- `Oracle_AP_Invoice` --validates--> `Goods_Receipt` (three-way match: PO-GRN-Invoice)
-- `Oracle_Purchase_Order` --triggers--> Procurement Spend Analysis workflow
-- `Oracle_Purchase_Order` --constrained_by--> procurement-policy
-- `Oracle_Cost_Accounting` --syncs_to--> sap-oracle-finance-sync
+- `AP_Invoice` --validates--> `Goods_Receipt` (three-way match: PO-GRN-Invoice)
+- `Purchase_Order` --triggers--> Procurement Spend Analysis workflow
+- `Purchase_Order` --constrained_by--> procurement-policy
+- `Cost_Accounting` --syncs_to--> sap-oracle-finance-sync
 
 ---
 

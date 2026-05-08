@@ -110,7 +110,7 @@ Entities in the schema are connected via typed relationships that form a knowled
 | Relationship | Meaning | Example |
 |-------------|---------|---------|
 | `triggers` | Entity event initiates a workflow | `Deal_Opportunity` triggers `Deal Scoring` workflow |
-| `syncs_to` | Entity data flows to another system | `Account_Profile` syncs_to `Oracle_AR_Customer` via integration |
+| `syncs_to` | Entity data flows to another system | `Account_Profile` syncs_to `AR_Customer` via integration |
 | `constrained_by` | Entity operations governed by a policy | `Revenue_Schedule` constrained_by `revenue-recognition-policy` |
 | `depends_on` | Entity requires a parent/related entity | `Conversation_Record` depends_on `Deal_Opportunity` |
 | `validates` | Entity validates another in a business process | `Contract_Record` validates `Deal_Opportunity` in deal-to-revenue handoff |

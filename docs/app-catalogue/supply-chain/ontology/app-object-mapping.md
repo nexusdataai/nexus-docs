@@ -42,7 +42,7 @@ Minimum required ontology objects per application, with relationship details and
 | `Delivery_Document` | SAP | Outbound delivery for route optimization | depends_on -> Shipment |
 | `Shipment` | SAP | Vehicle routing, load planning | — |
 | `Opportunity` | Salesforce | Channel demand signal | depends_on -> Account |
-| `Oracle_Cost_Accounting` | Oracle | Carrying cost, COGS for optimization | depends_on -> Material_Master |
+| `Cost_Accounting` | Oracle | Carrying cost, COGS for optimization | depends_on -> Material_Master |
 
 **Policies:** inventory-policy, data-freshness-policy
 **Workflows:** inventory-rebalancing, expiry-management
@@ -60,13 +60,13 @@ Minimum required ontology objects per application, with relationship details and
 | `Opportunity_Line_Item` | Salesforce | Order line details | depends_on -> Opportunity |
 | `Account` | Salesforce | Customer master, credit, payment terms | — |
 | `Delivery_Document` | SAP | Fulfillment / shipment | depends_on -> Opportunity (via mapping) |
-| `Oracle_AR_Invoice` | Oracle | Invoice generated for delivery | depends_on -> Delivery_Document, Account |
-| `Oracle_AR_Payment` | Oracle | Payment received | depends_on -> Oracle_AR_Invoice |
-| `Oracle_AR_Credit_Note` | Oracle | Returns, disputes, adjustments | depends_on -> Oracle_AR_Invoice |
-| `Oracle_AR_Customer` | Oracle | Credit limit, AR balance, collection priority | syncs_to -> Account |
-| `Oracle_GL_Journal` | Oracle | Revenue recognition | depends_on -> Oracle_AR_Invoice |
-| `Oracle_GL_Period` | Oracle | Financial close window | constrained_by -> close-window-policy |
-| `Goods_Receipt` | SAP | Three-way match (PO-GRN-Invoice) | depends_on -> Oracle_Purchase_Order |
+| `AR_Invoice` | Oracle | Invoice generated for delivery | depends_on -> Delivery_Document, Account |
+| `AR_Payment` | Oracle | Payment received | depends_on -> AR_Invoice |
+| `AR_Credit_Note` | Oracle | Returns, disputes, adjustments | depends_on -> AR_Invoice |
+| `AR_Customer` | Oracle | Credit limit, AR balance, collection priority | syncs_to -> Account |
+| `GL_Journal` | Oracle | Revenue recognition | depends_on -> AR_Invoice |
+| `GL_Period` | Oracle | Financial close window | constrained_by -> close-window-policy |
+| `Goods_Receipt` | SAP | Three-way match (PO-GRN-Invoice) | depends_on -> Purchase_Order |
 | `Return_Order` | SAP | Reverse logistics | depends_on -> Delivery_Document |
 
 **Policies:** order-fulfillment-policy, credit-policy
@@ -83,13 +83,13 @@ Minimum required ontology objects per application, with relationship details and
 |--------|--------|-------------|-----------------|
 | `Vendor_Master` | SAP | Supplier profile, rating, certifications | — |
 | `Source_List` | SAP | Material-to-vendor mapping, single-source detection | depends_on -> Vendor_Master, Material_Master |
-| `Oracle_Purchase_Order` | Oracle | Procurement history, delivery performance | depends_on -> Vendor_Master |
-| `Goods_Receipt` | SAP | On-time delivery, quality acceptance rates | depends_on -> Oracle_Purchase_Order |
+| `Purchase_Order` | Oracle | Procurement history, delivery performance | depends_on -> Vendor_Master |
+| `Goods_Receipt` | SAP | On-time delivery, quality acceptance rates | depends_on -> Purchase_Order |
 | `Material_Master` | SAP | Material criticality, alternative materials | — |
 | `Contract_Document` | Google Drive | Contract terms, SLAs, penalty clauses (NLP) | depends_on -> Vendor_Master |
 | `Market_Signal` | Social Listening | Disruption signals (news, weather, port) | — |
 | `Commodity_Price` | Social Listening | Raw material price trends | — |
-| `Oracle_AP_Invoice` | Oracle | Vendor payment and dispute history | depends_on -> Vendor_Master |
+| `AP_Invoice` | Oracle | Vendor payment and dispute history | depends_on -> Vendor_Master |
 | `Quality_Inspection_Lot` | SAP | Incoming material quality history | depends_on -> Vendor_Master, Material_Master |
 
 **Policies:** supply-chain-risk-policy, procurement-policy
@@ -111,9 +111,9 @@ Minimum required ontology objects per application, with relationship details and
 | `Campaign` | Salesforce | Campaign response history | — |
 | `Delivery_Document` | SAP | Fill rate, on-time delivery per customer | depends_on -> Account |
 | `Return_Order` | SAP | Returns and complaints per customer | depends_on -> Account |
-| `Oracle_AR_Customer` | Oracle | AR balance, credit status, payment behavior | syncs_to -> Account |
-| `Oracle_AR_Invoice` | Oracle | Revenue, discounts, deductions per customer | depends_on -> Account |
-| `Oracle_Cost_Accounting` | Oracle | Cost-to-serve per customer | depends_on -> Account |
+| `AR_Customer` | Oracle | AR balance, credit status, payment behavior | syncs_to -> Account |
+| `AR_Invoice` | Oracle | Revenue, discounts, deductions per customer | depends_on -> Account |
+| `Cost_Accounting` | Oracle | Cost-to-serve per customer | depends_on -> Account |
 | `Brand_Sentiment` | Social Listening | Customer/market sentiment | — |
 
 **Policies:** pricing-discount-policy
@@ -131,10 +131,10 @@ Minimum required ontology objects per application, with relationship details and
 | `Vendor_Master` | SAP | Vendor master for spend analysis | — |
 | `Source_List` | SAP | Contracted vs. maverick vendor detection | depends_on -> Vendor_Master |
 | `Purchase_Requisition` | SAP | Internal procurement requests | depends_on -> Material_Master |
-| `Oracle_Purchase_Order` | Oracle | PO data for spend cube | depends_on -> Vendor_Master, Material_Master |
-| `Goods_Receipt` | SAP | Receiving confirmation for three-way match | depends_on -> Oracle_Purchase_Order |
-| `Oracle_AP_Invoice` | Oracle | Vendor invoices for matching and analysis | depends_on -> Oracle_Purchase_Order |
-| `Oracle_AP_Payment` | Oracle | Payment execution and status | depends_on -> Oracle_AP_Invoice |
+| `Purchase_Order` | Oracle | PO data for spend cube | depends_on -> Vendor_Master, Material_Master |
+| `Goods_Receipt` | SAP | Receiving confirmation for three-way match | depends_on -> Purchase_Order |
+| `AP_Invoice` | Oracle | Vendor invoices for matching and analysis | depends_on -> Purchase_Order |
+| `AP_Payment` | Oracle | Payment execution and status | depends_on -> AP_Invoice |
 | `Material_Master` | SAP | Material categorization for spend cube | — |
 | `Contract_Document` | Google Drive | Contracted prices, volume commitments (NLP) | depends_on -> Vendor_Master |
 | `Invoice_Upload` | File Uploads | Scanned invoices for OCR+LLM extraction | triggers -> invoice-processing |
@@ -162,7 +162,7 @@ Minimum required ontology objects per application, with relationship details and
 | `Quality_Test_Result` | SAP | Individual test measurements | depends_on -> Quality_Inspection_Lot |
 | `Lab_Report_Upload` | File Uploads | Unstructured lab results (NLP-extracted) | triggers -> quality-deviation-response |
 | `Inventory_Position` | SAP | Raw material availability for scheduling | depends_on -> Material_Master |
-| `Oracle_Cost_Accounting` | Oracle | Production cost tracking | depends_on -> Production_Order |
+| `Cost_Accounting` | Oracle | Production cost tracking | depends_on -> Production_Order |
 
 **Policies:** quality-policy, inventory-policy
 **Workflows:** production-scheduling, quality-deviation-response
@@ -182,8 +182,8 @@ Minimum required ontology objects per application, with relationship details and
 | `Material_Master` | SAP | Packaging attributes (recycled %, recyclability) | — |
 | `Shipment` | SAP | Logistics emissions (distance x vehicle type x load) | — |
 | `Delivery_Document` | SAP | Per-route delivery data | depends_on -> Shipment |
-| `Oracle_Cost_Accounting` | Oracle | Energy and utility costs | depends_on -> Plant_Master |
-| `Oracle_Fixed_Asset` | Oracle | Equipment energy profiles | depends_on -> Plant_Master |
+| `Cost_Accounting` | Oracle | Energy and utility costs | depends_on -> Plant_Master |
+| `Fixed_Asset` | Oracle | Equipment energy profiles | depends_on -> Plant_Master |
 | `Sustainability_Report` | Google Drive | Historical ESG reports (NLP-extracted) | — |
 | `Brand_Sentiment` | Social Listening | Public ESG sentiment monitoring | — |
 
@@ -204,18 +204,18 @@ Shows which entities are shared across applications (checkmark = required by tha
 | **Opportunity** | x | x | x | — | x | — | — | — |
 | **Opportunity_Line_Item** | x | — | x | — | x | — | — | — |
 | **Delivery_Document** | — | x | x | — | x | — | — | x |
-| **Oracle_Cost_Accounting** | — | x | — | — | x | — | x | x |
+| **Cost_Accounting** | — | x | — | — | x | — | x | x |
 | **Inventory_Position** | x | x | — | — | — | — | x | — |
 | **Plant_Master** | — | x | — | — | — | — | x | x |
 | **Batch_Master** | — | x | — | — | — | — | x | — |
 | **Vendor_Master** | — | — | — | x | — | x | — | — |
-| **Oracle_Purchase_Order** | — | — | — | x | — | x | — | — |
+| **Purchase_Order** | — | — | — | x | — | x | — | — |
 | **Goods_Receipt** | — | — | x | x | — | x | — | — |
 | **Contract_Document** | — | — | — | x | — | x | — | — |
 | **Market_Signal** | x | — | — | x | — | — | — | — |
 | **Brand_Sentiment** | — | — | — | — | x | — | — | x |
-| **Oracle_AR_Invoice** | — | — | x | — | x | — | — | — |
-| **Oracle_AR_Customer** | — | — | x | — | x | — | — | — |
+| **AR_Invoice** | — | — | x | — | x | — | — | — |
+| **AR_Customer** | — | — | x | — | x | — | — | — |
 
 ---
 

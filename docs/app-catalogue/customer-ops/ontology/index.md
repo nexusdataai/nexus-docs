@@ -97,7 +97,7 @@ Entities in the schema are connected via typed relationships that form a knowled
 | Relationship | Meaning | Example |
 |-------------|---------|---------|
 | `triggers` | Entity event initiates a workflow | `Case` triggers `Case Triage & Routing` workflow |
-| `syncs_to` | Entity data flows to another system | `Account` syncs_to `Oracle_AR_Customer` via integration |
+| `syncs_to` | Entity data flows to another system | `Account` syncs_to `AR_Customer` via integration |
 | `constrained_by` | Entity operations governed by a policy | `Billing_Dispute` constrained_by `billing-dispute-policy` |
 | `depends_on` | Entity requires a parent/related entity | `Case_Comment` depends_on `Case` |
 | `escalates_to` | Entity triggers escalation chain | `Case` escalates_to `Escalation_Rule` on SLA breach |
@@ -113,9 +113,9 @@ Shows how many of the 3 customer ops apps require each entity. Higher usage = mo
 | `Account` | **3** | All apps |
 | `Case` | **3** | All apps |
 | `Call_Record` | **3** | All apps |
-| `Oracle_AR_Customer` | **3** | All apps |
+| `AR_Customer` | **3** | All apps |
 | `Knowledge_Article` | **3** | All apps |
-| `Oracle_AR_Invoice` | **2** | Issue Resolution, Operations Hub |
+| `AR_Invoice` | **2** | Issue Resolution, Operations Hub |
 | `Billing_Dispute` | **2** | Issue Resolution, Operations Hub |
 | `Service_Order` | **2** | Issue Resolution, Operations Hub |
 | `Chat_Transcript` | **2** | Issue Resolution, Proactive Assist |

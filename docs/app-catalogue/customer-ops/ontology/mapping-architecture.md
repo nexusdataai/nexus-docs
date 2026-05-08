@@ -43,7 +43,7 @@ flowchart TD
 | Status | Meaning | Count | Example |
 |--------|---------|-------|---------|
 | **Mapped** | Live FDW foreign table exists; entity is queryable via `query_table` tool | ~8 | Account, Contact, Case, Case_Comment |
-| **Virtual** | Entity data flows via integration sync; not directly queryable via FDW | ~25 | Call_Record, Oracle_AR_Invoice, Service_Order, Agent_State |
+| **Virtual** | Entity data flows via integration sync; not directly queryable via FDW | ~25 | Call_Record, AR_Invoice, Service_Order, Agent_State |
 | **Unmapped** | Schema defines the entity but no FDW table or integration connected yet | ~2 | Problem_Record, Trend_Alert (derived entities) |
 
 ---
@@ -152,9 +152,9 @@ sequenceDiagram
 
     User->>Agent: "Customer ACCT-1205 is disputing invoice INV-4521 for $342"
     Agent->>RAG: search_enterprise_knowledge("billing dispute ACCT-1205 INV-4521")
-    RAG-->>Agent: Account profile + billing-dispute-policy + Oracle_AR_Invoice schema + Case schema
+    RAG-->>Agent: Account profile + billing-dispute-policy + AR_Invoice schema + Case schema
     Agent->>Agent: REASON: Invoice $342, customer is Gold tier, dispute type likely overcharge
-    Agent->>Policy: check_policy_compliance("issue_credit", "Oracle_AR_Invoice", "$342 credit for Gold tier")
+    Agent->>Policy: check_policy_compliance("issue_credit", "AR_Invoice", "$342 credit for Gold tier")
     Policy-->>Agent: COMPLIANT — auto-approve <$500 for billing error per POL-BILL-001
     Agent->>SoR: issue_credit_note(customer="ACCT-1205", invoice="INV-4521", amount=342, reason="Billing_Error")
     SoR-->>Agent: Credit_Note_ID: CN-2026-0891

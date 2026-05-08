@@ -44,7 +44,7 @@ Salesforce CRM is source of truth for deal/pipeline data. Oracle Finance is sour
 | Deal_Opportunity.ID | Oracle_Booking.SF_Opportunity_ID | CRM → Finance | — |
 | Deal_Opportunity.Amount | Oracle_Booking.Booking_Amount | CRM → Finance | Currency conversion if non-USD |
 | Deal_Opportunity.Close_Date | Oracle_Booking.Booking_Date | CRM → Finance | — |
-| Account_Profile.Account_ID | Oracle_AR_Customer.SF_Account_ID | CRM → Finance | Create or update customer record |
+| Account_Profile.Account_ID | AR_Customer.SF_Account_ID | CRM → Finance | Create or update customer record |
 | Contract_Record.Terms | Oracle_Billing.Payment_Terms | CRM → Finance | Map to Oracle payment term codes |
 | Opportunity_Line_Item.* | Oracle_Revenue_Line.* | CRM → Finance | Per-line revenue schedule creation |
 
@@ -52,8 +52,8 @@ Salesforce CRM is source of truth for deal/pipeline data. Oracle Finance is sour
 
 | Finance Field | CRM Field | Direction | Notes |
 |--------------|----------|-----------|-------|
-| Oracle_AR_Invoice.Status | Deal_Opportunity.Invoice_Status__c | Finance → CRM | Read-only in Salesforce |
-| Oracle_AR_Invoice.Payment_Status | Account_Profile.Payment_Status__c | Finance → CRM | — |
+| AR_Invoice.Status | Deal_Opportunity.Invoice_Status__c | Finance → CRM | Read-only in Salesforce |
+| AR_Invoice.Payment_Status | Account_Profile.Payment_Status__c | Finance → CRM | — |
 | Oracle_Revenue.Recognition_Status | Deal_Opportunity.Rev_Rec_Status__c | Finance → CRM | ASC 606 compliance status |
 | Oracle_AR_Aging.Aging_Bucket | Account_Profile.AR_Aging__c | Finance → CRM | For account health scoring |
 

@@ -96,7 +96,7 @@
 | 5. Cash Flow Projection | Internal | Customer-specific payment probability curves on open invoices |
 | 6. Alert and Escalate | Internal | Trigger alerts per severity; push to dashboard and CRM |
 
-**Dependencies:** Opportunity, Opportunity_Line_Item, Account, Delivery_Document, Oracle_AR_Invoice, Oracle_AR_Payment, Oracle_AR_Credit_Note, Oracle_AR_Customer, Goods_Receipt, Return_Order, order-fulfillment-policy, credit-policy
+**Dependencies:** Opportunity, Opportunity_Line_Item, Account, Delivery_Document, AR_Invoice, AR_Payment, AR_Credit_Note, AR_Customer, Goods_Receipt, Return_Order, order-fulfillment-policy, credit-policy
 
 ---
 
@@ -118,7 +118,7 @@
 | 8. Composite Risk Score | Internal | Weighted 0-100; tiers: 80-100=Low, 60-79=Medium, 40-59=High, 0-39=Critical |
 | 9. Publish Alerts | Internal | Critical/High vendors: alert procurement; recommend alternatives from Source_List |
 
-**Dependencies:** Vendor_Master, Source_List, Oracle_Purchase_Order, Goods_Receipt, Quality_Inspection_Lot, Oracle_AP_Invoice, Contract_Document, Market_Signal, supply-chain-risk-policy, procurement-policy
+**Dependencies:** Vendor_Master, Source_List, Purchase_Order, Goods_Receipt, Quality_Inspection_Lot, AP_Invoice, Contract_Document, Market_Signal, supply-chain-risk-policy, procurement-policy
 
 ---
 
@@ -138,7 +138,7 @@
 | 6. Notify Stakeholders | Internal | Alert procurement head, SC director, affected plant managers |
 | 7. Update Risk Scores | Internal | Trigger Supplier Risk Scoring for affected vendors |
 
-**Dependencies:** Market_Signal, Vendor_Master, Material_Master, Source_List, Oracle_Purchase_Order, Inventory_Position, Material_Plant, supply-chain-risk-policy
+**Dependencies:** Market_Signal, Vendor_Master, Material_Master, Source_List, Purchase_Order, Inventory_Position, Material_Plant, supply-chain-risk-policy
 
 ---
 
@@ -157,7 +157,7 @@
 | 5. Match Retention Offer | Internal | Map driver to optimal action (discount, SLA commitment, match offer) |
 | 6. Push to CRM | Salesforce | Create retention task on Account; 48-hour SLA for Platinum/Gold |
 
-**Dependencies:** Account, Opportunity, Opportunity_Line_Item, Delivery_Document, Return_Order, Oracle_AR_Customer, Oracle_AR_Invoice, Oracle_Cost_Accounting, Brand_Sentiment, Campaign, pricing-discount-policy
+**Dependencies:** Account, Opportunity, Opportunity_Line_Item, Delivery_Document, Return_Order, AR_Customer, AR_Invoice, Cost_Accounting, Brand_Sentiment, Campaign, pricing-discount-policy
 
 ---
 
@@ -165,7 +165,7 @@
 
 **ID:** `WORKFLOW_PROCUREMENT_SPEND_V1_0` | **SCOR:** Source | **File:** `procurement-spend-analysis.yaml`
 
-**Trigger:** Weekly (Monday 06:00 UTC) OR new Oracle_Purchase_Order value exceeds $100K
+**Trigger:** Weekly (Monday 06:00 UTC) OR new Purchase_Order value exceeds $100K
 
 | Step | System | Action |
 |------|--------|--------|
@@ -176,7 +176,7 @@
 | 5. Consolidation Analysis | Internal | Cluster vendor x material; identify 4+ vendors with >10% price spread |
 | 6. Generate Reports | Internal | Spend dashboard, maverick report, consolidation recommendations |
 
-**Dependencies:** Oracle_Purchase_Order, Vendor_Master, Material_Master, Source_List, Goods_Receipt, Oracle_AP_Invoice, Oracle_AP_Payment, Contract_Document, Commodity_Price, procurement-policy
+**Dependencies:** Purchase_Order, Vendor_Master, Material_Master, Source_List, Goods_Receipt, AP_Invoice, AP_Payment, Contract_Document, Commodity_Price, procurement-policy
 
 ---
 
@@ -190,12 +190,12 @@
 |------|--------|--------|
 | 1. OCR + LLM Extraction | Internal | Extract vendor, invoice number, amounts, line items; assign confidence score |
 | 2. Data Validation | Internal | Validate against Vendor_Master; check duplicates; flag confidence <0.7 |
-| 3. PO Matching | Internal | Match to Oracle_Purchase_Order by vendor + material + amount |
+| 3. PO Matching | Internal | Match to Purchase_Order by vendor + material + amount |
 | 4. GRN Matching | Internal | Match to Goods_Receipt; validate qty within 2% tolerance |
 | 5. Three-Way Match Decision | Internal | Auto-approve if matched; route mismatches to AP exception queue |
-| 6. Approval or Rejection | Oracle | Create Oracle_AP_Invoice; schedule payment per terms |
+| 6. Approval or Rejection | Oracle | Create AP_Invoice; schedule payment per terms |
 
-**Dependencies:** Invoice_Upload, Vendor_Master, Oracle_Purchase_Order, Goods_Receipt, Oracle_AP_Invoice, procurement-policy, order-fulfillment-policy
+**Dependencies:** Invoice_Upload, Vendor_Master, Purchase_Order, Goods_Receipt, AP_Invoice, procurement-policy, order-fulfillment-policy
 
 ---
 
@@ -254,7 +254,7 @@
 | 7. Sentiment Check | Internal | Monitor Brand_Sentiment for ESG-related topics |
 | 8. Publish | Internal | ESG dashboard; board-ready summary; flag non-compliance |
 
-**Dependencies:** Plant_Master, Production_Order, Bill_of_Materials, Material_Master, Shipment, Delivery_Document, Oracle_Cost_Accounting, Oracle_Fixed_Asset, Sustainability_Report, Brand_Sentiment, sustainability-policy, data-freshness-policy
+**Dependencies:** Plant_Master, Production_Order, Bill_of_Materials, Material_Master, Shipment, Delivery_Document, Cost_Accounting, Fixed_Asset, Sustainability_Report, Brand_Sentiment, sustainability-policy, data-freshness-policy
 
 ---
 

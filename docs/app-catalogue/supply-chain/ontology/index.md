@@ -106,10 +106,10 @@ Entities in the schema are connected via typed relationships that form a knowled
 | Relationship | Meaning | Example |
 |-------------|---------|---------|
 | `triggers` | Entity event initiates a workflow | `Inventory_Position` triggers `Inventory Rebalancing` workflow |
-| `syncs_to` | Entity data flows to another system | `Account` syncs_to `Oracle_AR_Customer` via integration |
+| `syncs_to` | Entity data flows to another system | `Account` syncs_to `AR_Customer` via integration |
 | `constrained_by` | Entity operations governed by a policy | `Batch_Master` constrained_by `quality-policy` |
 | `depends_on` | Entity requires a parent/related entity | `Opportunity_Line_Item` depends_on `Material_Master` |
-| `validates` | Entity validates another in a business process | `Goods_Receipt` validates `Oracle_AP_Invoice` in three-way match |
+| `validates` | Entity validates another in a business process | `Goods_Receipt` validates `AP_Invoice` in three-way match |
 
 ---
 
@@ -120,7 +120,7 @@ Shows how many of the 8 supply chain apps require each entity. Higher usage = mo
 | Entity | Count | Applications |
 |--------|-------|-------------|
 | `Material_Master` | **8** | All apps |
-| `Oracle_Cost_Accounting` | **4** | Inventory, Customer 360, Production, ESG |
+| `Cost_Accounting` | **4** | Inventory, Customer 360, Production, ESG |
 | `Delivery_Document` | **4** | Inventory, O2C, Customer 360, ESG |
 | `Account` | **4** | Demand, O2C, Customer 360, Inventory |
 | `Opportunity` | **4** | Demand, O2C, Customer 360, Inventory |
@@ -128,7 +128,7 @@ Shows how many of the 8 supply chain apps require each entity. Higher usage = mo
 | `Inventory_Position` | **3** | Demand, Inventory, Production |
 | `Batch_Master` | **2** | Inventory, Production |
 | `Vendor_Master` | **2** | Risk, Procurement |
-| `Oracle_Purchase_Order` | **2** | Risk, Procurement |
+| `Purchase_Order` | **2** | Risk, Procurement |
 | `Contract_Document` | **2** | Risk, Procurement |
 | `Market_Signal` | **2** | Demand, Risk |
 | `Brand_Sentiment` | **2** | Customer 360, ESG |

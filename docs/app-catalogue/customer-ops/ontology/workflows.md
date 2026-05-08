@@ -55,7 +55,7 @@
 | 7. Post-Resolution Scan | Internal | Check for related open cases, pending service orders, or latent billing issues on same account |
 | 8. Notify Customer | Internal | Send resolution notification via customer's preferred channel |
 
-**Dependencies:** Case, Account, Resolution_Template, Knowledge_Article, Oracle_AR_Invoice, Oracle_AR_Credit_Note, Billing_Dispute, Service_Order, case-handling-policy, billing-dispute-policy, customer-tier-policy
+**Dependencies:** Case, Account, Resolution_Template, Knowledge_Article, AR_Invoice, AR_Credit_Note, Billing_Dispute, Service_Order, case-handling-policy, billing-dispute-policy, customer-tier-policy
 
 ---
 
@@ -71,11 +71,11 @@
 | 2. Invoice Analysis | Oracle | Pull invoice details, line items, payment history; compare against contracted rates and service delivery records |
 | 3. Service Correlation | SAP/Salesforce | Cross-reference with Service_Order history and Case history to identify if billing aligns with delivered service |
 | 4. Auto-Adjudication | Internal | For clear-cut cases (duplicate invoice, documented service failure): auto-approve credit per policy thresholds |
-| 5. Credit Note Generation | Oracle | Generate Oracle_AR_Credit_Note with appropriate reason code; route for approval if above auto-threshold |
+| 5. Credit Note Generation | Oracle | Generate AR_Credit_Note with appropriate reason code; route for approval if above auto-threshold |
 | 6. Case Update | Salesforce | Update linked Case with resolution; add billing dispute outcome details |
 | 7. Customer Communication | Internal | Notify customer of resolution; provide credit note reference |
 
-**Dependencies:** Billing_Dispute, Oracle_AR_Invoice, Oracle_AR_Payment, Oracle_AR_Credit_Note, Oracle_AR_Customer, Case, Account, Service_Order, billing-dispute-policy, customer-tier-policy
+**Dependencies:** Billing_Dispute, AR_Invoice, AR_Payment, AR_Credit_Note, AR_Customer, Case, Account, Service_Order, billing-dispute-policy, customer-tier-policy
 
 ---
 
@@ -94,7 +94,7 @@
 | 5. Propagation | Target Systems | Push relevant state updates to other systems needing awareness (e.g., Oracle credit approved → update SF case) |
 | 6. Dashboard Update | Internal | Refresh unified customer view on agent desktop and operations dashboard |
 
-**Dependencies:** Account, Oracle_AR_Customer, Case, Oracle_AR_Invoice, Oracle_AR_Payment, Billing_Dispute, Service_Order, Call_Record, Chat_Transcript, Field_Dispatch, data-freshness-policy
+**Dependencies:** Account, AR_Customer, Case, AR_Invoice, AR_Payment, Billing_Dispute, Service_Order, Call_Record, Chat_Transcript, Field_Dispatch, data-freshness-policy
 
 ---
 
@@ -114,7 +114,7 @@
 | 6. SLA Monitoring | Internal | Track SLA_Record; trigger alerts at 80% threshold; auto-escalate at breach |
 | 7. Post-Visit Processing | SAP/Salesforce | Record outcome, update Service_Order status, update Case, trigger CSAT survey |
 
-**Dependencies:** Service_Order, Field_Dispatch, SLA_Record, Case, Account, Contact, Call_Record, Oracle_AR_Customer, Knowledge_Article, sla-policy, case-handling-policy
+**Dependencies:** Service_Order, Field_Dispatch, SLA_Record, Case, Account, Contact, Call_Record, AR_Customer, Knowledge_Article, sla-policy, case-handling-policy
 
 ---
 
@@ -135,7 +135,7 @@
 | 7. Sentiment Monitoring | Internal | Continuous sentiment scoring; trigger coaching prompts on negative shift (below -0.4) |
 | 8. Outcome Capture | Internal | Record recommendation acceptance/rejection for model learning |
 
-**Dependencies:** Call_Record, Chat_Transcript, Account, Customer_Profile, Case, Oracle_AR_Customer, Oracle_AR_Invoice, Service_Order, Knowledge_Article, Resolution_Template, NPS_Response, CSAT_Survey, Agent_State, customer-tier-policy, agent-quality-policy
+**Dependencies:** Call_Record, Chat_Transcript, Account, Customer_Profile, Case, AR_Customer, AR_Invoice, Service_Order, Knowledge_Article, Resolution_Template, NPS_Response, CSAT_Survey, Agent_State, customer-tier-policy, agent-quality-policy
 
 ---
 
@@ -155,7 +155,7 @@
 | 6. Push to CRM | Salesforce | Create retention task on Account; assign to account manager with context brief; 24-hour SLA for Platinum, 48-hour for Gold |
 | 7. Outcome Tracking | Internal | Track intervention outcome (retained/churned/deferred); feed back into model |
 
-**Dependencies:** Account, Customer_Profile, Case, Call_Record, Chat_Transcript, Oracle_AR_Customer, Oracle_AR_Invoice, Oracle_AR_Payment, NPS_Response, Customer_Feedback, CSAT_Survey, Brand_Sentiment, customer-tier-policy, customer-experience-policy
+**Dependencies:** Account, Customer_Profile, Case, Call_Record, Chat_Transcript, AR_Customer, AR_Invoice, AR_Payment, NPS_Response, Customer_Feedback, CSAT_Survey, Brand_Sentiment, customer-tier-policy, customer-experience-policy
 
 ---
 

@@ -38,7 +38,7 @@ flowchart LR
 
 Salesforce is source of truth for customer and order data. Oracle is source of truth for financial transactions.
 
-### Customer Sync (Account -> Oracle_AR_Customer)
+### Customer Sync (Account -> AR_Customer)
 
 | Salesforce Field | Oracle Field | Direction | Transformation / Constraint |
 |-----------------|-------------|-----------|---------------------------|
@@ -114,10 +114,10 @@ SAP is source of truth for operational data; Oracle for financial posting.
 
 | Flow | Source | Target | Purpose |
 |------|--------|--------|---------|
-| Goods Receipt -> AP Match | SAP Goods_Receipt | Oracle_AP_Invoice | GRN_ID, PO_ID, Qty_Received -> triggers three-way match |
-| Production Costs | SAP Production_Order | Oracle_Cost_Accounting | Order_ID, Qty_Produced, Qty_Scrapped -> Material/Labor/Overhead costs |
-| Inventory Valuation | SAP Inventory_Position | Oracle_GL_Journal | Material x Qty x Valuation_Price -> GL inventory accounts |
-| Delivery -> AR Invoice | SAP Delivery_Document | Oracle_AR_Invoice | Delivery triggers invoice creation |
+| Goods Receipt -> AP Match | SAP Goods_Receipt | AP_Invoice | GRN_ID, PO_ID, Qty_Received -> triggers three-way match |
+| Production Costs | SAP Production_Order | Cost_Accounting | Order_ID, Qty_Produced, Qty_Scrapped -> Material/Labor/Overhead costs |
+| Inventory Valuation | SAP Inventory_Position | GL_Journal | Material x Qty x Valuation_Price -> GL inventory accounts |
+| Delivery -> AR Invoice | SAP Delivery_Document | AR_Invoice | Delivery triggers invoice creation |
 
 **Conflict Resolution:** SAP wins for quantities/operations; Oracle wins for financial postings
 
