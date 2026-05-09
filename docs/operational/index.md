@@ -53,4 +53,3 @@ cd /opt/mycode/nexus/nexus-deployer/kube-operator
 - [Platform Architecture](../platform-architecture.md) -- system shape and deployment topology.
 - [Technical > Solution Architecture](../technical/solution-architecture.md) -- detailed AWS / EKS topology.
 - [Implementation Guide](../ai-os/implementation-guide.md) -- production code mapping (`nexus-backend`, `nexus-ui`, BSSMagic, FDW, pgvector).
-- [Migration from CallSense Toolkit](../migration/from-callsense-toolkit.md) -- if you came from the legacy Toolkit Deployer.

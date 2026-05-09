@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# StarHub Docs GitHub Actions Integration Setup Script
+# NexusAI Docs GitHub Actions Integration Setup Script
 # Creates IAM role for deploying docs to S3 (totogi-callsense-doc) + CloudFront
 
 set -e
@@ -14,13 +14,13 @@ NC='\033[0m'
 print_color() { echo -e "${1}${2}${NC}"; }
 print_header() { echo; print_color "$BLUE" "=== $1 ==="; echo; }
 
-print_header "StarHub Docs GitHub Actions Integration Setup"
+print_header "NexusAI Docs GitHub Actions Integration Setup"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 if [ ! -f "$PROJECT_ROOT/mkdocs.yml" ]; then
-    print_color "$RED" "Error: Please run this script from the starhub-docs project (must contain mkdocs.yml)"
+    print_color "$RED" "Error: Please run this script from the nexus-docs project (must contain mkdocs.yml)"
     exit 1
 fi
 
@@ -49,12 +49,12 @@ print_color "$GREEN" "✓ Found GitHub OIDC provider"
 
 read -p "GitHub organization [trilogy-group]: " GITHUB_ORG
 GITHUB_ORG=${GITHUB_ORG:-trilogy-group}
-read -p "Repository name [starhub-docs]: " GITHUB_REPO
-GITHUB_REPO=${GITHUB_REPO:-starhub-docs}
+read -p "Repository name [nexus-docs]: " GITHUB_REPO
+GITHUB_REPO=${GITHUB_REPO:-nexus-docs}
 
 print_header "Deploy IAM Role for Docs"
 
-STACK_NAME="github-actions-role-starhub-docs"
+STACK_NAME="github-actions-role-nexus-docs"
 aws cloudformation deploy \
     --template-file ./github-role-only.yml \
     --stack-name "$STACK_NAME" \
@@ -83,7 +83,7 @@ echo "| DOCS_CLOUDFRONT_ID | (distribution ID from deploy/setup-website.sh or AW
 echo
 
 cat > ./role-arns-secrets.md << EOF
-# StarHub Docs GitHub Actions
+# NexusAI Docs GitHub Actions
 
 | Secret Name         | Value |
 |---------------------|-------|
@@ -95,4 +95,4 @@ Docs deploy on push to \`main\`; build runs \`mkdocs build\`, syncs \`site/\` to
 EOF
 
 print_color "$GREEN" "✓ Saved to ./role-arns-secrets.md"
-print_color "$GREEN" "StarHub Docs GitHub Actions setup complete."
+print_color "$GREEN" "NexusAI Docs GitHub Actions setup complete."

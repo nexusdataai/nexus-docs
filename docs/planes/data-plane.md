@@ -1,18 +1,24 @@
 # Data Plane
 
-The Data Plane unifies disparate enterprise systems into a single **Virtual Data Layer (VDL)**. Source data is hydrated into the VDL through three complementary mechanisms -- **FDW Connectors**, **ETL Pipelines**, and **Change Data Capture (CDC)** -- chosen per source based on latency, payload shape, and read/write patterns. Once hydrated, every entity is queryable through the same API regardless of how it arrived.
+Unifies disparate enterprise systems into a single **Virtual Data Layer (VDL)** so every entity is queryable through one API regardless of where it lives.
 
-For the framing in the platform overview, see [Platform Architecture > Data Plane](../platform-architecture.md#data-plane). For the FDW vs ETL vs CDC decision framework, see [AI Operating System > Data Sources](../ai-os/data-sources.md).
+For platform-overview framing see [Platform Architecture > Data Plane](../platform-architecture.md#data-plane). For the FDW vs ETL vs CDC decision framework see [AI Operating System > Data Sources](../ai-os/data-sources.md).
 
-## VDL hydration mechanisms
+## Capabilities
 
-| Mechanism | When to use | Latency | Typical sources |
-|---|---|---|---|
-| **FDW Connectors** | Live federated reads against transactional systems of record | Milliseconds | Salesforce, Oracle ERP, SAP S/4HANA, BSSMagic CRM |
-| **ETL Pipelines** | Bulk ingest, transformation, and enrichment of file or document sources | Minutes to hours | Google Drive, file uploads, market signals, sustainability reports |
-| **Change Data Capture (CDC)** | Streaming incremental changes from operational systems | Seconds | Kafka / Debezium event streams, transactional change feeds |
+- **Single virtual entity API** — every connected system is queried the same way.
+- **Three hydration mechanisms** — pick FDW, ETL, or CDC per source based on latency and payload shape.
+- **Connector catalogue** — Salesforce, Oracle ERP, SAP S/4HANA, Google Drive, Office 365, Webex, Knowledge Base, Langflow, plus a generic external-systems writeback channel.
+- **Simulator mode** — swap any live source for an in-memory simulator without code changes.
+- **Live row preview** — inspect resolved rows for any virtual entity from inside the console.
 
-## Data flow
+## Hydration Mechanisms
+
+- **FDW Connectors** — live federated reads against transactional systems of record (millisecond latency). Use for Salesforce, Oracle ERP, SAP S/4HANA, BSSMagic CRM.
+- **ETL Pipelines** — bulk ingest, transform, and enrich file or document sources (minutes-to-hours latency). Use for Google Drive, file uploads, market signals, sustainability reports.
+- **Change Data Capture (CDC)** — streaming incremental changes from operational systems (sub-second latency). Use for Kafka / Debezium event streams and transactional change feeds.
+
+## Data Flow
 
 ```mermaid
 graph LR
@@ -48,56 +54,58 @@ graph LR
     VDL --> DS
 ```
 
-## Key metrics
+## Console Walkthrough
 
-- **Data Sources** -- number of connected enterprise systems (Salesforce, Oracle, SAP, etc.).
-- **Entities** -- virtual entities discovered across all data sources.
-- **Mapped** -- entities mapped to the ontology schema in the Control Plane.
-- **Mapping Rules** -- active rules that define how source entities map to ontology objects (FDW, ETL, or CDC).
-
-## Console walkthrough
-
-Six tabs in the NexusAI workspace, each focused on a distinct part of the hydration lifecycle.
+Six tabs cover the hydration lifecycle.
 
 ### Data Sources
 
 ![Data Sources tab](../assets/data-plane/data-plane-1-data-sources.png)
 
-A hub-and-spoke view of every connected enterprise system, with table and row counts per source. The top toolbar filters by vertical, toggles between **Real FDW** and **Simulator** mode, refreshes status, or adds a new source. The **6 / 6 connected** indicator confirms all sources are healthy; the **All Data Sources** list below shows each system's mode (FDW vs simulated) at a glance.
+- Filter by vertical and toggle between **Real FDW** and **Simulator** modes.
+- Per-source health status and last-sync indicators.
+- Add a new source from the toolbar.
 
 ### Virtual Data
 
 ![Virtual Data Layer tab](../assets/data-plane/data-plane-2-virtual-data.png)
 
-Top-line counters summarise total, mapped, and virtual entities along with active data sources and verticals. Each vertical (Supply Chain in this view) breaks out its entity, workflow, policy, and integration counts. The **Connected Data Sources** list shows how many entities each system contributes and which integration mode is in use -- **FDW**, **Schema Overlay**, or **Ingestion**.
+- Per-vertical breakdown of entity, workflow, policy, and integration counts.
+- Per-source integration mode shown at a glance: **FDW**, **Schema Overlay**, or **Ingestion**.
 
 ### Entity Explorer
 
-![Entity Explorer tab with Opportunity selected](../assets/data-plane/data-plane-3-entity-explorer.png)
+![Entity Explorer](../assets/data-plane/data-plane-3-entity-explorer.png)
 
-A three-pane browser for inspecting every virtual entity in the platform. The left panel groups entities by source (Salesforce, SAP, Oracle, AI_Automation, etc.) and tags each as **virtual** or **mapped**. With the **Opportunity** entity selected above, the centre pane shows its **Schema Fields** (7 fields, each with data type, semantic, risk, and constraints), the right pane lists its 5 **Relationships** -- `depends_on Account`, `triggers Order-to-Cash Monitoring`, `triggers Demand Forecast Generation`, `syncs_to sf-sap-demand-sync`, and `constrained_by order-fulfillment-policy` -- and the bottom pane previews live row data.
+- Entities grouped by source system, tagged as **virtual** or **mapped**.
+- Schema fields with data type, semantic, risk class, and constraints.
+- Typed relationships (`depends_on`, `triggers`, `syncs_to`, `constrained_by`).
 
 ### Mapping Rules
 
-![Mapping Rules tab with SCR_Action_Log rule selected](../assets/data-plane/data-plane-4-mapping-rules.png)
+![Mapping Rules](../assets/data-plane/data-plane-4-mapping-rules.png)
 
-Manages the rules that map raw source fields onto ontology objects. The left panel lists every active rule grouped by source, with quick actions for **Auto-Map**, **Audit**, and adding a **New** rule. With **Auto Sim: SCR_Action_Log** selected here, the centre pane opens the rule editor (Name, Virtual Entity, Source Table, 9 source-to-target Field Mappings, Business Logic SQL, Filter Expression, Status), while the right pane summarises the resolved mapping (`external_sources.SCR_Action_Log -> SCR_Action_Log`, 9 of 9 fields mapped) and shows a live preview of the first 5 rows.
+- Rule list grouped by source with **Auto-Map**, **Audit**, and **New Rule** quick actions.
+- Per-rule editor: virtual entity, source table, field mappings, business logic SQL, filter expression, status.
+- Live preview of resolved rows.
 
 ### Data Pipelines
 
-![Data Pipelines tab](../assets/data-plane/data-plane-5-data-pipelines.png)
+![Data Pipelines](../assets/data-plane/data-plane-5-data-pipelines.png)
 
-ETL batch pipelines that hydrate the Virtual Data Layer from non-FDW sources. Counters at the top track **Active**, **Completed**, and **Running Now** pipelines. Each pipeline card visualises its stage flow (Extract -> Validate -> Transform -> Load -> Verify) and a rolling history of recent runs with completion status, timestamps, and row counts.
+- Stage flow per pipeline: Extract → Validate → Transform → Load → Verify.
+- Active / Completed / Running counters and recent run history.
 
 ### Connectors
 
-![Connectors tab](../assets/data-plane/data-plane-6-connectors.png)
+![Connectors](../assets/data-plane/data-plane-6-connectors.png)
 
-Catalogue of integration connectors available for hydration and outbound action. Each card describes the connector's typical **Inputs** (e.g., OAuth Configuration, RFC / OData Config) and **Outputs** (e.g., CRM Data, Material Data, Vector Index), with a **Configure** action to wire it up. Built-in connectors include Salesforce, Office 365, Oracle ERP, SAP S/4HANA, Google Drive, Webex, KnowledgeBase, Langflow, and a generic External Systems writeback channel.
+- Each card lists configuration inputs and produced outputs.
+- One-click `Configure` to wire a connector into the platform.
 
-## Related references
+## Related References
 
-- [Data Sources](../ai-os/data-sources.md) -- FDW vs ETL vs CDC decision framework.
-- [Implementation Guide](../ai-os/implementation-guide.md) -- production code mapping (FDW services, BSSMagic CRM operations, REST endpoints).
-- [SFDC Simulator](../simulators/sfdc/index.md) -- mock CRM source for offline development.
-- [Control Plane](control-plane.md) -- the semantic layer that consumes the VDL.
+- [Data Sources](../ai-os/data-sources.md) — FDW vs ETL vs CDC decision framework.
+- [Implementation Guide](../ai-os/implementation-guide.md) — production code mapping (FDW services, BSSMagic CRM operations, REST endpoints).
+- [SFDC Simulator](../simulators/sfdc/index.md) — mock CRM source for offline development.
+- [Control Plane](control-plane.md) — the semantic layer that consumes the VDL.

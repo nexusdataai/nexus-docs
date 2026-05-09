@@ -1,0 +1,27 @@
+<article id="doc-cover">
+    <div class="cover-band-top"></div>
+    <div class="cover-content">
+        {% if cover_logo is defined %}
+            <div class="cover-logo">
+                <img src="{{ cover_logo | to_url }}" alt="">
+            </div>
+        {% endif %}
+        <div class="cover-title-block">
+            <h1>{{ cover_title | e }}</h1>
+            {% if cover_subtitle %}
+                <h2>{{ cover_subtitle | e }}</h2>
+            {% endif %}
+        </div>
+        <div class="cover-rule"></div>
+        <div class="cover-meta">
+            {% if author %}
+                <p class="cover-author">{{ author | e }}</p>
+            {% endif %}
+            <p class="cover-date">{{ now.strftime('%B %Y') }}</p>
+            {% if copyright %}
+                <p class="cover-copyright">{{ copyright | e }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="cover-band-bottom"></div>
+</article>

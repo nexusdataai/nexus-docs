@@ -1,4 +1,4 @@
-# StarHub Docs GitHub Actions
+# NexusAI Docs GitHub Actions
 
 GitHub Actions deploy the MkDocs documentation site to S3 (`totogi-callsense-doc`) and CloudFront. Access is protected by HTTP Basic Auth (Lambda@Edge).
 
@@ -10,7 +10,7 @@ GitHub Actions deploy the MkDocs documentation site to S3 (`totogi-callsense-doc
 
 ## GitHub Secrets
 
-Go to: `https://github.com/YOUR_ORG/starhub-docs/settings/secrets/actions`
+Go to: `https://github.com/YOUR_ORG/nexus-docs/settings/secrets/actions`
 
 | Secret               | Description |
 |----------------------|-------------|

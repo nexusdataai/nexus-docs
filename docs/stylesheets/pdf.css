@@ -1,0 +1,643 @@
+/* ==========================================================================
+   NexusAI Data Platform — PDF stylesheet
+   Loaded site-wide, but every rule is scoped to @media print so it ONLY
+   applies when WeasyPrint (mkdocs-pdf-export-plugin and mkdocs-with-pdf)
+   renders pages to PDF. Has no effect on the live site.
+   ========================================================================== */
+
+/* --- Embedded fonts (always available; @font-face cannot live inside @media) - */
+
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/SourceSerif4-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../assets/fonts/SourceSerif4-Italic.otf") format("opentype");
+}
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/SourceSerif4-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/Inter-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../assets/fonts/Inter-SemiBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/Inter-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+}
+
+@media print {
+  /* ========================================================================
+     PAGE GEOMETRY — A4 with asymmetric margins (binding-aware)
+     Margin boxes carry running header (logo + site name) and
+     running footer (chapter title + page number).
+     ======================================================================== */
+
+  @page {
+    size: A4;
+    margin: 26mm 18mm 22mm 25mm;
+
+    @top-left {
+      content: "NexusAI Data Platform";
+      vertical-align: bottom;
+      padding-bottom: 5mm;
+      border-bottom: 0.4pt solid #cbd5e1;
+      font-family: "Inter", sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #1e1b4b;
+      letter-spacing: 0.02em;
+    }
+    @top-right {
+      content: string(chapter);
+      vertical-align: bottom;
+      padding-bottom: 5mm;
+      border-bottom: 0.4pt solid #cbd5e1;
+      font-family: "Inter", sans-serif;
+      font-size: 8pt;
+      color: #64748b;
+      text-align: right;
+    }
+    @bottom-left {
+      content: "Confidential";
+      vertical-align: top;
+      padding-top: 4mm;
+      border-top: 0.4pt solid #cbd5e1;
+      font-family: "Inter", sans-serif;
+      font-size: 7.5pt;
+      color: #94a3b8;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      vertical-align: top;
+      padding-top: 4mm;
+      border-top: 0.4pt solid #cbd5e1;
+      font-family: "Inter", sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #1e1b4b;
+      text-align: right;
+    }
+
+    /* Outer-edge brand accent bar (4pt purple stripe) */
+    @right-middle {
+      content: "";
+      width: 4pt;
+      height: 100%;
+      background: #7c3aed;
+    }
+  }
+
+  /* Cover page: full-bleed, no margin chrome.
+     Scoped to the named `cover` page (assigned via `page: cover` on
+     #doc-cover below) so per-page PDFs — which have no cover article —
+     keep the default A4 margins on their first page. */
+  @page cover {
+    margin: 0;
+    @top-left { content: none; }
+    @top-right { content: none; }
+    @bottom-left { content: none; }
+    @bottom-right { content: none; }
+    @right-middle { content: none; }
+  }
+
+  /* TOC pages: roman page numbers, no chapter title in footer */
+  @page toc {
+    @bottom-left {
+      content: "Table of Contents";
+      font-family: "Inter", sans-serif;
+      font-size: 8pt;
+      color: #64748b;
+      vertical-align: top;
+      padding-top: 4mm;
+      border-top: 0.4pt solid #cbd5e1;
+    }
+    @bottom-right {
+      content: counter(page, lower-roman);
+      font-family: "Inter", sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #1e1b4b;
+      text-align: right;
+      vertical-align: top;
+      padding-top: 4mm;
+      border-top: 0.4pt solid #cbd5e1;
+    }
+  }
+
+  /* Make the TOC use roman numerals and reset page count after */
+  #doc-toc {
+    page: toc;
+    counter-reset: page 1;
+  }
+
+  /* String set: capture chapter title from h1 for use in @top-right */
+  h1 {
+    string-set: chapter content();
+  }
+
+  /* Breathing room above the very first content heading on each page,
+     so body content does not crowd the top hairline / running header. */
+  .md-typeset > h1:first-child {
+    margin-top: 6mm;
+  }
+
+  /* ========================================================================
+     COVER PAGE STYLING (mkdocs-with-pdf article#doc-cover)
+     ======================================================================== */
+
+  #doc-cover {
+    page: cover;
+    page-break-after: always;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #1e1b4b;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    display: block;
+    position: relative;
+  }
+
+  #doc-cover .cover-band-top,
+  #doc-cover .cover-band-bottom {
+    height: 18mm;
+    background: #0f0d2e;
+    width: 100%;
+  }
+  #doc-cover .cover-band-bottom {
+    border-top: 4pt solid #7c3aed;
+  }
+
+  #doc-cover .cover-content {
+    padding: 40mm 30mm;
+    display: block;
+  }
+
+  #doc-cover .cover-logo {
+    margin-bottom: 30mm;
+  }
+  #doc-cover .cover-logo img {
+    width: 70mm;
+    height: auto;
+    display: block;
+  }
+
+  #doc-cover .cover-title-block h1 {
+    font-family: "Inter", sans-serif;
+    font-size: 36pt;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 6mm 0;
+    color: #ffffff;
+    string-set: none;
+  }
+
+  #doc-cover .cover-title-block h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 18pt;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    margin: 0;
+    color: #c4b5fd;
+  }
+
+  #doc-cover .cover-rule {
+    margin: 18mm 0;
+    height: 2pt;
+    width: 30mm;
+    background: #7c3aed;
+  }
+
+  #doc-cover .cover-meta {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #cbd5e1;
+  }
+  #doc-cover .cover-meta p {
+    margin: 0 0 1mm 0;
+  }
+  #doc-cover .cover-meta .cover-author {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 11pt;
+  }
+  #doc-cover .cover-meta .cover-date {
+    color: #a78bfa;
+    font-weight: 600;
+  }
+  #doc-cover .cover-meta .cover-copyright {
+    margin-top: 4mm;
+    font-size: 9pt;
+    color: #94a3b8;
+  }
+
+  /* ========================================================================
+     TYPOGRAPHY
+     ======================================================================== */
+
+  html, body {
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #1e293b;
+    background: #ffffff;
+  }
+
+  body, .md-typeset {
+    color: #1e293b;
+    background: #ffffff;
+    widows: 3;
+    orphans: 3;
+  }
+
+  .md-typeset {
+    font-size: 11pt;
+    line-height: 1.55;
+  }
+
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3,
+  .md-typeset h4,
+  .md-typeset h5,
+  .md-typeset h6 {
+    font-family: "Inter", sans-serif;
+    color: #1e1b4b;
+    line-height: 1.25;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .md-typeset h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    margin: 0 0 8mm 0;
+    padding-bottom: 3mm;
+    border-bottom: 1.5pt solid #7c3aed;
+  }
+  .md-typeset h2 {
+    font-size: 16pt;
+    font-weight: 600;
+    margin: 8mm 0 3mm 0;
+  }
+  .md-typeset h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    color: #312e81;
+    margin: 6mm 0 2mm 0;
+  }
+  .md-typeset h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #475569;
+    margin: 4mm 0 2mm 0;
+  }
+  .md-typeset h5,
+  .md-typeset h6 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #64748b;
+    margin: 3mm 0 1mm 0;
+  }
+
+  .md-typeset p {
+    margin: 0 0 3mm 0;
+    text-align: left;
+    hyphens: manual;
+    word-spacing: normal;
+  }
+
+  .md-typeset a {
+    color: #1e1b4b;
+    text-decoration: underline;
+    word-break: break-word;
+  }
+
+  .md-typeset strong {
+    color: #1e1b4b;
+    font-weight: 700;
+  }
+
+  .md-typeset code,
+  .md-typeset kbd {
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 9.5pt;
+    background: #f1f5f9;
+    padding: 0.5mm 1.2mm;
+    border-radius: 2pt;
+    color: #1e293b;
+  }
+
+  .md-typeset pre,
+  .md-typeset pre > code {
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 9pt;
+    line-height: 1.45;
+    background: #f8fafc;
+    border: 0.4pt solid #cbd5e1;
+    border-radius: 3pt;
+    padding: 2.5mm 3mm;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .md-typeset pre > code {
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+
+  /* ========================================================================
+     LISTS
+     ======================================================================== */
+
+  .md-typeset ul,
+  .md-typeset ol {
+    margin: 0 0 3mm 6mm;
+    padding: 0;
+  }
+  .md-typeset li {
+    margin: 0 0 1mm 0;
+  }
+  .md-typeset li > p {
+    margin: 0 0 1mm 0;
+  }
+
+  /* ========================================================================
+     TABLES
+     ======================================================================== */
+
+  .md-typeset table:not([class]),
+  .md-typeset table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    line-height: 1.4;
+    margin: 4mm 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 0.4pt solid #cbd5e1;
+  }
+  .md-typeset table th {
+    background: #1e1b4b;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 9.5pt;
+    text-align: left;
+    padding: 2mm 3mm;
+    border: 0.4pt solid #1e1b4b;
+  }
+  .md-typeset table td {
+    padding: 2mm 3mm;
+    border: 0.4pt solid #cbd5e1;
+    vertical-align: top;
+  }
+  .md-typeset table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  /* ========================================================================
+     ADMONITIONS
+     ======================================================================== */
+
+  .md-typeset .admonition,
+  .md-typeset details {
+    border: 0.4pt solid #cbd5e1;
+    border-left: 3pt solid #7c3aed;
+    border-radius: 3pt;
+    background: #f8fafc;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: none;
+    font-size: 10pt;
+  }
+  .md-typeset .admonition-title,
+  .md-typeset summary {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #1e1b4b;
+    margin: 0 0 2mm 0;
+    padding: 0;
+    background: transparent !important;
+    font-size: 10.5pt;
+  }
+  .md-typeset .admonition-title::before,
+  .md-typeset summary::before {
+    display: none;
+  }
+  .md-typeset .admonition.note,
+  .md-typeset details.note { border-left-color: #2563eb; }
+  .md-typeset .admonition.warning,
+  .md-typeset details.warning { border-left-color: #d97706; }
+  .md-typeset .admonition.danger,
+  .md-typeset details.danger { border-left-color: #dc2626; }
+  .md-typeset .admonition.tip,
+  .md-typeset details.tip,
+  .md-typeset .admonition.success,
+  .md-typeset details.success { border-left-color: #059669; }
+  .md-typeset .admonition.abstract,
+  .md-typeset details.abstract { border-left-color: #7c3aed; }
+
+  /* ========================================================================
+     IMAGES & MERMAID DIAGRAMS
+     ======================================================================== */
+
+  .md-typeset img,
+  .md-typeset svg,
+  .mermaid svg {
+    max-width: 100%;
+    /* Cap any single image/diagram to the available A4 content area so
+       oversize SVGs (architecture diagrams) scale down rather than split
+       across pages. With our 26mm/22mm vertical margins, the body is
+       ~249mm tall; we leave a small buffer so adjacent text on the same
+       page does not push the image over the edge. */
+    max-height: 230mm;
+    height: auto;
+    object-fit: contain;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .md-typeset img.hero-img {
+    width: 100%;
+    max-height: 230mm;
+    margin: 4mm 0;
+    border-radius: 3pt;
+    object-fit: contain;
+  }
+  /* When a paragraph contains only an image, give the image its own
+     page-fit envelope so a tall figure starts on a fresh page rather
+     than getting pushed past the bottom margin. */
+  .md-typeset p > img:only-child,
+  .md-typeset p > picture:only-child > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mermaid {
+    text-align: center;
+    margin: 4mm auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ========================================================================
+     TABLE OF CONTENTS (mkdocs-with-pdf)
+     ======================================================================== */
+
+  #doc-toc {
+    page-break-before: always;
+  }
+  #doc-toc h1 {
+    font-family: "Inter", sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #1e1b4b;
+    border-bottom: 1.5pt solid #7c3aed;
+    padding-bottom: 3mm;
+    margin: 0 0 8mm 0;
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+  #doc-toc nav,
+  #doc-toc ul,
+  #doc-toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #doc-toc li {
+    margin: 0;
+    padding: 0;
+  }
+  #doc-toc a {
+    display: block;
+    text-decoration: none;
+    color: #1e293b;
+    padding: 1mm 0;
+  }
+  #doc-toc a::after {
+    content: leader('. ') target-counter(attr(href), page);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  /* H1 TOC entries: bold, primary color */
+  #doc-toc > nav > ul > li > a,
+  #doc-toc > ul > li > a {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+    color: #1e1b4b;
+    padding: 2mm 0 1mm 0;
+    margin-top: 3mm;
+    border-top: 0.3pt solid #e2e8f0;
+  }
+  /* H2 TOC entries: regular, indented */
+  #doc-toc ul ul li a {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 400;
+    font-size: 10pt;
+    color: #1e293b;
+    padding-left: 6mm;
+  }
+  /* H3 TOC entries: smaller, more indented, muted */
+  #doc-toc ul ul ul li a {
+    font-size: 9.5pt;
+    color: #475569;
+    padding-left: 12mm;
+  }
+
+  /* ========================================================================
+     SUPPRESS WEB-ONLY UI
+     ======================================================================== */
+
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-search,
+  .md-source,
+  .md-top,
+  .md-content__button,
+  .md-skip,
+  .md-clipboard,
+  .md-dialog,
+  .md-feedback,
+  .md-banner,
+  .nexus-nav-toggle,
+  .nexus-pdf-bar,
+  .headerlink,
+  .twemoji {
+    display: none !important;
+  }
+
+  /* Flatten Material's flex/grid/sticky screen layout — required because
+     the theme uses display:flex, position:sticky, transforms, and
+     height:100% on layout shells, which paged-media renderers
+     (WeasyPrint) interpret as a single-page viewport, truncating
+     overflow content. */
+  html,
+  body {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+  .md-container,
+  .md-main,
+  .md-main__inner,
+  .md-content,
+  .md-content__inner,
+  .md-grid,
+  article,
+  main {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    transform: none !important;
+    flex: none !important;
+  }
+}

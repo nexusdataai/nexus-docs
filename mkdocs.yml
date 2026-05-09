@@ -35,11 +35,35 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/pdf.css
+
+extra_javascript:
+  - javascripts/sidebar-toggle.js
+  - javascripts/pdf-download.js
 
 plugins:
   - search
   - git-revision-date-localized:
       enable_creation_date: true
+  - pdf-export:
+      verbose: false
+      combined: false
+      enabled_if_env: ENABLE_PDF_EXPORT
+  - with-pdf:
+      enabled_if_env: ENABLE_PDF_EXPORT
+      output_path: nexus-data-platform.pdf
+      author: NexusAI
+      copyright: "Copyright (c) NexusAI Data Platform"
+      cover: true
+      cover_title: NexusAI Data Platform
+      cover_subtitle: Comprehensive Documentation
+      cover_logo: assets/nexus-logo-white.svg
+      toc_title: Table of Contents
+      toc_level: 3
+      ordered_chapter_level: 2
+      heading_shift: false
+      custom_template_path: overrides/pdf
+      render_js: false
 
 markdown_extensions:
   - admonition
@@ -261,17 +285,12 @@ nav:
     - Claude Plugin:
       - User Guide: developer/claude/user-guide.md
       - Quick Reference: developer/claude/quick-ref.md
-  - Releases:
-    - Project Scope: project-scope/index.md
-    - v0.1.0: project-scope/releases/v0.1.0.md
   - QA & Reference:
     - Tests Overview: tests/index.md
     - UAT Test Cases: UAT/testcases/nexus-uat-testcases.md
     - Functional Specifications: functional/index.md
     - Features Overview: features/index.md
     - Enterprise AI Capability FAQ: features/source/enterprise-ai-capability-faq.md
-  - Migration:
-    - From CallSense Toolkit: migration/from-callsense-toolkit.md
 
 extra:
   social:

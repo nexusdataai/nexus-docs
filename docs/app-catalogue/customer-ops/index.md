@@ -6,7 +6,7 @@ Enterprise AI applications for customer operations, powered by the Semantic Onto
 
 ## Data Plane Overview
 
-The application catalogue draws from a unified data plane spanning structured enterprise systems, contact center platforms, and unstructured data sources:
+The application catalogue draws from a unified data plane spanning structured enterprise systems, contact-center platforms, and unstructured data sources.
 
 ```mermaid
 graph TD
@@ -43,25 +43,19 @@ graph TD
 
 ---
 
-## Application Catalogue
+## Application Portfolio
 
 ### P0 — Immediate ROI
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Autonomous Issue Resolution Engine](autonomous-issue-resolution.md) | Salesforce, WXCC, Oracle ERP, SAP | Reduce avg resolution time 40-60%, cut escalations 30-45% | 4-6 weeks |
+- **[Autonomous Issue Resolution Engine](autonomous-issue-resolution.md)** — sources: Salesforce, WXCC, Oracle ERP, SAP. Reduce avg resolution time 40–60%, cut escalations 30–45%. Time to value 4–6 weeks.
 
 ### P1 — High Value
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Unified Operations Hub](unified-operations-hub.md) | Salesforce, Oracle ERP, WXCC, SAP | Reduce cross-system handoff time 50-70%, cut billing errors 25-35% | 6-8 weeks |
+- **[Unified Operations Hub](unified-operations-hub.md)** — sources: Salesforce, Oracle ERP, WXCC, SAP. Reduce cross-system handoff time 50–70%, cut billing errors 25–35%. Time to value 6–8 weeks.
 
 ### P2 — Strategic Value
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Proactive Agent Assist Copilot](proactive-agent-assist.md) | Salesforce, WXCC, Oracle ERP, Social Listening | Increase first-call resolution 15-25%, uplift CSAT 8-12 points | 8-10 weeks |
+- **[Proactive Agent Assist Copilot](proactive-agent-assist.md)** — sources: Salesforce, WXCC, Oracle ERP, Social Listening. Increase first-call resolution 15–25%, uplift CSAT 8–12 points. Time to value 8–10 weeks.
 
 ---
 
@@ -70,7 +64,7 @@ graph TD
 Key business entities resolved across systems by the Semantic Ontology Layer:
 
 | Business Entity | Salesforce CRM | Oracle ERP | SAP | Webex Contact Center |
-|----------------|---------------|------------|-----|---------------------|
+|---|---|---|---|---|
 | **Customer** | Account / Contact | AR_Customer | Business Partner | Caller Profile |
 | **Case / Ticket** | Case / Case_Comment | — | Service_Order | Call_Record |
 | **Billing** | — | AR_Invoice / AR_Payment | — | — |
@@ -84,7 +78,7 @@ Key business entities resolved across systems by the Semantic Ontology Layer:
 
 ## Architecture Pattern
 
-Every application in this catalogue follows a consistent execution pattern:
+Every application in this catalogue follows the same execution pattern:
 
 ```mermaid
 flowchart LR
@@ -93,10 +87,10 @@ flowchart LR
     B --> D["Action Layer<br/><i>Recommendations · Automation</i>"]
 ```
 
-1. **Data Ingestion** — Ontology layer resolves entities across Salesforce, Oracle ERP, SAP, WXCC, and unstructured sources
-2. **AI Workflow Execution** — LLM-powered pipelines apply business logic, anomaly detection, and predictive models
-3. **Presentation** — Dashboards surface KPIs; alerts trigger on threshold breaches
-4. **Action** — Recommendations feed back into source systems or trigger automated workflows
+- **Data Ingestion** — Ontology layer resolves entities across Salesforce, Oracle ERP, SAP, WXCC, and unstructured sources.
+- **AI Workflow Execution** — LLM-powered pipelines apply business logic, anomaly detection, and predictive models.
+- **Presentation** — Dashboards surface KPIs; alerts trigger on threshold breaches.
+- **Action** — Recommendations feed back into source systems or trigger automated workflows.
 
 ---
 

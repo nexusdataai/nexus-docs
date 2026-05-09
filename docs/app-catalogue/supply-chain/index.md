@@ -6,7 +6,7 @@ Enterprise AI applications for beverage supply chain operations, powered by the 
 
 ## Data Plane Overview
 
-The application catalogue draws from a unified data plane spanning structured enterprise systems and unstructured data sources:
+The application catalogue draws from a unified data plane spanning structured enterprise systems and unstructured data sources.
 
 ```mermaid
 graph TD
@@ -53,35 +53,27 @@ graph TD
 
 ---
 
-## Application Catalogue
+## Application Portfolio
 
 ### P0 — Immediate ROI
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Demand Forecasting & Planning Engine](demand-forecasting.md) | Salesforce, SAP, Social Listening, Oracle ERP | Reduce overstock 15-25%, cut stockouts 20-30% | 4-6 weeks |
-| [Inventory Optimization & Distribution Intelligence](inventory-optimization.md) | SAP, Oracle ERP, Salesforce | Reduce carrying costs 15-20%, cut waste 25-40% | 4-6 weeks |
+- **[Demand Forecasting & Planning Engine](demand-forecasting.md)** — sources: Salesforce, SAP, Social Listening, Oracle ERP. Reduce overstock 15–25%, cut stockouts 20–30%. Time to value 4–6 weeks.
+- **[Inventory Optimization & Distribution Intelligence](inventory-optimization.md)** — sources: SAP, Oracle ERP, Salesforce. Reduce carrying costs 15–20%, cut waste 25–40%. Time to value 4–6 weeks.
 
 ### P1 — High Value
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Intelligent Order-to-Cash Monitor](order-to-cash.md) | Salesforce, Oracle ERP, SAP | Reduce DSO by 10-15 days, cut revenue leakage 5-8% | 6-8 weeks |
-| [Supply Chain Risk & Disruption Radar](supply-chain-risk.md) | SAP, Oracle ERP, Social Listening, Google Drive | Reduce disruption impact 30-40% | 6-8 weeks |
+- **[Intelligent Order-to-Cash Monitor](order-to-cash.md)** — sources: Salesforce, Oracle ERP, SAP. Reduce DSO 10–15 days, cut revenue leakage 5–8%. Time to value 6–8 weeks.
+- **[Supply Chain Risk & Disruption Radar](supply-chain-risk.md)** — sources: SAP, Oracle ERP, Social Listening, Google Drive. Reduce disruption impact 30–40%. Time to value 6–8 weeks.
 
 ### P2 — Strategic Value
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Customer 360 & Revenue Growth Intelligence](customer-360.md) | Salesforce, Oracle ERP, Social Listening, SAP | Increase wallet share 8-12%, reduce churn 15-20% | 8-10 weeks |
-| [Procurement & Spend Analytics](procurement-analytics.md) | Oracle ERP, SAP, Google Drive, File Uploads | 3-7% procurement cost savings | 8-10 weeks |
+- **[Customer 360 & Revenue Growth Intelligence](customer-360.md)** — sources: Salesforce, Oracle ERP, Social Listening, SAP. Increase wallet share 8–12%, reduce churn 15–20%. Time to value 8–10 weeks.
+- **[Procurement & Spend Analytics](procurement-analytics.md)** — sources: Oracle ERP, SAP, Google Drive, File Uploads. 3–7% procurement cost savings. Time to value 8–10 weeks.
 
 ### P3 — Operational Excellence
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Production & Quality Control Copilot](production-quality.md) | SAP, Oracle ERP, File Uploads | Improve OEE 5-10%, reduce quality waste 20% | 10-12 weeks |
-| [ESG & Sustainability Tracker](esg-sustainability.md) | SAP, Oracle ERP, Social Listening, Google Drive | 5-10% energy/water cost reduction | 10-12 weeks |
+- **[Production & Quality Control Copilot](production-quality.md)** — sources: SAP, Oracle ERP, File Uploads. Improve OEE 5–10%, reduce quality waste 20%. Time to value 10–12 weeks.
+- **[ESG & Sustainability Tracker](esg-sustainability.md)** — sources: SAP, Oracle ERP, Social Listening, Google Drive. 5–10% energy / water cost reduction. Time to value 10–12 weeks.
 
 ---
 
@@ -90,7 +82,7 @@ graph TD
 Key business entities resolved across systems by the Semantic Ontology Layer:
 
 | Business Entity | Salesforce CRM | Oracle ERP | SAP |
-|----------------|---------------|------------|-----|
+|---|---|---|---|
 | **Product / SKU** | Opportunity Line Item | Item Master | Material Master |
 | **Customer** | Account / Contact | Customer Master | Business Partner |
 | **Order** | Opportunity | Sales Order / Invoice | Sales Document |
@@ -102,7 +94,7 @@ Key business entities resolved across systems by the Semantic Ontology Layer:
 
 ## Architecture Pattern
 
-Every application in this catalogue follows a consistent execution pattern:
+Every application in this catalogue follows the same execution pattern:
 
 ```mermaid
 flowchart LR
@@ -111,10 +103,10 @@ flowchart LR
     B --> D["Action Layer<br/><i>Recommendations · Automation</i>"]
 ```
 
-1. **Data Ingestion** — Ontology layer resolves entities across Salesforce, Oracle ERP, SAP, and unstructured sources
-2. **AI Workflow Execution** — LLM-powered pipelines apply business logic, anomaly detection, and predictive models
-3. **Presentation** — Dashboards surface KPIs; alerts trigger on threshold breaches
-4. **Action** — Recommendations feed back into source systems or trigger automated workflows
+- **Data Ingestion** — Ontology layer resolves entities across Salesforce, Oracle ERP, SAP, and unstructured sources.
+- **AI Workflow Execution** — LLM-powered pipelines apply business logic, anomaly detection, and predictive models.
+- **Presentation** — Dashboards surface KPIs; alerts trigger on threshold breaches.
+- **Action** — Recommendations feed back into source systems or trigger automated workflows.
 
 ---
 

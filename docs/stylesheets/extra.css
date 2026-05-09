@@ -216,6 +216,158 @@
 }
 
 /* ==========================================================================
+   Sidebar collapse toggle
+   ========================================================================== */
+
+.nexus-nav-toggle {
+  position: fixed;
+  top: 5.4rem;
+  left: 12.4rem;
+  z-index: 5;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #e5e3f0;
+  background: #ffffff;
+  color: #6d28d9;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(30, 27, 75, 0.12);
+  transition: left 0.18s ease, transform 0.18s ease, background 0.15s ease;
+}
+
+.nexus-nav-toggle:hover {
+  background: #f5f3ff;
+}
+
+.nexus-nav-toggle svg {
+  display: block;
+  transition: transform 0.18s ease;
+}
+
+body.nav-collapsed .nexus-nav-toggle {
+  left: 0.5rem;
+}
+
+body.nav-collapsed .nexus-nav-toggle svg {
+  transform: rotate(180deg);
+}
+
+[data-md-color-scheme="slate"] .nexus-nav-toggle {
+  background: #1e293b;
+  border-color: #334155;
+  color: #a78bfa;
+}
+
+[data-md-color-scheme="slate"] .nexus-nav-toggle:hover {
+  background: #334155;
+}
+
+@media screen and (min-width: 76.25em) {
+  .nexus-nav-toggle {
+    display: inline-flex;
+  }
+
+  body.nav-collapsed .md-sidebar--primary {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Download-as-PDF button (per page)
+   ========================================================================== */
+
+.nexus-pdf-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 0.75rem 0;
+}
+
+.nexus-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(124, 58, 237, 0.25);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.nexus-pdf-btn:hover {
+  background: #6d28d9;
+}
+
+.nexus-pdf-btn:active {
+  transform: translateY(1px);
+}
+
+.nexus-pdf-btn svg {
+  display: block;
+  fill: currentColor;
+}
+
+[data-md-color-scheme="slate"] .nexus-pdf-btn {
+  background: #a78bfa;
+  color: #0f172a;
+}
+
+[data-md-color-scheme="slate"] .nexus-pdf-btn:hover {
+  background: #c4b5fd;
+}
+
+@media screen and (max-width: 60em) {
+  .nexus-pdf-btn span {
+    display: none;
+  }
+  .nexus-pdf-btn {
+    padding: 0.4rem;
+  }
+}
+
+/* ==========================================================================
+   Browser-print fallback — used only when window.print() is invoked from a
+   page where no pre-built PDF exists. The full PDF stylesheet lives in
+   stylesheets/pdf.css and is the primary path for both per-page and combined
+   PDFs generated server-side via WeasyPrint.
+   ========================================================================== */
+
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-search,
+  .md-content__button,
+  .md-source,
+  .md-top,
+  .nexus-nav-toggle,
+  .nexus-pdf-bar {
+    display: none !important;
+  }
+
+  .md-main,
+  .md-main__inner,
+  .md-content,
+  .md-content__inner,
+  .md-grid {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ==========================================================================
    Mermaid Diagrams — sensible sizing, no oversized SVGs
    ========================================================================== */
 

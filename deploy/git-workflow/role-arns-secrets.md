@@ -1,8 +1,8 @@
-# StarHub Docs GitHub Actions
+# NexusAI Docs GitHub Actions
 
 | Secret Name         | Value |
 |---------------------|-------|
-| AWS_ROLE_TO_ASSUME  | arn:aws:iam::764119721991:role/GitHubActions-starhub-docs-main |
+| AWS_ROLE_TO_ASSUME  | arn:aws:iam::764119721991:role/GitHubActions-nexus-docs-main |
 | DOCS_S3_BUCKET     | totogi-callsense-doc |
 | DOCS_CLOUDFRONT_ID | E15B2077ZA0NR4 |
 

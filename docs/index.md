@@ -15,14 +15,6 @@ Welcome to the comprehensive documentation portal for the **NexusAI Data Platfor
   <img src="assets/nexus-data-ai.png" alt="NexusAI Enterprise Reasoning Platform" class="hero-img" loading="lazy" decoding="async" width="1667" height="943">
 </picture>
 
-
-[![Backend](https://img.shields.io/badge/nexus--backend-repo-blue)](https://github.com/nexusdataai/nexus-backend)
-[![UI](https://img.shields.io/badge/nexus--ui-repo-blue)](https://github.com/nexusdataai/nexus-ui)
-[![Deployer](https://img.shields.io/badge/nexus--deployer-repo-blue)](https://github.com/nexusdataai/nexus-deployer)
-[![Docs](https://img.shields.io/badge/nexus--docs-repo-blue)](https://github.com/nexusdataai/nexus-docs)
-
----
-
 ## Executive Summary
 
 ### What is NexusAI?
@@ -31,7 +23,7 @@ NexusAI is **the Intelligent AI Operating Layer for the Enterprise**. Rather tha
 
 ### How It Works
 
-![NexusAI Platform](assets/nexusai-platform.jpeg)
+![NexusAI Platform](assets/nexusai-ontology.png)
 
 NexusAI operates through a four-stage pipeline that turns disconnected enterprise data into autonomous action:
 
@@ -46,6 +38,12 @@ NexusAI operates through a four-stage pipeline that turns disconnected enterpris
 
 ## Key Capabilities
 
+!!! abstract "AI Engine for Ontologies"
+    Distributed AI engine that runs any ontology as executable AI workloads -- data prep, model training, fine-tuning, inference, batch scoring, and real-time AI. Pluggable compute backends (CPU, GPU, TPU, Spark, Ray, Kubernetes) so the same ontology runs anywhere from a single node to a multi-region cluster.
+
+!!! abstract "AI-Ops Stack for Ontologies"
+    Production-grade operating layer wrapped around every ontology and AI workflow: Observability, ML-Ops, Governance, Automation, and Optimization. Policy guardrails, audit trail, drift and cost monitoring, and lifecycle management built in -- not bolted on.
+
 !!! abstract "Enterprise Data Integration"
     Pre-built connectors for CRM, ERP, data warehouses, and SaaS platforms. Unified data access layer with real-time and batch ingestion. Zero-migration architecture -- NexusAI connects to systems in place.
 
@@ -55,8 +53,14 @@ NexusAI operates through a four-stage pipeline that turns disconnected enterpris
 !!! abstract "AI Reasoning Engine (ReAct)"
     Structured Reasoning + Acting framework for multi-step decision-making. Cross-system analysis that no single tool can perform alone. Transparent reasoning traces for auditability and compliance.
 
-!!! abstract "Autonomous Execution"
-    AI agents that carry out complex, multi-step workflows end to end. Human-in-the-loop guardrails for high-stakes decisions. Full audit trail of every action taken and every decision made.
+!!! abstract "AI Analytics"
+    Dashboards, Views, and the Four-Views framework (Outcomes / Predict / Diagnose / Monitor) auto-seeded for every Solution. Solution Mapping binds each View into the right Solution UI; the Dashboard Builder with the AI Query Builder turns natural language into Virtual Data Layer queries.
+
+!!! abstract "AI Automation"
+    Journey engine for production workflows -- multi-step pipelines with persistent run history, audit trail, and Manual / Schedule / Webhook triggers. The AI Copilot Journey turns a plain-English goal into a draft journey; the Journey Builder offers visual authoring with a typed Tool Palette and per-step validation.
+
+!!! abstract "AI Simulators"
+    Built-in enterprise data simulators (starting with the SFDC / CRM simulator) that let development and QA teams exercise the full Data Plane and Reasoning Plane without connecting to live external systems. In-memory stores backed by S3 dumps swap into the same FDW interface, so journeys, dashboards, and agents run unchanged.
 
 ---
 
@@ -104,9 +108,6 @@ Solution architecture, infrastructure requirements, integration guides, database
 
 ### [Operational Documentation](operational/index.md)
 Deployment guides, configuration management, monitoring, troubleshooting, and day-to-day operational procedures.
-
-### [Application Catalogue](project-scope/index.md)
-Application definitions, release notes, and metadata tracking the evolution of platform capabilities and deployed solutions.
 
 ### [Developer Guide](developer/index.md)
 Development environment setup, API documentation, SDK references, testing procedures, and contribution guidelines.

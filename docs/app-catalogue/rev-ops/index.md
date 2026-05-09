@@ -6,7 +6,7 @@ Enterprise AI applications for B2B revenue operations, powered by the Semantic O
 
 ## Data Plane Overview
 
-The application catalogue draws from a unified data plane spanning structured enterprise systems and unstructured data sources:
+The application catalogue draws from a unified data plane spanning structured enterprise systems and unstructured data sources.
 
 ```mermaid
 graph TD
@@ -43,25 +43,19 @@ graph TD
 
 ---
 
-## Application Catalogue
+## Application Portfolio
 
 ### P0 — Immediate ROI
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Deal Intelligence & Contextual Analytics](deal-intelligence.md) | Salesforce CRM, Gong/Email, Product & Usage, Market Intel | Increase win rate 15-25%, reduce sales cycle 20-30% | 4-6 weeks |
+- **[Deal Intelligence & Contextual Analytics](deal-intelligence.md)** — sources: Salesforce CRM, Gong / Email, Product & Usage, Market Intel. Increase win rate 15–25%, reduce sales cycle 20–30%. Time to value 4–6 weeks.
 
 ### P1 — High Value
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Pipeline Risk & Revenue Forecasting](pipeline-risk-forecasting.md) | Salesforce CRM, Oracle Finance, Gong/Email, Market Intel | Improve forecast accuracy 30-40%, reduce pipeline surprise loss 40-50% | 6-8 weeks |
+- **[Pipeline Risk & Revenue Forecasting](pipeline-risk-forecasting.md)** — sources: Salesforce CRM, Oracle Finance, Gong / Email, Market Intel. Improve forecast accuracy 30–40%, reduce pipeline surprise loss 40–50%. Time to value 6–8 weeks.
 
 ### P2 — Strategic Value
 
-| Application | Primary Data Sources | ROI Signal | Time to Value |
-|-------------|---------------------|------------|---------------|
-| [Revenue Operations Orchestration Hub](revenue-orchestration.md) | Salesforce CRM, Oracle Finance, Product & Usage, Documents | Reduce revenue leakage 3-5%, accelerate quote-to-cash 40-60% | 8-10 weeks |
+- **[Revenue Operations Orchestration Hub](revenue-orchestration.md)** — sources: Salesforce CRM, Oracle Finance, Product & Usage, Documents. Reduce revenue leakage 3–5%, accelerate quote-to-cash 40–60%. Time to value 8–10 weeks.
 
 ---
 
@@ -70,7 +64,7 @@ graph TD
 Key business entities resolved across systems by the Semantic Ontology Layer:
 
 | Business Entity | Salesforce CRM | Oracle ERP / Finance | Communication Platforms |
-|----------------|---------------|---------------------|------------------------|
+|---|---|---|---|
 | **Deal / Opportunity** | Opportunity / Opp Line Item | — | Call Recording / Email Thread |
 | **Account / Buyer** | Account / Contact | Customer Master | Meeting Attendees |
 | **Product / SKU** | Product / Price Book | Revenue Line / Subscription | Usage Telemetry |
@@ -82,7 +76,7 @@ Key business entities resolved across systems by the Semantic Ontology Layer:
 
 ## Architecture Pattern
 
-Every application in this catalogue follows a consistent execution pattern:
+Every application in this catalogue follows the same execution pattern:
 
 ```mermaid
 flowchart LR
@@ -91,10 +85,10 @@ flowchart LR
     B --> D["Action Layer<br/><i>Recommendations · Automation</i>"]
 ```
 
-1. **Data Ingestion** — Ontology layer resolves entities across Salesforce CRM, Oracle ERP/Finance, Communication Platforms, and unstructured sources
-2. **AI Workflow Execution** — LLM-powered pipelines apply business logic, anomaly detection, and predictive models
-3. **Presentation** — Dashboards surface KPIs; alerts trigger on threshold breaches
-4. **Action** — Recommendations feed back into source systems or trigger automated workflows
+- **Data Ingestion** — Ontology layer resolves entities across Salesforce CRM, Oracle ERP / Finance, Communication Platforms, and unstructured sources.
+- **AI Workflow Execution** — LLM-powered pipelines apply business logic, anomaly detection, and predictive models.
+- **Presentation** — Dashboards surface KPIs; alerts trigger on threshold breaches.
+- **Action** — Recommendations feed back into source systems or trigger automated workflows.
 
 ---
 

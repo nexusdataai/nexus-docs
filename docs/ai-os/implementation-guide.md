@@ -23,7 +23,7 @@ Provides virtualised read/write access to enterprise sources without bulk replic
 | FDW extension | Multicorn (Python FDW) | Pre-installed in BSSMagic image |
 | Vector extension | pgvector 0.8.1 | Installed at runtime |
 | Foreign server | `nexus_data` | Salesforce sandbox |
-| Foreign tables | 1,661 | Maps to Salesforce objects |
+| Foreign tables | per source schema | Maps to Salesforce objects |
 | CRM runtime | BSSMagic TMF API (port 8000) | Same pod as PostgreSQL |
 
 ### Source files (selection)
@@ -132,13 +132,13 @@ CREATE TABLE control_plane_embeddings (
 
 Indexes: B-tree on `content_type`; IVFFlat on `embedding` (cosine).
 
-Current contents: 1 fdw_server + 1,661 fdw_tables = **1,662 embeddings**.
+Contents grow with the connected source schema — every foreign server and every foreign table contributes one embedding.
 
 ### Registered tools
 
 | Tool | Risk | Approval | Description |
 |---|---|---|---|
-| `search_schema_knowledge` | read_only | no | Semantic search over the 1,662 schema embeddings |
+| `search_schema_knowledge` | read_only | no | Semantic search over the schema embedding index |
 | `discover_tables` | read_only | no | List / filter foreign tables by name pattern |
 | `discover_columns` | read_only | no | Column metadata for a specific table |
 | `query_table` | read_only | no | Parameterised SELECT via FDW (max 100 rows) |
@@ -248,7 +248,7 @@ The script builds backend + frontend Docker images, pushes to ECR, restarts the 
 curl -X POST https://<host>/api/v1/control-plane/index
 ```
 
-Re-reads all foreign tables from the FDW discovery cache, generates fresh embeddings, and upserts them into pgvector. Takes about 40 s for the current 1,661 tables.
+Re-reads all foreign tables from the FDW discovery cache, generates fresh embeddings, and upserts them into pgvector.
 
 If the BSSMagic pod is restarted, pgvector must be reinstalled (it is installed at runtime in the current build):
 
@@ -268,7 +268,7 @@ Then re-index via the API.
 | User Interface (Chat / API / Copilot) | `CopilotPage.tsx` at `/copilot` | Deployed |
 | Identity & RBAC | Cognito SSO + session cookies + role-based access | Deployed |
 | Intent + Risk Analyzer | `intent_analyzer.py` | Deployed |
-| Enterprise RAG | `rag_service.py` + `vector_store.py` (pgvector, 1,662 embeddings) | Deployed |
+| Enterprise RAG | `rag_service.py` + `vector_store.py` (pgvector schema-embedding index) | Deployed |
 | ReAct Planning Engine | `agent_executor.py` (PLAN -> EXECUTE -> OBSERVE, max 10 steps) | Deployed |
 | Policy & Guardrail Core | `policy_engine.py` | Deployed |
 | Tool Abstraction Layer | `tool_registry.py` + 6 tools (FDW + RAG + CRM) | Deployed |

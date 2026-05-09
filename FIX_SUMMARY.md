@@ -84,11 +84,11 @@ All external documentation files were copied into the `docs/` directory structur
 ## Configuration Updates
 
 ### mkdocs.yml Navigation
-Updated all navigation paths from external references (`../starhub-deployer/...`) to local paths within `docs/`:
+Updated all navigation paths from external references (`../nexus-deployer/...`) to local paths within `docs/`:
 
 **Before:**
 ```yaml
-- Executive Summary: ../starhub-deployer/doc/business/executive-summary.md
+- Executive Summary: ../nexus-deployer/doc/business/executive-summary.md
 ```
 
 **After:**
@@ -159,7 +159,7 @@ Total markdown files: 53
 ## Directory Structure
 
 ```
-starhub-docs/
+nexus-docs/
 ├── docs/
 │   ├── index.md                          ✅ Working
 │   ├── business/
@@ -204,7 +204,7 @@ starhub-docs/
 
 ### Local Testing
 ```bash
-cd /opt/mycode/trilogy/starhub-docs
+cd /opt/mycode/trilogy/nexus-docs
 source .venv/bin/activate
 mkdocs serve
 # Visit http://localhost:8000
@@ -223,7 +223,7 @@ mkdocs build --clean
 
 ### 1. Test the Site Locally
 ```bash
-cd /opt/mycode/trilogy/starhub-docs
+cd /opt/mycode/trilogy/nexus-docs
 source .venv/bin/activate
 mkdocs serve
 ```
@@ -236,7 +236,7 @@ Visit http://localhost:8000 and verify:
 
 ### 2. Deploy to GitHub Pages
 ```bash
-cd /opt/mycode/trilogy/starhub-docs
+cd /opt/mycode/trilogy/nexus-docs
 git add .
 git commit -m "fix: resolve all 404 errors by copying documentation into docs/"
 git push origin main
@@ -249,7 +249,7 @@ GitHub Actions will automatically:
 
 ### 3. Access Production Site
 Once deployed, access at:
-- `https://<username>.github.io/starhub-docs/`
+- `https://<username>.github.io/nexus-docs/`
 
 ---
 
@@ -262,7 +262,7 @@ Since documentation is now copied into `docs/`, you'll need to sync changes:
 **Option A: Manual Sync**
 ```bash
 # When source docs change, re-copy them
-cp ../starhub-deployer/doc/business/*.md docs/business/source/
+cp ../nexus-deployer/doc/business/*.md docs/business/source/
 ```
 
 **Option B: Automated Sync Script**

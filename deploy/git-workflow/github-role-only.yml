@@ -2,7 +2,7 @@
 # Requires existing GitHub OIDC provider in the account
 
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'GitHub Actions IAM Role for StarHub Docs (S3 + CloudFront)'
+Description: 'GitHub Actions IAM Role for NexusAI Docs (S3 + CloudFront)'
 
 Parameters:
   GitHubOrganization:
@@ -13,7 +13,7 @@ Parameters:
   GitHubRepository:
     Type: String
     Description: GitHub repository name
-    Default: "starhub-docs"
+    Default: "nexus-docs"
 
   BranchName:
     Type: String
@@ -45,7 +45,7 @@ Resources:
                   - !Sub 'repo:${GitHubOrganization}/${GitHubRepository}:ref:refs/heads/${BranchName}'
                   - !Sub 'repo:${GitHubOrganization}/${GitHubRepository}:pull/*'
       Policies:
-        - PolicyName: StarHubDocsDeploymentPolicy
+        - PolicyName: NexusDocsDeploymentPolicy
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
