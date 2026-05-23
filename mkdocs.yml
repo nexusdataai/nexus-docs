@@ -111,6 +111,10 @@ nav:
     - Solutions Catalogue: console/solutions-catalogue.md
     - AI Analytics: console/ai-analytics.md
     - AI Automation: console/ai-automation.md
+  - CPQ:
+    - Overview: cpq/def.md
+    - Scope & UAT: cpq/scope.md
+    - Regression & Demo: cpq/regression.md
   - Solutions:
     - Supply Chain:
       - Overview: app-catalogue/supply-chain/index.md
@@ -122,6 +126,8 @@ nav:
       - Procurement Analytics: app-catalogue/supply-chain/procurement-analytics.md
       - Production & Quality: app-catalogue/supply-chain/production-quality.md
       - ESG & Sustainability: app-catalogue/supply-chain/esg-sustainability.md
+      - Trade CPQ: app-catalogue/supply-chain/trade-cpq.md
+      - Sourcing CPQ: app-catalogue/supply-chain/sourcing-cpq.md
       - Ontology Layer:
         - Overview: app-catalogue/supply-chain/ontology/index.md
         - Schema Reference: app-catalogue/supply-chain/ontology/schema-reference.md
