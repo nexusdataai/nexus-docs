@@ -1,3 +1,5 @@
+Focus is automation framework + tool builder
+
 Docs Improvements
 Dashboard Improvement 
 Foundries
