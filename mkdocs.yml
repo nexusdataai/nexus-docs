@@ -99,7 +99,10 @@ nav:
       - Implementation Guide: ai-os/implementation-guide.md
     - Semantic RAG:
       - Overview: ai-os/semantic-rag.md
+      - Reference Algorithm: semantic-layer/algorithm.md
       - Pipeline: semantic-layer/semantic-rag-pipeline.md
+      - Indexing & Copilot Reasoning: semantic-layer/knowledge-indexing-and-copilot-reasoning.md
+      - Ontology Stack Choices: semantic-layer/ontology-stack-choices.md
     - Simulators:
       - Overview: simulators/index.md
       - SFDC / CRM Simulator: simulators/sfdc/index.md
