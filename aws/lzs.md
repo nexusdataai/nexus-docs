@@ -19,6 +19,7 @@ Promodeagro-2 --(Rejected)
 Acc No --040740747817
 papu.bhattacharya@promodeagro.com / Promode@1976
 builder password -Promodeagro@1976
+AKIAQS7CWPIU44OH3F4R / Xb16CvMtOD9vRLI0H1JsQCzdBJ1uGt2RC+opiCNc
 ======================================
 
 Pratik Researcher (Applied)

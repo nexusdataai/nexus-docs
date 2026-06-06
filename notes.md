@@ -26,3 +26,10 @@ Nexus-Ops — AI Entire Operations Stack
 Nexus-Simulator- Simulate data scenarios for AI
 Nexus-Delivery - Deliver foundries and solution
 Nexus-Operator - Kubernetes Operator For Nexus Platform
+
+Hi ,
+I specialize in shaping data for AI diffusion. Delivered three prod ready AI  solutions with ROI.
+Please connect !
+
+Multiple Account --
+DPIT / Website Fixes -- AWS Activate 
