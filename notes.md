@@ -31,5 +31,8 @@ Hi ,
 I specialize in shaping data for AI diffusion. Delivered three prod ready AI  solutions with ROI.
 Please connect !
 
-Multiple Account --
-DPIT / Website Fixes -- AWS Activate 
+Todays Focus--
+
+Data Gap Planning and Execution
+Backup / Recovery and New cluster provisioning.
+Complete Spec Tool
