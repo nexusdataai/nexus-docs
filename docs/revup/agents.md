@@ -69,6 +69,8 @@ A few design calls worth making early, given your earlier question about plannin
 - **Pricing and contract agents** should stay human-in-the-loop given the cost of getting it wrong — the agent proposes, a human approves.
 - **The Orchestrator** is where you actually need planning/sequencing logic, since it's coordinating dependent steps across pillars (profile → recommend → campaign), not just reacting to a single feedback signal.
 
+![alt text](image.png)
+
 That's the core loop: **data → orchestrator → three agent groups → feedback aggregator → back into profiling and recommendation.** Here's how each connection actually works in practice.
 
 **Data sources → Orchestrator**
@@ -88,4 +90,54 @@ This is the piece most teams under-build. It needs to capture: did the rep accep
 
 One implementation detail worth flagging: the **orchestrator and feedback aggregator are the two agents that need real state** — everything else can mostly be close to stateless (given profile + account ID, produce output). If you're prototyping, I'd build those two first with a simple event log / state store, then bolt the individual agents on, since retrofitting state management later is the painful part.
 
-Want me to go one level deeper — e.g. the actual trigger conditions and data contracts (what fields each agent needs from the previous one)?
+![alt text](image-1.png)
+
+Recommendation agent
+Input: customer profile (segment, intent score, existing products, usage patterns). Output: ranked list of product/SKU combinations — next-best-product, cross-sell, upsell candidates.
+
+This is your clearest reinforcement-style loop. The feedback signal is direct and unambiguous: did the rep accept the recommendation as-is, modify it, or ignore it and pick something else? Did the deal close? That signal should retrain the ranking model over time. Concretely, you'd log something like (account_id, recommended_skus, rep_action, deal_outcome) and periodically retrain or reweight against it.
+
+Pricing agent
+Input: the recommended SKUs, deal size, customer tier, competitive context. Output: a proposed price/discount band — within pre-approved guardrails.
+
+Deliberately not a fully autonomous loop. It proposes; it doesn't execute. The feedback signal here (win/loss, negotiation outcome) is noisier and slower than the recommendation signal — a rejected price could mean the price was wrong, or it could mean the rep undersold the value, or the competitor just had a better relationship. Because you can't cleanly attribute the outcome to the agent's decision, and because a bad autonomous pricing decision is expensive and hard to reverse (this is the "actions are costly/irreversible" case from earlier), this agent should always output a proposal, never a committed price.
+
+Quote validation agent
+This is the one I'd build as a genuinely tight, fully automated closed loop — the feedback signal is unambiguous (rule violated: yes/no). It checks: valid product combinations, margin floor, discount ceiling, contract term compliance. Two outcomes:
+
+Within limits → auto-finalize, straight to the rep.
+Exceeds limits → routes to deal desk.
+
+Deal desk agent
+Handles the non-standard cases: routes to the right approver based on deal size/discount depth, chases stalled approvals, escalates on SLA breach. This agent's loop is about process, not pricing judgment — it's observing "has this approval sat for 48 hours?" and nudging, not deciding whether the discount itself is right.
+
+Human approval gate
+Everything converges here regardless of path. This is intentional — even the "auto-finalize" path should surface the quote to the rep before it goes to the customer, not skip the human entirely. The rep is both the approver and the source of your feedback signal for the recommendation and pricing agents upstream.
+
+![alt text](image-2.png)
+
+That's the two-check gate the orchestrator runs on every event: freshness first, then intent.
+
+**Check 1: Is the profile fresh?**
+
+Before doing anything else, the orchestrator checks a simple timestamp/staleness condition — has this account's profile been updated within your acceptable window (say, 24-72 hours, or since the last major usage event)? This check exists purely to avoid wasted work: if ten events fire for the same account in an hour, you don't want to re-run enrichment and scoring ten times.
+
+- **Stale** → block downstream agents, trigger the profiling agents synchronously, wait for completion.
+- **Fresh** → skip straight to classification.
+
+This is a cheap, deterministic check — no LLM needed, just a lookup against a `last_profiled_at` field.
+
+**Check 2: What kind of event is this?**
+
+Once the profile is current, the orchestrator classifies *why* it was triggered. This is the more interesting routing decision, and it typically comes down to three buckets:
+
+- **Buying or risk signal** (pricing page visit, contract renewal approaching, usage spike, support escalation, champion left the company) → route to recommendation & CPQ. Something needs a concrete offer or intervention attached to it.
+- **Engagement-only signal** (opened an email, downloaded a whitepaper, attended a webinar) → route to campaign agents only. Not yet warm enough to warrant a quote — needs nurturing, not a proposal.
+
+**A detail worth calling out**: this classification step is where I'd actually use an LLM call (or a lightweight classifier model) rather than hardcoded rules, because "is this a buying signal" is genuinely fuzzy — a pricing page visit from a brand-new trial user means something different than the same visit from an account three renewals in. Hardcoded rules work for the obvious cases (renewal date within 30 days = always risk signal) but you'll want a model in the loop for the ambiguous middle.
+
+**What's implicit in the diagram but worth stating**: the two output paths aren't fully independent. When the Rec & CPQ path finishes and a quote goes out, that itself becomes a new event ("quote sent") that typically re-triggers the orchestrator into the campaign path — e.g., to kick off a quote-follow-up nurture sequence. So in practice you'd model this less as "either/or" and more as a **queue of events per account**, where completing one agent's work can enqueue the next event rather than the orchestrator making one all-or-nothing decision per trigger.
+
+One implementation note for a Python build: this argues for an event-driven architecture (a queue like SQS/Kafka/Celery, not a synchronous function-call chain) — since "agent A finishing spawns event B" is naturally a pub/sub pattern, and it also gives you retry/backoff for free when an individual agent call fails.
+
+
