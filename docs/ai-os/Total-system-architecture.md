@@ -59,6 +59,12 @@ graph TB
 
 In practice, mature deployments use all three: CDC for live transactions, ETL for the analytical warehouse, FDW for low-volume governance-restricted sources.
 
+## draw.io Source
+
+For pixel-perfect editing (or to export PNG/SVG for slide decks), open
+[`Total-system-architecture.drawio`](./Total-system-architecture.drawio) in
+[diagrams.net](https://app.diagrams.net) (File → Open From → Device).
+
 ## Companion Docs
 
 - [Architecture overview](architecture.md) — the layer stack and cross-plane principles.

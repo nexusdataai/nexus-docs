@@ -1,0 +1,165 @@
+<mxfile host="app.diagrams.net" modified="2026-05-12T00:00:00.000Z" agent="nexus-docs" version="22.1.16" type="device">
+  <diagram id="total-system-architecture" name="Total System Architecture">
+    <mxGraphModel dx="2400" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ───────────── Top funnel ───────────── -->
+        <mxCell id="ui" value="&lt;b&gt;User Interface&lt;/b&gt;&lt;br/&gt;(Chat / API / Copilot)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=2;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rbac" value="&lt;b&gt;Identity &amp;amp; RBAC Layer&lt;/b&gt;&lt;br/&gt;(SSO, OAuth, SCIM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=2;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="150" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="intent" value="&lt;b&gt;Intent + Risk Analyzer&lt;/b&gt;&lt;br/&gt;Classifies: read-only, low-risk write,&lt;br/&gt;high-risk write, cross-system" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=2;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="680" y="260" width="340" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ───────────── ReAct Planning Engine ───────────── -->
+        <mxCell id="react_box" value="&lt;b&gt;ReAct Planning Engine (LLM Agent Loop)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef2ff;strokeColor=#3b5bdb;strokeWidth=2;verticalAlign=top;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="220" y="400" width="1260" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="loop" value="&lt;b&gt;PLAN → EXECUTE → OBSERVE → REPLAN → EXECUTE → OBSERVE&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;1. Receives user intent + risk classification&lt;br/&gt;2. Queries Enterprise RAG for context&lt;br/&gt;3. Reasons about next action&lt;br/&gt;4. Selects tool from Tool Abstraction Layer&lt;br/&gt;5. Policy Engine validates before execution&lt;br/&gt;6. Observes result, replans if needed&lt;br/&gt;7. Loops until goal achieved or step limit reached" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#495057;strokeWidth=1;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="440" width="1220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="apps" value="&lt;b&gt;AI Applications (powered by this loop)&lt;/b&gt;&lt;br/&gt;• Fraud AI Assistant &amp;nbsp;&amp;nbsp; • AML Investigator Copilot &amp;nbsp;&amp;nbsp; • Risk Analytics Dashboard &amp;nbsp;&amp;nbsp; • Enterprise System Orchestrator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#495057;strokeWidth=1;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="240" y="640" width="1220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="policy" value="&lt;b&gt;Policy &amp;amp; Guardrail Core&lt;/b&gt; (OPA / Custom Engine)&lt;br/&gt;• Approval thresholds &amp;nbsp;&amp;nbsp; • Close windows &amp;nbsp;&amp;nbsp; • Field-level access &amp;nbsp;&amp;nbsp; • Cross-system checks&lt;br/&gt;• Risk-based routing &amp;nbsp;&amp;nbsp; • Dry-run mode &amp;nbsp;&amp;nbsp; • Max step limits &amp;nbsp;&amp;nbsp; • Audit logging" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#495057;strokeWidth=1;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="730" width="1220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tools" value="&lt;b&gt;Tool Abstraction Layer&lt;/b&gt; (Controlled APIs)&lt;br/&gt;• get_account() &amp;nbsp;&amp;nbsp; • propose_credit_change() &amp;nbsp;&amp;nbsp; • get_ar_balance() &amp;nbsp;&amp;nbsp; • submit_gl_adjustment() &amp;nbsp;&amp;nbsp; • create_customer() &amp;nbsp;&amp;nbsp; • trigger_workflow()&lt;br/&gt;&lt;i&gt;LLM never calls raw APIs — only safe tools&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#495057;strokeWidth=1;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ───────────── AI Control Plane ───────────── -->
+        <mxCell id="control_box" value="&lt;b&gt;AI-CONTROL-PLANE&lt;/b&gt;&lt;br/&gt;Semantic Intelligence &amp;amp; Reasoning Layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef2ff;strokeColor=#3b5bdb;strokeWidth=2;verticalAlign=top;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1020" width="1580" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="rag" value="&lt;b&gt;Enterprise RAG Layer&lt;/b&gt;&lt;br/&gt;(Semantic Retrieval for LLM Context)&lt;br/&gt;&lt;br/&gt;Retrieves from Vector DB + Graph DB to provide:&lt;br/&gt;• Schema &amp;amp; field definitions &amp;nbsp;&amp;nbsp; • Business policies &amp;amp; approval rules&lt;br/&gt;• Workflow dependencies &amp;amp; process rules &amp;nbsp;&amp;nbsp; • API specs &amp;amp; integration mappings&lt;br/&gt;• Cross-system dependency awareness&lt;br/&gt;&lt;br/&gt;Answers: &lt;i&gt;Which object stores credit risk?&lt;/i&gt; &amp;nbsp;&amp;nbsp; &lt;i&gt;What triggers approval workflow?&lt;/i&gt;&lt;br/&gt;&lt;i&gt;What fields are required for customer creation?&lt;/i&gt; &amp;nbsp;&amp;nbsp; &lt;i&gt;What is the ERP sync dependency?&lt;/i&gt;&lt;br/&gt;&lt;br/&gt;This is semantic retrieval, not relational querying." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#495057;strokeWidth=1;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="380" y="1080" width="940" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="gq" value="&lt;b&gt;Graph Query&lt;/b&gt;&lt;br/&gt;+ Reasoner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1350" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vs" value="&lt;b&gt;Vector Search&lt;/b&gt;&lt;br/&gt;(Similarity)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1350" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ml" value="&lt;b&gt;ML Scoring&lt;/b&gt;&lt;br/&gt;Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1350" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="intel_box" value="&lt;b&gt;Intelligence Layer&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;verticalAlign=top;fontSize=13;fontStyle=1;align=center;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1450" width="1460" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="gdb" value="&lt;b&gt;Graph DB&lt;/b&gt; (Ontology + RDF)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Structural Knowledge:&lt;/b&gt;&lt;br/&gt;• Accounts &amp;nbsp;&amp;nbsp; • Transactions&lt;br/&gt;• Customers &amp;nbsp;&amp;nbsp; • Risk Rules&lt;br/&gt;• Relationships &amp;nbsp;&amp;nbsp; • Ontology" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fef3c7;strokeColor=#a16207;strokeWidth=1.5;fontSize=12;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1490" width="640" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="vdb" value="&lt;b&gt;Vector DB&lt;/b&gt; (Embeddings Store)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Semantic Knowledge:&lt;/b&gt;&lt;br/&gt;• Schema embeddings &amp;nbsp;&amp;nbsp; • Policy embeddings&lt;br/&gt;• Workflow embeddings &amp;nbsp;&amp;nbsp; • API spec embeddings&lt;br/&gt;• Process rule embeddings &amp;nbsp;&amp;nbsp; • Fraud case embeddings&lt;br/&gt;• Customer embeddings" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fef3c7;strokeColor=#a16207;strokeWidth=1.5;fontSize=12;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="1490" width="640" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- ───────────── AI Data Plane ───────────── -->
+        <mxCell id="data_box" value="&lt;b&gt;AI-DATA-PLANE&lt;/b&gt;&lt;br/&gt;Data Ingestion &amp;amp; Transformation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef2ff;strokeColor=#3b5bdb;strokeWidth=2;verticalAlign=top;fontSize=14;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1780" width="1580" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="rdfstream" value="&lt;b&gt;RDF Stream Processor&lt;/b&gt;&lt;br/&gt;(CDC → Ontology Mapper)&lt;br/&gt;&lt;i&gt;CDC Path&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1840" width="380" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rdfbatch" value="&lt;b&gt;RDF Batch Transformer&lt;/b&gt;&lt;br/&gt;(R2RML / Batch)&lt;br/&gt;&lt;i&gt;ETL Path&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1840" width="380" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="fdw" value="&lt;b&gt;FDW Wrapper&lt;/b&gt; (Virtual Access)&lt;br/&gt;Postgres FDW / Trino / Presto&lt;br/&gt;&lt;i&gt;FDW Path&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1840" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka" value="&lt;b&gt;Kafka&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#a16207;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1980" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="etl" value="&lt;b&gt;ETL Engine&lt;/b&gt;&lt;br/&gt;(Spark / Airflow / Custom)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#a16207;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1980" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cdc" value="&lt;b&gt;CDC Engine&lt;/b&gt;&lt;br/&gt;(Debezium)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#a16207;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="220" y="2080" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="src" value="&lt;b&gt;Enterprise Source Systems&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#b91c1c;strokeWidth=2;verticalAlign=top;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="2200" width="1460" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="src_corebanking" value="&lt;b&gt;Core Banking&lt;/b&gt;&lt;br/&gt;(Temenos / Finacle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b91c1c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="2250" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="src_erp" value="&lt;b&gt;ERP / GL&lt;/b&gt;&lt;br/&gt;(SAP / Oracle)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b91c1c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="2250" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="src_crm" value="&lt;b&gt;CRM&lt;/b&gt;&lt;br/&gt;(Salesforce / Custom)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b91c1c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="2250" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="src_legacy" value="&lt;b&gt;Legacy Systems&lt;/b&gt;&lt;br/&gt;/ Files" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b91c1c;strokeWidth=1.5;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="2250" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="src_legend" value="&lt;i&gt;CDC: Real-time event streams from transaction-heavy systems&lt;/i&gt;&lt;br/&gt;&lt;i&gt;ETL: Batch extraction for historical, analytical &amp;amp; master data&lt;/i&gt;&lt;br/&gt;&lt;i&gt;FDW: Virtual access for low-volume / governance-restricted data&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontColor=#52525b;" vertex="1" parent="1">
+          <mxGeometry x="160" y="2370" width="1380" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ───────────── Edges ───────────── -->
+        <mxCell id="e_ui_rbac" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="ui" target="rbac">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rbac_intent" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="rbac" target="intent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_intent_loop" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="intent" target="loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_loop_rag" value="queries for context" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="tools" target="rag">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rag_loop" value="RAG feedback loop" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="rag" target="tools">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rag_gq" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="rag" target="gq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rag_vs" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="rag" target="vs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rag_ml" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="rag" target="ml">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gq_gdb" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="gq" target="gdb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_vs_vdb" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="vs" target="vdb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gdb_rdfstream" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="gdb" target="rdfstream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gdb_rdfbatch" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="gdb" target="rdfbatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_vdb_fdw" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="vdb" target="fdw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rdfstream_kafka" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="rdfstream" target="kafka">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_kafka_cdc" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="kafka" target="cdc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rdfbatch_etl" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="rdfbatch" target="etl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cdc_src" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="cdc" target="src_corebanking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_etl_src" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="etl" target="src_erp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fdw_src" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;" edge="1" parent="1" source="fdw" target="src_legacy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
