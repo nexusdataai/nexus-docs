@@ -1,18 +1,21 @@
 # Enterprise Data Simulators
 
-Built-in in-memory replicas of the source systems the Nexus AI platform
-integrates with. They let development, QA, demo, and CI environments
-exercise the full Data Plane, Virtual Data Layer (VDL), and Reasoning
-Plane without ever touching a live Salesforce, Oracle ERP, SAP, or
-external-data tenant.
+Built-in replicas of the source systems the Nexus AI platform
+integrates with. They live in the standalone **nexus-simulator** product
+(API + UI) so development, QA, demo, and CI environments can exercise
+the Data Plane, Virtual Data Layer (VDL), and Reasoning Plane without
+touching a live Salesforce, Oracle ERP, SAP, or external-data tenant.
 
-The simulators are **FDW-compatible**: they implement the exact same
-`FDWDiscoveryService` / `FDWQueryService` contract as the live
-PostgreSQL Foreign Data Wrappers, so consuming services (`VirtualQueryService`,
-the agent ReAct tools, dashboards, journeys) are completely unaware of
-whether they're talking to a simulator or to a real source system. A
-runtime toggle (per-source, persisted in SSM) flips the entire backend
-between modes without code changes.
+The simulators are **FDW-compatible**: they implement the same
+`FDWDiscoveryService` / `FDWQueryService` contract as live PostgreSQL
+Foreign Data Wrappers. After the product split that contract is a
+**network API** (`GET/POST /api/fdw/*` on nexus-simulator). Ontology
+keeps VDL, mapping rules, ReAct reasoning, and real Postgres FDW.
+When a source is in `simulator` mode, ontology is an HTTP client
+(`SIMULATOR_BASE_URL`) and does not embed Redis catalogs in-process.
+
+A runtime toggle (per-source, persisted in SSM) still flips ontology
+between simulator HTTP and live FDW without code changes.
 
 ## Simulator inventory
 
@@ -38,39 +41,40 @@ tool — there's nothing persistent to back up.
 
 ```mermaid
 flowchart LR
-    subgraph backend [Nexus Backend Pod]
-      direction LR
-      VDL[VirtualQueryService]
-      Mode{DataSourceMode<br/>resolver}
-      Sim[BaseSimulatorService<br/>subclass]
-      FDW[PostgreSQL FDW<br/>connection pool]
+    subgraph simProduct [nexus-simulator]
+      SimUI[Simulator UI]
+      SimAPI[Simulator API]
+      Redis[(Redis cache)]
+      S3[(S3 dumps)]
     end
 
-    Redis[(Redis<br/>per-pod cache)]
-    S3[(S3 dump<br/>per simulator)]
-    Live[Live source<br/>system]
-    Seed[supply_chain_<br/>seed_pools]
+    subgraph ontProduct [nexus-ontology]
+      VDL[VirtualQueryService]
+      Mode[DataSourceModeService]
+      ReAct[ReAct tools]
+      RealFDW[Postgres FDW]
+    end
 
-    VDL -->|"resolve mapping rule<br/>schema -> sim_key"| Mode
-    Mode -->|"mode = simulator"| Sim
-    Mode -->|"mode = real"| FDW
-    Sim -->|ensure_loaded| S3
-    Sim --> Redis
-    Sim -->|"seed_data()<br/>fallback path"| Seed
-    FDW --> Live
+    SimUI --> SimAPI
+    SimAPI --> Redis
+    SimAPI --> S3
+    Mode -->|simulator| SimAPI
+    Mode -->|real| RealFDW
+    VDL --> Mode
+    ReAct -->|query_virtual_entity| VDL
+    ReAct -->|writes| SimAPI
 ```
 
 When `mode == "simulator"`:
 1. `VirtualQueryService` looks up the active mapping rule for the
    virtual entity, translates the request into a source-shape
    `QueryRequest`, picks the simulator via the `SCHEMA_TO_SIMULATOR`
-   map, and calls `sim.execute_query(request)`.
-2. The simulator's first call to `ensure_loaded()` hydrates Redis from
-   the per-simulator S3 dump (manifest → tables → columns → data).
-   Subsequent calls return immediately.
-3. `execute_query` reads rows from Redis, applies the request's
-   filters / column projection / order-by / pagination in-process, and
-   returns a `QueryResponse`.
+   map, and calls `RemoteSimulator.execute_query(request)`.
+2. Ontology posts `POST {SIMULATOR_BASE_URL}/api/fdw/query`. The
+   simulator hydrates Redis from the per-simulator S3 dump (or
+   `seed_data()`) and applies filters / projection / pagination.
+3. If the remote catalog is empty or not loaded, ontology **hard-errors**.
+   It does not silently fall through to live FDW.
 
 When `mode == "real"`, the simulator is bypassed entirely and the
 request flows through the FDW connection pool to PostgreSQL → the

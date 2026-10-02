@@ -2,7 +2,10 @@
 
 ## Overview
 
-The **SFDC (Salesforce) Simulator** replaces the live PostgreSQL Foreign Data Wrapper (FDW) connection to Salesforce with an in-memory data store backed by S3 dumps. This allows the NexusAI platform to query Salesforce CRM data (Accounts, Leads, Opportunities, Contacts, and custom objects) during development and testing without a live Salesforce org or a PostgreSQL FDW extension.
+The **SFDC (Salesforce) Simulator** lives in the standalone **nexus-simulator**
+product. Ontology talks to it over HTTP (`SIMULATOR_BASE_URL`) when the data
+source mode is `simulator`. Catalog, seed, dump, and admin tools are in the
+simulator UI (`SIMULATOR_UI_URL`), not in ontology.
 
 For the simulator overview and mode-toggle mechanics, see [Simulators](../index.md). For the underlying production code path, see [Implementation Guide > Data Plane](../../ai-os/implementation-guide.md#data-plane).
 
@@ -20,7 +23,9 @@ For the simulator overview and mode-toggle mechanics, see [Simulators](../index.
 
 ### Real Mode vs Simulator Mode
 
-The platform uses `SFDC_SIMULATOR_ENABLED` (and the SSM parameter `/nexus-ai/{env}/sfdc/enabled`) to decide how FDW queries are served. When the simulator is enabled, `fdw_api.configure()` injects the `SFDCSimulatorService` in place of the real PostgreSQL FDW services.
+The platform uses per-source data-source mode (`simulator` vs `real`) rather than
+in-process `SFDC_SIMULATOR_ENABLED`. When mode is simulator, ontology's
+`RemoteSimulator` posts to `{SIMULATOR_BASE_URL}/api/fdw/*`.
 
 ```mermaid
 flowchart TB
@@ -438,9 +443,9 @@ curl "http://localhost:8000/api/v1/sfdc-simulator/objects/nexus_data/Account?lim
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `SFDC_SIMULATOR_ENABLED` | `false` | Enable the SFDC simulator (use in-memory data instead of real FDW) |
-| `SFDC_SIMULATOR_BUCKET` | -- | S3 bucket containing the FDW data dump |
-| `SFDC_SIMULATOR_PREFIX` | `sfdc-simulator` | S3 key prefix for dump files |
+| `SIMULATOR_BASE_URL` | -- | Ontology remote client for nexus-simulator (required when simulators are enabled) |
+| `SIMULATOR_UI_URL` | `http://localhost:8082` | Browser link to the standalone simulator UI |
+| `SIMULATOR_ENABLED` | `true` | Fail ontology startup if `SIMULATOR_BASE_URL` is missing |
 
 ### System Settings (UI)
 

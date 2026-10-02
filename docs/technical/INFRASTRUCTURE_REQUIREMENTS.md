@@ -89,9 +89,9 @@ All buckets ship with: SSE-KMS or SSE-S3 encryption, versioning enabled, lifecyc
 | `LLM_MODEL` | no | `gpt-4o-mini` | Reasoning Plane model |
 | `EMBEDDING_MODEL` | no | `text-embedding-3-small` | Control Plane embedding model |
 | `MAX_AGENT_STEPS` | no | `10` | ReAct step budget per session |
-| `SFDC_SIMULATOR_ENABLED` | no | `false` | Use in-memory SFDC simulator |
-| `SFDC_SIMULATOR_BUCKET` | conditional | -- | S3 bucket for simulator data |
-| `SFDC_SIMULATOR_PREFIX` | no | `sfdc-simulator` | S3 key prefix |
+| `SIMULATOR_ENABLED` | no | `true` | Require remote nexus-simulator (fail-fast if URL missing) |
+| `SIMULATOR_BASE_URL` | yes (when enabled) | -- | In-cluster simulator API, e.g. `http://simulator-{env}-backend-svc-internal.simulator-{env}.svc.cluster.local:8000` |
+| `SIMULATOR_UI_URL` | no | `http://localhost:8082` | Browser link to the standalone simulator UI |
 
 ## CloudWatch log groups
 
