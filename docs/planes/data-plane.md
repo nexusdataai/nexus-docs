@@ -54,6 +54,18 @@ graph LR
     VDL --> DS
 ```
 
+## VDL compositions
+
+VDL entities are defined in the catalog (fields, relationships). **Compositions** describe how each entity is formed at query time:
+
+- One composition per `virtualEntity` (no duplicate actives).
+- **Sources** — one or more physical tables (`schema.table`) with SQL aliases.
+- **Joins** — optional `LEFT` / `INNER` join plan between aliases.
+- **Projections** — each VDL field maps to a SQL expression (single-table passthrough or multi-source).
+- **Runtime** — `POST /api/v1/vdl/query` and the Data Plane preview resolve the active composition and execute read-only SQL (FDW) or an in-memory join (simulator).
+
+Console: **Data Plane → VDL → Virtual data layer** (merged entity list + composition editor). Legacy mapping rules remain API-compatible and are migrated to compositions on startup.
+
 ## Console Walkthrough
 
 Six tabs cover the hydration lifecycle.

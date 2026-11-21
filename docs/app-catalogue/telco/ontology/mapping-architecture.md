@@ -8,6 +8,8 @@ How the unified telecommunications schema maps to the existing systems of record
 
 The telecommunications ontology uses a **schema-first** approach — the unified schema is the primary knowledge source, not the FDW foreign tables. FDW becomes a mapping resolution layer that annotates which schema entities have live database connections.
 
+VDL **compositions** (see platform Data Plane docs) express how each canonical entity is built from one or more FDW tables, including join plans and field projections executed at query runtime.
+
 ```mermaid
 flowchart TD
     subgraph SchemaOverlay [Unified Schema - telco-schema.yaml]
