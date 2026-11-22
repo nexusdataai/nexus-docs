@@ -105,8 +105,14 @@ Six tabs cover the hydration lifecycle.
 
 ![Data Pipelines](../assets/data-plane/data-plane-5-data-pipelines.png)
 
-- Stage flow per pipeline: Extract → Validate → Transform → Load → Verify.
-- Active / Completed / Running counters and recent run history.
+- **Flow Studio** (`?tab=pipeline-studio`): Canvas for ETL nodes and harvested **`nifi.*` processors**. Graphs with `nifi.*` compile to `compileMode: nifi_journey` with `flowSteps` executed by Nexus journey stage **`nexus_flow`** (plain Python in `flow_processors`, not a NiFi DAG engine). Preview (`POST /api/v1/data-flow/nifi/preview-run`) uses the same linear journey runner when `NEXUS_FLOW_RUNTIME_EXECUTION=true` (default **false** on local K3s unless `localEmulation.flowRuntimeExecution` is set).
+- **Library** (`?tab=pipelines`): existing jobs — run, delete, Open in Studio (`pipelineId=`). Templates jump to Studio with a starter graph.
+- **Processor registry** (`?tab=nexus-processors`; legacy `?tab=nifi-processors` redirects): table + detail drawer (metadata, inputs/properties, output relationships, Python source, probe). Live processors: `GET …/source`, `POST …/{id}/probe`, batch `POST /api/v1/nifi-processors/probe-batch`. Resync: `POST /api/v1/nifi-processors/resync`.
+- **Nexus assets** (`?tab=nexus-data-assets`; legacy `?tab=nifi-assets` redirects): Jolt specs, docs, example flows (`NIFIASSET#`).
+- REST: `GET /api/v1/data-flow/catalog` (ETL + NiFi), `GET /api/v1/nifi-processors`, validate/compile/pipelines/journeys as before.
+- Copilot sidebar: `POST /api/v1/data-flow/plan` proposes patches; **Review & deploy** writes `productionGraphSnapshot`.
+- Runtime: ETL jobs execute `etl_pipeline`. Nine core NiFi transforms run in Python (`src/services/flow_processors/`); remaining harvested processors are catalog stubs (deploy blocked). Harvest: `backend/scripts/nifi_harvest.py` against vendored `/opt/mycode/nexus/nifi`.
+- Stage flow (ETL): Extract → Validate → Transform → Load → Verify (plus Register VDL / Materialize warehouse for external sources).
 
 ### Connectors
 
